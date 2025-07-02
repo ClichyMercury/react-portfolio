@@ -1,18 +1,26 @@
 import path from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import { tempo } from "tempo-devtools/dist/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: process.env.NODE_ENV === "development" ? "/" : process.env.VITE_BASE_PATH || "/",
+  base: "./", // Simplifié pour Vercel
   optimizeDeps: {
-    entries: ["src/main.tsx", "src/tempobook/**/*"],
+    entries: ["src/main.tsx"],
   },
   plugins: [
     react(),
-    tempo(),
+    // Supprimé tempo() pour éviter les conflits en production
   ],
+  build: {
+    outDir: "build", // Change vers 'build' pour correspondre à vercel.json
+    sourcemap: false, // Désactive les sourcemaps pour réduire la taille
+    rollupOptions: {
+      output: {
+        manualChunks: undefined, // Simplifie le chunking
+      },
+    },
+  },
   resolve: {
     preserveSymlinks: true,
     alias: {
@@ -20,7 +28,6 @@ export default defineConfig({
     },
   },
   server: {
-    // @ts-ignore
     allowedHosts: true,
   }
 });

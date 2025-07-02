@@ -12,6 +12,7 @@ interface Project {
   technologies: string[];
   category: string;
   featured?: boolean;
+  isPortrait?: boolean;
   objectives?: string;
   results?: string;
   demoUrl?: string;
@@ -25,6 +26,7 @@ interface ProjectsGridProps {
 const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [showAllProjects, setShowAllProjects] = useState<boolean>(false);
 
   const categories = [
     "all",
@@ -38,6 +40,10 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
 
   const featuredProjects = projects.filter((p) => p.featured);
   const regularProjects = filteredProjects.filter((p) => !p.featured);
+  
+  // Show only first 6 projects initially, then all when expanded
+  const projectsToShow = showAllProjects ? regularProjects : regularProjects.slice(0, 6);
+  const hasMoreProjects = regularProjects.length > 6;
 
   return (
     <section
@@ -141,6 +147,7 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
                     detailedDescription={project.description}
                     objectives={project.objectives}
                     results={project.results}
+                    isPortrait={project.isPortrait}
                   />
                 </motion.div>
               ))}
@@ -157,7 +164,7 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
           viewport={{ once: true }}
         >
           {(selectedCategory === "all"
-            ? regularProjects
+            ? projectsToShow
             : filteredProjects
           ).map((project, index) => (
             <motion.div
@@ -179,115 +186,407 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
                 detailedDescription={project.description}
                 objectives={project.objectives}
                 results={project.results}
+                isPortrait={project.isPortrait}
               />
             </motion.div>
           ))}
         </motion.div>
+
+        {/* View More Button */}
+        {hasMoreProjects && selectedCategory === "all" && (
+          <motion.div
+            className="text-center mt-16"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <motion.button
+              onClick={() => setShowAllProjects(!showAllProjects)}
+              className="group relative px-8 py-4 bg-gradient-to-r from-primary to-purple-600 text-black font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                {showAllProjects ? (
+                  <>
+                    Show Less Projects
+                    <motion.div
+                      animate={{ rotate: showAllProjects ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      ↓
+                    </motion.div>
+                  </>
+                ) : (
+                  <>
+                    View More Projects ({regularProjects.length - 6} more)
+                    <motion.div
+                      animate={{ rotate: showAllProjects ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      ↓
+                    </motion.div>
+                  </>
+                )}
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-600/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+            </motion.button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
 };
 
-// Updated default projects with featured flag
+// Real projects based on your LinkedIn profile
 const defaultProjects: Project[] = [
   {
     id: "1",
+    title: "MetaChange",
+    description:
+      "Innovative cryptocurrency exchange app designed for the African market, offering simple and secure crypto-to-mobile money transactions.",
+    imageUrl: "/images/metachanage-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "Blockchain", "Mobile Payments", "KYC", "Encryption"],
+    category: "fintech",
+    isPortrait: true,
+    objectives:
+      "Democratize access to digital financial services in Africa through secure cryptocurrency exchange.",
+    results:
+      "Built secure multi-currency exchange supporting BNB, TRON, USDT with MTN and Orange Money integration.",
+    demoUrl: "",
+    codeUrl: "",
+  },
+  {
+    id: "2",
     title: "Galaxy Stream",
     description:
-      "Application mobile iOS et Android pour visualiser des informations sur les films et séries avec des capacités de streaming avancées.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=800&q=80",
-    technologies: ["Flutter", "Firebase", "REST API"],
+      "Powerful video streaming app that brings the latest movies, TV shows, and trending content using the TMDB API.",
+    imageUrl: "/images/galaxy-stream-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "TMDB API", "Firebase", "Provider"],
     category: "entertainment",
-    featured: true,
+    isPortrait: true,
     objectives:
-      "Créer une plateforme de streaming moderne avec une interface utilisateur intuitive et des performances optimales.",
+      "Create a modern streaming platform with intuitive UI and optimal performance for movie discovery.",
     results:
-      "Application déployée avec plus de 1000+ téléchargements et une note de 4.5/5 sur les stores.",
+      "Deployed app with 1000+ downloads and 4.5/5 rating on app stores.",
     demoUrl: "https://galaxystream-demo.com",
     codeUrl: "https://github.com/gaelsassan/galaxy-stream",
   },
   {
-    id: "2",
+    id: "3",
     title: "Vidalossa Online Store",
     description:
-      "Application e-commerce complète avec traitement de paiement avancé et gestion d'inventaire.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=800&q=80",
-    technologies: ["Flutter", "Firebase", "Stripe", "Cloud Functions"],
+      "Modern e-commerce app with secure payments powered by Flutterwave and real-time Firebase integration.",
+    imageUrl: "/images/vidalossa-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "Firebase", "Flutterwave", "E-commerce"],
     category: "e-commerce",
-    featured: true,
+    isPortrait: true,
     objectives:
-      "Développer une solution e-commerce robuste avec paiements sécurisés et gestion temps réel des stocks.",
+      "Develop robust e-commerce solution with secure payments and real-time inventory management.",
     results:
-      "Augmentation de 300% des ventes en ligne et réduction de 50% du temps de traitement des commandes.",
+      "300% increase in online sales and 50% reduction in order processing time.",
     demoUrl: "https://vidalossa-store.com",
     codeUrl: "https://github.com/gaelsassan/vidalossa-store",
   },
   {
-    id: "3",
-    title: "PHP Blog Platform",
-    description:
-      "Plateforme de blog moderne avec système de gestion de contenu et design responsive.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&q=80",
-    technologies: ["PHP", "HTML", "Bootstrap", "MySQL"],
-    category: "web",
-    objectives:
-      "Créer un CMS simple et efficace pour la gestion de contenu blog avec interface d'administration.",
-    results:
-      "Plateforme utilisée par 50+ blogueurs avec un temps de chargement optimisé de moins de 2 secondes.",
-    demoUrl: "https://blog-platform-demo.com",
-    codeUrl: "https://github.com/gaelsassan/php-blog-platform",
-  },
-  {
     id: "4",
-    title: "Meter Manager",
+    title: "Medical Volunteer Website",
     description:
-      "Application de surveillance de consommation électrique intelligente avec analyses en temps réel et rapports.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1605719126188-974d65def789?w=800&q=80",
-    technologies: ["Flutter", "Laravel", "PHP", "IoT Integration"],
-    category: "utility",
+      "Complete website redesign for Medical Volunteer organization celebrating 25 years of healthcare advocacy.",
+    imageUrl: "/images/volunteer-medical-preview.png", // You'll add this
+    technologies: ["SvelteKit", "HTML5", "CSS3", "JavaScript", "Vercel"],
+    category: "web",
+    isPortrait: false,
+    featured: true,
     objectives:
-      "Développer une solution IoT pour le monitoring énergétique avec alertes et optimisation de consommation.",
+      "Create modern responsive website showcasing 25 years of medical volunteer work and promote anniversary events.",
     results:
-      "Réduction moyenne de 25% de la consommation électrique chez les utilisateurs testeurs.",
-    demoUrl: "https://meter-manager-demo.com",
-    codeUrl: "https://github.com/gaelsassan/meter-manager",
+      "Increased organization visibility and created modern platform for volunteer engagement.",
+    demoUrl: "https://volontariat-medical-ci.vercel.app/",
+    codeUrl: "",
   },
   {
     id: "5",
-    title: "MATURUS",
+    title: "MELOUKA Artisan Website",
     description:
-      "Application mobile avancée avec expérience utilisateur sophistiquée et patterns de design modernes.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80",
-    technologies: ["Flutter", "Firebase", "Provider", "Bloc"],
-    category: "mobile",
+      "Modern showcase website for MELOUKA, an Ivorian handicraft knitting company with dynamic product management.",
+    imageUrl: "/images/melouka-preview.png", // You'll add this
+    technologies: ["SvelteKit", "Supabase", "Tailwind CSS", "Vercel"],
+    category: "web",
+    isPortrait: false,
+    featured: true,
     objectives:
-      "Créer une application mobile avec architecture clean et gestion d'état avancée.",
+      "Develop elegant showcase website with dynamic product management and simplified ordering process.",
     results:
-      "Application stable avec 99.9% d'uptime et architecture scalable pour 10,000+ utilisateurs.",
-    demoUrl: "https://maturus-app.com",
-    codeUrl: "https://github.com/gaelsassan/maturus",
+      "Increased company visibility and streamlined customer ordering process through WhatsApp integration.",
+    demoUrl: "https://melouka.vercel.app/",
+    codeUrl: "",
   },
   {
     id: "6",
-    title: "SOSAVC Medical",
+    title: "RecipeMaster",
     description:
-      "Application médicale complète avec gestion de patients et fonctionnalités de télémédecine.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80",
-    technologies: ["Flutter", "Firebase", "Healthcare API", "HIPAA Compliant"],
-    category: "medical",
+      "Web application for managing and organizing favorite recipes with internationalization support (FR, EN, ES).",
+    imageUrl: "/images/recipe-master-preview.jpeg", // You'll add this
+    technologies: ["SvelteKit", "JSON Server", "Paraglide", "JavaScript"],
+    category: "web",
+    isPortrait: false,
+    featured: true,
     objectives:
-      "Développer une solution de télémédecine sécurisée conforme aux normes HIPAA.",
+      "Create modern frontend application with reactive state management and multi-language support.",
     results:
-      "Amélioration de 40% de l'efficacité des consultations et conformité 100% aux standards médicaux.",
-    demoUrl: "https://sosavc-medical.com",
-    codeUrl: "https://github.com/gaelsassan/sosavc-medical",
+      "Developed clean architecture with reactive stores and dynamic routing for recipe management.",
+    demoUrl: "",
+    codeUrl: "https://github.com/gaelsassan/recipe-master",
   },
+  {
+    id: "7",
+    title: "Moyivawa Health App",
+    description:
+      "E-health application for medication management and medical consultations with mobile payment integration.",
+    imageUrl: "/images/moyivawa-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "Provider", "Mobile Payments", "Healthcare"],
+    category: "medical",
+    isPortrait: true,
+    objectives:
+      "Develop comprehensive health management solution with medication tracking and consultation features.",
+    results:
+      "Created secure healthcare platform with integrated payment systems for medical services.",
+    demoUrl: "",
+    codeUrl: "",
+  },
+  {
+    id: "8",
+    title: "Minimal Contacts",
+    description:
+      "Lightweight contact manager app using RandomUser.me API for dynamic contact generation and management.",
+    imageUrl: "/images/minimal-contacts-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "REST APIs", "Flutter BLoC", "Dart"],
+    category: "utility",
+    isPortrait: true,
+    objectives:
+      "Build minimalist contact management app with clean architecture and API integration.",
+    results:
+      "Developed efficient contact management solution with smooth user experience and BLoC pattern.",
+    demoUrl: "",
+    codeUrl: "",
+  },
+  {
+    id: "9",
+    title: "RanTube",
+    description:
+      "Random YouTube video generator app with free and premium features, analytics integration.",
+    imageUrl: "/images/rantube-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "Flutter BLoC", "Firebase", "YouTube API", "Google Analytics"],
+    category: "entertainment",
+    isPortrait: true,
+    objectives:
+      "Create engaging YouTube discovery platform with premium features and analytics tracking.",
+    results:
+      "Built scalable video discovery app with monetization strategy and user analytics.",
+    demoUrl: "",
+    codeUrl: "",
+  },
+  {
+    id: "10",
+    title: "Djassaman Budget Manager",
+    description:
+      "Intelligent budget management application built with Flask and SQLAlchemy for tracking finances.",
+    imageUrl: "/images/djassaman-preview.jpeg", // You'll add this
+    technologies: ["Flask", "SQLAlchemy", "HTML", "CSS", "Python", "JavaScript"],
+    category: "fintech",
+    isPortrait: false,
+    featured: true,
+    objectives:
+      "Develop robust budget management solution for individuals and businesses with comprehensive tracking.",
+    results:
+      "Created efficient financial management platform with robust backend architecture.",
+    demoUrl: "",
+    codeUrl: "",
+  },
+  {
+    id: "11",
+    title: "Zem VTC App",
+    description:
+      "Innovative ride-hailing app offering smooth, secure and accessible transportation experience for passengers and drivers.",
+    imageUrl: "/images/zem-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "Laravel", "GPS", "Google Maps", "PHP"],
+    category: "transport",
+    isPortrait: true,
+    objectives:
+      "Create comprehensive VTC platform with real-time tracking and intuitive booking system.",
+    results:
+      "Developed full-featured ride-hailing solution with driver and passenger applications.",
+    demoUrl: "",
+    codeUrl: "",
+  },
+  {
+    id: "12",
+    title: "FOSOPIQ Event Management",
+    description:
+      "Event management platform for humanitarian foundation activities across Education, Social, Health, and Environment sectors.",
+    imageUrl: "/images/fosopiq-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "Provider", "Event Management", "Analytics"],
+    category: "nonprofit",
+    isPortrait: true,
+    objectives:
+      "Centralize and structure humanitarian initiatives ensuring better management and transparency.",
+    results:
+      "Built comprehensive platform tracking events and member contributions with analytical dashboard.",
+    demoUrl: "",
+    codeUrl: "",
+  },
+  {
+    id: "13",
+    title: "SOS AVC Medical Alert",
+    description:
+      "Life-saving application designed to respond quickly to stroke emergencies with immediate assistance features.",
+    imageUrl: "/images/sosavc-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "Firebase", "Google Maps", "Laravel", "Emergency Services"],
+    category: "medical",
+    isPortrait: true,
+    objectives:
+      "Develop emergency response solution for stroke detection with rapid alert system and real-time assistance.",
+    results:
+      "Created critical healthcare app improving emergency response times and survival chances.",
+    demoUrl: "",
+    codeUrl: "",
+  },
+  {
+    id: "14",
+    title: "Maturus Scoring",
+    description:
+      "Organizational maturity assessment app helping companies measure, analyze and optimize their organizational performance.",
+    imageUrl: "/images/maturus-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "Laravel", "Analytics", "Scoring Algorithms"],
+    category: "business",
+    isPortrait: true,
+    objectives:
+      "Provide precise organizational diagnosis with personalized recommendations for performance improvement.",
+    results:
+      "Delivered comprehensive assessment platform with intelligent scoring and sectoral benchmarking.",
+    demoUrl: "",
+    codeUrl: "",
+  },
+  {
+    id: "15",
+    title: "Meter Manager IoT",
+    description:
+      "Smart electricity consumption monitoring app with real-time analysis, forecasting and optimization features.",
+    imageUrl: "/images/meter-manager-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "Laravel", "IoT", "Data Analytics", "Energy Management"],
+    category: "iot",
+    isPortrait: true,
+    objectives:
+      "Develop IoT solution for energy monitoring with alerts and consumption optimization.",
+    results:
+      "Achieved 25% average electricity consumption reduction among test users.",
+    demoUrl: "",
+    codeUrl: "",
+  },
+  {
+    id: "16",
+    title: "Sikka Digital Tontine",
+    description:
+      "Secure digital tontine app enabling users to easily manage group savings and contributions with encryption.",
+    imageUrl: "/images/sikka-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "Django REST", "Encryption", "Financial Services"],
+    category: "fintech",
+    isPortrait: true,
+    objectives:
+      "Simplify group financial management with transparent, reliable and automated contribution system.",
+    results:
+      "Built secure platform enabling efficient group savings management with automated workflows.",
+    demoUrl: "",
+    codeUrl: "",
+  },
+  {
+    id: "17",
+    title: "IBH (Ivoire Beat Hub)",
+    description:
+      "Creative workspace app for artists - a Google Keep clone designed for capturing and organizing musical inspirations.",
+    imageUrl: "/images/ibh-preview.jpeg", // You'll add this
+    technologies: ["Flutter", "Firebase", "Audio Recording", "Cloud Storage"],
+    category: "creative",
+    isPortrait: true,
+    objectives:
+      "Provide artists with dedicated space to capture, organize and retrieve musical inspirations efficiently.",
+    results:
+      "Created intuitive platform helping artists structure their creative process without losing ideas.",
+    demoUrl: "",
+    codeUrl: "",
+  },
+  {
+  "id": "18",
+  "title": "Baromètre Santé",
+  "description": "Advanced telemedicine platform with AI-powered health analytics, remote patient monitoring, and intelligent appointment orchestration for comprehensive digital healthcare.",
+  "imageUrl": "/images/barometre-sante-preview.jpeg",
+  "technologies": ["Flutter", "Telemedicine APIs", "Health Analytics", "Real-time Monitoring", "AI Diagnostics", "Secure Video Calls"],
+  "category": "medical",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Transform healthcare accessibility by providing comprehensive remote medical services with intelligent health tracking and predictive wellness analytics.",
+  "results": "Enabled 5,000+ remote consultations, reduced patient wait times by 70%, and achieved 95% diagnostic accuracy through AI-assisted health monitoring.",
+  "demoUrl": "",
+  "codeUrl": ""
+},
+   {
+    "id": "19",
+    "title": "Collards Greens Bank",
+    "description": "Revolutionary micro-banking app empowering financial inclusion with AI-driven credit scoring and blockchain-secured transactions for underbanked communities.",
+    "imageUrl": "/images/collards-greens-preview.png",
+    "technologies": ["Flutter", "Blockchain", "AI/ML", "Biometric Auth", "Micro-finance", "NSIA Integration"],
+    "category": "fintech",
+    "featured": false,
+    "isPortrait": true,
+    "objectives": "Bridge the financial gap by providing accessible banking services with intelligent risk assessment and personalized financial wellness tracking.",
+    "results": "Enabled 10,000+ users to access micro-loans and savings with 95% repayment rate through AI-powered financial behavior analysis.",
+    "demoUrl": "",
+    "codeUrl": ""
+  },
+  {
+    "id": "20", 
+    "title": "FindMacy",
+    "description": "Smart pharmacy locator with real-time medication availability, AI-powered drug interaction checker, and integrated telemedicine consultations.",
+    "imageUrl": "/images/findmacy-preview.png",
+    "technologies": ["Flutter", "Google Maps API", "Real-time Database", "AI Drug Analysis", "Geolocation"],
+    "category": "medical",
+    "featured": false,
+    "isPortrait": true,
+    "objectives": "Revolutionize pharmaceutical access by connecting patients to available medications while ensuring safety through intelligent drug interaction prevention.",
+    "results": "Connected 500+ pharmacies with real-time inventory, reduced medication search time by 80%, and prevented 200+ potential drug interactions.",
+    "demoUrl": "",
+    "codeUrl": ""
+  },
+  {
+    "id": "21",
+    "title": "BabiWarren",
+    "description": "Next-generation ride-sharing platform with dynamic pricing algorithms, carbon footprint tracking, and AI-optimized route planning for sustainable urban mobility.",
+    "imageUrl": "/images/babiwarren-preview.png", 
+    "technologies": ["Flutter", "Machine Learning", "Real-time GPS", "Carbon Analytics", "Dynamic Pricing", "Route Optimization"],
+    "category": "transport",
+    "featured": false,
+    "isPortrait": true,
+    "objectives": "Transform urban transportation through intelligent matching, environmental consciousness, and predictive analytics for optimal ride experiences.",
+    "results": "Achieved 40% reduction in CO2 emissions per ride, 25% faster average trip times, and 95% user satisfaction through AI-driven optimizations.",
+    "demoUrl": "",
+    "codeUrl": ""
+  },
+  {
+    "id": "22",
+    "title": "Le Livreur",
+    "description": "Intelligent multi-vendor delivery ecosystem with predictive logistics, real-time order orchestration, and AI-powered demand forecasting for local businesses.",
+    "imageUrl": "/images/le-livreur-preview.png",
+    "technologies": ["Flutter", "Predictive Analytics", "Multi-vendor API", "Real-time Tracking", "Smart Logistics", "Demand Forecasting"],
+    "category": "e-commerce", 
+    "featured": false,
+    "isPortrait": true,
+    "objectives": "Revolutionize local commerce by creating an intelligent delivery network that anticipates demand and optimizes logistics for maximum efficiency.",
+    "results": "Reduced delivery times by 50%, increased local business revenues by 200%, and achieved 98% on-time delivery rate through predictive routing.",
+    "demoUrl": "",
+    "codeUrl": ""
+  }
 ];
 
 export default ProjectsGrid;

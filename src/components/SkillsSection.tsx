@@ -127,6 +127,27 @@ const defaultSkills: Skill[] = [
     color: "#0175C2",
   },
   {
+    name: "Java",
+    proficiency: 88,
+    category: "languages",
+    icon: "☕",
+    color: "#ED8B00",
+  },
+  {
+    name: "JavaScript",
+    proficiency: 90,
+    category: "languages",
+    icon: "📜",
+    color: "#F7DF1E",
+  },
+  {
+    name: "TypeScript",
+    proficiency: 85,
+    category: "languages",
+    icon: "📘",
+    color: "#3178C6",
+  },
+  {
     name: "Python",
     proficiency: 85,
     category: "languages",
@@ -135,31 +156,31 @@ const defaultSkills: Skill[] = [
   },
   {
     name: "Kotlin",
-    proficiency: 80,
+    proficiency: 82,
     category: "languages",
     icon: "🟣",
     color: "#7F52FF",
   },
   {
-    name: "JavaScript",
-    proficiency: 85,
+    name: "Swift",
+    proficiency: 78,
     category: "languages",
-    icon: "📜",
-    color: "#F7DF1E",
+    icon: "🍎",
+    color: "#FA7343",
   },
   {
-    name: "TypeScript",
-    proficiency: 80,
-    category: "languages",
-    icon: "📘",
-    color: "#3178C6",
-  },
-  {
-    name: "C",
+    name: "Rust",
     proficiency: 75,
     category: "languages",
-    icon: "⚙️",
-    color: "#A8B9CC",
+    icon: "🦀",
+    color: "#000000",
+  },
+  {
+    name: "PHP",
+    proficiency: 80,
+    category: "languages",
+    icon: "🐘",
+    color: "#777BB4",
   },
   {
     name: "HTML/CSS",
@@ -169,7 +190,7 @@ const defaultSkills: Skill[] = [
     color: "#E34F26",
   },
 
-  // Frameworks & Libraries
+  // Mobile Frameworks & Libraries
   {
     name: "Flutter",
     proficiency: 95,
@@ -178,22 +199,15 @@ const defaultSkills: Skill[] = [
     color: "#02569B",
   },
   {
-    name: "Flask",
-    proficiency: 85,
+    name: "Flutter BLoC",
+    proficiency: 90,
     category: "frameworks",
-    icon: "🌶️",
-    color: "#000000",
-  },
-  {
-    name: "SvelteKit",
-    proficiency: 80,
-    category: "frameworks",
-    icon: "🔥",
-    color: "#FF3E00",
+    icon: "🧊",
+    color: "#02569B",
   },
   {
     name: "Provider",
-    proficiency: 90,
+    proficiency: 88,
     category: "frameworks",
     icon: "🧩",
     color: "#02569B",
@@ -205,11 +219,55 @@ const defaultSkills: Skill[] = [
     icon: "📦",
     color: "#02569B",
   },
+  {
+    name: "Android Development",
+    proficiency: 85,
+    category: "frameworks",
+    icon: "🤖",
+    color: "#3DDC84",
+  },
 
-  // Base de données / Backend
+  // Web Frameworks
+  {
+    name: "SvelteKit",
+    proficiency: 85,
+    category: "frameworks",
+    icon: "🔥",
+    color: "#FF3E00",
+  },
+  {
+    name: "Laravel",
+    proficiency: 82,
+    category: "frameworks",
+    icon: "🎭",
+    color: "#FF2D20",
+  },
+  {
+    name: "Flask",
+    proficiency: 80,
+    category: "frameworks",
+    icon: "🌶️",
+    color: "#000000",
+  },
+  {
+    name: "Node.js",
+    proficiency: 85,
+    category: "frameworks",
+    icon: "🟢",
+    color: "#339933",
+  },
+
+  // Database & Backend Services
+  {
+    name: "Firebase",
+    proficiency: 90,
+    category: "tools",
+    icon: "🔥",
+    color: "#FFCA28",
+  },
   {
     name: "Hive",
-    proficiency: 90,
+    proficiency: 88,
     category: "tools",
     icon: "🗄️",
     color: "#FFA500",
@@ -222,21 +280,51 @@ const defaultSkills: Skill[] = [
     color: "#3ECF8E",
   },
   {
-    name: "Firebase",
-    proficiency: 88,
-    category: "tools",
-    icon: "🔥",
-    color: "#FFCA28",
-  },
-  {
     name: "Directus",
     proficiency: 80,
     category: "tools",
     icon: "🎛️",
     color: "#6644FF",
   },
+  {
+    name: "REST APIs",
+    proficiency: 90,
+    category: "tools",
+    icon: "🔗",
+    color: "#61DAFB",
+  },
 
-  // DevOps / Déploiement
+  // Development Tools
+  {
+    name: "Git",
+    proficiency: 90,
+    category: "tools",
+    icon: "📋",
+    color: "#F05032",
+  },
+  {
+    name: "GitHub",
+    proficiency: 88,
+    category: "tools",
+    icon: "😺",
+    color: "#181717",
+  },
+  {
+    name: "GitLab",
+    proficiency: 85,
+    category: "tools",
+    icon: "🦊",
+    color: "#FC6D26",
+  },
+  {
+    name: "Android Studio",
+    proficiency: 88,
+    category: "tools",
+    icon: "🔧",
+    color: "#3DDC84",
+  },
+
+  // Cloud & Deployment
   {
     name: "Firebase Hosting",
     proficiency: 85,
@@ -258,6 +346,38 @@ const defaultSkills: Skill[] = [
     icon: "🤖",
     color: "#34A853",
   },
+
+  // Specialized Technologies
+  {
+    name: "Mobile Payments",
+    proficiency: 88,
+    category: "tools",
+    icon: "💳",
+    color: "#4CAF50",
+  },
+  {
+    name: "Banking APIs",
+    proficiency: 85,
+    category: "tools",
+    icon: "🏦",
+    color: "#2196F3",
+  },
+  {
+    name: "Unit Testing",
+    proficiency: 82,
+    category: "tools",
+    icon: "🧪",
+    color: "#9C27B0",
+  },
+  {
+    name: "Agile Methodologies",
+    proficiency: 85,
+    category: "tools",
+    icon: "🔄",
+    color: "#FF5722",
+  },
+
+  // System & DevOps
   {
     name: "Linux",
     proficiency: 80,
@@ -265,8 +385,15 @@ const defaultSkills: Skill[] = [
     icon: "🐧",
     color: "#FCC624",
   },
+  {
+    name: "DevOps",
+    proficiency: 75,
+    category: "tools",
+    icon: "⚙️",
+    color: "#326CE5",
+  },
 
-  // IoT / Systèmes embarqués
+  // IoT (from existing)
   {
     name: "MQTT",
     proficiency: 85,

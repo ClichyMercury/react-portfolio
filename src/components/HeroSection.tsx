@@ -14,7 +14,7 @@ interface HeroSectionProps {
 const HeroSection = ({
   name = "GAËL SASSAN",
   tagline = "Software Developer creating innovative solutions with modern technologies and best practices",
-  ctaText = "Découvrir Mon Profil",
+  ctaText = "Get in touch",
   onCtaClick = () => console.log("CTA clicked"),
   photoUrl = "/images/GS-removebg-preview.png",
 }: HeroSectionProps) => {
@@ -107,13 +107,6 @@ const HeroSection = ({
               >
                 {ctaText}
                 <ArrowDown className="ml-2 h-4 w-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-primary/30 text-primary hover:bg-primary/10 px-8 py-6 rounded-full transition-all duration-300"
-              >
-                Télécharger CV
               </Button>
             </motion.div>
           </motion.div>

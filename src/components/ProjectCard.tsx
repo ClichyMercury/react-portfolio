@@ -31,6 +31,7 @@ interface ProjectCardProps {
   detailedDescription?: string;
   objectives?: string;
   results?: string;
+  isPortrait?: boolean; // New prop to control image orientation
 }
 
 const ProjectCard = ({
@@ -45,8 +46,9 @@ const ProjectCard = ({
   projectUrl = "",
   githubUrl = "",
   detailedDescription = "This is a detailed description of the project that explains the challenges faced, solutions implemented, and the overall development process.",
-  objectives = "Objectifs du projet et défis techniques à relever.",
-  results = "Résultats obtenus et impact du projet.",
+  objectives = "Project objectives and technical challenges to overcome.",
+  results = "Results achieved and project impact.",
+  isPortrait = true, // Default to portrait for mobile apps
 }: ProjectCardProps) => {
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
@@ -56,11 +58,13 @@ const ProjectCard = ({
         className="overflow-hidden h-full flex flex-col bg-card hover:shadow-lg transition-shadow duration-300 cursor-pointer"
         onClick={() => setIsDialogOpen(true)}
       >
-        <div className="relative h-48 overflow-hidden">
+        <div className={`relative overflow-hidden ${isPortrait ? 'h-84' : 'h-48'}`}>
           <img
             src={imageUrl}
             alt={title}
-            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            className={`w-full h-full transition-transform duration-300 hover:scale-105 ${
+              isPortrait ? 'object-contain bg-gray-100' : 'object-cover'
+            }`}
           />
         </div>
 
@@ -92,18 +96,20 @@ const ProjectCard = ({
             </DialogDescription>
           </DialogHeader>
 
-          <div className="relative h-56 overflow-hidden rounded-md my-4">
+          <div className={`relative overflow-hidden rounded-md my-4 ${isPortrait ? 'h-80' : 'h-56'}`}>
             <img
               src={imageUrl}
               alt={title}
-              className="w-full h-full object-cover"
+              className={`w-full h-full ${
+                isPortrait ? 'object-contain bg-gray-100' : 'object-cover'
+              }`}
             />
           </div>
 
           <div className="space-y-4">
             <div>
               <h4 className="text-sm font-medium mb-2 flex items-center gap-2">
-                🛠️ Stack Technique
+                🛠️ Tech Stack
               </h4>
               <div className="flex flex-wrap gap-2">
                 {technologies.map((tech, index) => (
@@ -126,7 +132,7 @@ const ProjectCard = ({
             {objectives && (
               <div>
                 <h4 className="text-sm font-medium mb-2 flex items-center gap-2">
-                  🎯 Objectifs
+                  🎯 Objectives
                 </h4>
                 <p className="text-sm text-muted-foreground">{objectives}</p>
               </div>
@@ -135,7 +141,7 @@ const ProjectCard = ({
             {results && (
               <div>
                 <h4 className="text-sm font-medium mb-2 flex items-center gap-2">
-                  📊 Résultats
+                  📊 Results
                 </h4>
                 <p className="text-sm text-muted-foreground">{results}</p>
               </div>
@@ -150,7 +156,7 @@ const ProjectCard = ({
                     rel="noopener noreferrer"
                   >
                     <ExternalLink className="h-4 w-4" />
-                    Voir la Démo
+                    View Demo
                   </a>
                 </Button>
               )}
@@ -159,7 +165,7 @@ const ProjectCard = ({
                 <Button variant="outline" size="sm" className="gap-2" asChild>
                   <a href={githubUrl} target="_blank" rel="noopener noreferrer">
                     <Github className="h-4 w-4" />
-                    Voir le Code
+                    View Code
                   </a>
                 </Button>
               )}

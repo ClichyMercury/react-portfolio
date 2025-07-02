@@ -12,12 +12,12 @@ interface ProfessionalBioProps {
 const ProfessionalBio = ({
   name = "Gaël Sassan",
   title = "Software Developer & Mobile App Specialist",
-  bio = "Passionné par le développement logiciel depuis plus de 5 ans, je me spécialise dans la création d'applications mobiles innovantes et de solutions web performantes. Mon expertise couvre l'ensemble du cycle de développement, de la conception à la mise en production, avec un focus particulier sur l'expérience utilisateur et les technologies modernes.",
+  bio = "Passionate about software development for over 5 years, I specialize in creating innovative mobile applications and high-performance web solutions. My expertise covers the entire development lifecycle, from design to production, with a particular focus on user experience and modern technologies.",
   highlights = [
-    "5+ années d'expérience en développement mobile et web",
-    "Expertise en Flutter, React, et technologies cloud",
-    "20+ projets livrés avec succès",
-    "Approche centrée sur l'utilisateur et les performances",
+    "5+ years of experience in mobile and web development",
+    "Expertise in Flutter, React, and cloud technologies",
+    "20+ successfully delivered projects",
+    "User-centered approach focused on performance",
   ],
 }: ProfessionalBioProps) => {
   return (
@@ -43,13 +43,13 @@ const ProfessionalBio = ({
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-12 h-px bg-primary"></div>
             <span className="text-primary text-sm font-medium uppercase tracking-wider">
-              À Propos
+              About Me
             </span>
             <div className="w-12 h-px bg-primary"></div>
           </div>
           <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            <span className="text-white">Qui</span>
-            <span className="gradient-text"> Suis-Je ?</span>
+            <span className="text-white">Who</span>
+            <span className="gradient-text"> Am I?</span>
           </h2>
         </motion.div>
 
@@ -75,7 +75,7 @@ const ProfessionalBio = ({
             <div className="space-y-4">
               <h4 className="text-xl font-semibold text-white flex items-center gap-2">
                 <Target className="h-5 w-5 text-primary" />
-                Points Clés
+                Key Highlights
               </h4>
               <div className="space-y-3">
                 {highlights.map((highlight, index) => (
@@ -107,21 +107,21 @@ const ProfessionalBio = ({
               {[
                 {
                   icon: <Award className="h-6 w-6" />,
-                  title: "Excellence Technique",
+                  title: "Technical Excellence",
                   description:
-                    "Code propre, architectures scalables et bonnes pratiques de développement.",
+                    "Clean code, scalable architectures and development best practices.",
                 },
                 {
                   icon: <User className="h-6 w-6" />,
-                  title: "Approche Collaborative",
+                  title: "Collaborative Approach",
                   description:
-                    "Communication transparente et travail en équipe pour des résultats optimaux.",
+                    "Transparent communication and teamwork for optimal results.",
                 },
                 {
                   icon: <Heart className="h-6 w-6" />,
                   title: "Passion & Innovation",
                   description:
-                    "Veille technologique constante et recherche de solutions créatives.",
+                    "Constant technology watch and search for creative solutions.",
                 },
               ].map((value, index) => (
                 <motion.div

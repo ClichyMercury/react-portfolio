@@ -46,17 +46,16 @@ const ExperienceSection = ({
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="w-12 h-px bg-primary"></div>
             <span className="text-primary text-sm font-medium uppercase tracking-wider">
-              Parcours
+              Journey
             </span>
             <div className="w-12 h-px bg-primary"></div>
           </div>
           <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            <span className="text-white">Mon</span>
-            <span className="gradient-text"> Expérience</span>
+            <span className="text-white">My</span>
+            <span className="gradient-text"> Experience</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Un parcours riche en projets variés et en défis techniques
-            stimulants.
+            A rich journey filled with diverse projects and stimulating technical challenges.
           </p>
         </motion.div>
 
@@ -115,10 +114,10 @@ const ExperienceSection = ({
                             }`}
                           >
                             {experience.type === "professional"
-                              ? "Salarié"
+                              ? "Employee"
                               : experience.type === "freelance"
                                 ? "Freelance"
-                                : "Personnel"}
+                                : "Personal"}
                           </Badge>
                         </div>
                       </div>
@@ -133,7 +132,7 @@ const ExperienceSection = ({
                       {experience.achievements.length > 0 && (
                         <div>
                           <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
-                            🏆 Réalisations Clés
+                            🏆 Key Achievements
                           </h4>
                           <div className="space-y-2">
                             {experience.achievements.map((achievement, idx) => (
@@ -152,7 +151,7 @@ const ExperienceSection = ({
                       {experience.technologies.length > 0 && (
                         <div>
                           <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
-                            🛠️ Technologies Utilisées
+                            🛠️ Technologies Used
                           </h4>
                           <div className="flex flex-wrap gap-2">
                             {experience.technologies.map((tech, idx) => (
@@ -182,61 +181,145 @@ const ExperienceSection = ({
 const defaultExperiences: Experience[] = [
   {
     id: "1",
-    company: "TechCorp Solutions",
-    role: "Développeur Mobile Senior",
-    period: "2022 - Présent",
-    location: "Paris, France",
+    company: "Jèko",
+    role: "Software Engineer",
+    period: "April 2025 - Present",
+    location: "Abidjan, Côte d'Ivoire",
     type: "professional",
     description:
-      "Développement d'applications mobiles cross-platform pour des clients enterprise. Lead technique sur plusieurs projets stratégiques avec une équipe de 5 développeurs.",
+      "Developing innovative web and mobile solutions at Jèko, specializing in financial services. Actively participating in the development of high-performance applications using Flutter and SvelteKit.",
     achievements: [
-      "Livraison de 8 applications mobiles avec plus de 100k téléchargements",
-      "Réduction de 40% du temps de développement grâce à l'optimisation des processus",
-      "Mise en place d'une architecture modulaire réutilisable",
-      "Formation et mentorat de 3 développeurs junior",
+      "Created and optimized Flutter applications for Android and iOS",
+      "Designed interactive interfaces with Svelte and SvelteKit",
+      "Implemented secure mobile payment functionalities",
+      "Improved application performance and integrated APIs",
+      "Collaborated effectively with design and development teams"
     ],
-    technologies: ["Flutter", "Firebase", "AWS", "CI/CD", "Git", "Agile"],
+    technologies: ["Flutter", "SvelteKit", "JavaScript", "TypeScript", "Dart", "Mobile Payments", "APIs"],
   },
   {
     id: "2",
     company: "Freelance",
-    role: "Développeur Full-Stack",
-    period: "2020 - 2022",
-    location: "Remote",
+    role: "Flutter Mobile Developer & Backend API",
+    period: "March 2020 - Present",
+    location: "Abidjan, Côte d'Ivoire (Remote)",
     type: "freelance",
     description:
-      "Développement d'applications web et mobiles pour diverses startups et PME. Gestion complète des projets de la conception à la mise en production.",
+      "Designing and developing custom mobile applications for diverse clients. Managing complete development lifecycle and creating internal tools such as management dashboards.",
     achievements: [
-      "15+ projets livrés dans les délais et budgets",
-      "Taux de satisfaction client de 98%",
-      "Développement d'une plateforme e-commerce générant 500k€ de CA",
-      "Création d'une application IoT pour la gestion énergétique",
+      "Developed custom mobile applications for diversified clients",
+      "Created management dashboards for users and administrators",
+      "Complete project management: needs analysis, UI/UX mockups, development, deployment",
+      "Continuous maintenance and technical support of applications",
+      "5+ years of experience in freelance development"
     ],
     technologies: [
       "Flutter",
-      "React",
-      "Node.js",
+      "Java",
+      "Swift",
       "Python",
-      "PostgreSQL",
-      "Docker",
+      "Laravel",
+      "Flask",
+      "Android Studio",
+      "Git",
+      "HTML/CSS",
+      "GitHub",
+      "GitLab"
     ],
   },
   {
     id: "3",
-    company: "Digital Innovations",
-    role: "Développeur Mobile Junior",
-    period: "2019 - 2020",
-    location: "Lyon, France",
+    company: "Adjemin",
+    role: "Mobile Application Developer",
+    period: "August 2024 - April 2025",
+    location: "Abidjan, Côte d'Ivoire",
     type: "professional",
     description:
-      "Premier poste en tant que développeur mobile. Participation au développement d'applications natives iOS et Android pour des clients du secteur bancaire.",
+      "Team-based mobile application development with focus on best practices and code quality. Utilizing modern technologies and Agile methodologies.",
     achievements: [
-      "Contribution à 3 applications bancaires certifiées",
-      "Implémentation de fonctionnalités de sécurité avancées",
-      "Optimisation des performances réduisant les temps de chargement de 30%",
-      "Obtention de la certification Flutter Developer",
+      "Developed applications with Flutter and BLoC architecture",
+      "Implemented unit testing to ensure quality",
+      "Integrated REST APIs and solved complex problems",
+      "Collaborated with Node.js for backend solutions",
+      "Mastered Rust for optimal performance"
     ],
-    technologies: ["Flutter", "Dart", "iOS", "Android", "REST API", "SQLite"],
+    technologies: ["Flutter", "Java", "Rust", "Node.js", "Flutter BLoC", "REST APIs", "Python", "Kotlin", "Git"],
+  },
+  {
+    id: "4",
+    company: "BRIDGE BANK GROUP",
+    role: "Mobile Application Developer",
+    period: "August 2024 - December 2024",
+    location: "Abidjan, Côte d'Ivoire",
+    type: "freelance",
+    description:
+      "Development and redesign of MyBridge Touch banking application. Implementation of secure banking features while adhering to financial sector standards.",
+    achievements: [
+      "Complete redesign of MyBridge Touch mobile application",
+      "Integration of banking features: transfers, secure messaging",
+      "Significant improvement in performance and UX",
+      "Corrective and evolutionary maintenance with critical bug resolution",
+      "Agile collaboration and compliance with banking standards",
+      "Firebase integration with enhanced security"
+    ],
+    technologies: ["Flutter", "Flutter BLoC", "Firebase", "Java", "Banking APIs", "Agile Methodologies"],
+  },
+  {
+    id: "5",
+    company: "Talentium Recrutement",
+    role: "Mobile Developer",
+    period: "July 2023 - July 2024",
+    location: "Abidjan, Côte d'Ivoire",
+    type: "professional",
+    description:
+      "Development of innovative mobile applications for organizational assessment and medical emergencies. Focus on social impact and public utility of developed solutions.",
+    achievements: [
+      "Developed Maturus: organizational maturity assessment app",
+      "Created SOS AVC: medical emergency alert application",
+      "Flutter/Laravel integration for full-stack solutions",
+      "Firebase implementation for real-time communication",
+      "Complete management of technical projects with social impact"
+    ],
+    technologies: [
+      "Flutter",
+      "Laravel",
+      "Firebase",
+      "Java",
+      "Node.js",
+      "Python",
+      "JavaScript",
+      "Kotlin",
+      "Git"
+    ],
+  },
+  {
+    id: "6",
+    company: "Softskills",
+    role: "Software Engineer",
+    period: "January 2021 - June 2023",
+    location: "Côte d'Ivoire",
+    type: "professional",
+    description:
+      "Development of high-performance mobile applications and backend services. Gained comprehensive understanding of development lifecycle with focus on quality and best practices.",
+    achievements: [
+      "Created high-performance Android and iOS applications with Flutter",
+      "Developed APIs and backend services with Java and Node.js",
+      "Performance optimization and corrective maintenance",
+      "Implemented unit testing and quality best practices",
+      "Effective collaboration in multidisciplinary teams",
+      "Complete mastery of development lifecycle"
+    ],
+    technologies: [
+      "Flutter",
+      "Java",
+      "Node.js",
+      "Python",
+      "Kotlin",
+      "Rust",
+      "Firebase",
+      "Git",
+      "DevOps"
+    ],
   },
 ];
 

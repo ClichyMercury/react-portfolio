@@ -16,7 +16,7 @@ const HeroSection = ({
   tagline = "Software Developer creating innovative solutions with modern technologies and best practices",
   ctaText = "Get in touch",
   onCtaClick = () => console.log("CTA clicked"),
-  photoUrl = "/images/GS-removebg-preview.png",
+  photoUrl = "./images/GS-removebg-preview.png",
 }: HeroSectionProps) => {
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">

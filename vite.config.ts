@@ -10,7 +10,6 @@ export default defineConfig({
   },
   plugins: [
     react(),
-    // Supprimé tempo() pour éviter les conflits en production
   ],
   build: {
     outDir: "build", // Change vers 'build' pour correspondre à vercel.json

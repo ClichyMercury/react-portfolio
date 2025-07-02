@@ -37,7 +37,7 @@ interface ProjectCardProps {
 const ProjectCard = ({
   title = "Mobile App Project",
   description = "A brief description of this mobile application project and its key features.",
-  imageUrl = "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80",
+  imageUrl = "https:/./images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80",
   technologies = [
     { name: "React Native" },
     { name: "TypeScript" },

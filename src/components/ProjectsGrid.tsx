@@ -246,7 +246,7 @@ const defaultProjects: Project[] = [
     title: "MetaChange",
     description:
       "Innovative cryptocurrency exchange app designed for the African market, offering simple and secure crypto-to-mobile money transactions.",
-    imageUrl: "/images/metachanage-preview.jpeg", // You'll add this
+    imageUrl: "./images/metachanage-preview.jpeg", // You'll add this
     technologies: ["Flutter", "Blockchain", "Mobile Payments", "KYC", "Encryption"],
     category: "fintech",
     isPortrait: true,
@@ -262,7 +262,7 @@ const defaultProjects: Project[] = [
     title: "Galaxy Stream",
     description:
       "Powerful video streaming app that brings the latest movies, TV shows, and trending content using the TMDB API.",
-    imageUrl: "/images/galaxy-stream-preview.jpeg", // You'll add this
+    imageUrl: "./images/galaxy-stream-preview.jpeg", // You'll add this
     technologies: ["Flutter", "TMDB API", "Firebase", "Provider"],
     category: "entertainment",
     isPortrait: true,
@@ -278,7 +278,7 @@ const defaultProjects: Project[] = [
     title: "Vidalossa Online Store",
     description:
       "Modern e-commerce app with secure payments powered by Flutterwave and real-time Firebase integration.",
-    imageUrl: "/images/vidalossa-preview.jpeg", // You'll add this
+    imageUrl: "./images/vidalossa-preview.jpeg", // You'll add this
     technologies: ["Flutter", "Firebase", "Flutterwave", "E-commerce"],
     category: "e-commerce",
     isPortrait: true,
@@ -294,7 +294,7 @@ const defaultProjects: Project[] = [
     title: "Medical Volunteer Website",
     description:
       "Complete website redesign for Medical Volunteer organization celebrating 25 years of healthcare advocacy.",
-    imageUrl: "/images/volunteer-medical-preview.png", // You'll add this
+    imageUrl: "./images/volunteer-medical-preview.png", // You'll add this
     technologies: ["SvelteKit", "HTML5", "CSS3", "JavaScript", "Vercel"],
     category: "web",
     isPortrait: false,
@@ -311,7 +311,7 @@ const defaultProjects: Project[] = [
     title: "MELOUKA Artisan Website",
     description:
       "Modern showcase website for MELOUKA, an Ivorian handicraft knitting company with dynamic product management.",
-    imageUrl: "/images/melouka-preview.png", // You'll add this
+    imageUrl: "./images/melouka-preview.png", // You'll add this
     technologies: ["SvelteKit", "Supabase", "Tailwind CSS", "Vercel"],
     category: "web",
     isPortrait: false,
@@ -328,7 +328,7 @@ const defaultProjects: Project[] = [
     title: "RecipeMaster",
     description:
       "Web application for managing and organizing favorite recipes with internationalization support (FR, EN, ES).",
-    imageUrl: "/images/recipe-master-preview.jpeg", // You'll add this
+    imageUrl: "./images/recipe-master-preview.jpeg", // You'll add this
     technologies: ["SvelteKit", "JSON Server", "Paraglide", "JavaScript"],
     category: "web",
     isPortrait: false,
@@ -345,7 +345,7 @@ const defaultProjects: Project[] = [
     title: "Moyivawa Health App",
     description:
       "E-health application for medication management and medical consultations with mobile payment integration.",
-    imageUrl: "/images/moyivawa-preview.jpeg", // You'll add this
+    imageUrl: "./images/moyivawa-preview.jpeg", // You'll add this
     technologies: ["Flutter", "Provider", "Mobile Payments", "Healthcare"],
     category: "medical",
     isPortrait: true,
@@ -361,7 +361,7 @@ const defaultProjects: Project[] = [
     title: "Minimal Contacts",
     description:
       "Lightweight contact manager app using RandomUser.me API for dynamic contact generation and management.",
-    imageUrl: "/images/minimal-contacts-preview.jpeg", // You'll add this
+    imageUrl: "./images/minimal-contacts-preview.jpeg", // You'll add this
     technologies: ["Flutter", "REST APIs", "Flutter BLoC", "Dart"],
     category: "utility",
     isPortrait: true,
@@ -377,7 +377,7 @@ const defaultProjects: Project[] = [
     title: "RanTube",
     description:
       "Random YouTube video generator app with free and premium features, analytics integration.",
-    imageUrl: "/images/rantube-preview.jpeg", // You'll add this
+    imageUrl: "./images/rantube-preview.jpeg", // You'll add this
     technologies: ["Flutter", "Flutter BLoC", "Firebase", "YouTube API", "Google Analytics"],
     category: "entertainment",
     isPortrait: true,
@@ -393,7 +393,7 @@ const defaultProjects: Project[] = [
     title: "Djassaman Budget Manager",
     description:
       "Intelligent budget management application built with Flask and SQLAlchemy for tracking finances.",
-    imageUrl: "/images/djassaman-preview.jpeg", // You'll add this
+    imageUrl: "./images/djassaman-preview.jpeg", // You'll add this
     technologies: ["Flask", "SQLAlchemy", "HTML", "CSS", "Python", "JavaScript"],
     category: "fintech",
     isPortrait: false,
@@ -410,7 +410,7 @@ const defaultProjects: Project[] = [
     title: "Zem VTC App",
     description:
       "Innovative ride-hailing app offering smooth, secure and accessible transportation experience for passengers and drivers.",
-    imageUrl: "/images/zem-preview.jpeg", // You'll add this
+    imageUrl: "./images/zem-preview.jpeg", // You'll add this
     technologies: ["Flutter", "Laravel", "GPS", "Google Maps", "PHP"],
     category: "transport",
     isPortrait: true,
@@ -426,7 +426,7 @@ const defaultProjects: Project[] = [
     title: "FOSOPIQ Event Management",
     description:
       "Event management platform for humanitarian foundation activities across Education, Social, Health, and Environment sectors.",
-    imageUrl: "/images/fosopiq-preview.jpeg", // You'll add this
+    imageUrl: "./images/fosopiq-preview.jpeg", // You'll add this
     technologies: ["Flutter", "Provider", "Event Management", "Analytics"],
     category: "nonprofit",
     isPortrait: true,
@@ -442,7 +442,7 @@ const defaultProjects: Project[] = [
     title: "SOS AVC Medical Alert",
     description:
       "Life-saving application designed to respond quickly to stroke emergencies with immediate assistance features.",
-    imageUrl: "/images/sosavc-preview.jpeg", // You'll add this
+    imageUrl: "./images/sosavc-preview.jpeg", // You'll add this
     technologies: ["Flutter", "Firebase", "Google Maps", "Laravel", "Emergency Services"],
     category: "medical",
     isPortrait: true,
@@ -458,7 +458,7 @@ const defaultProjects: Project[] = [
     title: "Maturus Scoring",
     description:
       "Organizational maturity assessment app helping companies measure, analyze and optimize their organizational performance.",
-    imageUrl: "/images/maturus-preview.jpeg", // You'll add this
+    imageUrl: "./images/maturus-preview.jpeg", // You'll add this
     technologies: ["Flutter", "Laravel", "Analytics", "Scoring Algorithms"],
     category: "business",
     isPortrait: true,
@@ -474,7 +474,7 @@ const defaultProjects: Project[] = [
     title: "Meter Manager IoT",
     description:
       "Smart electricity consumption monitoring app with real-time analysis, forecasting and optimization features.",
-    imageUrl: "/images/meter-manager-preview.jpeg", // You'll add this
+    imageUrl: "./images/meter-manager-preview.jpeg", // You'll add this
     technologies: ["Flutter", "Laravel", "IoT", "Data Analytics", "Energy Management"],
     category: "iot",
     isPortrait: true,
@@ -490,7 +490,7 @@ const defaultProjects: Project[] = [
     title: "Sikka Digital Tontine",
     description:
       "Secure digital tontine app enabling users to easily manage group savings and contributions with encryption.",
-    imageUrl: "/images/sikka-preview.jpeg", // You'll add this
+    imageUrl: "./images/sikka-preview.jpeg", // You'll add this
     technologies: ["Flutter", "Django REST", "Encryption", "Financial Services"],
     category: "fintech",
     isPortrait: true,
@@ -506,7 +506,7 @@ const defaultProjects: Project[] = [
     title: "IBH (Ivoire Beat Hub)",
     description:
       "Creative workspace app for artists - a Google Keep clone designed for capturing and organizing musical inspirations.",
-    imageUrl: "/images/ibh-preview.jpeg", // You'll add this
+    imageUrl: "./images/ibh-preview.jpeg", // You'll add this
     technologies: ["Flutter", "Firebase", "Audio Recording", "Cloud Storage"],
     category: "creative",
     isPortrait: true,
@@ -521,7 +521,7 @@ const defaultProjects: Project[] = [
   "id": "18",
   "title": "Baromètre Santé",
   "description": "Advanced telemedicine platform with AI-powered health analytics, remote patient monitoring, and intelligent appointment orchestration for comprehensive digital healthcare.",
-  "imageUrl": "/images/barometre-sante-preview.jpeg",
+  "imageUrl": "./images/barometre-sante-preview.jpeg",
   "technologies": ["Flutter", "Telemedicine APIs", "Health Analytics", "Real-time Monitoring", "AI Diagnostics", "Secure Video Calls"],
   "category": "medical",
   "featured": false,
@@ -535,7 +535,7 @@ const defaultProjects: Project[] = [
     "id": "19",
     "title": "Collards Greens Bank",
     "description": "Revolutionary micro-banking app empowering financial inclusion with AI-driven credit scoring and blockchain-secured transactions for underbanked communities.",
-    "imageUrl": "/images/collards-greens-preview.png",
+    "imageUrl": "./images/collards-greens-preview.png",
     "technologies": ["Flutter", "Blockchain", "AI/ML", "Biometric Auth", "Micro-finance", "NSIA Integration"],
     "category": "fintech",
     "featured": false,
@@ -549,7 +549,7 @@ const defaultProjects: Project[] = [
     "id": "20", 
     "title": "FindMacy",
     "description": "Smart pharmacy locator with real-time medication availability, AI-powered drug interaction checker, and integrated telemedicine consultations.",
-    "imageUrl": "/images/findmacy-preview.png",
+    "imageUrl": "./images/findmacy-preview.png",
     "technologies": ["Flutter", "Google Maps API", "Real-time Database", "AI Drug Analysis", "Geolocation"],
     "category": "medical",
     "featured": false,
@@ -563,7 +563,7 @@ const defaultProjects: Project[] = [
     "id": "21",
     "title": "BabiWarren",
     "description": "Next-generation ride-sharing platform with dynamic pricing algorithms, carbon footprint tracking, and AI-optimized route planning for sustainable urban mobility.",
-    "imageUrl": "/images/babiwarren-preview.png", 
+    "imageUrl": "./images/babiwarren-preview.png", 
     "technologies": ["Flutter", "Machine Learning", "Real-time GPS", "Carbon Analytics", "Dynamic Pricing", "Route Optimization"],
     "category": "transport",
     "featured": false,
@@ -577,7 +577,7 @@ const defaultProjects: Project[] = [
     "id": "22",
     "title": "Le Livreur",
     "description": "Intelligent multi-vendor delivery ecosystem with predictive logistics, real-time order orchestration, and AI-powered demand forecasting for local businesses.",
-    "imageUrl": "/images/le-livreur-preview.png",
+    "imageUrl": "./images/le-livreur-preview.png",
     "technologies": ["Flutter", "Predictive Analytics", "Multi-vendor API", "Real-time Tracking", "Smart Logistics", "Demand Forecasting"],
     "category": "e-commerce", 
     "featured": false,

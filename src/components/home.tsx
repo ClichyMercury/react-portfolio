@@ -72,7 +72,7 @@ const Home = () => {
               transition={{ duration: 0.2 }}
             >
               <img
-                src="/images/gaelSASSAN-removebg-preview.png"
+                src="./images/gaelSASSAN-removebg-preview.png"
                 alt="GAEL SASSAN"
                 className="h-10 w-auto filter brightness-0 invert"
               />
@@ -331,7 +331,7 @@ const Home = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-4">
               <img
-                src="/images/gaelSASSAN-removebg-preview.png"
+                src="./images/gaelSASSAN-removebg-preview.png"
                 alt="GAEL SASSAN"
                 className="h-8 w-auto filter brightness-0 invert"
               />

@@ -11,6 +11,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { motion, AnimatePresence } from "framer-motion";
+import TeamProjects from "./TeamProjects";
 
 const Home = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -47,8 +48,8 @@ const Home = () => {
     { id: "bio", label: "About" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
+    { id: "team-projects", label: "Team Work" }, 
     { id: "experience", label: "Experience" },
-    { id: "testimonials", label: "Testimonials" },
     { id: "contact", label: "Contact" },
   ];
 
@@ -166,6 +167,9 @@ const Home = () => {
 
         {/* Projects Section */}
         <ProjectsGrid />
+
+        {/* Team Projects Section */}
+        <TeamProjects />   
 
         {/* Experience Section */}
         <ExperienceSection />

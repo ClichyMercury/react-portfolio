@@ -586,7 +586,77 @@ const defaultProjects: Project[] = [
     "results": "Reduced delivery times by 50%, increased local business revenues by 200%, and achieved 98% on-time delivery rate through predictive routing.",
     "demoUrl": "",
     "codeUrl": ""
-  }
+  }, 
+  {
+    "id": "23",
+    "title": "Le Livreur Agent",
+    "description": "Dedicated mobile application for delivery agents featuring real-time GPS tracking, intelligent route optimization, and intuitive order management interface. Maximizes delivery efficiency with advanced tracking tools and seamless communication features.",
+    "imageUrl": "./images/le-livreur-agent-preview.png",
+    "technologies": ["Flutter", "GPS Tracking", "Route Optimization", "Real-time Notifications", "Offline Mode", "Performance Analytics"],
+    "category": "mobile-app",
+    "featured": false,
+    "isPortrait": true,
+    "objectives": "Streamline delivery operations by providing agents with a powerful, user-friendly application that optimizes routes, enhances productivity, and facilitates communication with customers and restaurants.",
+    "results": "Mobile-optimized user interface, 40% reduction in navigation time, 90% improvement in delivery agent satisfaction, and real-time tracking system with 99.5% accuracy.",
+    "demoUrl": "",
+    "codeUrl": ""
+  },
+  {
+    "id": "24",
+    "title": "Le Livreur Resto",
+    "description": "Comprehensive restaurant management platform with real-time order interface, dynamic menu management, performance analytics, and seamless integration with the delivery ecosystem. Optimizes culinary operations and customer relationships.",
+    "imageUrl": "./images/le-livreur-resto-preview.png",
+    "technologies": ["Flutter", "Restaurant POS", "Menu Management", "Order Analytics", "Kitchen Display", "Customer Feedback"],
+    "category": "restaurant-tech",
+    "featured": false,
+    "isPortrait": true,
+    "objectives": "Digitize and optimize partner restaurant operations by providing modern tools for order management, menu control, and performance analysis while maintaining high-quality culinary experiences.",
+    "results": "60% increase in kitchen efficiency, 35% reduction in order errors, 80% improvement in customer satisfaction, and detailed analytics insights for operational optimization.",
+    "demoUrl": "",
+    "codeUrl": ""
+  }, 
+  {
+    "id": "25",
+    "title": "AZPROD",
+    "description": "Creative agency specializing in music production, artist booking, and digital influence across West Africa. We transform the music industry by connecting emerging talents, brands, and audiences through authentic collaborations and memorable events.",
+    "imageUrl": "./images/azprod-preview.png",
+    "technologies": ["Booking Management", "Event Production", "Influencer Marketing", "Artist Development", "Digital Strategy", "Content Creation"],
+    "category": "entertainment-media",
+    "featured": true,
+    "isPortrait": false,
+    "objectives": "Revolutionize the African music and media ecosystem by creating sustainable bridges between artists, influencers, and brands, while developing new talents and producing large-scale cultural events.",
+    "results": "Over 6 years of expertise in the music industry, production of major events like FESTIGOLA Kinshasa 2024, development of recognized artists such as Barack La Voix d'Or, and creation of an authentic influence network across West Africa.",
+    "demoUrl": "https://azprod.fr/",
+    "codeUrl": ""
+  },
+  {
+    "id": "26",
+    "title": "MôyCom",
+    "description": "Commercial management application for healthcare sales representatives featuring client tracking, product catalog management, order processing, and performance analytics. Streamlines pharmaceutical and medical equipment sales operations.",
+    "imageUrl": "./images/moycom-preview.png",
+    "technologies": ["Flutter", "CRM Integration", "Sales Analytics", "Inventory Management", "Client Tracking", "Mobile Commerce"],
+    "category": "business-tools",
+    "featured": false,
+    "isPortrait": true,
+    "objectives": "Optimize healthcare sales operations by providing commercial teams with comprehensive tools for client management, product promotion, and sales tracking in the medical sector.",
+    "results": "Enhanced sales team productivity by 45%, improved client relationship management, streamlined order processing with 95% accuracy, and comprehensive sales analytics dashboard.",
+    "demoUrl": "",
+    "codeUrl": ""
+  },
+  {
+    "id": "27",
+    "title": "Gestopedia",
+    "description": "Intelligent inventory management system with real-time sales tracking, automated stock monitoring, and predictive analytics. Features comprehensive dashboard for sales, stock levels, and financial performance with integrated banking and budgeting tools.",
+    "imageUrl": "./images/gestopedia-preview.png",
+    "technologies": ["Flutter", "Real-time Analytics", "Inventory Automation", "Financial Integration", "Predictive Forecasting", "Business Intelligence"],
+    "category": "business-tools",
+    "featured": false,
+    "isPortrait": true,
+    "objectives": "Transform traditional inventory management by providing businesses with intelligent tools for stock optimization, sales tracking, and financial planning, enabling data-driven decisions and operational efficiency.",
+    "results": "Automated inventory tracking with 99% accuracy, reduced stock-outs by 65%, improved cash flow management, and comprehensive business analytics leading to 30% increase in operational efficiency.",
+    "demoUrl": "",
+    "codeUrl": ""
+}
 ];
 
 export default ProjectsGrid;

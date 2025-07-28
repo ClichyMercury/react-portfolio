@@ -656,7 +656,21 @@ const defaultProjects: Project[] = [
     "results": "Automated inventory tracking with 99% accuracy, reduced stock-outs by 65%, improved cash flow management, and comprehensive business analytics leading to 30% increase in operational efficiency.",
     "demoUrl": "",
     "codeUrl": ""
-}
+  },
+  {
+  "id": "28",
+  "title": "Jéko Cockpit",
+  "description": "Back-office moderne pour la supervision et la gestion des paiements, transactions, membres et équipements connectés. Offre une visualisation claire des données financières et comportementales à travers un tableau de bord interactif.",
+  "imageUrl": "./images/jeko-cockpit-preview.PNG",
+  "technologies": ["Svelte.js", "Recharts", "TailwindCSS", "API REST", "Responsive UI", "Dashboard Analytics"],
+  "category": "business-tools",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Centraliser la gestion des activités financières et opérationnelles d’un commerçant via un cockpit intelligent. Fournir des insights en temps réel pour optimiser les décisions et fluidifier les opérations quotidiennes.",
+  "results": "Visualisation en temps réel de la répartition des paiements, suivi de croissance des revenus, et gestion complète des points de vente et des utilisateurs. Gain de temps administratif estimé à 40%.",
+  "demoUrl": "",
+  "codeUrl": ""
+  }
 ];
 
 export default ProjectsGrid;

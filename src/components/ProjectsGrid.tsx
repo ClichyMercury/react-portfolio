@@ -668,9 +668,38 @@ const defaultProjects: Project[] = [
   "isPortrait": false,
   "objectives": "Centraliser la gestion des activités financières et opérationnelles d’un commerçant via un cockpit intelligent. Fournir des insights en temps réel pour optimiser les décisions et fluidifier les opérations quotidiennes.",
   "results": "Visualisation en temps réel de la répartition des paiements, suivi de croissance des revenus, et gestion complète des points de vente et des utilisateurs. Gain de temps administratif estimé à 40%.",
-  "demoUrl": "",
+  "demoUrl": "https://cockpit.jeko.africa/dashboard",
   "codeUrl": ""
-  }
+  },
+  {
+  "id": "29",
+  "title": "My Design Pro",
+  "description": "Version avancée de l’application My Design, offrant aux créatifs un espace pour créer, partager et s’inspirer. Propose un environnement communautaire favorisant l’échange et la visibilité des œuvres.",
+  "imageUrl": "./images/my-design-pro-preview.jpeg",
+  "technologies": ["Flutter", "Firebase Auth", "Cloud Storage", "REST API", "Responsive UI", "Community Features"],
+  "category": "creative-community",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Donner aux designers la possibilité de publier leurs créations, d’interagir avec d’autres créatifs et de construire une communauté autour du design.",
+  "results": "Création et partage de contenus graphiques par la communauté. Développement d’un réseau d’échanges et d’inspiration. Engagement et interaction accrus entre utilisateurs.",
+  "demoUrl": "https://groupmydesign.com/",
+  "codeUrl": ""
+},
+  {
+  "id": "30",
+  "title": "My Design",
+  "description": "Application mobile permettant aux utilisateurs de découvrir des créations graphiques variées : affiches, logos et visuels créatifs. Favorise l'inspiration et le partage dans une communauté créative.",
+  "imageUrl": "./images/my-design-user-preview.jpeg",
+  "technologies": ["Flutter", "REST API", "Firebase", "Responsive UI", "Grid Layout", "Material Design"],
+  "category": "creative-community",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Permettre aux utilisateurs de parcourir des designs créatifs, de filtrer par catégories (affiches, logos, etc.) et de s’inspirer pour leurs propres créations.",
+  "results": "Interface simple et fluide qui met en avant les designs. Navigation rapide entre catégories. Expérience utilisateur optimisée pour mobile et tablettes.",
+  "demoUrl": "https://groupmydesign.com/",
+  "codeUrl": ""
+},
+
 ];
 
 export default ProjectsGrid;

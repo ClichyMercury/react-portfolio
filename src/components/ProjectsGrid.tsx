@@ -699,6 +699,48 @@ const defaultProjects: Project[] = [
   "demoUrl": "https://groupmydesign.com/",
   "codeUrl": ""
 },
+{
+  "id": "31",
+  "title": "SOSMONEY ADMIN",
+  "description": "Comprehensive employee loan management platform with automated approval workflows, real-time payment tracking, and intelligent risk assessment. Features advanced admin dashboard for loan processing, borrower management, and financial analytics.",
+  "imageUrl": "./images/salary-credit-manager-preview.webp",
+  "technologies": ["React", "Spring Boot", "Java", "REST API", "Financial Analytics", "Risk Assessment"],
+  "category": "fintech",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Streamline employee loan processes by providing financial institutions with powerful tools for loan approval, risk evaluation, and payment monitoring while ensuring compliance and reducing processing time.",
+  "results": "Automated loan approval workflow reducing processing time by 60%, comprehensive borrower tracking system, real-time payment monitoring with 99% accuracy, and advanced analytics dashboard for risk management.",
+  "demoUrl": "https://sosmoney-admin.vercel.app/",
+  "codeUrl": ""
+},
+{
+  "id": "32",
+  "title": "SOSMONEY Mobile",
+  "description": "Mobile application for employee loan management allowing users to track their loan balance, payment history, and available credit limit. Features intuitive dashboard with loan evolution charts, repayment tracking, and instant notifications for payment reminders.",
+  "imageUrl": "./images/salary-credit-mobile-preview.webp",
+  "technologies": ["Flutter", "REST API", "Charts", "Push Notifications", "Secure Authentication", "Financial Tracking"],
+  "category": "fintech",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Provide employees with easy access to their loan information through a user-friendly mobile interface, enabling real-time balance tracking, payment monitoring, and financial planning tools.",
+  "results": "Seamless mobile experience with real-time loan tracking, visual payment evolution charts, automated payment reminders, and secure access to personal financial data with 100% uptime.",
+  "demoUrl": "",
+  "codeUrl": ""
+},
+{
+  "id": "33",
+  "title": "Simplex Visitor Tracker",
+  "description": "GDPR-compliant visitor management system enabling real-time tracking of visitors within company premises without retaining identity cards. Features agent dashboard for assisted visits, badge verification, and comprehensive visit analytics with privacy-first approach.",
+  "imageUrl": "./images/visitor-flow-tracker-preview.webp",
+  "technologies": ["Flutter", "GDPR Compliance", "Badge System", "Real-time Tracking", "Privacy Management", "Visit Analytics"],
+  "category": "business-tools",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Modernize visitor management by providing secure, GDPR-compliant tracking solutions that maintain visitor privacy while ensuring comprehensive oversight of personnel movement within company facilities.",
+  "results": "100% GDPR compliance achieved, real-time visitor location tracking, streamlined check-in/check-out process, and comprehensive visit analytics while protecting visitor identity and personal data.",
+  "demoUrl": "",
+  "codeUrl": ""
+}
 
 ];
 

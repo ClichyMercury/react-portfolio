@@ -94,7 +94,7 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
         >
           {[
             { number: "5+", label: "Years of Experience", icon: "⏱️" },
-            { number: "20+", label: "Projects Completed", icon: "🚀" },
+            { number: "30+", label: "Projects Completed", icon: "🚀" },
             { number: "15+", label: "Technologies Mastered", icon: "⚡" },
             { number: "100%", label: "Client Satisfaction", icon: "⭐" },
           ].map((stat, index) => (

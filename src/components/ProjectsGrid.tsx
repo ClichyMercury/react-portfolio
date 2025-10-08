@@ -740,6 +740,48 @@ const defaultProjects: Project[] = [
   "results": "100% GDPR compliance achieved, real-time visitor location tracking, streamlined check-in/check-out process, and comprehensive visit analytics while protecting visitor identity and personal data.",
   "demoUrl": "",
   "codeUrl": ""
+},
+{
+  "id": "34",
+  "title": "WaveLink",
+  "description": "Application mobile de transfert et de souscription rapide en Côte d'Ivoire. Permet d’envoyer du crédit, des forfaits internet ou des minutes d’appel sur les réseaux Orange, MTN et Moov, avec un paiement instantané et sécurisé via Wave.",
+  "imageUrl": "./images/wavelink-preview.jpeg",
+  "technologies": ["Flutter", "Wave API", "Mobile Money", "UI Responsive", "Payment Integration", "Telecom Services"],
+  "category": "fintech",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Faciliter les transferts d’unités et de forfaits à travers les principaux réseaux mobiles ivoiriens, en proposant une solution fluide, rapide et accessible à tous via le paiement mobile Wave.",
+  "results": "Expérience utilisateur simplifiée avec paiement en 1 clic, intégration fluide avec les trois grands opérateurs, transactions instantanées et interface intuitive adaptée au mobile.",
+  "demoUrl": "",
+  "codeUrl": ""
+},
+{
+  "id": "35",
+  "title": "Hooli Library",
+  "description": "Bibliothèque numérique moderne permettant aux utilisateurs de lire, découvrir et gérer leurs livres préférés en ligne. Propose des recommandations personnalisées, des évaluations, et une interface élégante inspirée des meilleures plateformes de lecture.",
+  "imageUrl": "./images/hooli-library-preview.jpeg",
+  "technologies": ["Flutter", "Firebase", "Cloud Storage", "Recommendation Engine", "Responsive UI", "Book API"],
+  "category": "education",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Créer une plateforme intuitive et interactive pour la lecture numérique, offrant un accès simple à des milliers de livres et une expérience fluide sur mobile.",
+  "results": "Augmentation de 60% de l’engagement utilisateur grâce aux recommandations personnalisées et à la fluidité de navigation. Interface responsive et mode lecture optimisé pour tous les écrans.",
+  "demoUrl": "",
+  "codeUrl": ""
+},
+{
+  "id": "36",
+  "title": "GS Dot Bet",
+  "description": "Application de suivi et de pronostic sportif offrant une expérience complète pour les passionnés de football. Suivez les scores en direct, les classements, et placez vos paris en toute sécurité depuis une interface moderne et immersive.",
+  "imageUrl": "./images/gs-dot-bet-preview.jpeg",
+  "technologies": ["Flutter", "Live Data API", "Sports Odds API", "Firebase", "Animations", "Dark Mode UI"],
+  "category": "sports-betting",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Fournir une plateforme performante pour suivre les matchs en temps réel, consulter les statistiques, et effectuer des paris rapides tout en profitant d’un design soigné et ergonomique.",
+  "results": "Mise à jour en temps réel des scores, interface fluide et foncée adaptée aux sessions prolongées, et intégration transparente des cotes pour une expérience de pari immersive.",
+  "demoUrl": "",
+  "codeUrl": ""
 }
 
 ];

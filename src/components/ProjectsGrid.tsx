@@ -782,6 +782,30 @@ const defaultProjects: Project[] = [
   "results": "Mise à jour en temps réel des scores, interface fluide et foncée adaptée aux sessions prolongées, et intégration transparente des cotes pour une expérience de pari immersive.",
   "demoUrl": "",
   "codeUrl": ""
+},
+{
+  "id": "37",
+  "title": "Kotlin Bank UI & API",
+  "description": "Suite bancaire complète alliant une application mobile Kotlin moderne (Jetpack Compose) et une API backend Ktor gamifiée, conçue pour démocratiser l’éducation financière en Afrique à travers la gamification et les fonctionnalités locales.",
+  "imageUrl": "./images/kotlinbank-suite-preview.jpeg",
+  "technologies": [
+    "Kotlin",
+    "Jetpack Compose",
+    "Ktor",
+    "Material 3",
+    "MVVM",
+    "StateFlow",
+    "PostgreSQL",
+    "JWT Auth",
+    "REST API"
+  ],
+  "category": "fintech",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Créer une solution fintech innovante combinant application mobile et API bancaire gamifiée. L’objectif est de promouvoir l’éducation financière en Afrique grâce à des fonctionnalités culturelles telles que les tontines numériques, un marketplace local et un système de récompenses interactif.",
+  "results": "Développement d’une architecture complète front–back : application Kotlin fluide avec Jetpack Compose et API Ktor performante. L’ensemble offre une expérience immersive avec gamification, modules éducatifs, et intégration des réalités africaines dans la gestion financière.",
+  "demoUrl": "https://github.com/ClichyMercury/KotlinBankAPI",
+  "codeUrl": "https://github.com/ClichyMercury/KotlinBankUI"
 }
 
 ];

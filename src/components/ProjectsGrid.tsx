@@ -877,7 +877,7 @@ const defaultProjects: Project[] = [
   "id": "51",
   "title": "Payix – Application Mobile de Paiement",
   "description": "Application fintech permettant aux utilisateurs de gérer leur solde, effectuer des transferts, recharger leur portefeuille, effectuer des retraits, payer des services et accéder à des services de prêt. L’interface est moderne, fluide et pensée pour simplifier la gestion quotidienne des transactions.",
-  "imageUrl": "/images/payix_preview.jpeg",
+  "imageUrl": "./images/payix_preview.png",
   "technologies": [
     "Flutter",
     "Dart",

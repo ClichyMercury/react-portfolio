@@ -872,8 +872,29 @@ const defaultProjects: Project[] = [
   "results": "Développement d’un checkout responsive avec sélection intelligente des méthodes de paiement, validation automatique des numéros, gestion sécurisée de la transaction et design professionnel. Le système améliore considérablement la fluidité du parcours de paiement et favorise la confiance des utilisateurs.",
   "demoUrl": "https://pay.jeko.africa/pl/451641bf-e868-40be-aa4c-b9fc6a22320e",
   "codeUrl": "https://jeko.africa"
+},
+{
+  "id": "51",
+  "title": "Payix – Application Mobile de Paiement",
+  "description": "Application fintech permettant aux utilisateurs de gérer leur solde, effectuer des transferts, recharger leur portefeuille, effectuer des retraits, payer des services et accéder à des services de prêt. L’interface est moderne, fluide et pensée pour simplifier la gestion quotidienne des transactions.",
+  "imageUrl": "/images/payix_preview.jpeg",
+  "technologies": [
+    "Flutter",
+    "Dart",
+    "Provider",
+    "REST API",
+    "Firebase",
+    "Secure Storage",
+    "Mobile Money Integration"
+  ],
+  "category": "fintech",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Créer une application simple et intuitive pour permettre aux utilisateurs de suivre leur solde en temps réel, consulter leurs transactions et accéder facilement aux fonctionnalités essentielles telles que les transferts, dépôts, paiements, retraits et services financiers annexes.",
+  "results": "Interface épurée avec affichage dynamique du solde, gestion des transactions récentes, boutons d’action rapide et navigation fluide. Les utilisateurs peuvent effectuer des opérations financières de manière rapide, sécurisée et agréable.",
+  "demoUrl": "",
+  "codeUrl": ""
 }
-
 ];
 
 export default ProjectsGrid;

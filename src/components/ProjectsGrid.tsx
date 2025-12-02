@@ -26,7 +26,7 @@ interface ProjectsGridProps {
 const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
-  const [showAllProjects, setShowAllProjects] = useState<boolean>(false);
+  const [visibleCount, setVisibleCount] = useState<number>(6);
 
   const categories = [
     "all",
@@ -42,8 +42,8 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
   const regularProjects = filteredProjects.filter((p) => !p.featured);
   
   // Show only first 6 projects initially, then all when expanded
-  const projectsToShow = showAllProjects ? regularProjects : regularProjects.slice(0, 6);
-  const hasMoreProjects = regularProjects.length > 6;
+  const projectsToShow = regularProjects.slice(0, visibleCount);
+  const hasMoreProjects = visibleCount < regularProjects.length;
 
   return (
     <section
@@ -202,33 +202,14 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
             viewport={{ once: true }}
           >
             <motion.button
-              onClick={() => setShowAllProjects(!showAllProjects)}
+              onClick={() => setVisibleCount(prev => prev + 6)}
               className="group relative px-8 py-4 bg-gradient-to-r from-primary to-purple-600 text-black font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <span className="relative z-10 flex items-center gap-2">
-                {showAllProjects ? (
-                  <>
-                    Show Less Projects
-                    <motion.div
-                      animate={{ rotate: showAllProjects ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      ↓
-                    </motion.div>
-                  </>
-                ) : (
-                  <>
-                    View More Projects ({regularProjects.length - 6} more)
-                    <motion.div
-                      animate={{ rotate: showAllProjects ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      ↓
-                    </motion.div>
-                  </>
-                )}
+                View More Projects ({Math.min(6, regularProjects.length - visibleCount)} more)
+                <span>↓</span>
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-600/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
             </motion.button>
@@ -893,6 +874,48 @@ const defaultProjects: Project[] = [
   "objectives": "Créer une application simple et intuitive pour permettre aux utilisateurs de suivre leur solde en temps réel, consulter leurs transactions et accéder facilement aux fonctionnalités essentielles telles que les transferts, dépôts, paiements, retraits et services financiers annexes.",
   "results": "Interface épurée avec affichage dynamique du solde, gestion des transactions récentes, boutons d’action rapide et navigation fluide. Les utilisateurs peuvent effectuer des opérations financières de manière rapide, sécurisée et agréable.",
   "demoUrl": "",
+  "codeUrl": ""
+},
+{
+  "id": "52",
+  "title": "Jeko Landing Page",
+  "description": "Landing page moderne pour Jeko, solution de paiement mobile money unifiée permettant aux commerçants d'encaisser via un QR code unique (Wave, Orange Money, MTN, Moov, Visa, Mastercard).",
+  "imageUrl": "./images/jeko-landing-preview.png",
+  "technologies": ["SvelteKit", "TailwindCSS", "Responsive Design", "Framer Motion", "Vercel"],
+  "category": "fintech",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Créer une vitrine digitale impactante pour présenter la solution Jeko aux commerçants ivoiriens et faciliter l'acquisition de nouveaux utilisateurs.",
+  "results": "Interface épurée avec taux de conversion optimisé, intégration des stores (App Store, Google Play) et mise en avant des +500 commerçants partenaires.",
+  "demoUrl": "https://jeko.africa",
+  "codeUrl": ""
+},
+{
+  "id": "53",
+  "title": "Jeko Download Page",
+  "description": "Page de téléchargement dédiée à l'application Jeko Business, permettant aux commerçants d'installer rapidement l'app pour finaliser leurs paiements.",
+  "imageUrl": "./images/jeko-download-preview.png",
+  "technologies": ["SvelteKit", "TailwindCSS", "Deep Linking", "App Store Connect", "Google Play"],
+  "category": "fintech",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Rediriger les utilisateurs vers les stores appropriés selon leur appareil et simplifier le parcours d'installation de l'application Jeko Business.",
+  "results": "Expérience fluide avec détection automatique de plateforme et redirection intelligente vers iOS ou Android.",
+  "demoUrl": "https://jeko.africa/download",
+  "codeUrl": ""
+},
+{
+  "id": "54",
+  "title": "Jeko Demo – Paiement Redirect",
+  "description": "Interface de démonstration permettant aux développeurs de tester l'API Jeko Pay en créant des paiements redirect avec sélection de boutique, montant et méthode de paiement (Wave, Orange Money, MTN, Moov, Djamo).",
+  "imageUrl": "./images/jeko-demo-preview.png",
+  "technologies": ["SvelteKit", "TailwindCSS", "Jeko Pay API", "REST API", "OAuth2"],
+  "category": "fintech",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Fournir un environnement de test interactif pour les développeurs souhaitant intégrer l'API Jeko Pay dans leurs applications, avec simulation complète du flux de paiement redirect.",
+  "results": "Outil de test fonctionnel permettant de valider les intégrations avant mise en production, avec support de toutes les méthodes de paiement et gestion des callbacks.",
+  "demoUrl": "https://demo.jeko.africa",
   "codeUrl": ""
 }
 ];

@@ -182,12 +182,31 @@ const defaultExperiences: Experience[] = [
   {
     id: "1",
     company: "Jèko",
-    role: "Software Engineer",
-    period: "April 2025 - Present",
+    role: "Front End Lead",
+    period: "October 2025 - Present",
     location: "Abidjan, Côte d'Ivoire",
     type: "professional",
     description:
-      "Developing innovative web and mobile solutions at Jèko, specializing in financial services. Actively participating in the development of high-performance applications using Flutter and SvelteKit.",
+      "Leading front-end development of web and mobile solutions at Jèko. Managing development teams and driving technical excellence in Flutter and Svelte ecosystems for payment solutions.",
+    achievements: [
+      "Led a team of developers ensuring code quality and best practices",
+      "Architected and optimized Flutter applications for Android and iOS",
+      "Built dynamic web interfaces with Svelte and SvelteKit",
+      "Implemented mobile payment features with security and compliance standards",
+      "Mentored team members in full-stack development (JavaScript/TypeScript, Dart)",
+      "Delivered scalable solutions for mobile app, web dashboard, and payment links"
+    ],
+    technologies: ["Flutter", "SvelteKit", "JavaScript", "TypeScript", "Dart", "Mobile Payments", "APIs", "State Management"],
+  },
+  {
+    id: "2",
+    company: "Jèko",
+    role: "Software Engineer",
+    period: "April 2025 - September 2025",
+    location: "Abidjan, Côte d'Ivoire",
+    type: "professional",
+    description:
+      "Actively participated in the development of web and mobile solutions at Jèko, specializing in financial services. Focused on high-performance applications using Flutter and SvelteKit.",
     achievements: [
       "Created and optimized Flutter applications for Android and iOS",
       "Designed interactive interfaces with Svelte and SvelteKit",
@@ -195,10 +214,10 @@ const defaultExperiences: Experience[] = [
       "Improved application performance and integrated APIs",
       "Collaborated effectively with design and development teams"
     ],
-    technologies: ["Flutter", "SvelteKit", "JavaScript", "TypeScript", "Dart", "Mobile Payments", "APIs"],
+    technologies: ["Flutter", "SvelteKit", "JavaScript", "TypeScript", "Dart", "Mobile Payments", "APIs", "Financial Services"],
   },
   {
-    id: "2",
+    id: "3",
     company: "Freelance",
     role: "Flutter Mobile Developer & Backend API",
     period: "March 2020 - Present",
@@ -228,7 +247,7 @@ const defaultExperiences: Experience[] = [
     ],
   },
   {
-    id: "3",
+    id: "4",
     company: "Adjemin",
     role: "Mobile Application Developer",
     period: "August 2024 - April 2025",
@@ -246,7 +265,7 @@ const defaultExperiences: Experience[] = [
     technologies: ["Flutter", "Java", "Rust", "Node.js", "Flutter BLoC", "REST APIs", "Python", "Kotlin", "Git"],
   },
   {
-    id: "4",
+    id: "5",
     company: "BRIDGE BANK GROUP",
     role: "Mobile Application Developer",
     period: "August 2024 - December 2024",
@@ -265,19 +284,45 @@ const defaultExperiences: Experience[] = [
     technologies: ["Flutter", "Flutter BLoC", "Firebase", "Java", "Banking APIs", "Agile Methodologies"],
   },
   {
-    id: "5",
+    id: "6",
+    company: "Talentium Recrutement",
+    role: "Technical Project Manager",
+    period: "January 2024 - July 2024",
+    location: "Abidjan, Côte d'Ivoire",
+    type: "professional",
+    description:
+      "Led a team of 4 people (2 developers and 2 sales representatives) to develop and implement marketing strategy for application sales and evolution. Managed daily and weekly follow-ups via Trello.",
+    achievements: [
+      "Led technical team of 4 members (2 developers, 2 sales)",
+      "Developed and executed marketing strategy for application sales",
+      "Daily and weekly project tracking using Trello",
+      "Ensured commercial objectives and operational excellence",
+      "Promoted from Mobile Developer after 6 months of outstanding performance"
+    ],
+    technologies: [
+      "Trello",
+      "Project Management",
+      "Team Leadership",
+      "Agile Methodologies",
+      "Sales Strategy",
+      "Flutter",
+      "Laravel"
+    ],
+  },
+  {
+    id: "7",
     company: "Talentium Recrutement",
     role: "Mobile Developer",
-    period: "July 2023 - July 2024",
+    period: "July 2023 - December 2023",
     location: "Abidjan, Côte d'Ivoire",
     type: "professional",
     description:
       "Development of innovative mobile applications for organizational assessment and medical emergencies. Focus on social impact and public utility of developed solutions.",
     achievements: [
-      "Developed Maturus: organizational maturity assessment app",
-      "Created SOS AVC: medical emergency alert application",
-      "Flutter/Laravel integration for full-stack solutions",
-      "Firebase implementation for real-time communication",
+      "Developed Maturus: organizational maturity assessment app (Flutter + Laravel)",
+      "Created SOS AVC: medical emergency alert application (Flutter + Firebase)",
+      "Full-stack integration for complete solutions",
+      "Real-time communication implementation for emergency response",
       "Complete management of technical projects with social impact"
     ],
     technologies: [
@@ -293,10 +338,37 @@ const defaultExperiences: Experience[] = [
     ],
   },
   {
-    id: "6",
+    id: "8",
+    company: "Edopay Côte d'Ivoire",
+    role: "Senior Software Development Engineer",
+    period: "June 2022 - June 2023",
+    location: "Abidjan, Côte d'Ivoire (Remote)",
+    type: "freelance",
+    description:
+      "Developed Edopay mobile payment application, providing users with a seamless and modern interface for payments and transaction management. Full front-end development for Android and iOS.",
+    achievements: [
+      "Built complete mobile app UI/UX with Flutter for payment solutions",
+      "Integrated payment APIs provided by backend team",
+      "Implemented intuitive payment screens and transaction history",
+      "Added in-app and push notifications for operations",
+      "Integrated PIN and biometric authentication (face/fingerprint)",
+      "Collaborated effectively with backend and product teams in freelance mode"
+    ],
+    technologies: [
+      "Flutter",
+      "Dart",
+      "Payment APIs",
+      "Firebase",
+      "Biometric Authentication",
+      "Push Notifications",
+      "UI/UX Design"
+    ],
+  },
+  {
+    id: "9",
     company: "Softskills",
     role: "Software Engineer",
-    period: "January 2021 - June 2023",
+    period: "March 2020 - June 2022",
     location: "Côte d'Ivoire",
     type: "professional",
     description:

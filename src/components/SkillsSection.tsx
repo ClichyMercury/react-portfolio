@@ -324,6 +324,29 @@ const defaultSkills: Skill[] = [
     color: "#3DDC84",
   },
 
+  // Analytics & Feature Management
+  {
+    name: "Amplitude",
+    proficiency: 85,
+    category: "tools",
+    icon: "📊",
+    color: "#0066FF",
+  },
+  {
+    name: "PostHog",
+    proficiency: 82,
+    category: "tools",
+    icon: "📈",
+    color: "#FF6A00",
+  },
+  {
+    name: "Unleash",
+    proficiency: 80,
+    category: "tools",
+    icon: "🚩",
+    color: "#6B46C1",
+  },
+
   // Cloud & Deployment
   {
     name: "Firebase Hosting",

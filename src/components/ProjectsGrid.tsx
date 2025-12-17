@@ -227,7 +227,7 @@ const defaultProjects: Project[] = [
     title: "MetaChange",
     description:
       "Innovative cryptocurrency exchange app designed for the African market, offering simple and secure crypto-to-mobile money transactions.",
-    imageUrl: "./images/metachanage-preview.jpeg", // You'll add this
+    imageUrl: "./images/metachanage-preview.jpeg", 
     technologies: ["Flutter", "Blockchain", "Mobile Payments", "KYC", "Encryption"],
     category: "fintech",
     isPortrait: true,
@@ -243,7 +243,7 @@ const defaultProjects: Project[] = [
     title: "Galaxy Stream",
     description:
       "Powerful video streaming app that brings the latest movies, TV shows, and trending content using the TMDB API.",
-    imageUrl: "./images/galaxy-stream-preview.jpeg", // You'll add this
+    imageUrl: "./images/galaxy-stream-preview.jpeg", 
     technologies: ["Flutter", "TMDB API", "Firebase", "Provider"],
     category: "entertainment",
     isPortrait: true,
@@ -259,7 +259,7 @@ const defaultProjects: Project[] = [
     title: "Vidalossa Online Store",
     description:
       "Modern e-commerce app with secure payments powered by Flutterwave and real-time Firebase integration.",
-    imageUrl: "./images/vidalossa-preview.jpeg", // You'll add this
+    imageUrl: "./images/vidalossa-preview.jpeg", 
     technologies: ["Flutter", "Firebase", "Flutterwave", "E-commerce"],
     category: "e-commerce",
     isPortrait: true,
@@ -275,7 +275,7 @@ const defaultProjects: Project[] = [
     title: "Medical Volunteer Website",
     description:
       "Complete website redesign for Medical Volunteer organization celebrating 25 years of healthcare advocacy.",
-    imageUrl: "./images/volunteer-medical-preview.png", // You'll add this
+    imageUrl: "./images/volunteer-medical-preview.png", 
     technologies: ["SvelteKit", "HTML5", "CSS3", "JavaScript", "Vercel"],
     category: "web",
     isPortrait: false,
@@ -292,7 +292,7 @@ const defaultProjects: Project[] = [
     title: "MELOUKA Artisan Website",
     description:
       "Modern showcase website for MELOUKA, an Ivorian handicraft knitting company with dynamic product management.",
-    imageUrl: "./images/melouka-preview.png", // You'll add this
+    imageUrl: "./images/melouka-preview.png", 
     technologies: ["SvelteKit", "Supabase", "Tailwind CSS", "Vercel"],
     category: "web",
     isPortrait: false,
@@ -309,7 +309,7 @@ const defaultProjects: Project[] = [
     title: "RecipeMaster",
     description:
       "Web application for managing and organizing favorite recipes with internationalization support (FR, EN, ES).",
-    imageUrl: "./images/recipe-master-preview.jpeg", // You'll add this
+    imageUrl: "./images/recipe-master-preview.jpeg", 
     technologies: ["SvelteKit", "JSON Server", "Paraglide", "JavaScript"],
     category: "web",
     isPortrait: false,
@@ -326,7 +326,7 @@ const defaultProjects: Project[] = [
     title: "Moyivawa Health App",
     description:
       "E-health application for medication management and medical consultations with mobile payment integration.",
-    imageUrl: "./images/moyivawa-preview.jpeg", // You'll add this
+    imageUrl: "./images/moyivawa-preview.jpeg", 
     technologies: ["Flutter", "Provider", "Mobile Payments", "Healthcare"],
     category: "medical",
     isPortrait: true,
@@ -342,7 +342,7 @@ const defaultProjects: Project[] = [
     title: "Minimal Contacts",
     description:
       "Lightweight contact manager app using RandomUser.me API for dynamic contact generation and management.",
-    imageUrl: "./images/minimal-contacts-preview.jpeg", // You'll add this
+    imageUrl: "./images/minimal-contacts-preview.jpeg", 
     technologies: ["Flutter", "REST APIs", "Flutter BLoC", "Dart"],
     category: "education",
     isPortrait: true,
@@ -358,7 +358,7 @@ const defaultProjects: Project[] = [
     title: "RanTube",
     description:
       "Random YouTube video generator app with free and premium features, analytics integration.",
-    imageUrl: "./images/rantube-preview.jpeg", // You'll add this
+    imageUrl: "./images/rantube-preview.jpeg", 
     technologies: ["Flutter", "Flutter BLoC", "Firebase", "YouTube API", "Google Analytics"],
     category: "entertainment",
     isPortrait: true,
@@ -374,7 +374,7 @@ const defaultProjects: Project[] = [
     title: "Djassaman Budget Manager",
     description:
       "Intelligent budget management application built with Flask and SQLAlchemy for tracking finances.",
-    imageUrl: "./images/djassaman-preview.jpeg", // You'll add this
+    imageUrl: "./images/djassaman-preview.jpeg", 
     technologies: ["Flask", "SQLAlchemy", "HTML", "CSS", "Python", "JavaScript"],
     category: "fintech",
     isPortrait: false,
@@ -391,7 +391,7 @@ const defaultProjects: Project[] = [
     title: "Zem VTC App",
     description:
       "Innovative ride-hailing app offering smooth, secure and accessible transportation experience for passengers and drivers.",
-    imageUrl: "./images/zem-preview.jpeg", // You'll add this
+    imageUrl: "./images/zem-preview.jpeg", 
     technologies: ["Flutter", "Laravel", "GPS", "Google Maps", "PHP"],
     category: "transport",
     isPortrait: true,
@@ -407,7 +407,7 @@ const defaultProjects: Project[] = [
     title: "FOSOPIQ Event Management",
     description:
       "Event management platform for humanitarian foundation activities across Education, Social, Health, and Environment sectors.",
-    imageUrl: "./images/fosopiq-preview.jpeg", // You'll add this
+    imageUrl: "./images/fosopiq-preview.jpeg", 
     technologies: ["Flutter", "Provider", "Event Management", "Analytics"],
     category: "education",
     isPortrait: true,
@@ -423,7 +423,7 @@ const defaultProjects: Project[] = [
     title: "SOS AVC Medical Alert",
     description:
       "Life-saving application designed to respond quickly to stroke emergencies with immediate assistance features.",
-    imageUrl: "./images/sosavc-preview.jpeg", // You'll add this
+    imageUrl: "./images/sosavc-preview.jpeg", 
     technologies: ["Flutter", "Firebase", "Google Maps", "Laravel", "Emergency Services"],
     category: "medical",
     isPortrait: true,
@@ -439,7 +439,7 @@ const defaultProjects: Project[] = [
     title: "Maturus Scoring",
     description:
       "Organizational maturity assessment app helping companies measure, analyze and optimize their organizational performance.",
-    imageUrl: "./images/maturus-preview.jpeg", // You'll add this
+    imageUrl: "./images/maturus-preview.jpeg", 
     technologies: ["Flutter", "Laravel", "Analytics", "Scoring Algorithms"],
     category: "security",
     isPortrait: true,
@@ -455,7 +455,7 @@ const defaultProjects: Project[] = [
     title: "Meter Manager IoT",
     description:
       "Smart electricity consumption monitoring app with real-time analysis, forecasting and optimization features.",
-    imageUrl: "./images/meter-manager-preview.jpeg", // You'll add this
+    imageUrl: "./images/meter-manager-preview.jpeg", 
     technologies: ["Flutter", "Laravel", "IoT", "Data Analytics", "Energy Management"],
     category: "iot",
     isPortrait: true,
@@ -471,7 +471,7 @@ const defaultProjects: Project[] = [
     title: "Sikka Digital Tontine",
     description:
       "Secure digital tontine app enabling users to easily manage group savings and contributions with encryption.",
-    imageUrl: "./images/sikka-preview.jpeg", // You'll add this
+    imageUrl: "./images/sikka-preview.jpeg", 
     technologies: ["Flutter", "Django REST", "Encryption", "Financial Services"],
     category: "fintech",
     isPortrait: true,
@@ -487,7 +487,7 @@ const defaultProjects: Project[] = [
     title: "IBH (Ivoire Beat Hub)",
     description:
       "Creative workspace app for artists - a Google Keep clone designed for capturing and organizing musical inspirations.",
-    imageUrl: "./images/ibh-preview.jpeg", // You'll add this
+    imageUrl: "./images/ibh-preview.jpeg", 
     technologies: ["Flutter", "Firebase", "Audio Recording", "Cloud Storage"],
     category: "creative",
     isPortrait: true,
@@ -917,7 +917,30 @@ const defaultProjects: Project[] = [
   "results": "Outil de test fonctionnel permettant de valider les intégrations avant mise en production, avec support de toutes les méthodes de paiement et gestion des callbacks.",
   "demoUrl": "https://demo.jeko.africa",
   "codeUrl": ""
+},
+{
+  "id": "55",
+  "title": "Alph Sécurité (Landing Page) – Sécurisation de quartier à la demande",
+  "description": "landing page de preseentation de la solution Alph Sécurité, une Plateforme digitale permettant aux particuliers et communautés de sécuriser leur quartier en un clic, en réservant des agents de sécurité certifiés, en rejoignant des communautés de vigilance et en consultant le niveau de sécurité en temps réel.",
+  "imageUrl": "./images/alph-securite-preview.png",
+  "technologies": [
+    "Vue.js",
+    "TailwindCSS",
+    "API REST",
+    "Laravel",
+    "Geolocation",
+    "Notifications temps réel",
+    "Payment Integration"
+  ],
+  "category": "security",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Démocratiser l’accès à la sécurité privée en Afrique en proposant une solution simple, rapide et communautaire pour réserver des agents de sécurité et surveiller les zones à risque en temps réel.",
+  "results": "Mise en place d’une plateforme complète combinant application mobile et interface web, avec réservation d’agents, score de sécurité par zone, notifications en temps réel et système communautaire de vigilance.",
+  "demoUrl": "https://www.alphsecurite.ci/",
+  "codeUrl": ""
 }
+
 ];
 
 export default ProjectsGrid;

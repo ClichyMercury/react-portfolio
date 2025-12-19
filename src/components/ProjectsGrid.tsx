@@ -939,8 +939,73 @@ const defaultProjects: Project[] = [
   "results": "Mise en place d’une plateforme complète combinant application mobile et interface web, avec réservation d’agents, score de sécurité par zone, notifications en temps réel et système communautaire de vigilance.",
   "demoUrl": "https://www.alphsecurite.ci/",
   "codeUrl": ""
+},
+{
+  "id": "56",
+  "title": "Alph Sécurité – Application Mobile Client",
+  "description": "Application mobile permettant aux particuliers de réserver des agents de sécurité certifiés pour différents types de missions : garde rapprochée, sécurité bâtiment, sécurité événementielle et escorte VIP. Interface intuitive avec géolocalisation et système de réservation simplifié.",
+  "imageUrl": "./images/alph-securite-mobile-preview.jpeg",
+  "technologies": [
+    "Flutter",
+    "Dart",
+    "Provider",
+    "Google Maps API",
+    "REST API",
+    "Firebase Messaging",
+    "Payment Integration"
+  ],
+  "category": "security",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Offrir aux utilisateurs un accès rapide et sécurisé à des services de sécurité privée à la demande, avec une expérience de réservation fluide et un suivi en temps réel des agents assignés.",
+  "results": "Interface moderne avec sélection de mission par catégorie, géolocalisation automatique, système de réservation en quelques clics et offres promotionnelles pour les nouveaux utilisateurs (-15% sur la première mission).",
+  "demoUrl": "https://www.alphsecurite.ci/",
+  "codeUrl": ""
+},
+{
+  "id": "57",
+  "title": "PLUSS Alert – Application Mobile Citoyenne",
+  "description": "Application mobile de la Plateforme Une Seule Santé (PLUSS) de Côte d'Ivoire permettant aux citoyens de signaler en temps réel des alertes sanitaires liées aux zoonoses, épidémies et menaces de santé publique à l'interface Homme-Animal-Environnement.",
+  "imageUrl": "./images/pluss-alert-mobile-preview.jpeg",
+  "technologies": [
+    "Flutter",
+    "Dart",
+    "Provider",
+    "REST API",
+    "Firebase Messaging",
+    "Geolocation",
+    "One Health Integration"
+  ],
+  "category": "medical",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Digitaliser la surveillance sanitaire en Côte d'Ivoire en permettant aux citoyens de signaler rapidement les menaces de santé publique (COVID-19, Choléra, Ebola, etc.) avec géolocalisation et connexion aux services de santé partenaires comme MSF.",
+  "results": "Système de signalement d'alertes par catégorie (Santé, Zoonoses, Environnement) avec niveaux de priorité, affichage des statistiques en temps réel et redirection vers les services de santé compétents pour une prise en charge rapide.",
+  "demoUrl": "https://www.pluss.ci/",
+  "codeUrl": ""
+},
+{
+  "id": "58",
+  "title": "PLUSS CI – Backoffice Administration",
+  "description": "Interface d'administration web de la Plateforme Une Seule Santé permettant aux autorités sanitaires de visualiser, filtrer et gérer les alertes signalées par les citoyens. Tableau de bord complet avec statistiques en temps réel, gestion des agents et suivi des services de santé.",
+  "imageUrl": "./images/pluss-backoffice-preview.png",
+  "technologies": [
+    "SvelteKit",
+    "TypeScript",
+    "TailwindCSS",
+    "REST API",
+    "Dashboard Analytics",
+    "Real-time Updates",
+    "Vercel"
+  ],
+  "category": "medical",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Centraliser la gestion des alertes sanitaires pour les autorités de santé publique, avec une vision globale des menaces en cours, le suivi des agents actifs et la coordination avec les services de santé partenaires.",
+  "results": "Tableau de bord interactif affichant le total des alertes, les statuts (en attente, résolues), les agents actifs, et une liste détaillée des alertes récentes avec filtrage par priorité (Haute, Moyenne, Faible) et catégorie (COVID-19, Choléra, etc.).",
+  "demoUrl": "https://pluss-backoffice.vercel.app/dashboard",
+  "codeUrl": ""
 }
-
 ];
 
 export default ProjectsGrid;

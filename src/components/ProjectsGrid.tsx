@@ -27,6 +27,7 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState<number>(6);
+  const [visibleFeaturedCount, setVisibleFeaturedCount] = useState<number>(6);
 
   const categories = [
     "all",
@@ -40,10 +41,14 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
 
   const featuredProjects = projects.filter((p) => p.featured);
   const regularProjects = filteredProjects.filter((p) => !p.featured);
-  
+
   // Show only first 6 projects initially, then all when expanded
   const projectsToShow = regularProjects.slice(0, visibleCount);
   const hasMoreProjects = visibleCount < regularProjects.length;
+
+  // Show only first 6 featured projects initially
+  const featuredProjectsToShow = featuredProjects.slice(0, visibleFeaturedCount);
+  const hasMoreFeaturedProjects = visibleFeaturedCount < featuredProjects.length;
 
   return (
     <section
@@ -127,7 +132,7 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
               Featured Work
             </h3>
             <div className="grid lg:grid-cols-2 gap-8">
-              {featuredProjects.map((project, index) => (
+              {featuredProjectsToShow.map((project, index) => (
                 <motion.div
                   key={project.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -152,6 +157,29 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
                 </motion.div>
               ))}
             </div>
+            {/* View More Featured Button */}
+            {hasMoreFeaturedProjects && (
+              <motion.div
+                className="text-center mt-10"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <motion.button
+                  onClick={() => setVisibleFeaturedCount(prev => prev + 6)}
+                  className="group relative px-8 py-4 bg-gradient-to-r from-primary to-purple-600 text-black font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    View More Featured ({Math.min(6, featuredProjects.length - visibleFeaturedCount)} more)
+                    <span>↓</span>
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-600/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                </motion.button>
+              </motion.div>
+            )}
           </motion.div>
         )}
 
@@ -1004,6 +1032,154 @@ const defaultProjects: Project[] = [
   "objectives": "Centraliser la gestion des alertes sanitaires pour les autorités de santé publique, avec une vision globale des menaces en cours, le suivi des agents actifs et la coordination avec les services de santé partenaires.",
   "results": "Tableau de bord interactif affichant le total des alertes, les statuts (en attente, résolues), les agents actifs, et une liste détaillée des alertes récentes avec filtrage par priorité (Haute, Moyenne, Faible) et catégorie (COVID-19, Choléra, etc.).",
   "demoUrl": "https://pluss-backoffice.vercel.app/dashboard",
+  "codeUrl": ""
+},
+{
+  "id": "59",
+  "title": "Décor de Rêve – Site Vitrine",
+  "description": "Site web e-commerce élégant pour Décor de Rêve, entreprise spécialisée dans les décors éblouissants, bouquets exquis, ballons colorés et bien plus. Transformez vos moments en souvenirs magiques avec une boutique en ligne intuitive et un système de commande via WhatsApp.",
+  "imageUrl": "./images/decor-de-reve-frontsite-preview.png",
+  "technologies": [
+    "SvelteKit",
+    "TailwindCSS",
+    "E-commerce",
+    "WhatsApp Integration",
+    "Responsive Design",
+    "Vercel"
+  ],
+  "category": "e-commerce",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Créer une vitrine digitale attrayante pour présenter les créations de Décor de Rêve, faciliter la découverte des produits (bouquets d'argent, boxes, décorations) et simplifier le processus de commande via WhatsApp.",
+  "results": "Site web moderne avec navigation fluide entre les catégories de produits, intégration WhatsApp pour les commandes instantanées, et design élégant mettant en valeur les créations artisanales.",
+  "demoUrl": "https://decor-de-reve-frontsite.vercel.app",
+  "codeUrl": ""
+},
+{
+  "id": "60",
+  "title": "Décor de Rêve – Back Office",
+  "description": "Application de gestion complète pour Décor de Rêve permettant la gestion des produits, catégories, commandes, inventaire et mouvements de stock. Tableau de bord avec indicateurs clés : valeur stock, revenus du mois, commandes en attente, stock bas et surstock.",
+  "imageUrl": "./images/decor-de-reve-backoffice-preview.png",
+  "technologies": [
+    "SvelteKit",
+    "TailwindCSS",
+    "Dashboard Analytics",
+    "Inventory Management",
+    "REST API",
+    "Vercel"
+  ],
+  "category": "e-commerce",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Fournir un outil de gestion centralisé pour l'administration de l'entreprise : suivi des stocks, gestion des produits et catégories, traitement des commandes clients, bons d'entrée et gestion des fournisseurs.",
+  "results": "Back-office complet avec tableau de bord affichant la valeur du stock (27 320 FCFA), revenus mensuels, commandes en attente, alertes stock bas et accès rapide aux fonctionnalités de gestion quotidienne.",
+  "demoUrl": "https://decor-de-reve-backoffice.vercel.app/admin/dashboard",
+  "codeUrl": ""
+},
+{
+  "id": "61",
+  "title": "AgriPilote – Plateforme de Gestion Agricole",
+  "description": "Plateforme complète de gestion des missions de drones agricoles pour le traitement des plantations. Permet la coordination entre entreprises clientes, télépilotes et administrateurs avec suivi des missions, gestion des plantations, rapports de traitement et tableau de bord analytique.",
+  "imageUrl": "./images/agripilote-preview.png",
+  "technologies": [
+    "SvelteKit",
+    "TailwindCSS",
+    "REST API",
+    "Dashboard Analytics",
+    "Multi-tenant Architecture",
+    "Role-based Access",
+    "Vercel"
+  ],
+  "category": "iot",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Digitaliser et automatiser la gestion des missions de drones agricoles en Côte d'Ivoire. Centraliser le workflow entre clients (responsables de plantations), télépilotes et administrateurs pour optimiser les traitements (maturateur, herbicide, traitement à huile/eau) sur différentes cultures (canne à sucre, banane, maïs, hévéa).",
+  "results": "Tableau de bord complet avec suivi de 8 missions, gestion de 6 entreprises et 8 plantations. Système de validation des rapports multi-équipes, assignation des drones/chauffeurs/véhicules, et génération automatisée des fichiers KML par drone.",
+  "demoUrl": "https://agripilote.vercel.app/admin/dashboard",
+  "codeUrl": ""
+},
+{
+  "id": "62",
+  "title": "StediiHome – Employabilité Domestique",
+  "description": "Application mobile connectant les familles aux employés de maison via un système de contrats QR Code sécurisés, un historique professionnel vivant et des avis vérifiés. Deux parcours utilisateur : Employer (famille) et Worker (employé).",
+  "imageUrl": "./images/stediihome-preview.jpeg",
+  "technologies": [
+    "Flutter",
+    "Firebase",
+    "QR Code System",
+    "Real-time Chat",
+    "Review System",
+    "Multi-role Auth"
+  ],
+  "category": "services",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Sécuriser l'employabilité domestique en Afrique en apportant transparence, traçabilité des expériences professionnelles et sécurité contractuelle via un système de QR Code unique pour démarrer et terminer les contrats.",
+  "results": "Application complète avec 17 écrans fonctionnels : onboarding, inscription multi-étapes pour workers, système de contrats QR Code, messagerie temps réel, système d'évaluation obligatoire post-contrat et badges de réputation.",
+  "demoUrl": "",
+  "codeUrl": ""
+},
+{
+  "id": "63",
+  "title": "SmartSaver – Tontine & Épargne Digitale",
+  "description": "Application fintech de gestion de tontines et d'épargne digitale. Permet aux utilisateurs de participer à des tontines collectives avec choix de rang de ramassage et de lancer des plans d'épargne personnalisés avec suivi en temps réel.",
+  "imageUrl": "./images/smartsaver-preview.jpeg",
+  "technologies": [
+    "Flutter",
+    "Firebase",
+    "Mobile Money",
+    "Push Notifications",
+    "Transaction Management",
+    "Admin Dashboard"
+  ],
+  "category": "fintech",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Digitaliser le système traditionnel de tontine africaine et proposer des plans d'épargne flexibles. Permettre aux utilisateurs de gérer leurs portefeuilles Tontine et Épargne avec validation des transactions par des admins dédiés.",
+  "results": "Plateforme complète avec gestion de tontines (10 participants, ramassages périodiques), plans d'épargne personnalisés, historique des transactions, notifications de ramassage et système d'audit pour le super admin.",
+  "demoUrl": "",
+  "codeUrl": ""
+},
+{
+  "id": "64",
+  "title": "TransformMe – Application Fitness",
+  "description": "Application de suivi fitness avec système de streak motivationnel, objectifs personnalisés et récompenses. Suivez vos séances de sport, vos repas et visualisez vos statistiques de progression avec des défis à long terme.",
+  "imageUrl": "./images/transformme-preview.jpeg",
+  "technologies": [
+    "Flutter",
+    "Firebase",
+    "Health Tracking",
+    "Gamification",
+    "Push Notifications",
+    "Analytics Dashboard"
+  ],
+  "category": "medical",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Motiver les utilisateurs à maintenir une routine fitness régulière grâce à un système de streak (jours consécutifs), des objectifs sur 86 jours avec récompenses (Apple Watch, inscription salle de sport) et un suivi quotidien des activités.",
+  "results": "Interface gamifiée avec compteur de streak, progression d'objectif (20% accompli, 17/86 jours), suivi des séances sport et repas, statistiques détaillées et messages de motivation personnalisés.",
+  "demoUrl": "",
+  "codeUrl": ""
+},
+{
+  "id": "65",
+  "title": "AVP PROD – Portfolio Monteur Vidéo",
+  "description": "Portfolio web professionnel pour Ivan, monteur vidéo, photographe et producteur basé à Paris. Interface inspirée des logiciels de montage avec Media Pool, Timeline, Inspector et prévisualisation vidéo intégrée.",
+  "imageUrl": "./images/avp-prod-preview.png",
+  "technologies": [
+    "SvelteKit",
+    "Video Player",
+    "Timeline UI",
+    "Responsive Design",
+    "i18n (FR/EN)",
+    "Vercel"
+  ],
+  "category": "creative",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Créer un portfolio unique et immersif reproduisant l'interface d'un logiciel de montage vidéo professionnel (DaVinci Resolve style) pour mettre en valeur les compétences d'un monteur vidéo, photographe et producteur.",
+  "results": "Interface créative avec Media Pool pour les images/vidéos, Timeline interactive, Inspector affichant le profil et compétences (Montage 95%, Photographie 90%, Production 85%, Étalonnage 88%, Sound Design 75%), et lecteur vidéo intégré.",
+  "demoUrl": "https://avp-prod-phi.vercel.app/",
   "codeUrl": ""
 }
 ];

@@ -93,8 +93,8 @@ const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
           viewport={{ once: true }}
         >
           {[
-            { number: "5+", label: "Years of Experience", icon: "⏱️" },
-            { number: "30+", label: "Projects Completed", icon: "🚀" },
+            { number: "6+", label: "Years of Experience", icon: "⏱️" },
+            { number: "65+", label: "Projects Completed", icon: "🚀" },
             { number: "15+", label: "Technologies Mastered", icon: "⚡" },
             { number: "100%", label: "Client Satisfaction", icon: "⭐" },
           ].map((stat, index) => (

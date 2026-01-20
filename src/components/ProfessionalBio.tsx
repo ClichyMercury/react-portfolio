@@ -12,11 +12,11 @@ interface ProfessionalBioProps {
 const ProfessionalBio = ({
   name = "Gaël Sassan",
   title = "Software Developer & Mobile App Specialist",
-  bio = "Passionate about software development for over 5 years, I specialize in creating innovative mobile applications and high-performance web solutions. My expertise covers the entire development lifecycle, from design to production, with a particular focus on user experience and modern technologies.",
+  bio = "Passionate about software development for over 6 years, I specialize in creating innovative mobile applications and high-performance web solutions. My expertise covers the entire development lifecycle, from design to production, with a particular focus on user experience and modern technologies.",
   highlights = [
-    "5+ years of experience in mobile and web development",
+    "6+ years of experience in mobile and web development",
     "Expertise in Flutter, React, and cloud technologies",
-    "30+ successfully delivered projects",
+    "65+ successfully delivered projects",
     "User-centered approach focused on performance",
   ],
 }: ProfessionalBioProps) => {

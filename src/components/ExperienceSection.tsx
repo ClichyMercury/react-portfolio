@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Building, ChevronRight } from "lucide-react";
 import { Card, CardContent, CardHeader } from "./ui/card";
@@ -23,6 +23,11 @@ interface ExperienceSectionProps {
 const ExperienceSection = ({
   experiences = defaultExperiences,
 }: ExperienceSectionProps) => {
+  const [visibleCount, setVisibleCount] = useState<number>(6);
+
+  const experiencesToShow = experiences.slice(0, visibleCount);
+  const hasMoreExperiences = visibleCount < experiences.length;
+
   return (
     <section
       id="experience"
@@ -65,7 +70,7 @@ const ExperienceSection = ({
           <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-purple-500 to-primary opacity-30"></div>
 
           <div className="space-y-12">
-            {experiences.map((experience, index) => (
+            {experiencesToShow.map((experience, index) => (
               <motion.div
                 key={experience.id}
                 className="relative flex gap-8"
@@ -172,6 +177,30 @@ const ExperienceSection = ({
               </motion.div>
             ))}
           </div>
+
+          {/* View More Button */}
+          {hasMoreExperiences && (
+            <motion.div
+              className="text-center mt-12"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <motion.button
+                onClick={() => setVisibleCount(prev => prev + 6)}
+                className="group relative px-8 py-4 bg-gradient-to-r from-primary to-purple-600 text-black font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  View More ({Math.min(6, experiences.length - visibleCount)} more)
+                  <span>↓</span>
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-600/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+              </motion.button>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>
@@ -230,7 +259,7 @@ const defaultExperiences: Experience[] = [
       "Created management dashboards for users and administrators",
       "Complete project management: needs analysis, UI/UX mockups, development, deployment",
       "Continuous maintenance and technical support of applications",
-      "5+ years of experience in freelance development"
+      "6+ years of experience in freelance development"
     ],
     technologies: [
       "Flutter",
@@ -244,6 +273,58 @@ const defaultExperiences: Experience[] = [
       "HTML/CSS",
       "GitHub",
       "GitLab"
+    ],
+  },
+  {
+    id: "3b",
+    company: "Government of Côte d'Ivoire",
+    role: "IT Consultant",
+    period: "2023 - Present",
+    location: "Abidjan, Côte d'Ivoire",
+    type: "freelance",
+    description:
+      "Provided technical consulting services for various governmental digital transformation projects. Contributed to the development of critical applications in strategic sectors including public health, national security, and public administration.",
+    achievements: [
+      "Contributed to digital solutions for public health surveillance systems",
+      "Developed applications supporting national security and citizen safety initiatives",
+      "Built administrative platforms for governmental operations",
+      "Ensured compliance with governmental security and data protection standards",
+      "Collaborated with multiple ministries and public institutions"
+    ],
+    technologies: [
+      "Flutter",
+      "SvelteKit",
+      "REST APIs",
+      "Secure Authentication",
+      "Real-time Systems",
+      "Data Analytics",
+      "Government Standards"
+    ],
+  },
+  {
+    id: "3c",
+    company: "Diigito",
+    role: "Flutter Trainer",
+    period: "June 2025 - Present",
+    location: "Abidjan, Côte d'Ivoire",
+    type: "freelance",
+    description:
+      "Weekend training sessions teaching Flutter mobile development to aspiring developers. Comprehensive curriculum covering fundamentals to advanced concepts, with hands-on projects and personalized coaching.",
+    achievements: [
+      "Conducted weekly 2-hour training sessions every Saturday",
+      "Designed complete Flutter curriculum from basics to advanced topics",
+      "Provided personalized one-on-one coaching for students",
+      "Mentored multiple cohorts of aspiring mobile developers",
+      "Combined in-person and online training formats"
+    ],
+    technologies: [
+      "Flutter",
+      "Dart",
+      "Mobile Development",
+      "UI/UX Design",
+      "State Management",
+      "API Integration",
+      "Teaching"
     ],
   },
   {

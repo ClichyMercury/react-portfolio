@@ -1181,6 +1181,48 @@ const defaultProjects: Project[] = [
   "results": "Interface créative avec Media Pool pour les images/vidéos, Timeline interactive, Inspector affichant le profil et compétences (Montage 95%, Photographie 90%, Production 85%, Étalonnage 88%, Sound Design 75%), et lecteur vidéo intégré.",
   "demoUrl": "https://avp-prod-phi.vercel.app/",
   "codeUrl": ""
+},
+{
+  "id": "66",
+  "title": "StediiHome – Landing Page",
+  "description": "Site vitrine moderne pour StediiHome, plateforme d'emploi domestique sécurisé en Afrique. Présente la solution permettant d'embaucher du personnel domestique fiable sans recruter à l'aveugle, avec profils vérifiés et historique de travail traçable.",
+  "imageUrl": "./images/stediihome-landing-preview.png",
+  "technologies": [
+    "Next.js",
+    "TailwindCSS",
+    "Responsive Design",
+    "i18n (FR/EN)",
+    "Framer Motion",
+    "Vercel"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Créer une landing page impactante pour présenter StediiHome aux familles et travailleurs domestiques au Kenya. Mettre en avant les avantages clés : identité vérifiée, historique impossible à falsifier et mise en relation rapide.",
+  "results": "Site vitrine bilingue (FR/EN) avec deux parcours utilisateur (Employeur/Travailleur), présentation des services (ménage, cuisine, garde d'enfants, personnes âgées), statistiques en temps réel (156 workers, 4.8 rating, 89% vérifiés) et mockup mobile immersif.",
+  "demoUrl": "https://stediihome.com",
+  "codeUrl": ""
+},
+{
+  "id": "67",
+  "title": "WHARPE – Landing Page",
+  "description": "Site vitrine élégant pour WHARPE, cabinet informatique moderne accompagnant la transformation digitale en Afrique. Présente les deux pôles d'activité : Pôle Entreprises (développement sur mesure, cloud, maintenance) et Studio d'Innovation (apps mobiles, SaaS, marketplaces).",
+  "imageUrl": "./images/wharpe-landing-preview.png",
+  "technologies": [
+    "SvelteKit",
+    "TailwindCSS",
+    "Framer Motion",
+    "Responsive Design",
+    "i18n (FR)",
+    "Vercel"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Créer une vitrine digitale professionnelle reflétant l'ADN de WHARPE (Whole, Holistic, Analysis, Reactiveness, Partnership, Expertise) et présentant les services de transformation numérique pour les entreprises africaines.",
+  "results": "Landing page moderne avec animations fluides, présentation des 6 valeurs fondatrices, deux sections services distinctes (B2B et B2C), formulaire de contact intégré et design tech inspiré des circuits électroniques.",
+  "demoUrl": "https://wharpe.com",
+  "codeUrl": ""
 }
 ];
 

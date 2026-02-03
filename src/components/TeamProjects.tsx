@@ -384,6 +384,26 @@ const defaultTeamProjects: TeamProject[] = [
     ],
     projectUrl: "",
     isNDA: false
+  },
+  {
+    id: "7",
+    title: "MaCom - Plateforme Créative",
+    company: "MaCom",
+    description: "Plateforme digitale facilitant la mise en relation entre professionnels de la communication (graphistes, community managers, vidéastes, photographes) et clients à la recherche de prestations créatives ou marketing. Services annexes : banque d'images (20,000+ photos), panneaux publicitaires, CV Maker et impression.",
+    role: "Mobile Developer (UI v2)",
+    period: "2024 - 2025",
+    teamSize: "5-person creative tech team",
+    imageUrl: "./images/macom-preview.jpeg",
+    technologies: ["Flutter", "Firebase", "REST API", "Cloud Storage", "Real-time Chat", "Payment Integration"],
+    projectType: "freelance",
+    achievements: [
+      "Refonte complète de l'interface utilisateur (UI v2) avec design moderne et vibrant",
+      "Développement de la banque d'images avec 20,000+ photos catégorisées (Business, Nature, Tech, Lifestyle)",
+      "Intégration du système de panneaux publicitaires et CV Maker",
+      "Implémentation du système de filtrage par catégories avec contenus Premium"
+    ],
+    projectUrl: "",
+    isNDA: false
   }
 ];
 

@@ -16,7 +16,7 @@ const ProfessionalBio = ({
   highlights = [
     "6+ years of experience in mobile and web development",
     "Expertise in Flutter, React, and cloud technologies",
-    "65+ successfully delivered projects",
+    "47+ successfully delivered projects",
     "User-centered approach focused on performance",
   ],
 }: ProfessionalBioProps) => {

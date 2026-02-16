@@ -1223,6 +1223,48 @@ const defaultProjects: Project[] = [
   "results": "Landing page moderne avec animations fluides, présentation des 6 valeurs fondatrices, deux sections services distinctes (B2B et B2C), formulaire de contact intégré et design tech inspiré des circuits électroniques.",
   "demoUrl": "https://wharpe.com",
   "codeUrl": ""
+},
+{
+  "id": "68",
+  "title": "Cropsky – Landing Page",
+  "description": "Site vitrine pour Cropsky, centre d'expertise drone combinant technologie de pointe et savoir-faire professionnel au Canada, en Afrique et dans le monde. Présente les divisions Industrielle (inspection, surveillance, cartographie) et Aviation & Transport (livraison, mobilité urbaine aérienne).",
+  "imageUrl": "./images/cropsky-landing-preview.png",
+  "technologies": [
+    "SvelteKit",
+    "TailwindCSS",
+    "Framer Motion",
+    "Responsive Design",
+    "i18n (FR/EN)",
+    "Vercel"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Créer un site vitrine professionnel et immersif pour positionner Cropsky comme leader de l'expertise drone à l'international, avec une présentation claire des services industriels et de transport aérien.",
+  "results": "Site bilingue (FR/EN) avec design dark thème cinématique, présentation des deux divisions (Industrielle et Aviation), mise en avant des valeurs (Innovation, Expertise, Vision) et partenariat WHARPE affiché.",
+  "demoUrl": "https://cropsky.org",
+  "codeUrl": ""
+},
+{
+  "id": "69",
+  "title": "AEDCI – Landing Page",
+  "description": "Site vitrine de l'Association des Exploitants de Drones Civils en Côte d'Ivoire, organisation professionnelle structurant et professionnalisant la filière drone au niveau national. Présente les missions, domaines d'application (audiovisuel, cartographie, agriculture, inspection) et le processus d'adhésion.",
+  "imageUrl": "./images/aedci-landing-preview.png",
+  "technologies": [
+    "SvelteKit",
+    "TailwindCSS",
+    "Framer Motion",
+    "Responsive Design",
+    "i18n (FR)",
+    "Vercel"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Créer une vitrine institutionnelle pour l'AEDCI afin de fédérer les exploitants de drones civils en Côte d'Ivoire, promouvoir l'adhésion et positionner le pays comme pôle de référence drone en Afrique de l'Ouest.",
+  "results": "Site avec design épuré aux couleurs nature/tech, présentation des 6 domaines d'application drone, bureau exécutif de 7 membres, 8+ entreprises affiliées et formulaire d'adhésion intégré. Basé à Grand-Bassam (VITIB).",
+  "demoUrl": "https://aedci.org",
+  "codeUrl": ""
 }
 ];
 

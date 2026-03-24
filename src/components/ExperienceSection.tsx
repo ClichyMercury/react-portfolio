@@ -9,6 +9,7 @@ import { getTechIcon } from "@/lib/techIcons";
 interface Experience {
   id: string;
   company: string;
+  logo?: string;
   role: string;
   period: string;
   location: string;
@@ -74,84 +75,156 @@ const ExperienceSection = ({
 
         {/* Timeline */}
         <div className="relative">
-          {/* Timeline line - tentacle style */}
-          <div className="absolute left-8 top-0 bottom-0 w-[1px]" style={{ background: "linear-gradient(to bottom, var(--border-medium), transparent, var(--border-medium))" }}></div>
+          {/* Timeline line - desktop only */}
+          <div className="hidden md:block absolute left-8 top-0 bottom-0 w-[1px]" style={{ background: "linear-gradient(to bottom, var(--border-medium), transparent, var(--border-medium))" }}></div>
 
-          <div className="space-y-10">
+          <div className="space-y-6 md:space-y-10">
             {experiencesToShow.map((experience, index) => (
               <motion.div
                 key={experience.id}
-                className="relative flex gap-8"
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.08 }}
+                className="relative"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.06 }}
                 viewport={{ once: true }}
               >
-                {/* Timeline dot - suction cup style */}
-                <div className="relative z-10 flex-shrink-0">
-                  <div className="w-16 h-16 glass-effect rounded-full flex items-center justify-center">
-                    <Building className="h-5 w-5 text-[var(--theme-muted)]" />
+                {/* Desktop: horizontal layout with timeline */}
+                <div className="hidden md:flex gap-8">
+                  {/* Timeline dot - company logo */}
+                  <div className="relative z-10 flex-shrink-0">
+                    <div className="w-16 h-16 glass-effect rounded-full flex items-center justify-center overflow-hidden">
+                      {experience.logo ? (
+                        <img src={experience.logo} alt={experience.company} className="w-10 h-10 object-contain rounded-full" />
+                      ) : (
+                        <Building className="h-5 w-5 text-[var(--theme-muted)]" />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Desktop Content */}
+                  <div className="flex-1 pb-4">
+                    <div className="glass-effect rounded-3xl p-6 hover-lift tentacle-glow">
+                      <div className="flex flex-row items-start justify-between gap-4 mb-4">
+                        <div>
+                          <h3 className="text-lg font-semibold text-white mb-1">{experience.role}</h3>
+                          <p className="text-sm font-medium" style={{ color: "var(--accent)" }}>{experience.company}</p>
+                        </div>
+                        <div className="flex flex-col items-end gap-2">
+                          <div className="flex items-center gap-2 text-xs" style={{ color: "var(--fg-muted)" }}>
+                            <Calendar className="h-3 w-3" />{experience.period}
+                          </div>
+                          <div className="flex items-center gap-2 text-xs" style={{ color: "var(--fg-muted)" }}>
+                            <MapPin className="h-3 w-3" />{experience.location}
+                          </div>
+                          <Badge variant="outline" className="text-[10px] uppercase tracking-wider"
+                            style={{ borderColor: "var(--border-medium)", color: "var(--fg-faint)" }}
+                          >
+                            {experience.type === "professional" ? "Employee" : experience.type === "freelance" ? "Freelance" : "Personal"}
+                          </Badge>
+                        </div>
+                      </div>
+
+                      <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--fg-muted)" }}>{experience.description}</p>
+
+                      {experience.achievements.length > 0 && (
+                        <div className="mb-4">
+                          <h4 className="text-[10px] font-medium mb-3 uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>Key Achievements</h4>
+                          <div className="space-y-2">
+                            {experience.achievements.map((a, idx) => (
+                              <div key={idx} className="flex items-start gap-2">
+                                <ChevronRight className="h-3 w-3 mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }} />
+                                <p className="text-xs leading-relaxed" style={{ color: "var(--fg-muted)" }}>{a}</p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {experience.technologies.length > 0 && (
+                        <div>
+                          <h4 className="text-[10px] font-medium mb-3 uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>Technologies</h4>
+                          <div className="flex flex-wrap gap-1.5">
+                            {experience.technologies.map((t, idx) => {
+                              const icon = getTechIcon(t);
+                              return (
+                                <span key={idx} className="inline-flex items-center gap-1.5 text-[10px] px-2.5 py-1 rounded-full"
+                                  style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}
+                                >
+                                  {icon && <img src={icon} alt="" className="w-3.5 h-3.5" />}
+                                  {t}
+                                </span>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="flex-1 pb-4">
-                  <div className="glass-effect rounded-3xl p-6 hover-lift tentacle-glow">
-                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
-                      <div>
-                        <h3 className="text-lg font-semibold text-white mb-1">{experience.role}</h3>
-                        <p className="text-sm font-medium" style={{ color: "var(--accent)" }}>{experience.company}</p>
-                      </div>
-                      <div className="flex flex-col lg:items-end gap-2">
-                        <div className="flex items-center gap-2 text-xs" style={{ color: "var(--fg-muted)" }}>
-                          <Calendar className="h-3 w-3" />{experience.period}
-                        </div>
-                        <div className="flex items-center gap-2 text-xs" style={{ color: "var(--fg-muted)" }}>
-                          <MapPin className="h-3 w-3" />{experience.location}
-                        </div>
-                        <Badge variant="outline" className="text-[10px] uppercase tracking-wider"
-                          style={{ borderColor: "var(--border-medium)", color: "var(--fg-faint)" }}
-                        >
-                          {experience.type === "professional" ? "Employee" : experience.type === "freelance" ? "Freelance" : "Personal"}
-                        </Badge>
+                {/* Mobile: card layout, logo on top */}
+                <div className="md:hidden glass-effect rounded-2xl p-5 tentacle-glow">
+                  {/* Header: logo + company + badge */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-12 h-12 glass-effect rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
+                      {experience.logo ? (
+                        <img src={experience.logo} alt={experience.company} className="w-8 h-8 object-contain rounded-full" />
+                      ) : (
+                        <Building className="h-4 w-4 text-[var(--theme-muted)]" />
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium truncate" style={{ color: "var(--accent)" }}>{experience.company}</p>
+                      <div className="flex items-center gap-2 text-[10px]" style={{ color: "var(--fg-muted)" }}>
+                        <Calendar className="h-2.5 w-2.5 flex-shrink-0" />{experience.period}
                       </div>
                     </div>
-
-                    <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--fg-muted)" }}>{experience.description}</p>
-
-                    {experience.achievements.length > 0 && (
-                      <div className="mb-4">
-                        <h4 className="text-[10px] font-medium mb-3 uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>Key Achievements</h4>
-                        <div className="space-y-2">
-                          {experience.achievements.map((a, idx) => (
-                            <div key={idx} className="flex items-start gap-2">
-                              <ChevronRight className="h-3 w-3 mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }} />
-                              <p className="text-xs leading-relaxed" style={{ color: "var(--fg-muted)" }}>{a}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-                    {experience.technologies.length > 0 && (
-                      <div>
-                        <h4 className="text-[10px] font-medium mb-3 uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>Technologies</h4>
-                        <div className="flex flex-wrap gap-1.5">
-                          {experience.technologies.map((t, idx) => {
-                            const icon = getTechIcon(t);
-                            return (
-                              <span key={idx} className="inline-flex items-center gap-1.5 text-[10px] px-2.5 py-1 rounded-full"
-                                style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}
-                              >
-                                {icon && <img src={icon} alt="" className="w-3.5 h-3.5" />}
-                                {t}
-                              </span>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    )}
+                    <Badge variant="outline" className="text-[9px] uppercase tracking-wider flex-shrink-0"
+                      style={{ borderColor: "var(--border-medium)", color: "var(--fg-faint)" }}
+                    >
+                      {experience.type === "professional" ? "Employee" : experience.type === "freelance" ? "Freelance" : "Personal"}
+                    </Badge>
                   </div>
+
+                  {/* Role */}
+                  <h3 className="text-base font-semibold text-white mb-1">{experience.role}</h3>
+                  <div className="flex items-center gap-1.5 text-[10px] mb-3" style={{ color: "var(--fg-muted)" }}>
+                    <MapPin className="h-2.5 w-2.5" />{experience.location}
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-xs leading-relaxed mb-3" style={{ color: "var(--fg-muted)" }}>{experience.description}</p>
+
+                  {/* Achievements - collapsed, show max 3 on mobile */}
+                  {experience.achievements.length > 0 && (
+                    <div className="mb-3">
+                      <div className="space-y-1.5">
+                        {experience.achievements.slice(0, 3).map((a, idx) => (
+                          <div key={idx} className="flex items-start gap-1.5">
+                            <ChevronRight className="h-2.5 w-2.5 mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }} />
+                            <p className="text-[11px] leading-relaxed" style={{ color: "var(--fg-muted)" }}>{a}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Tech chips - horizontal scroll on mobile */}
+                  {experience.technologies.length > 0 && (
+                    <div className="flex flex-wrap gap-1">
+                      {experience.technologies.map((t, idx) => {
+                        const icon = getTechIcon(t);
+                        return (
+                          <span key={idx} className="inline-flex items-center gap-1 text-[9px] px-2 py-0.5 rounded-full"
+                            style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}
+                          >
+                            {icon && <img src={icon} alt="" className="w-3 h-3" />}
+                            {t}
+                          </span>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -182,6 +255,7 @@ const defaultExperiences: Experience[] = [
   {
     id: "1",
     company: "Jèko",
+    logo: "/images/jeko.jpeg",
     role: "Front End Lead",
     period: "October 2025 - Present",
     location: "Abidjan, Côte d'Ivoire",
@@ -201,6 +275,7 @@ const defaultExperiences: Experience[] = [
   {
     id: "2",
     company: "Jèko",
+    logo: "/images/jeko.jpeg",
     role: "Software Engineer",
     period: "April 2025 - September 2025",
     location: "Abidjan, Côte d'Ivoire",
@@ -219,6 +294,7 @@ const defaultExperiences: Experience[] = [
   {
     id: "3",
     company: "Freelance",
+    logo: "/images/freelance.jpeg",
     role: "Flutter Mobile Developer & Backend API",
     period: "March 2020 - Present",
     location: "Abidjan, Côte d'Ivoire (Remote)",
@@ -240,6 +316,7 @@ const defaultExperiences: Experience[] = [
   {
     id: "3b",
     company: "Government of Côte d'Ivoire",
+    logo: "/images/ci.png",
     role: "IT Consultant",
     period: "2023 - Present",
     location: "Abidjan, Côte d'Ivoire",
@@ -261,6 +338,7 @@ const defaultExperiences: Experience[] = [
   {
     id: "3c",
     company: "Diigito",
+    logo: "/images/diigito.jpg",
     role: "Flutter Trainer",
     period: "June 2025 - Present",
     location: "Abidjan, Côte d'Ivoire",
@@ -282,6 +360,7 @@ const defaultExperiences: Experience[] = [
   {
     id: "4",
     company: "Adjemin",
+    logo: "/images/LOGO-ADJEMINV3.png",
     role: "Mobile Application Developer",
     period: "August 2024 - April 2025",
     location: "Abidjan, Côte d'Ivoire",
@@ -300,6 +379,7 @@ const defaultExperiences: Experience[] = [
   {
     id: "5",
     company: "BRIDGE BANK GROUP",
+    logo: "/images/logo-white.svg",
     role: "Mobile Application Developer",
     period: "August 2024 - December 2024",
     location: "Abidjan, Côte d'Ivoire",
@@ -319,6 +399,7 @@ const defaultExperiences: Experience[] = [
   {
     id: "6",
     company: "Talentium Recrutement",
+    logo: "/images/talentium.jpeg",
     role: "Technical Project Manager",
     period: "January 2024 - July 2024",
     location: "Abidjan, Côte d'Ivoire",
@@ -340,6 +421,7 @@ const defaultExperiences: Experience[] = [
   {
     id: "7",
     company: "Talentium Recrutement",
+    logo: "/images/talentium.jpeg",
     role: "Mobile Developer",
     period: "July 2023 - December 2023",
     location: "Abidjan, Côte d'Ivoire",
@@ -361,6 +443,7 @@ const defaultExperiences: Experience[] = [
   {
     id: "8",
     company: "Edopay Côte d'Ivoire",
+    logo: "/images/logo-edopay.png",
     role: "Senior Software Development Engineer",
     period: "June 2022 - June 2023",
     location: "Abidjan, Côte d'Ivoire (Remote)",
@@ -383,6 +466,7 @@ const defaultExperiences: Experience[] = [
   {
     id: "9",
     company: "Softskills",
+    logo: "/images/softskills.png",
     role: "Software Engineer",
     period: "March 2020 - June 2022",
     location: "Côte d'Ivoire",

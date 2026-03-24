@@ -1,152 +1,101 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { User, Award, Target, Heart } from "lucide-react";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Award, User, Heart } from "lucide-react";
+import NebulaOrbs from "./NebulaOrbs";
 
-interface ProfessionalBioProps {
-  name?: string;
-  title?: string;
-  bio?: string;
-  highlights?: string[];
-}
-
-const ProfessionalBio = ({
-  name = "Gaël Sassan",
-  title = "Software Developer & Mobile App Specialist",
-  bio = "Passionate about software development for over 6 years, I specialize in creating innovative mobile applications and high-performance web solutions. My expertise covers the entire development lifecycle, from design to production, with a particular focus on user experience and modern technologies.",
-  highlights = [
+const ProfessionalBio = () => {
+  const bio = "Passionate about software development for over 6 years, I specialize in creating innovative mobile applications and high-performance web solutions. My expertise covers the entire development lifecycle, from design to production, with a particular focus on user experience and modern technologies.";
+  const highlights = [
     "6+ years of experience in mobile and web development",
     "Expertise in Flutter, React, and cloud technologies",
     "49+ successfully delivered projects",
     "User-centered approach focused on performance",
-  ],
-}: ProfessionalBioProps) => {
-  return (
-    <section
-      id="bio"
-      className="py-24 px-6 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden"
-    >
-      {/* Background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
-      </div>
+  ];
 
-      <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const contentY = useTransform(scrollYProgress, [0.1, 0.5], [60, 0]);
+  const contentOpacity = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
+
+  return (
+    <section ref={ref} id="bio" className="min-h-screen py-40 lg:py-52 px-6 relative flex items-center">
+      <NebulaOrbs variant="cyber" />
+      <div className="relative z-10 max-w-6xl mx-auto w-full">
+        {/* Headline */}
+        <motion.div className="text-center mb-24"
+          initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-px bg-primary"></div>
-            <span className="text-primary text-sm font-medium uppercase tracking-wider">
-              About Me
-            </span>
-            <div className="w-12 h-px bg-primary"></div>
-          </div>
-          <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            <span className="text-white">Who</span>
-            <span className="gradient-text"> Am I?</span>
+          <span className="text-[11px] font-medium uppercase tracking-[0.3em] block mb-6" style={{ color: "var(--accent)" }}>About Me</span>
+          <h2 className="text-5xl sm:text-6xl lg:text-8xl font-bold leading-[0.9] tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <span className="text-white">Who </span>
+            <span style={{ color: "var(--fg-faint)" }}>Am I?</span>
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Bio content */}
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-2xl font-bold text-white mb-2">{name}</h3>
-                <p className="text-primary text-lg font-medium">{title}</p>
-              </div>
+        {/* Bio */}
+        <motion.div className="max-w-3xl mx-auto text-center mb-24" style={{ y: contentY, opacity: contentOpacity }}>
+          <p className="text-sm tracking-wider mb-4" style={{ color: "var(--accent)" }}>Software Developer & Mobile App Specialist</p>
+          <p className="text-xl lg:text-2xl leading-relaxed font-light" style={{ color: "var(--fg-muted)" }}>{bio}</p>
+        </motion.div>
 
-              <p className="text-gray-300 text-lg leading-relaxed">{bio}</p>
-            </div>
+        {/* Stats */}
+        <motion.div className="flex flex-wrap justify-center gap-16 lg:gap-24 mb-24" style={{ y: contentY, opacity: contentOpacity }}>
+          {[
+            { number: "6+", label: "Years" },
+            { number: "49+", label: "Projects" },
+            { number: "100%", label: "Satisfaction" },
+          ].map((s, i) => (
+            <motion.div key={i} className="text-center"
+              initial={{ opacity: 0, scale: 0.5 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ delay: i * 0.15, duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <div className="text-5xl lg:text-7xl font-bold text-white mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>{s.number}</div>
+              <div className="text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>{s.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
 
-            {/* Key highlights */}
-            <div className="space-y-4">
-              <h4 className="text-xl font-semibold text-white flex items-center gap-2">
-                <Target className="h-5 w-5 text-primary" />
-                Key Highlights
-              </h4>
-              <div className="space-y-3">
-                {highlights.map((highlight, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-start gap-3"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-gray-300">{highlight}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+        {/* Highlights */}
+        <motion.div className="max-w-2xl mx-auto mb-24" style={{ y: contentY, opacity: contentOpacity }}>
+          {highlights.map((h, i) => (
+            <motion.div key={i} className="flex items-center gap-4 py-4"
+              style={{ borderBottom: "1px solid var(--border-subtle)" }}
+              initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }} viewport={{ once: true }}
+            >
+              <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: "var(--accent)" }} />
+              <p className="text-base font-light" style={{ color: "var(--fg-muted)" }}>{h}</p>
+            </motion.div>
+          ))}
+        </motion.div>
 
-          {/* Right side - Values & Approach */}
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <div className="grid gap-6">
-              {[
-                {
-                  icon: <Award className="h-6 w-6" />,
-                  title: "Technical Excellence",
-                  description:
-                    "Clean code, scalable architectures and development best practices.",
-                },
-                {
-                  icon: <User className="h-6 w-6" />,
-                  title: "Collaborative Approach",
-                  description:
-                    "Transparent communication and teamwork for optimal results.",
-                },
-                {
-                  icon: <Heart className="h-6 w-6" />,
-                  title: "Passion & Innovation",
-                  description:
-                    "Constant technology watch and search for creative solutions.",
-                },
-              ].map((value, index) => (
-                <motion.div
-                  key={index}
-                  className="glass-effect p-6 rounded-2xl hover-lift"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 bg-primary/20 rounded-xl text-primary">
-                      {value.icon}
-                    </div>
-                    <div>
-                      <h5 className="text-lg font-semibold text-white mb-2">
-                        {value.title}
-                      </h5>
-                      <p className="text-gray-400 text-sm leading-relaxed">
-                        {value.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+        {/* Cards */}
+        <div className="grid lg:grid-cols-3 gap-6">
+          {[
+            { icon: <Award className="h-5 w-5" />, title: "Technical Excellence", desc: "Clean code, scalable architectures and best practices." },
+            { icon: <User className="h-5 w-5" />, title: "Collaborative Approach", desc: "Transparent communication and teamwork for optimal results." },
+            { icon: <Heart className="h-5 w-5" />, title: "Passion & Innovation", desc: "Constant technology watch and creative solutions." },
+          ].map((v, i) => (
+            <motion.div key={i}
+              className="glass-effect p-8 rounded-3xl hover-lift tentacle-glow group text-center"
+              initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: i * 0.15 }} viewport={{ once: true }}
+              whileHover={{ scale: 1.03 }}
+            >
+              <div className="inline-flex p-4 rounded-2xl mb-5 transition-all duration-500 group-hover:text-[var(--bg)]"
+                style={{ border: "1px solid var(--border-medium)", color: "var(--fg-faint)" }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = "var(--accent)"; e.currentTarget.style.borderColor = "var(--accent)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.borderColor = "var(--border-medium)"; }}
+              >{v.icon}</div>
+              <h5 className="text-lg font-semibold text-white mb-3">{v.title}</h5>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--fg-muted)" }}>{v.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

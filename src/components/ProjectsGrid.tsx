@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ProjectCard from "./ProjectCard";
-import { Badge } from "./ui/badge";
 import { motion } from "framer-motion";
-import { Filter } from "lucide-react";
+import SectionHeader from "./SectionHeader";
+import NebulaOrbs from "./NebulaOrbs";
 
 interface Project {
   id: string;
@@ -25,7 +25,6 @@ interface ProjectsGridProps {
 
 const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [visibleCount, setVisibleCount] = useState<number>(6);
   const [visibleFeaturedCount, setVisibleFeaturedCount] = useState<number>(6);
 
@@ -42,80 +41,53 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
   const featuredProjects = projects.filter((p) => p.featured);
   const regularProjects = filteredProjects.filter((p) => !p.featured);
 
-  // Show only first 6 projects initially, then all when expanded
   const projectsToShow = regularProjects.slice(0, visibleCount);
   const hasMoreProjects = visibleCount < regularProjects.length;
 
-  // Show only first 6 featured projects initially
   const featuredProjectsToShow = featuredProjects.slice(0, visibleFeaturedCount);
   const hasMoreFeaturedProjects = visibleFeaturedCount < featuredProjects.length;
 
   return (
     <section
       id="projects"
-      className="py-24 px-6 bg-black relative overflow-hidden"
+      className="min-h-screen py-40 lg:py-52 px-6 relative overflow-hidden"
     >
-      {/* Background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
-      </div>
-
+      <NebulaOrbs variant="mixed" />
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-px bg-primary"></div>
-            <span className="text-primary text-sm font-medium uppercase tracking-wider">
-              Portfolio
-            </span>
-            <div className="w-12 h-px bg-primary"></div>
-          </div>
-          <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            <span className="gradient-text">Featured</span>
-            <span className="text-white"> Projects</span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Discover my latest mobile applications and web projects, crafted
-            with precision and innovation.
-          </p>
-        </motion.div>
+        <SectionHeader
+          label="Portfolio"
+          title="Featured"
+          titleHighlight="Projects"
+          description="Discover my latest mobile applications and web projects, crafted with precision and innovation."
+        />
 
-        {/* Category Filter */}
+        {/* Category Filter - Apple segmented control */}
         <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-16"
+          className="flex justify-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <div className="flex items-center gap-2 text-gray-400 mr-4">
-            <Filter className="h-4 w-4" />
-            <span className="text-sm font-medium">Filter by:</span>
+          <div className="inline-flex flex-wrap justify-center gap-1 p-1 rounded-full" style={{ border: "1px solid var(--border-subtle)", background: "var(--bg-card)" }}>
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-5 py-2.5 rounded-full text-xs font-medium capitalize tracking-[0.12em] transition-all duration-400 ${
+                  selectedCategory === category
+                    ? "text-[var(--bg)]"
+                    : "hover:text-white"
+                }`}
+                style={{
+                  background: selectedCategory === category ? "var(--accent)" : "transparent",
+                  color: selectedCategory === category ? "var(--bg)" : "var(--fg-muted)",
+                }}
+              >
+                {category}
+              </button>
+            ))}
           </div>
-          {categories.map((category) => (
-            <motion.button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              onMouseEnter={() => setHoveredCategory(category)}
-              onMouseLeave={() => setHoveredCategory(null)}
-              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 capitalize ${
-                selectedCategory === category
-                  ? "bg-primary text-black glow-effect"
-                  : "glass-effect text-gray-300 hover:text-primary hover:border-primary/50"
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {category}
-            </motion.button>
-          ))}
         </motion.div>
 
         {/* Featured Projects */}
@@ -127,8 +99,8 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-              <span className="w-2 h-2 bg-primary rounded-full"></span>
+            <h3 className="text-lg font-semibold text-white/60 mb-8 flex items-center gap-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <div className="w-8 h-[1px] bg-white/20"></div>
               Featured Work
             </h3>
             <div className="grid lg:grid-cols-2 gap-8">
@@ -137,7 +109,7 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
                   key={project.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  transition={{ duration: 0.6, delay: index * 0.08 }}
                   viewport={{ once: true }}
                 >
                   <ProjectCard
@@ -157,40 +129,23 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
                 </motion.div>
               ))}
             </div>
-            {/* View More Featured Button */}
             {hasMoreFeaturedProjects && (
-              <motion.div
-                className="text-center mt-10"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
+              <div className="text-center mt-10">
                 <motion.button
                   onClick={() => setVisibleFeaturedCount(prev => prev + 6)}
-                  className="group relative px-8 py-4 bg-gradient-to-r from-primary to-purple-600 text-black font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-3 border border-white/20 rounded-full text-xs font-medium uppercase tracking-[0.15em] text-white/50 hover:text-white hover:bg-white/5 transition-all duration-500"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <span className="relative z-10 flex items-center gap-2">
-                    View More Featured ({Math.min(6, featuredProjects.length - visibleFeaturedCount)} more)
-                    <span>↓</span>
-                  </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-600/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                  View More Featured ({Math.min(6, featuredProjects.length - visibleFeaturedCount)} more)
                 </motion.button>
-              </motion.div>
+              </div>
             )}
           </motion.div>
         )}
 
         {/* Regular Projects Grid */}
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {(selectedCategory === "all"
             ? projectsToShow
             : filteredProjects
@@ -199,7 +154,7 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.06 }}
               viewport={{ once: true }}
             >
               <ProjectCard
@@ -218,32 +173,24 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
               />
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
         {/* View More Button */}
         {hasMoreProjects && selectedCategory === "all" && (
-          <motion.div
-            className="text-center mt-16"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
+          <div className="text-center mt-16">
             <motion.button
               onClick={() => setVisibleCount(prev => prev + 6)}
-              className="group relative px-8 py-4 bg-gradient-to-r from-primary to-purple-600 text-black font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="px-8 py-3 border border-white/20 rounded-full text-xs font-medium uppercase tracking-[0.15em] text-white/50 hover:text-white hover:bg-white/5 transition-all duration-500"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <span className="relative z-10 flex items-center gap-2">
-                View More Projects ({Math.min(6, regularProjects.length - visibleCount)} more)
-                <span>↓</span>
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-600/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+              View More ({Math.min(6, regularProjects.length - visibleCount)} more)
             </motion.button>
-          </motion.div>
+          </div>
         )}
       </div>
+
+      <div className="tentacle-line mt-32 max-w-md mx-auto"></div>
     </section>
   );
 };

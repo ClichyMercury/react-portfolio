@@ -1,209 +1,122 @@
-import React from "react";
-import { Button } from "./ui/button";
-import { motion } from "framer-motion";
-import { ArrowDown, Code, Smartphone, Zap } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import AnimatedText from "./AnimatedText";
 
 interface HeroSectionProps {
-  name?: string;
-  tagline?: string;
-  ctaText?: string;
   onCtaClick?: () => void;
-  photoUrl?: string;
 }
 
-const HeroSection = ({
-  name = "GAËL SASSAN",
-  tagline = "Software Developer creating innovative solutions with modern technologies and best practices",
-  ctaText = "Get in touch",
-  onCtaClick = () => console.log("CTA clicked"),
-  photoUrl = "./images/GS-removebg-preview.png",
-}: HeroSectionProps) => {
+const HeroSection = ({ onCtaClick = () => {} }: HeroSectionProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.85]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [0, 120]);
+
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 to-transparent rounded-full blur-3xl"></div>
-      </div>
+    <section ref={ref} className="relative h-[180vh]">
+      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+        {/* Video background */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: "brightness(0.4)" }}
+        >
+          <source src="/images/tentacules.MP4" type="video/mp4" />
+        </video>
 
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(168,85,247,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(168,85,247,0.03)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+        {/* Gradient overlays for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent" />
+        {/* Side vignette */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.7)_100%)]" />
 
-      <div className="relative z-10 container max-w-7xl mx-auto px-6 py-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left side - Text content */}
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="space-y-4">
-              <motion.div
-                className="flex items-center gap-3 text-primary font-medium"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                <div className="w-12 h-px bg-primary"></div>
-                <span className="text-sm tracking-wider uppercase">
-                  Software Developer
-                </span>
-              </motion.div>
-
-              <motion.h1
-                className="text-5xl lg:text-7xl font-bold leading-tight"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <span className="text-white">Hi, I'm</span>
-                <br />
-                <span className="gradient-text">{name}</span>
-              </motion.h1>
-            </div>
-
-            <motion.p
-              className="text-xl text-gray-300 max-w-lg leading-relaxed"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-            >
-              {tagline}
-            </motion.p>
-
-            {/* Stats */}
+        <motion.div className="relative z-10 container max-w-6xl mx-auto px-6" style={{ opacity, scale, y }}>
+          <div className="flex flex-col items-center text-center">
+            {/* Logo */}
             <motion.div
-              className="flex gap-8 py-6"
+              className="mb-10"
+              initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
+            >
+              <img src="./images/GS-removebg-preview.png" alt="GS" className="w-28 h-28 object-contain logo-themed opacity-90" />
+            </motion.div>
+
+            {/* Label */}
+            <motion.div
+              className="flex items-center gap-4 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
             >
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">6+</div>
-                <div className="text-sm text-gray-400">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">49+</div>
-                <div className="text-sm text-gray-400">Projects Completed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary">100%</div>
-                <div className="text-sm text-gray-400">Client Satisfaction</div>
-              </div>
+              <div className="w-12 h-[1px]" style={{ background: "var(--accent)" }} />
+              <span className="text-[11px] font-medium uppercase tracking-[0.4em]" style={{ color: "var(--accent)" }}>
+                Software Developer
+              </span>
+              <div className="w-12 h-[1px]" style={{ background: "var(--accent)" }} />
             </motion.div>
 
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
+            {/* Name */}
+            <h1
+              className="text-7xl sm:text-8xl lg:text-[150px] xl:text-[180px] font-bold leading-[0.85] mb-8 tracking-tighter"
+              style={{ fontFamily: "'Playfair Display', serif" }}
             >
-              <Button
-                size="lg"
-                onClick={onCtaClick}
-                className="bg-primary hover:bg-primary/90 text-black font-semibold px-8 py-6 rounded-full glow-effect transition-all duration-300 hover:scale-105"
-              >
-                {ctaText}
-                <ArrowDown className="ml-2 h-4 w-4" />
-              </Button>
-            </motion.div>
-          </motion.div>
+              <AnimatedText text="GAËL" className="block text-white" delay={0.4} staggerSpeed={0.06} />
+              <AnimatedText text="SASSAN" className="block" delay={0.7} staggerSpeed={0.06} />
+            </h1>
 
-          {/* Right side - Image and floating elements */}
+            {/* Tagline */}
+            <motion.p
+              className="text-base lg:text-xl max-w-md leading-relaxed font-light mb-16"
+              style={{ color: "var(--fg-muted)" }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+            >
+              Crafting digital experiences that merge
+              <br />
+              innovation with elegance.
+            </motion.p>
+
+            {/* CTA */}
+            <motion.button
+              onClick={onCtaClick}
+              className="group px-10 py-4 rounded-full text-sm font-semibold tracking-wider uppercase hover:scale-105 transition-all duration-500"
+              style={{ background: "var(--accent)", color: "var(--bg)" }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.6, duration: 0.6 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Explore my work
+            </motion.button>
+          </div>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div className="absolute bottom-10 left-1/2 -translate-x-1/2" style={{ opacity }}>
           <motion.div
-            className="relative flex justify-center lg:justify-end"
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            className="flex flex-col items-center gap-3"
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           >
-            {/* Main image container */}
-            <div className="relative">
-              <motion.div
-                className="relative w-80 h-80 lg:w-96 lg:h-96"
-                animate={{
-                  y: [0, -10, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-full blur-2xl"></div>
-                <div className="relative w-full h-full glass-effect rounded-full p-8 border-2 border-primary/20">
-                  <img
-                    src={photoUrl}
-                    alt="Gaël Sassan"
-                    className="w-full h-full object-contain filter drop-shadow-2xl"
-                  />
-                </div>
-              </motion.div>
-
-              {/* Floating tech icons */}
-              <motion.div
-                className="absolute -top-4 -left-4 glass-effect p-4 rounded-2xl"
-                animate={{
-                  y: [0, -5, 0],
-                  rotate: [0, 5, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              >
-                <Smartphone className="h-6 w-6 text-primary" />
-              </motion.div>
-
-              <motion.div
-                className="absolute -bottom-4 -right-4 glass-effect p-4 rounded-2xl"
-                animate={{
-                  y: [0, 5, 0],
-                  rotate: [0, -5, 0],
-                }}
-                transition={{
-                  duration: 3.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5,
-                }}
-              >
-                <Code className="h-6 w-6 text-primary" />
-              </motion.div>
-
-              <motion.div
-                className="absolute top-1/2 -right-8 glass-effect p-4 rounded-2xl"
-                animate={{
-                  x: [0, 5, 0],
-                  rotate: [0, 10, 0],
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1,
-                }}
-              >
-                <Zap className="h-6 w-6 text-primary" />
-              </motion.div>
-            </div>
+            <svg width="16" height="24" viewBox="0 0 16 24" fill="none">
+              <rect x="1" y="1" width="14" height="22" rx="7" stroke="var(--fg-faint)" strokeWidth="1.5"/>
+              <motion.circle cx="8" cy="8" r="2" fill="var(--accent)"
+                animate={{ cy: [8, 16, 8] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </svg>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="flex flex-col items-center gap-2 text-gray-400">
-          <span className="text-xs uppercase tracking-wider">Scroll Down</span>
-          <ArrowDown className="h-4 w-4" />
-        </div>
-      </motion.div>
     </section>
   );
 };

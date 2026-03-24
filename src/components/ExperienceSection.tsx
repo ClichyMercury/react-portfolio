@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Building, ChevronRight } from "lucide-react";
-import { Card, CardContent, CardHeader } from "./ui/card";
 import { Badge } from "./ui/badge";
+import SectionHeader from "./SectionHeader";
+import NebulaOrbs from "./NebulaOrbs";
+import { getTechIcon } from "@/lib/techIcons";
 
 interface Experience {
   id: string;
@@ -28,151 +30,128 @@ const ExperienceSection = ({
   const experiencesToShow = experiences.slice(0, visibleCount);
   const hasMoreExperiences = visibleCount < experiences.length;
 
+  const getTypeBadgeClass = (type: string) => {
+    switch (type) {
+      case "professional":
+        return "border-white/20 text-white/50";
+      case "freelance":
+        return "border-white/15 text-white/40";
+      default:
+        return "border-white/10 text-white/30";
+    }
+  };
+
   return (
     <section
       id="experience"
-      className="py-24 px-6 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden"
+      className="min-h-screen py-40 lg:py-52 px-6 relative overflow-hidden"
     >
-      {/* Background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
-      </div>
+      <NebulaOrbs variant="purple" />
+      {/* Tentacle decoration */}
+      <svg
+        className="absolute top-0 left-0 w-32 h-full opacity-[0.02] pointer-events-none"
+        viewBox="0 0 100 1000"
+      >
+        <motion.path
+          d="M20,0 Q60,200 30,400 Q0,600 50,800 Q80,900 40,1000"
+          stroke="white"
+          strokeWidth="1"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          whileInView={{ pathLength: 1 }}
+          transition={{ duration: 3 }}
+          viewport={{ once: true }}
+        />
+      </svg>
 
       <div className="relative z-10 max-w-6xl mx-auto">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-px bg-primary"></div>
-            <span className="text-primary text-sm font-medium uppercase tracking-wider">
-              Journey
-            </span>
-            <div className="w-12 h-px bg-primary"></div>
-          </div>
-          <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            <span className="text-white">My</span>
-            <span className="gradient-text"> Experience</span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            A rich journey filled with diverse projects and stimulating technical challenges.
-          </p>
-        </motion.div>
+        <SectionHeader
+          label="Journey"
+          title="My"
+          titleHighlight="Experience"
+          description="A rich journey filled with diverse projects and stimulating technical challenges."
+        />
 
         {/* Timeline */}
         <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-purple-500 to-primary opacity-30"></div>
+          {/* Timeline line - tentacle style */}
+          <div className="absolute left-8 top-0 bottom-0 w-[1px]" style={{ background: "linear-gradient(to bottom, var(--border-medium), transparent, var(--border-medium))" }}></div>
 
-          <div className="space-y-12">
+          <div className="space-y-10">
             {experiencesToShow.map((experience, index) => (
               <motion.div
                 key={experience.id}
                 className="relative flex gap-8"
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.08 }}
                 viewport={{ once: true }}
               >
-                {/* Timeline dot */}
-                <div className="relative z-10">
-                  <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center border-4 border-primary/30">
-                    <Building className="h-6 w-6 text-primary" />
+                {/* Timeline dot - suction cup style */}
+                <div className="relative z-10 flex-shrink-0">
+                  <div className="w-16 h-16 glass-effect rounded-full flex items-center justify-center">
+                    <Building className="h-5 w-5 text-[var(--theme-muted)]" />
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 pb-8">
-                  <Card className="glass-effect border-white/10 hover-lift">
-                    <CardHeader className="pb-4">
-                      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-                        <div>
-                          <h3 className="text-xl font-bold text-white mb-1">
-                            {experience.role}
-                          </h3>
-                          <p className="text-primary font-semibold">
-                            {experience.company}
-                          </p>
+                <div className="flex-1 pb-4">
+                  <div className="glass-effect rounded-3xl p-6 hover-lift tentacle-glow">
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 mb-4">
+                      <div>
+                        <h3 className="text-lg font-semibold text-white mb-1">{experience.role}</h3>
+                        <p className="text-sm font-medium" style={{ color: "var(--accent)" }}>{experience.company}</p>
+                      </div>
+                      <div className="flex flex-col lg:items-end gap-2">
+                        <div className="flex items-center gap-2 text-xs" style={{ color: "var(--fg-muted)" }}>
+                          <Calendar className="h-3 w-3" />{experience.period}
                         </div>
-                        <div className="flex flex-col lg:items-end gap-2">
-                          <div className="flex items-center gap-2 text-gray-400 text-sm">
-                            <Calendar className="h-4 w-4" />
-                            {experience.period}
-                          </div>
-                          <div className="flex items-center gap-2 text-gray-400 text-sm">
-                            <MapPin className="h-4 w-4" />
-                            {experience.location}
-                          </div>
-                          <Badge
-                            variant="outline"
-                            className={`text-xs ${
-                              experience.type === "professional"
-                                ? "border-green-500/30 text-green-400"
-                                : experience.type === "freelance"
-                                  ? "border-blue-500/30 text-blue-400"
-                                  : "border-purple-500/30 text-purple-400"
-                            }`}
-                          >
-                            {experience.type === "professional"
-                              ? "Employee"
-                              : experience.type === "freelance"
-                                ? "Freelance"
-                                : "Personal"}
-                          </Badge>
+                        <div className="flex items-center gap-2 text-xs" style={{ color: "var(--fg-muted)" }}>
+                          <MapPin className="h-3 w-3" />{experience.location}
+                        </div>
+                        <Badge variant="outline" className="text-[10px] uppercase tracking-wider"
+                          style={{ borderColor: "var(--border-medium)", color: "var(--fg-faint)" }}
+                        >
+                          {experience.type === "professional" ? "Employee" : experience.type === "freelance" ? "Freelance" : "Personal"}
+                        </Badge>
+                      </div>
+                    </div>
+
+                    <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--fg-muted)" }}>{experience.description}</p>
+
+                    {experience.achievements.length > 0 && (
+                      <div className="mb-4">
+                        <h4 className="text-[10px] font-medium mb-3 uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>Key Achievements</h4>
+                        <div className="space-y-2">
+                          {experience.achievements.map((a, idx) => (
+                            <div key={idx} className="flex items-start gap-2">
+                              <ChevronRight className="h-3 w-3 mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }} />
+                              <p className="text-xs leading-relaxed" style={{ color: "var(--fg-muted)" }}>{a}</p>
+                            </div>
+                          ))}
                         </div>
                       </div>
-                    </CardHeader>
+                    )}
 
-                    <CardContent className="space-y-6">
-                      <p className="text-gray-300 leading-relaxed">
-                        {experience.description}
-                      </p>
-
-                      {/* Achievements */}
-                      {experience.achievements.length > 0 && (
-                        <div>
-                          <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
-                            🏆 Key Achievements
-                          </h4>
-                          <div className="space-y-2">
-                            {experience.achievements.map((achievement, idx) => (
-                              <div key={idx} className="flex items-start gap-2">
-                                <ChevronRight className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                                <p className="text-gray-400 text-sm">
-                                  {achievement}
-                                </p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Technologies */}
-                      {experience.technologies.length > 0 && (
-                        <div>
-                          <h4 className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
-                            🛠️ Technologies Used
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {experience.technologies.map((tech, idx) => (
-                              <Badge
-                                key={idx}
-                                variant="outline"
-                                className="border-primary/30 text-white bg-primary/10 hover:bg-primary/20 transition-all duration-300 text-xs"
+                    {experience.technologies.length > 0 && (
+                      <div>
+                        <h4 className="text-[10px] font-medium mb-3 uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>Technologies</h4>
+                        <div className="flex flex-wrap gap-1.5">
+                          {experience.technologies.map((t, idx) => {
+                            const icon = getTechIcon(t);
+                            return (
+                              <span key={idx} className="inline-flex items-center gap-1.5 text-[10px] px-2.5 py-1 rounded-full"
+                                style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}
                               >
-                                {tech}
-                              </Badge>
-                            ))}
-                          </div>
+                                {icon && <img src={icon} alt="" className="w-3.5 h-3.5" />}
+                                {t}
+                              </span>
+                            );
+                          })}
                         </div>
-                      )}
-                    </CardContent>
-                  </Card>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -180,29 +159,21 @@ const ExperienceSection = ({
 
           {/* View More Button */}
           {hasMoreExperiences && (
-            <motion.div
-              className="text-center mt-12"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
+            <div className="text-center mt-12">
               <motion.button
                 onClick={() => setVisibleCount(prev => prev + 6)}
-                className="group relative px-8 py-4 bg-gradient-to-r from-primary to-purple-600 text-black font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-1"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="px-8 py-3 border border-white/20 rounded-full text-xs font-medium uppercase tracking-[0.15em] text-white/50 hover:text-white hover:bg-white/5 transition-all duration-500"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <span className="relative z-10 flex items-center gap-2">
-                  View More ({Math.min(6, experiences.length - visibleCount)} more)
-                  <span>↓</span>
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-purple-600/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                View More ({Math.min(6, experiences.length - visibleCount)} more)
               </motion.button>
-            </motion.div>
+            </div>
           )}
         </div>
       </div>
+
+      <div className="tentacle-line mt-32 max-w-md mx-auto"></div>
     </section>
   );
 };
@@ -262,17 +233,8 @@ const defaultExperiences: Experience[] = [
       "6+ years of experience in freelance development"
     ],
     technologies: [
-      "Flutter",
-      "Java",
-      "Swift",
-      "Python",
-      "Laravel",
-      "Flask",
-      "Android Studio",
-      "Git",
-      "HTML/CSS",
-      "GitHub",
-      "GitLab"
+      "Flutter", "Java", "Swift", "Python", "Laravel", "Flask",
+      "Android Studio", "Git", "HTML/CSS", "GitHub", "GitLab"
     ],
   },
   {
@@ -292,13 +254,8 @@ const defaultExperiences: Experience[] = [
       "Collaborated with multiple ministries and public institutions"
     ],
     technologies: [
-      "Flutter",
-      "SvelteKit",
-      "REST APIs",
-      "Secure Authentication",
-      "Real-time Systems",
-      "Data Analytics",
-      "Government Standards"
+      "Flutter", "SvelteKit", "REST APIs", "Secure Authentication",
+      "Real-time Systems", "Data Analytics", "Government Standards"
     ],
   },
   {
@@ -318,13 +275,8 @@ const defaultExperiences: Experience[] = [
       "Combined in-person and online training formats"
     ],
     technologies: [
-      "Flutter",
-      "Dart",
-      "Mobile Development",
-      "UI/UX Design",
-      "State Management",
-      "API Integration",
-      "Teaching"
+      "Flutter", "Dart", "Mobile Development", "UI/UX Design",
+      "State Management", "API Integration", "Teaching"
     ],
   },
   {
@@ -381,13 +333,8 @@ const defaultExperiences: Experience[] = [
       "Promoted from Mobile Developer after 6 months of outstanding performance"
     ],
     technologies: [
-      "Trello",
-      "Project Management",
-      "Team Leadership",
-      "Agile Methodologies",
-      "Sales Strategy",
-      "Flutter",
-      "Laravel"
+      "Trello", "Project Management", "Team Leadership",
+      "Agile Methodologies", "Sales Strategy", "Flutter", "Laravel"
     ],
   },
   {
@@ -407,15 +354,8 @@ const defaultExperiences: Experience[] = [
       "Complete management of technical projects with social impact"
     ],
     technologies: [
-      "Flutter",
-      "Laravel",
-      "Firebase",
-      "Java",
-      "Node.js",
-      "Python",
-      "JavaScript",
-      "Kotlin",
-      "Git"
+      "Flutter", "Laravel", "Firebase", "Java", "Node.js",
+      "Python", "JavaScript", "Kotlin", "Git"
     ],
   },
   {
@@ -436,13 +376,8 @@ const defaultExperiences: Experience[] = [
       "Collaborated effectively with backend and product teams in freelance mode"
     ],
     technologies: [
-      "Flutter",
-      "Dart",
-      "Payment APIs",
-      "Firebase",
-      "Biometric Authentication",
-      "Push Notifications",
-      "UI/UX Design"
+      "Flutter", "Dart", "Payment APIs", "Firebase",
+      "Biometric Authentication", "Push Notifications", "UI/UX Design"
     ],
   },
   {
@@ -463,15 +398,8 @@ const defaultExperiences: Experience[] = [
       "Complete mastery of development lifecycle"
     ],
     technologies: [
-      "Flutter",
-      "Java",
-      "Node.js",
-      "Python",
-      "Kotlin",
-      "Rust",
-      "Firebase",
-      "Git",
-      "DevOps"
+      "Flutter", "Java", "Node.js", "Python", "Kotlin",
+      "Rust", "Firebase", "Git", "DevOps"
     ],
   },
 ];

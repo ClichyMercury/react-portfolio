@@ -1,436 +1,115 @@
-import React from "react";
-import { Badge } from "./ui/badge";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import SectionHeader from "./SectionHeader";
+import NebulaOrbs from "./NebulaOrbs";
 
 interface Skill {
   name: string;
-  proficiency: number;
+  icon: string; // URL to icon
   category: "languages" | "frameworks" | "tools";
-  icon?: string;
-  color?: string;
 }
 
-interface SkillsSectionProps {
-  skills?: Skill[];
-}
+const SkillsSection = ({ skills = defaultSkills }: { skills?: Skill[] }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const statsY = useTransform(scrollYProgress, [0.3, 0.6], [60, 0]);
+  const statsOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
 
-const SkillsSection = ({ skills = defaultSkills }: SkillsSectionProps) => {
+  const languages = skills.filter((s) => s.category === "languages");
+  const frameworks = skills.filter((s) => s.category === "frameworks");
+  const tools = skills.filter((s) => s.category === "tools");
+  const row1 = [...languages, ...frameworks];
+  const row2 = [...tools, ...languages.slice(0, 4)];
+  const row3 = [...frameworks, ...tools.slice(0, 5)];
+
   return (
-    <section
-      id="skills"
-      className="py-24 px-6 bg-gradient-to-b from-black to-gray-900 relative overflow-hidden"
-    >
-      {/* Background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
+    <section ref={ref} id="skills" className="min-h-screen py-40 lg:py-52 px-6 relative overflow-hidden">
+      <NebulaOrbs variant="purple" />
+      <div className="relative z-10 max-w-5xl mx-auto">
+        <SectionHeader label="Expertise" title="Skills &" titleHighlight="Technologies"
+          description="Mastering cutting-edge technologies to build exceptional digital experiences." />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-px bg-primary"></div>
-            <span className="text-primary text-sm font-medium uppercase tracking-wider">
-              Expertise
-            </span>
-            <div className="w-12 h-px bg-primary"></div>
-          </div>
-          <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            <span className="text-white">Skills &</span>
-            <span className="gradient-text"> Technologies</span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Mastering cutting-edge technologies to build exceptional digital
-            experiences.
-          </p>
-        </motion.div>
-
-        {/* Technologies Scrolling List */}
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="glass-effect rounded-3xl p-8 border-white/10">
-            <div className="flex flex-wrap gap-3 justify-center">
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, delay: index * 0.05 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <Badge
-                    variant="outline"
-                    className="border-primary/30 text-white bg-primary/10 hover:bg-primary/20 transition-all duration-300 px-4 py-2 text-sm font-medium cursor-pointer"
-                  >
-                    {skill.icon && <span className="mr-2">{skill.icon}</span>}
-                    {skill.name}
-                  </Badge>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Experience Highlights */}
-        <motion.div
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          viewport={{ once: true }}
-        >
-          {[
-            { number: "6+", label: "Years of Experience", icon: "⏱️" },
-            { number: "49+", label: "Projects Completed", icon: "🚀" },
-            { number: "15+", label: "Technologies Mastered", icon: "⚡" },
-            { number: "100%", label: "Client Satisfaction", icon: "⭐" },
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              className="glass-effect p-6 rounded-2xl text-center hover-lift"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="text-3xl mb-2">{stat.icon}</div>
-              <div className="text-3xl font-bold text-primary mb-2">
-                {stat.number}
-              </div>
-              <div className="text-sm text-gray-400">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
+      <div className="space-y-5 mb-32 overflow-hidden">
+        <MarqueeRow items={row1} speed="animate-marquee" />
+        <MarqueeRow items={row2} speed="animate-marquee-reverse" />
+        <MarqueeRow items={row3} speed="animate-marquee" />
       </div>
+
+      <motion.div className="max-w-5xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8" style={{ y: statsY, opacity: statsOpacity }}>
+        {[
+          { number: "6+", label: "Years of Experience" },
+          { number: "49+", label: "Projects Completed" },
+          { number: "15+", label: "Technologies Mastered" },
+          { number: "100%", label: "Client Satisfaction" },
+        ].map((s) => (
+          <motion.div key={s.label} className="text-center py-8 rounded-3xl glass-effect hover-lift" whileHover={{ scale: 1.03 }}>
+            <div className="text-4xl lg:text-5xl font-bold text-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>{s.number}</div>
+            <div className="text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>{s.label}</div>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 };
 
+const MarqueeRow = ({ items, speed }: { items: Skill[]; speed: string }) => {
+  const doubled = [...items, ...items];
+  return (
+    <div className="flex overflow-hidden">
+      <div className={`flex gap-4 ${speed}`} style={{ willChange: "transform" }}>
+        {doubled.map((s, i) => (
+          <motion.div key={`${s.name}-${i}`}
+            className="flex-shrink-0 flex items-center gap-3 px-5 py-3 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300"
+            style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}
+            whileHover={{ scale: 1.1, rotate: -2, background: "var(--accent)", color: "var(--bg)", borderColor: "var(--accent)" }}
+          >
+            {s.icon && <img src={s.icon} alt={s.name} className="w-5 h-5 object-contain" />}
+            {s.name}
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const D = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
+
 const defaultSkills: Skill[] = [
-  // Programming Languages
-  {
-    name: "Dart",
-    proficiency: 95,
-    category: "languages",
-    icon: "🎯",
-    color: "#0175C2",
-  },
-  {
-    name: "Java",
-    proficiency: 88,
-    category: "languages",
-    icon: "☕",
-    color: "#ED8B00",
-  },
-  {
-    name: "JavaScript",
-    proficiency: 90,
-    category: "languages",
-    icon: "📜",
-    color: "#F7DF1E",
-  },
-  {
-    name: "TypeScript",
-    proficiency: 85,
-    category: "languages",
-    icon: "📘",
-    color: "#3178C6",
-  },
-  {
-    name: "Python",
-    proficiency: 85,
-    category: "languages",
-    icon: "🐍",
-    color: "#3776AB",
-  },
-  {
-    name: "Kotlin",
-    proficiency: 82,
-    category: "languages",
-    icon: "🟣",
-    color: "#7F52FF",
-  },
-  {
-    name: "Swift",
-    proficiency: 78,
-    category: "languages",
-    icon: "🍎",
-    color: "#FA7343",
-  },
-  {
-    name: "Rust",
-    proficiency: 75,
-    category: "languages",
-    icon: "🦀",
-    color: "#000000",
-  },
-  {
-    name: "PHP",
-    proficiency: 80,
-    category: "languages",
-    icon: "🐘",
-    color: "#777BB4",
-  },
-  {
-    name: "HTML/CSS",
-    proficiency: 90,
-    category: "languages",
-    icon: "🎨",
-    color: "#E34F26",
-  },
+  // Languages
+  { name: "Dart", icon: `${D}/dart/dart-original.svg`, category: "languages" },
+  { name: "Java", icon: `${D}/java/java-original.svg`, category: "languages" },
+  { name: "JavaScript", icon: `${D}/javascript/javascript-original.svg`, category: "languages" },
+  { name: "TypeScript", icon: `${D}/typescript/typescript-original.svg`, category: "languages" },
+  { name: "Python", icon: `${D}/python/python-original.svg`, category: "languages" },
+  { name: "Kotlin", icon: `${D}/kotlin/kotlin-original.svg`, category: "languages" },
+  { name: "Swift", icon: `${D}/swift/swift-original.svg`, category: "languages" },
+  { name: "Rust", icon: `${D}/rust/rust-original.svg`, category: "languages" },
+  { name: "PHP", icon: `${D}/php/php-original.svg`, category: "languages" },
+  { name: "HTML/CSS", icon: `${D}/html5/html5-original.svg`, category: "languages" },
 
-  // Mobile Frameworks & Libraries
-  {
-    name: "Flutter",
-    proficiency: 95,
-    category: "frameworks",
-    icon: "💙",
-    color: "#02569B",
-  },
-  {
-    name: "Flutter BLoC",
-    proficiency: 90,
-    category: "frameworks",
-    icon: "🧊",
-    color: "#02569B",
-  },
-  {
-    name: "Provider",
-    proficiency: 88,
-    category: "frameworks",
-    icon: "🧩",
-    color: "#02569B",
-  },
-  {
-    name: "Get_it",
-    proficiency: 85,
-    category: "frameworks",
-    icon: "📦",
-    color: "#02569B",
-  },
-  {
-    name: "Android Development",
-    proficiency: 85,
-    category: "frameworks",
-    icon: "🤖",
-    color: "#3DDC84",
-  },
+  // Frameworks
+  { name: "Flutter", icon: `${D}/flutter/flutter-original.svg`, category: "frameworks" },
+  { name: "Flutter BLoC", icon: `${D}/flutter/flutter-original.svg`, category: "frameworks" },
+  { name: "Provider", icon: `${D}/flutter/flutter-original.svg`, category: "frameworks" },
+  { name: "Android Dev", icon: `${D}/android/android-original.svg`, category: "frameworks" },
+  { name: "SvelteKit", icon: `${D}/svelte/svelte-original.svg`, category: "frameworks" },
+  { name: "Laravel", icon: `${D}/laravel/laravel-original.svg`, category: "frameworks" },
+  { name: "Flask", icon: `${D}/flask/flask-original.svg`, category: "frameworks" },
+  { name: "Node.js", icon: `${D}/nodejs/nodejs-original.svg`, category: "frameworks" },
+  { name: "React", icon: `${D}/react/react-original.svg`, category: "frameworks" },
 
-  // Web Frameworks
-  {
-    name: "SvelteKit",
-    proficiency: 85,
-    category: "frameworks",
-    icon: "🔥",
-    color: "#FF3E00",
-  },
-  {
-    name: "Laravel",
-    proficiency: 82,
-    category: "frameworks",
-    icon: "🎭",
-    color: "#FF2D20",
-  },
-  {
-    name: "Flask",
-    proficiency: 80,
-    category: "frameworks",
-    icon: "🌶️",
-    color: "#000000",
-  },
-  {
-    name: "Node.js",
-    proficiency: 85,
-    category: "frameworks",
-    icon: "🟢",
-    color: "#339933",
-  },
-
-  // Database & Backend Services
-  {
-    name: "Firebase",
-    proficiency: 90,
-    category: "tools",
-    icon: "🔥",
-    color: "#FFCA28",
-  },
-  {
-    name: "Hive",
-    proficiency: 88,
-    category: "tools",
-    icon: "🗄️",
-    color: "#FFA500",
-  },
-  {
-    name: "Supabase",
-    proficiency: 85,
-    category: "tools",
-    icon: "⚡",
-    color: "#3ECF8E",
-  },
-  {
-    name: "Directus",
-    proficiency: 80,
-    category: "tools",
-    icon: "🎛️",
-    color: "#6644FF",
-  },
-  {
-    name: "REST APIs",
-    proficiency: 90,
-    category: "tools",
-    icon: "🔗",
-    color: "#61DAFB",
-  },
-
-  // Development Tools
-  {
-    name: "Git",
-    proficiency: 90,
-    category: "tools",
-    icon: "📋",
-    color: "#F05032",
-  },
-  {
-    name: "GitHub",
-    proficiency: 88,
-    category: "tools",
-    icon: "😺",
-    color: "#181717",
-  },
-  {
-    name: "GitLab",
-    proficiency: 85,
-    category: "tools",
-    icon: "🦊",
-    color: "#FC6D26",
-  },
-  {
-    name: "Android Studio",
-    proficiency: 88,
-    category: "tools",
-    icon: "🔧",
-    color: "#3DDC84",
-  },
-
-  // Analytics & Feature Management
-  {
-    name: "Amplitude",
-    proficiency: 85,
-    category: "tools",
-    icon: "📊",
-    color: "#0066FF",
-  },
-  {
-    name: "PostHog",
-    proficiency: 82,
-    category: "tools",
-    icon: "📈",
-    color: "#FF6A00",
-  },
-  {
-    name: "Unleash",
-    proficiency: 80,
-    category: "tools",
-    icon: "🚩",
-    color: "#6B46C1",
-  },
-
-  // Cloud & Deployment
-  {
-    name: "Firebase Hosting",
-    proficiency: 85,
-    category: "tools",
-    icon: "🌐",
-    color: "#FFCA28",
-  },
-  {
-    name: "App Store Connect",
-    proficiency: 85,
-    category: "tools",
-    icon: "📱",
-    color: "#007AFF",
-  },
-  {
-    name: "Google Play Console",
-    proficiency: 85,
-    category: "tools",
-    icon: "🤖",
-    color: "#34A853",
-  },
-
-  // Specialized Technologies
-  {
-    name: "Mobile Payments",
-    proficiency: 88,
-    category: "tools",
-    icon: "💳",
-    color: "#4CAF50",
-  },
-  {
-    name: "Banking APIs",
-    proficiency: 85,
-    category: "tools",
-    icon: "🏦",
-    color: "#2196F3",
-  },
-  {
-    name: "Unit Testing",
-    proficiency: 82,
-    category: "tools",
-    icon: "🧪",
-    color: "#9C27B0",
-  },
-  {
-    name: "Agile Methodologies",
-    proficiency: 85,
-    category: "tools",
-    icon: "🔄",
-    color: "#FF5722",
-  },
-
-  // System & DevOps
-  {
-    name: "Linux",
-    proficiency: 80,
-    category: "tools",
-    icon: "🐧",
-    color: "#FCC624",
-  },
-  {
-    name: "DevOps",
-    proficiency: 75,
-    category: "tools",
-    icon: "⚙️",
-    color: "#326CE5",
-  },
-
-  // IoT (from existing)
-  {
-    name: "MQTT",
-    proficiency: 85,
-    category: "tools",
-    icon: "📡",
-    color: "#660066",
-  },
-  {
-    name: "AWS IoT Core",
-    proficiency: 80,
-    category: "tools",
-    icon: "☁️",
-    color: "#FF9900",
-  },
+  // Tools
+  { name: "Firebase", icon: `${D}/firebase/firebase-original.svg`, category: "tools" },
+  { name: "Supabase", icon: `${D}/supabase/supabase-original.svg`, category: "tools" },
+  { name: "Git", icon: `${D}/git/git-original.svg`, category: "tools" },
+  { name: "GitHub", icon: `${D}/github/github-original.svg`, category: "tools" },
+  { name: "Android Studio", icon: `${D}/androidstudio/androidstudio-original.svg`, category: "tools" },
+  { name: "PostHog", icon: `${D}/postgresql/postgresql-original.svg`, category: "tools" },
+  { name: "Linux", icon: `${D}/linux/linux-original.svg`, category: "tools" },
+  { name: "Docker", icon: `${D}/docker/docker-original.svg`, category: "tools" },
+  { name: "AWS", icon: `${D}/amazonwebservices/amazonwebservices-original-wordmark.svg`, category: "tools" },
+  { name: "VSCode", icon: `${D}/vscode/vscode-original.svg`, category: "tools" },
 ];
 
 export default SkillsSection;

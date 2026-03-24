@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Badge } from "./ui/badge";
-import { Card, CardContent, CardHeader } from "./ui/card";
-import { Building, Users, Calendar, ExternalLink, Award } from "lucide-react";
+import { Building, Users, Calendar, ExternalLink } from "lucide-react";
+import SectionHeader from "./SectionHeader";
+import NebulaOrbs from "./NebulaOrbs";
+import { getTechIcon } from "@/lib/techIcons";
 
 interface TeamProject {
   id: string;
@@ -28,167 +30,125 @@ const TeamProjects = ({ projects = defaultTeamProjects }: TeamProjectsProps) => 
   const [selectedType, setSelectedType] = useState<string>("all");
 
   const projectTypes = [
-    { value: "all", label: "All Projects", icon: "🚀" },
-    { value: "enterprise", label: "Enterprise", icon: "🏢" },
-    { value: "freelance", label: "Freelance", icon: "💼" },
-    { value: "collaboration", label: "Collaboration", icon: "🤝" },
+    { value: "all", label: "All" },
+    { value: "enterprise", label: "Enterprise" },
+    { value: "freelance", label: "Freelance" },
+    { value: "collaboration", label: "Collaboration" },
   ];
 
-  const filteredProjects = selectedType === "all" 
-    ? projects 
+  const filteredProjects = selectedType === "all"
+    ? projects
     : projects.filter(project => project.projectType === selectedType);
-
-  const getProjectTypeColor = (type: string) => {
-    switch (type) {
-      case "enterprise": return "border-blue-500/30 text-blue-400";
-      case "freelance": return "border-green-500/30 text-green-400";
-      case "collaboration": return "border-purple-500/30 text-purple-400";
-      default: return "border-gray-500/30 text-gray-400";
-    }
-  };
 
   return (
     <section
       id="team-projects"
-      className="py-24 px-6 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden"
+      className="min-h-screen py-40 lg:py-52 px-6 relative overflow-hidden"
     >
-      {/* Background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl"></div>
-      </div>
-
+      <NebulaOrbs variant="cyber" />
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-px bg-primary"></div>
-            <span className="text-primary text-sm font-medium uppercase tracking-wider">
-              Collaborative Work
-            </span>
-            <div className="w-12 h-px bg-primary"></div>
-          </div>
-          <h2 className="text-4xl lg:text-6xl font-bold mb-6">
-            <span className="text-white">Team</span>
-            <span className="gradient-text"> Projects</span>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Collaborative projects where I've contributed my expertise as part of professional teams and client engagements.
-          </p>
-        </motion.div>
+        <SectionHeader
+          label="Collaborative Work"
+          title="Team"
+          titleHighlight="Projects"
+          description="Collaborative projects where I've contributed my expertise as part of professional teams and client engagements."
+        />
 
-        {/* Project Type Filter */}
+        {/* Filter - Apple segmented control */}
         <motion.div
-          className="flex flex-wrap justify-center gap-3 mb-16"
+          className="flex justify-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          {projectTypes.map((type) => (
-            <motion.button
-              key={type.value}
-              onClick={() => setSelectedType(type.value)}
-              className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                selectedType === type.value
-                  ? "bg-primary text-black glow-effect"
-                  : "glass-effect text-gray-300 hover:text-primary hover:border-primary/50"
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>{type.icon}</span>
-              {type.label}
-            </motion.button>
-          ))}
+          <div className="inline-flex gap-1 p-1 rounded-full" style={{ border: "1px solid var(--border-subtle)", background: "var(--bg-card)" }}>
+            {projectTypes.map((type) => (
+              <button
+                key={type.value}
+                onClick={() => setSelectedType(type.value)}
+                className="px-6 py-2.5 rounded-full text-xs font-medium tracking-[0.12em] transition-all duration-400"
+                style={{
+                  background: selectedType === type.value ? "var(--accent)" : "transparent",
+                  color: selectedType === type.value ? "var(--bg)" : "var(--fg-muted)",
+                }}
+              >
+                {type.label}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.06 }}
               viewport={{ once: true }}
             >
-              <Card className="glass-effect border-white/10 hover-lift h-full flex flex-col">
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden rounded-t-lg">
+              <div className="glass-effect rounded-2xl hover-lift tentacle-glow h-full flex flex-col overflow-hidden group">
+                {/* Image */}
+                <div className="relative h-44 overflow-hidden">
                   <img
                     src={project.imageUrl}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
                   />
                   {project.isNDA && (
                     <div className="absolute top-3 right-3">
-                      <Badge variant="outline" className="bg-red-500/20 border-red-500/30 text-red-400">
+                      <Badge variant="outline" className="bg-white/10 border-white/20 text-white/60 text-[10px]">
                         NDA
                       </Badge>
                     </div>
                   )}
                 </div>
 
-                <CardHeader className="pb-3">
+                <div className="p-5 flex-grow flex flex-col space-y-3">
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-1 line-clamp-1">
+                      <h3 className="text-sm font-semibold text-white/80 mb-1 line-clamp-1">
                         {project.title}
                       </h3>
-                      <div className="flex items-center gap-2 text-primary text-sm font-medium">
-                        <Building className="h-4 w-4" />
+                      <div className="flex items-center gap-2 text-white/40 text-xs">
+                        <Building className="h-3 w-3" />
                         {project.company}
                       </div>
                     </div>
                     <Badge
                       variant="outline"
-                      className={`text-xs ${getProjectTypeColor(project.projectType)}`}
+                      className="border-white/10 text-white/30 text-[9px] uppercase tracking-wider"
                     >
                       {project.projectType}
                     </Badge>
                   </div>
-                </CardHeader>
 
-                <CardContent className="flex-grow space-y-4">
-                  <p className="text-gray-300 text-sm leading-relaxed line-clamp-2">
+                  <p className="text-white/30 text-xs leading-relaxed line-clamp-2">
                     {project.description}
                   </p>
 
-                  {/* Project Details */}
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-gray-400 text-xs">
-                      <Award className="h-3 w-3" />
-                      <span className="font-medium">Role:</span>
-                      <span>{project.role}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-400 text-xs">
+                  {/* Details */}
+                  <div className="space-y-1.5 text-white/25 text-[11px]">
+                    <div className="flex items-center gap-2">
                       <Calendar className="h-3 w-3" />
-                      <span>{project.period}</span>
+                      {project.period}
                     </div>
-                    <div className="flex items-center gap-2 text-gray-400 text-xs">
+                    <div className="flex items-center gap-2">
                       <Users className="h-3 w-3" />
-                      <span>{project.teamSize}</span>
+                      {project.teamSize}
                     </div>
                   </div>
 
-                  {/* Key Achievements */}
+                  {/* Achievements */}
                   {project.achievements.length > 0 && (
                     <div>
-                      <h4 className="text-xs font-semibold text-white mb-2 flex items-center gap-1">
-                        🏆 Key Contributions
-                      </h4>
                       <div className="space-y-1">
                         {project.achievements.slice(0, 2).map((achievement, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <div className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                            <p className="text-gray-400 text-xs leading-relaxed">
+                            <div className="w-1 h-1 bg-white/20 rounded-full mt-1.5 flex-shrink-0"></div>
+                            <p className="text-white/30 text-[11px] leading-relaxed">
                               {achievement}
                             </p>
                           </div>
@@ -198,50 +158,47 @@ const TeamProjects = ({ projects = defaultTeamProjects }: TeamProjectsProps) => 
                   )}
 
                   {/* Technologies */}
-                  <div>
-                    <h4 className="text-xs font-semibold text-white mb-2">🛠️ Technologies</h4>
-                    <div className="flex flex-wrap gap-1">
-                      {project.technologies.slice(0, 4).map((tech, idx) => (
-                        <Badge
-                          key={idx}
-                          variant="outline"
-                          className="border-primary/20 text-white bg-primary/5 text-xs"
+                  <div className="flex flex-wrap gap-1 mt-auto pt-2">
+                    {project.technologies.slice(0, 4).map((tech, idx) => {
+                      const icon = getTechIcon(tech);
+                      return (
+                        <span key={idx}
+                          className="inline-flex items-center gap-1.5 text-[10px] px-2.5 py-1 rounded-full"
+                          style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}
                         >
+                          {icon && <img src={icon} alt="" className="w-3.5 h-3.5" />}
                           {tech}
-                        </Badge>
-                      ))}
-                      {project.technologies.length > 4 && (
-                        <Badge
-                          variant="outline"
-                          className="border-gray-500/20 text-gray-400 bg-gray-500/5 text-xs"
-                        >
-                          +{project.technologies.length - 4}
-                        </Badge>
-                      )}
-                    </div>
+                        </span>
+                      );
+                    })}
+                    {project.technologies.length > 4 && (
+                      <Badge
+                        variant="outline"
+                        className="border-white/[0.05] text-white/20 bg-transparent text-[10px] px-2 py-0.5"
+                      >
+                        +{project.technologies.length - 4}
+                      </Badge>
+                    )}
                   </div>
 
-                  {/* Project Link */}
                   {project.projectUrl && !project.isNDA && (
-                    <div className="pt-2">
-                      <a
-                        href={project.projectUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors text-sm"
-                      >
-                        <ExternalLink className="h-3 w-3" />
-                        View Project
-                      </a>
-                    </div>
+                    <a
+                      href={project.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-white/30 hover:text-white/60 transition-colors text-xs animated-underline w-fit"
+                    >
+                      <ExternalLink className="h-3 w-3" />
+                      View Project
+                    </a>
                   )}
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Stats Summary */}
+        {/* Stats */}
         <motion.div
           className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
           initial={{ opacity: 0, y: 30 }}
@@ -250,19 +207,24 @@ const TeamProjects = ({ projects = defaultTeamProjects }: TeamProjectsProps) => 
           viewport={{ once: true }}
         >
           {[
-            { label: "Team Projects", value: projects.length.toString(), icon: "🚀" },
-            { label: "Companies Worked With", value: new Set(projects.map(p => p.company)).size.toString(), icon: "🏢" },
-            { label: "Technologies Used", value: new Set(projects.flatMap(p => p.technologies)).size.toString(), icon: "🛠️" },
-            { label: "Team Collaborations", value: projects.length.toString(), icon: "🤝" },
+            { label: "Team Projects", value: projects.length.toString() },
+            { label: "Companies", value: new Set(projects.map(p => p.company)).size.toString() },
+            { label: "Technologies", value: new Set(projects.flatMap(p => p.technologies)).size.toString() },
+            { label: "Collaborations", value: projects.length.toString() },
           ].map((stat, index) => (
-            <div key={index} className="text-center glass-effect p-6 rounded-xl">
-              <div className="text-2xl mb-2">{stat.icon}</div>
-              <div className="text-2xl font-bold text-primary mb-1">{stat.value}</div>
-              <div className="text-sm text-gray-400">{stat.label}</div>
+            <div key={index} className="text-center glass-effect p-8 rounded-2xl tentacle-glow">
+              <div className="text-2xl font-bold text-white mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>
+                {stat.value}
+              </div>
+              <div className="text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>
+                {stat.label}
+              </div>
             </div>
           ))}
         </motion.div>
       </div>
+
+      <div className="tentacle-line mt-32 max-w-md mx-auto"></div>
     </section>
   );
 };

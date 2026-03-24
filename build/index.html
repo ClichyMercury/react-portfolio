@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image" href="./images/GS-removebg-preview.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>GS dot Dev</title>
+    <style>
+      #loading-screen {
+        position: fixed; inset: 0; z-index: 99999;
+        background: #0a0a0a;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+      }
+      #loading-screen.hidden { opacity: 0; visibility: hidden; }
+      #loading-screen img {
+        width: 100px; height: 100px; -o-object-fit: contain; object-fit: contain;
+        filter: invert(1) brightness(2);
+        animation: lp 2s ease-in-out infinite;
+      }
+      #loading-text {
+        margin-top: 24px; color: #7C7B74;
+        font-family: 'Montserrat', sans-serif; font-size: 10px;
+        letter-spacing: 4px; text-transform: uppercase;
+        animation: lf 2s ease-in-out infinite;
+      }
+      @keyframes lp { 0%,100%{opacity:.4;transform:scale(.95)} 50%{opacity:1;transform:scale(1.05)} }
+      @keyframes lf { 0%,100%{opacity:.3} 50%{opacity:.7} }
+    </style>
+    <script type="module" crossorigin src="./assets/index-K5F3aYsJ.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BIKPU8zB.css">
+  </head>
+  <body>
+    <div id="loading-screen">
+      <img src="./images/GS-removebg-preview.png" alt="GS" />
+      <div id="loading-text">Loading Experience</div>
+    </div>
+    <div id="root"></div>
+  </body>
+</html>

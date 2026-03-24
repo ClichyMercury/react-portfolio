@@ -1212,6 +1212,34 @@ const defaultProjects: Project[] = [
   "results": "Site avec design épuré aux couleurs nature/tech, présentation des 6 domaines d'application drone, bureau exécutif de 7 membres, 8+ entreprises affiliées et formulaire d'adhésion intégré. Basé à Grand-Bassam (VITIB).",
   "demoUrl": "https://aedci.org",
   "codeUrl": ""
+},
+{
+  "id": "61",
+  "title": "Mon Médecin",
+  "description": "Application mobile de mise en relation patient-médecin, un véritable Uber de la médecine. Permet de rechercher un médecin par spécialité (généraliste, dentiste, ophtalmologue, dermatologue, pédiatre, cardiologue, ORL, gynécologue), de consulter les médecins populaires, de prendre rendez-vous et de gérer son parcours de soins complet.",
+  "imageUrl": "./images/mon-medecin-preview.jpeg",
+  "technologies": ["Flutter", "Dart", "Provider", "REST API", "Geolocation", "Appointment Booking", "Healthcare", "Push Notifications"],
+  "category": "medical",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Simplifier l'accès aux soins médicaux en Côte d'Ivoire en permettant aux patients de trouver rapidement un médecin selon leur spécialité, leur localisation et leur disponibilité, le tout depuis une interface mobile intuitive.",
+  "results": "Application fonctionnelle avec recherche par spécialité, profils médecins détaillés, système de prise de rendez-vous en temps réel, gestion des tickets de consultation et interface patient ergonomique.",
+  "demoUrl": "",
+  "codeUrl": ""
+},
+{
+  "id": "62",
+  "title": "Mamadou Koné – Site Officiel",
+  "description": "Site officiel d'une personnalité politique ivoirienne. Vitrine digitale complète avec biographie, actualités, galerie photo, espace jeunesse et formulaire de contact. Design premium aux tons dorés avec navigation élégante et mise en valeur du parcours public.",
+  "imageUrl": "./images/mamadou-kone-preview.png",
+  "technologies": ["HTML/CSS", "JavaScript", "Responsive Design", "SEO", "CMS Integration"],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Créer une présence digitale professionnelle et prestigieuse pour une personnalité politique, avec un site moderne mettant en avant son engagement pour le développement de la Côte d'Ivoire et la jeunesse ivoirienne.",
+  "results": "Site vitrine élégant avec design premium, navigation fluide entre les sections (Biographie, Actualités, Galerie, Jeunesse), formulaire de contact intégré et optimisation SEO pour la visibilité publique.",
+  "demoUrl": "https://mamadouk.wharpe.com",
+  "codeUrl": ""
 }
 ];
 

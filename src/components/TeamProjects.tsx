@@ -366,6 +366,27 @@ const defaultTeamProjects: TeamProject[] = [
     ],
     projectUrl: "",
     isNDA: false
+  },
+  {
+    id: "8",
+    title: "DMG - Gestion Administrative",
+    company: "Government of Côte d'Ivoire",
+    description: "Hub central de gestion administrative pour la Direction et Management Général (DMG). Plateforme web complète intégrant 17 services : courriers, bons, rendez-vous, accueil visiteurs, historique visites, GRIS/GIS, coordonnateur, logs SMS, archives, gestion du personnel, comptabilité, parc auto et webmasters.",
+    role: "Full-Stack Developer",
+    period: "2023 - Present",
+    teamSize: "6-person government tech team",
+    imageUrl: "./images/dmg-dashboard-preview.png",
+    technologies: ["SvelteKit", "Laravel", "REST API", "PostgreSQL", "Role-Based Access", "SMS Integration", "Document Management"],
+    projectType: "enterprise",
+    achievements: [
+      "Développement du tableau de bord centralisé avec accès rapide aux 17 services administratifs",
+      "Implémentation du système de gestion des courriers et bons avec workflow de validation",
+      "Création du module de gestion des rendez-vous et accueil visiteurs avec suivi en temps réel",
+      "Intégration du système GRIS/GIS et gestion du parc automobile avec logs SMS automatisés",
+      "Mise en place du contrôle d'accès basé sur les rôles (Directeur DMG, Coordonnateur, Webmaster)"
+    ],
+    projectUrl: "",
+    isNDA: true
   }
 ];
 

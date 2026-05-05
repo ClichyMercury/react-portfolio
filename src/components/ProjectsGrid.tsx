@@ -1240,6 +1240,69 @@ const defaultProjects: Project[] = [
   "results": "Site vitrine élégant avec design premium, navigation fluide entre les sections (Biographie, Actualités, Galerie, Jeunesse), formulaire de contact intégré et optimisation SEO pour la visibilité publique.",
   "demoUrl": "https://mamadouk.wharpe.com",
   "codeUrl": ""
+},
+{
+  "id": "70",
+  "title": "StediiHome – Landing Page V2",
+  "description": "Refonte complète de la landing page StediiHome avec une nouvelle identité visuelle violet/purple plus moderne et épurée. Met l'accent sur le slogan fort \"Embauchez du personnel domestique fiable, sans recruter à l'aveugle\" et propose un parcours bilingue clair pour Employeurs et Travailleurs avec une section de bénéfices clés visuellement plus impactante.",
+  "imageUrl": "./images/steddihome_landing_page_v2.png",
+  "technologies": [
+    "Next.js",
+    "TailwindCSS",
+    "Framer Motion",
+    "Responsive Design",
+    "i18n (FR/EN)",
+    "Vercel"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Repenser entièrement la landing page de StediiHome avec une nouvelle direction artistique violet/purple, des typographies plus affirmées et un message principal renforcé pour augmenter la conversion lors du lancement progressif au Kenya.",
+  "results": "Nouvelle V2 avec hero impactant, badge de lancement progressif au Kenya, double CTA Employeur/Travailleur, mise en avant des trois bénéfices clés (profils vérifiés par pièce d'identité, historique impossible à falsifier, mise en relation rapide) et identité visuelle violette cohérente.",
+  "demoUrl": "https://stediihome.com",
+  "codeUrl": ""
+},
+{
+  "id": "71",
+  "title": "Jeko – Landing Page V2",
+  "description": "Refonte de la landing page Jeko avec une nouvelle direction visuelle plus moderne et orientée conversion. Met en avant la solution de paiement mobile money unifiée pour les commerçants africains avec un design plus impactant, une hiérarchie typographique renforcée et une démonstration produit plus claire.",
+  "imageUrl": "./images/jeko-landing-v2-preview.png",
+  "technologies": [
+    "SvelteKit",
+    "TailwindCSS",
+    "Framer Motion",
+    "Responsive Design",
+    "Vercel"
+  ],
+  "category": "fintech",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Repenser la landing page de Jeko pour mieux convertir les commerçants ivoiriens et africains, en clarifiant le positionnement (QR code unique multi-opérateurs) et en modernisant l'identité visuelle de la marque.",
+  "results": "Nouvelle V2 avec hero plus affirmé, mise en avant des opérateurs supportés (Wave, Orange Money, MTN, Moov, Visa, Mastercard), CTA optimisés vers les stores et présentation produit plus immersive.",
+  "demoUrl": "https://jeko.africa",
+  "codeUrl": ""
+},
+{
+  "id": "72",
+  "title": "Forage – Plateforme Mise en Relation",
+  "description": "Plateforme numérique \"Le forage, simplifié\" mettant en relation clients (particuliers/entreprises) et entreprises de forage qualifiées dans les domaines eau, géotechnique et pétrolier. Le client soumet son projet, reçoit des offres confidentielles de prestataires cloisonnés et signe en toute confiance — budget protégé, workflow contrôlé en 8 étapes et messagerie centralisée.",
+  "imageUrl": "./images/forage-preview.png",
+  "technologies": [
+    "SvelteKit",
+    "AdonisJS",
+    "TypeScript",
+    "PostgreSQL",
+    "TailwindCSS",
+    "REST API",
+    "Vercel"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Simplifier la mise en relation entre demandeurs de forage et prestataires qualifiés via un parcours en 3 étapes (soumission → propositions → acceptation), tout en garantissant la confidentialité du budget client et le cloisonnement entre les 3 acteurs (client, prestataires, plateforme).",
+  "results": "Plateforme avec front SvelteKit (soumission de projet, espace client, suivi temps réel, acceptation d'offre en un clic) et back AdonisJS (workflow d'appel d'offres en 8 étapes, gestion documentaire, offres masquées entre prestataires). Statistiques mises en avant : 100% budget protégé, 3 acteurs cloisonnés, 8 étapes contrôlées.",
+  "demoUrl": "https://forage-frontend.vercel.app",
+  "codeUrl": ""
 }
 ];
 

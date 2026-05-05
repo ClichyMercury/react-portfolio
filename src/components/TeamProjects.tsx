@@ -387,6 +387,26 @@ const defaultTeamProjects: TeamProject[] = [
     ],
     projectUrl: "",
     isNDA: true
+  },
+  {
+    id: "9",
+    title: "Transfert CI - Maintenance Mobile",
+    company: "Transfert CI",
+    description: "Maintenance et évolution de l'application Transfert CI, plateforme de transfert d'argent et services financiers en Côte d'Ivoire. Conversion de l'application web React existante en application mobile cross-platform via Ionic Capacitor pour offrir une expérience native sur iOS et Android sans refonte complète du code.",
+    role: "Mobile Developer (Maintenance)",
+    period: "2025",
+    teamSize: "Équipe technique fintech",
+    imageUrl: "./images/transfert-ci-preview.png",
+    technologies: ["React", "Ionic", "Capacitor", "TypeScript", "iOS", "Android", "REST API"],
+    projectType: "freelance",
+    achievements: [
+      "Conversion de l'application React web en application mobile native via Ionic Capacitor",
+      "Maintenance évolutive et corrective de l'application en production",
+      "Adaptation du code React existant pour le packaging iOS et Android",
+      "Optimisation des performances et de l'expérience utilisateur sur mobile"
+    ],
+    projectUrl: "",
+    isNDA: false
   }
 ];
 

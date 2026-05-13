@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { getTechIcon } from "@/lib/techIcons";
+import { getCountry } from "@/lib/countries";
 
 interface Technology { name: string; color?: string; }
 
@@ -11,6 +12,7 @@ interface ProjectCardProps {
   title: string; description: string; imageUrl: string; technologies: Technology[];
   projectUrl?: string; githubUrl?: string; detailedDescription?: string;
   objectives?: string; results?: string; isPortrait?: boolean;
+  countries?: string[];
 }
 
 const TechChip = ({ name, size = "sm" }: { name: string; size?: "sm" | "md" }) => {
@@ -31,8 +33,12 @@ const ProjectCard = ({
   title = "", description = "", imageUrl = "", technologies = [],
   projectUrl = "", githubUrl = "", detailedDescription = "",
   objectives = "", results = "", isPortrait = true,
+  countries = [],
 }: ProjectCardProps) => {
   const [open, setOpen] = React.useState(false);
+  const resolvedCountries = countries
+    .map((code) => getCountry(code))
+    .filter((c): c is NonNullable<ReturnType<typeof getCountry>> => Boolean(c));
 
   return (
     <>
@@ -56,6 +62,20 @@ const ProjectCard = ({
 
         <div className="p-5 flex-grow flex flex-col">
           <h3 className="text-base font-semibold text-white mb-2">{title}</h3>
+          {resolvedCountries.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mb-2">
+              {resolvedCountries.map((c) => (
+                <span
+                  key={c.code}
+                  className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full"
+                  style={{ background: "var(--bg-elevated)", color: "var(--fg-muted)", border: "1px solid var(--border-subtle)" }}
+                >
+                  <span className="text-sm leading-none">{c.flag}</span>
+                  {c.name}
+                </span>
+              ))}
+            </div>
+          )}
           <p className="text-xs leading-relaxed line-clamp-2 mb-4 flex-grow" style={{ color: "var(--fg-muted)" }}>{description}</p>
           <div className="flex flex-wrap gap-1.5">
             {technologies.slice(0, 3).map((t, i) => (
@@ -78,6 +98,23 @@ const ProjectCard = ({
             <img src={imageUrl} alt={title} className={`w-full h-full ${isPortrait ? "object-contain" : "object-cover"}`} style={{ background: "var(--bg)" }} />
           </div>
           <div className="space-y-5">
+            {resolvedCountries.length > 0 && (
+              <div>
+                <h4 className="text-[10px] font-medium mb-3 uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>Markets</h4>
+                <div className="flex flex-wrap gap-2">
+                  {resolvedCountries.map((c) => (
+                    <span
+                      key={c.code}
+                      className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full"
+                      style={{ background: "var(--bg-elevated)", color: "var(--fg-muted)", border: "1px solid var(--border-subtle)" }}
+                    >
+                      <span className="text-base leading-none">{c.flag}</span>
+                      {c.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
             <div>
               <h4 className="text-[10px] font-medium mb-3 uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>Tech Stack</h4>
               <div className="flex flex-wrap gap-2">

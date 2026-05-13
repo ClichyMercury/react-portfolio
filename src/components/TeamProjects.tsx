@@ -5,6 +5,7 @@ import { Building, Users, Calendar, ExternalLink } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import NebulaOrbs from "./NebulaOrbs";
 import { getTechIcon } from "@/lib/techIcons";
+import { getCountry } from "@/lib/countries";
 
 interface TeamProject {
   id: string;
@@ -20,6 +21,7 @@ interface TeamProject {
   projectType: "enterprise" | "freelance" | "collaboration";
   projectUrl?: string;
   isNDA?: boolean;
+  countries?: string[];
 }
 
 interface TeamProjectsProps {
@@ -129,6 +131,25 @@ const TeamProjects = ({ projects = defaultTeamProjects }: TeamProjectsProps) => 
                     {project.description}
                   </p>
 
+                  {/* Countries */}
+                  {project.countries && project.countries.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.countries
+                        .map((code) => getCountry(code))
+                        .filter((c): c is NonNullable<ReturnType<typeof getCountry>> => Boolean(c))
+                        .map((c) => (
+                          <span
+                            key={c.code}
+                            className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full"
+                            style={{ background: "var(--bg-elevated)", color: "var(--fg-muted)", border: "1px solid var(--border-subtle)" }}
+                          >
+                            <span className="text-sm leading-none">{c.flag}</span>
+                            {c.name}
+                          </span>
+                        ))}
+                    </div>
+                  )}
+
                   {/* Details */}
                   <div className="space-y-1.5 text-white/25 text-[11px]">
                     <div className="flex items-center gap-2">
@@ -200,7 +221,7 @@ const TeamProjects = ({ projects = defaultTeamProjects }: TeamProjectsProps) => 
 
         {/* Stats */}
         <motion.div
-          className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6"
+          className="mt-20 grid grid-cols-2 md:grid-cols-5 gap-6"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -211,6 +232,7 @@ const TeamProjects = ({ projects = defaultTeamProjects }: TeamProjectsProps) => 
             { label: "Companies", value: new Set(projects.map(p => p.company)).size.toString() },
             { label: "Technologies", value: new Set(projects.flatMap(p => p.technologies)).size.toString() },
             { label: "Collaborations", value: projects.length.toString() },
+            { label: "Countries", value: new Set(projects.flatMap(p => p.countries ?? [])).size.toString() },
           ].map((stat, index) => (
             <div key={index} className="text-center glass-effect p-8 rounded-2xl tentacle-glow">
               <div className="text-2xl font-bold text-white mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -248,8 +270,9 @@ const defaultTeamProjects: TeamProject[] = [
       "Enhanced app performance with 40% faster loading times",
       "Developed multi-factor authentication for enhanced security"
     ],
-    isNDA: true
-  },
+    isNDA: true,
+    countries: ["CI", "SN"]
+},
   {
     id: "2",
     title: "EdoPay - Unified Payment Platform",
@@ -268,8 +291,9 @@ const defaultTeamProjects: TeamProject[] = [
       "Built comprehensive digital wallet with multi-currency support"
     ],
     projectUrl: "",
-    isNDA: false
-  },
+    isNDA: false,
+    countries: ["CI"]
+},
   {
     id: "3",
     title: "Continental Alert - Emergency Response System",
@@ -287,8 +311,9 @@ const defaultTeamProjects: TeamProject[] = [
       "Built secure user profile management with emergency contact system",
       "Implemented instant SOS alerts with location sharing capabilities"
     ],
-    isNDA: false
-  },
+    isNDA: false,
+    countries: ["CI"]
+},
   {
     id: "4",
     title: "Adjemin Social Commerce Platform",
@@ -306,8 +331,9 @@ const defaultTeamProjects: TeamProject[] = [
       "Implemented social features encouraging community engagement",
       "Created seamless negotiation system with integrated payment processing"
     ],
-    isNDA: false
-  },
+    isNDA: false,
+    countries: ["CI"]
+},
   {
     id: "5",
     title: "Jèko Digital Payment Platform",
@@ -325,8 +351,9 @@ const defaultTeamProjects: TeamProject[] = [
       "Implemented remote payment links for distance transactions",
       "Created user-friendly money exchange interface with real-time rates"
     ],
-    isNDA: false
-  },
+    isNDA: false,
+    countries: ["CI"]
+},
    {
     id: "6",
     title: "Telemedan - Telemedicine Platform",
@@ -345,8 +372,9 @@ const defaultTeamProjects: TeamProject[] = [
       "Created intuitive user interface optimizing patient experience and medical workflow"
     ],
     projectUrl: "",
-    isNDA: false
-  },
+    isNDA: false,
+    countries: ["TD"]
+},
   {
     id: "7",
     title: "MaCom - Plateforme Créative",
@@ -365,8 +393,9 @@ const defaultTeamProjects: TeamProject[] = [
       "Implémentation du système de filtrage par catégories avec contenus Premium"
     ],
     projectUrl: "",
-    isNDA: false
-  },
+    isNDA: false,
+    countries: ["CI"]
+},
   {
     id: "8",
     title: "DMG - Gestion Administrative",
@@ -386,8 +415,9 @@ const defaultTeamProjects: TeamProject[] = [
       "Mise en place du contrôle d'accès basé sur les rôles (Directeur DMG, Coordonnateur, Webmaster)"
     ],
     projectUrl: "",
-    isNDA: true
-  },
+    isNDA: true,
+    countries: ["CI"]
+},
   {
     id: "9",
     title: "Transfert CI - Maintenance Mobile",
@@ -406,8 +436,9 @@ const defaultTeamProjects: TeamProject[] = [
       "Optimisation des performances et de l'expérience utilisateur sur mobile"
     ],
     projectUrl: "",
-    isNDA: false
-  }
+    isNDA: false,
+    countries: ["CI"]
+}
 ];
 
 export default TeamProjects;

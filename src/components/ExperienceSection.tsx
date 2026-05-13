@@ -340,7 +340,7 @@ const defaultExperiences: Experience[] = [
     company: "Diigito",
     logo: "/images/diigito.jpg",
     role: "Flutter Trainer",
-    period: "June 2025 - Present",
+    period: "June 2025 - March 2026",
     location: "Abidjan, Côte d'Ivoire",
     type: "freelance",
     description:

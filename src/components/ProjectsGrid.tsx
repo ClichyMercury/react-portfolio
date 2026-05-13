@@ -17,6 +17,7 @@ interface Project {
   results?: string;
   demoUrl?: string;
   codeUrl?: string;
+  countries?: string[];
 }
 
 interface ProjectsGridProps {
@@ -125,6 +126,7 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
                     objectives={project.objectives}
                     results={project.results}
                     isPortrait={project.isPortrait}
+                    countries={project.countries}
                   />
                 </motion.div>
               ))}
@@ -170,6 +172,7 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
                 objectives={project.objectives}
                 results={project.results}
                 isPortrait={project.isPortrait}
+                countries={project.countries}
               />
             </motion.div>
           ))}
@@ -212,7 +215,8 @@ const defaultProjects: Project[] = [
       "Built secure multi-currency exchange supporting BNB, TRON, USDT with MTN and Orange Money integration.",
     demoUrl: "",
     codeUrl: "",
-  },
+    countries: ["BJ"]
+},
   {
     id: "2",
     title: "Galaxy Stream",
@@ -228,7 +232,8 @@ const defaultProjects: Project[] = [
       "Deployed app with 1000+ downloads and 4.5/5 rating on app stores.",
     demoUrl: "https://galaxystream-demo.com",
     codeUrl: "https://github.com/gaelsassan/galaxy-stream",
-  },
+    countries: ["BJ", "BF", "CI", "GW", "ML", "NE", "SN", "TG"]
+},
   {
     id: "3",
     title: "Vidalossa Online Store",
@@ -244,7 +249,8 @@ const defaultProjects: Project[] = [
       "300% increase in online sales and 50% reduction in order processing time.",
     demoUrl: "https://vidalossa-store.com",
     codeUrl: "https://github.com/gaelsassan/vidalossa-store",
-  },
+    countries: ["CI"]
+},
   {
     id: "4",
     title: "Medical Volunteer Website",
@@ -261,7 +267,8 @@ const defaultProjects: Project[] = [
       "Increased organization visibility and created modern platform for volunteer engagement.",
     demoUrl: "https://volontariat-medical-ci.vercel.app/",
     codeUrl: "",
-  },
+    countries: ["CI"]
+},
   {
     id: "5",
     title: "MELOUKA Artisan Website",
@@ -278,7 +285,8 @@ const defaultProjects: Project[] = [
       "Increased company visibility and streamlined customer ordering process through WhatsApp integration.",
     demoUrl: "https://melouka.vercel.app/",
     codeUrl: "",
-  },
+    countries: ["CI"]
+},
   {
     id: "6",
     title: "RecipeMaster",
@@ -295,7 +303,8 @@ const defaultProjects: Project[] = [
       "Developed clean architecture with reactive stores and dynamic routing for recipe management.",
     demoUrl: "",
     codeUrl: "https://github.com/gaelsassan/recipe-master",
-  },
+    countries: ["ES"]
+},
   {
     id: "7",
     title: "Moyivawa Health App",
@@ -311,7 +320,8 @@ const defaultProjects: Project[] = [
       "Created secure healthcare platform with integrated payment systems for medical services.",
     demoUrl: "",
     codeUrl: "",
-  },
+    countries: ["CI"]
+},
   {
     id: "8",
     title: "Minimal Contacts",
@@ -327,7 +337,8 @@ const defaultProjects: Project[] = [
       "Developed efficient contact management solution with smooth user experience and BLoC pattern.",
     demoUrl: "",
     codeUrl: "",
-  },
+    countries: ["CI"]
+},
   {
     id: "9",
     title: "RanTube",
@@ -343,7 +354,8 @@ const defaultProjects: Project[] = [
       "Built scalable video discovery app with monetization strategy and user analytics.",
     demoUrl: "",
     codeUrl: "",
-  },
+    countries: ["PK", "IN", "BD"]
+},
   {
     id: "10",
     title: "Djassaman Budget Manager",
@@ -360,7 +372,8 @@ const defaultProjects: Project[] = [
       "Created efficient financial management platform with robust backend architecture.",
     demoUrl: "",
     codeUrl: "",
-  },
+    countries: ["CI"]
+},
   {
     id: "11",
     title: "Zem VTC App",
@@ -376,7 +389,8 @@ const defaultProjects: Project[] = [
       "Developed full-featured ride-hailing solution with driver and passenger applications.",
     demoUrl: "",
     codeUrl: "",
-  },
+    countries: ["BJ"]
+},
   {
     id: "12",
     title: "FOSOPIQ Event Management",
@@ -392,7 +406,8 @@ const defaultProjects: Project[] = [
       "Built comprehensive platform tracking events and member contributions with analytical dashboard.",
     demoUrl: "",
     codeUrl: "",
-  },
+    countries: ["BJ"]
+},
   {
     id: "13",
     title: "SOS AVC Medical Alert",
@@ -408,7 +423,8 @@ const defaultProjects: Project[] = [
       "Created critical healthcare app improving emergency response times and survival chances.",
     demoUrl: "",
     codeUrl: "",
-  },
+    countries: ["TG"]
+},
   {
     id: "14",
     title: "Maturus Scoring",
@@ -424,7 +440,8 @@ const defaultProjects: Project[] = [
       "Delivered comprehensive assessment platform with intelligent scoring and sectoral benchmarking.",
     demoUrl: "",
     codeUrl: "",
-  },
+    countries: ["CI"]
+},
   {
     id: "15",
     title: "Meter Manager IoT",
@@ -440,7 +457,8 @@ const defaultProjects: Project[] = [
       "Achieved 25% average electricity consumption reduction among test users.",
     demoUrl: "",
     codeUrl: "",
-  },
+    countries: ["CI"]
+},
   {
     id: "16",
     title: "Sikka Digital Tontine",
@@ -456,7 +474,8 @@ const defaultProjects: Project[] = [
       "Built secure platform enabling efficient group savings management with automated workflows.",
     demoUrl: "",
     codeUrl: "",
-  },
+    countries: ["TG", "BJ"]
+},
   {
     id: "17",
     title: "IBH (Ivoire Beat Hub)",
@@ -472,7 +491,8 @@ const defaultProjects: Project[] = [
       "Created intuitive platform helping artists structure their creative process without losing ideas.",
     demoUrl: "",
     codeUrl: "",
-  },
+    countries: ["CI"]
+},
   {
   "id": "18",
   "title": "Baromètre Santé",
@@ -485,7 +505,8 @@ const defaultProjects: Project[] = [
   "objectives": "Transform healthcare accessibility by providing comprehensive remote medical services with intelligent health tracking and predictive wellness analytics.",
   "results": "Enabled 5,000+ remote consultations, reduced patient wait times by 70%, and achieved 95% diagnostic accuracy through AI-assisted health monitoring.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["BJ"]
 },
    {
     "id": "19",
@@ -499,8 +520,9 @@ const defaultProjects: Project[] = [
     "objectives": "Bridge the financial gap by providing accessible banking services with intelligent risk assessment and personalized financial wellness tracking.",
     "results": "Enabled 10,000+ users to access micro-loans and savings with 95% repayment rate through AI-powered financial behavior analysis.",
     "demoUrl": "",
-    "codeUrl": ""
-  },
+    "codeUrl": "",
+    "countries": ["CI"]
+},
   {
     "id": "20", 
     "title": "FindMacy",
@@ -513,8 +535,9 @@ const defaultProjects: Project[] = [
     "objectives": "Revolutionize pharmaceutical access by connecting patients to available medications while ensuring safety through intelligent drug interaction prevention.",
     "results": "Connected 500+ pharmacies with real-time inventory, reduced medication search time by 80%, and prevented 200+ potential drug interactions.",
     "demoUrl": "",
-    "codeUrl": ""
-  },
+    "codeUrl": "",
+    "countries": ["GN"]
+},
   {
     "id": "21",
     "title": "BabiWarren",
@@ -527,8 +550,9 @@ const defaultProjects: Project[] = [
     "objectives": "Transform urban transportation through intelligent matching, environmental consciousness, and predictive analytics for optimal ride experiences.",
     "results": "Achieved 40% reduction in CO2 emissions per ride, 25% faster average trip times, and 95% user satisfaction through AI-driven optimizations.",
     "demoUrl": "",
-    "codeUrl": ""
-  },
+    "codeUrl": "",
+    "countries": ["CI"]
+},
   {
     "id": "22",
     "title": "Le Livreur",
@@ -541,8 +565,9 @@ const defaultProjects: Project[] = [
     "objectives": "Revolutionize local commerce by creating an intelligent delivery network that anticipates demand and optimizes logistics for maximum efficiency.",
     "results": "Reduced delivery times by 50%, increased local business revenues by 200%, and achieved 98% on-time delivery rate through predictive routing.",
     "demoUrl": "",
-    "codeUrl": ""
-  }, 
+    "codeUrl": "",
+    "countries": ["CI"]
+}, 
   {
     "id": "23",
     "title": "Le Livreur Agent",
@@ -555,8 +580,9 @@ const defaultProjects: Project[] = [
     "objectives": "Streamline delivery operations by providing agents with a powerful, user-friendly application that optimizes routes, enhances productivity, and facilitates communication with customers and restaurants.",
     "results": "Mobile-optimized user interface, 40% reduction in navigation time, 90% improvement in delivery agent satisfaction, and real-time tracking system with 99.5% accuracy.",
     "demoUrl": "",
-    "codeUrl": ""
-  },
+    "codeUrl": "",
+    "countries": ["CI"]
+},
   {
     "id": "24",
     "title": "Le Livreur Resto",
@@ -569,8 +595,9 @@ const defaultProjects: Project[] = [
     "objectives": "Digitize and optimize partner restaurant operations by providing modern tools for order management, menu control, and performance analysis while maintaining high-quality culinary experiences.",
     "results": "60% increase in kitchen efficiency, 35% reduction in order errors, 80% improvement in customer satisfaction, and detailed analytics insights for operational optimization.",
     "demoUrl": "",
-    "codeUrl": ""
-  }, 
+    "codeUrl": "",
+    "countries": ["CI"]
+}, 
   {
     "id": "25",
     "title": "AZPROD",
@@ -583,8 +610,9 @@ const defaultProjects: Project[] = [
     "objectives": "Revolutionize the African music and media ecosystem by creating sustainable bridges between artists, influencers, and brands, while developing new talents and producing large-scale cultural events.",
     "results": "Over 6 years of expertise in the music industry, production of major events like FESTIGOLA Kinshasa 2024, development of recognized artists such as Barack La Voix d'Or, and creation of an authentic influence network across West Africa.",
     "demoUrl": "https://azprod.fr/",
-    "codeUrl": ""
-  },
+    "codeUrl": "",
+    "countries": ["BE", "FR"]
+},
   {
     "id": "26",
     "title": "MôyCom",
@@ -597,8 +625,9 @@ const defaultProjects: Project[] = [
     "objectives": "Optimize healthcare sales operations by providing commercial teams with comprehensive tools for client management, product promotion, and sales tracking in the medical sector.",
     "results": "Enhanced sales team productivity by 45%, improved client relationship management, streamlined order processing with 95% accuracy, and comprehensive sales analytics dashboard.",
     "demoUrl": "",
-    "codeUrl": ""
-  },
+    "codeUrl": "",
+    "countries": ["CI"]
+},
   {
     "id": "27",
     "title": "Gestopedia",
@@ -611,8 +640,9 @@ const defaultProjects: Project[] = [
     "objectives": "Transform traditional inventory management by providing businesses with intelligent tools for stock optimization, sales tracking, and financial planning, enabling data-driven decisions and operational efficiency.",
     "results": "Automated inventory tracking with 99% accuracy, reduced stock-outs by 65%, improved cash flow management, and comprehensive business analytics leading to 30% increase in operational efficiency.",
     "demoUrl": "",
-    "codeUrl": ""
-  },
+    "codeUrl": "",
+    "countries": ["CI"]
+},
   {
   "id": "28",
   "title": "Jéko Cockpit",
@@ -625,8 +655,9 @@ const defaultProjects: Project[] = [
   "objectives": "Centraliser la gestion des activités financières et opérationnelles d’un commerçant via un cockpit intelligent. Fournir des insights en temps réel pour optimiser les décisions et fluidifier les opérations quotidiennes.",
   "results": "Visualisation en temps réel de la répartition des paiements, suivi de croissance des revenus, et gestion complète des points de vente et des utilisateurs. Gain de temps administratif estimé à 40%.",
   "demoUrl": "https://cockpit.jeko.africa/dashboard",
-  "codeUrl": ""
-  },
+  "codeUrl": "",
+  "countries": ["CI"]
+},
   {
   "id": "29",
   "title": "My Design Pro",
@@ -639,7 +670,8 @@ const defaultProjects: Project[] = [
   "objectives": "Donner aux designers la possibilité de publier leurs créations, d’interagir avec d’autres créatifs et de construire une communauté autour du design.",
   "results": "Création et partage de contenus graphiques par la communauté. Développement d’un réseau d’échanges et d’inspiration. Engagement et interaction accrus entre utilisateurs.",
   "demoUrl": "https://groupmydesign.com/",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI", "TG"]
 },
   {
   "id": "30",
@@ -653,7 +685,8 @@ const defaultProjects: Project[] = [
   "objectives": "Permettre aux utilisateurs de parcourir des designs créatifs, de filtrer par catégories (affiches, logos, etc.) et de s’inspirer pour leurs propres créations.",
   "results": "Interface simple et fluide qui met en avant les designs. Navigation rapide entre catégories. Expérience utilisateur optimisée pour mobile et tablettes.",
   "demoUrl": "https://groupmydesign.com/",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI", "TG"]
 },
 {
   "id": "31",
@@ -667,7 +700,8 @@ const defaultProjects: Project[] = [
   "objectives": "Streamline employee loan processes by providing financial institutions with powerful tools for loan approval, risk evaluation, and payment monitoring while ensuring compliance and reducing processing time.",
   "results": "Automated loan approval workflow reducing processing time by 60%, comprehensive borrower tracking system, real-time payment monitoring with 99% accuracy, and advanced analytics dashboard for risk management.",
   "demoUrl": "https://sosmoney-admin.vercel.app/",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "32",
@@ -681,7 +715,8 @@ const defaultProjects: Project[] = [
   "objectives": "Provide employees with easy access to their loan information through a user-friendly mobile interface, enabling real-time balance tracking, payment monitoring, and financial planning tools.",
   "results": "Seamless mobile experience with real-time loan tracking, visual payment evolution charts, automated payment reminders, and secure access to personal financial data with 100% uptime.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "33",
@@ -695,7 +730,8 @@ const defaultProjects: Project[] = [
   "objectives": "Modernize visitor management by providing secure, GDPR-compliant tracking solutions that maintain visitor privacy while ensuring comprehensive oversight of personnel movement within company facilities.",
   "results": "100% GDPR compliance achieved, real-time visitor location tracking, streamlined check-in/check-out process, and comprehensive visit analytics while protecting visitor identity and personal data.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "34",
@@ -709,7 +745,8 @@ const defaultProjects: Project[] = [
   "objectives": "Faciliter les transferts d’unités et de forfaits à travers les principaux réseaux mobiles ivoiriens, en proposant une solution fluide, rapide et accessible à tous via le paiement mobile Wave.",
   "results": "Expérience utilisateur simplifiée avec paiement en 1 clic, intégration fluide avec les trois grands opérateurs, transactions instantanées et interface intuitive adaptée au mobile.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "35",
@@ -723,7 +760,8 @@ const defaultProjects: Project[] = [
   "objectives": "Créer une plateforme intuitive et interactive pour la lecture numérique, offrant un accès simple à des milliers de livres et une expérience fluide sur mobile.",
   "results": "Augmentation de 60% de l’engagement utilisateur grâce aux recommandations personnalisées et à la fluidité de navigation. Interface responsive et mode lecture optimisé pour tous les écrans.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "36",
@@ -737,7 +775,8 @@ const defaultProjects: Project[] = [
   "objectives": "Fournir une plateforme performante pour suivre les matchs en temps réel, consulter les statistiques, et effectuer des paris rapides tout en profitant d’un design soigné et ergonomique.",
   "results": "Mise à jour en temps réel des scores, interface fluide et foncée adaptée aux sessions prolongées, et intégration transparente des cotes pour une expérience de pari immersive.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "37",
@@ -761,7 +800,8 @@ const defaultProjects: Project[] = [
   "objectives": "Créer une solution fintech innovante combinant application mobile et API bancaire gamifiée. L’objectif est de promouvoir l’éducation financière en Afrique grâce à des fonctionnalités culturelles telles que les tontines numériques, un marketplace local et un système de récompenses interactif.",
   "results": "Développement d’une architecture complète front–back : application Kotlin fluide avec Jetpack Compose et API Ktor performante. L’ensemble offre une expérience immersive avec gamification, modules éducatifs, et intégration des réalités africaines dans la gestion financière.",
   "demoUrl": "https://github.com/ClichyMercury/KotlinBankAPI",
-  "codeUrl": "https://github.com/ClichyMercury/KotlinBankUI"
+  "codeUrl": "https://github.com/ClichyMercury/KotlinBankUI",
+  "countries": ["CI"]
 },
 {
   "id": "48",
@@ -783,7 +823,8 @@ const defaultProjects: Project[] = [
   "objectives": "Offrir aux populations un outil simple, rapide et fiable pour signaler les urgences : incendies, accidents, agressions, nuisances publiques ou anomalies urbaines. L’objectif principal est de digitaliser la collaboration entre citoyens et autorités pour réduire les temps d'intervention.",
   "results": "Mise en place d’un parcours fluide de déclaration d’alerte, intégration de la carte interactive, récupération précise de la localisation, catégorisation des incidents et synchronisation en temps réel avec l’API. L’application permet une meilleure visibilité des urgences et améliore la communication citoyenne.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "49",
@@ -805,7 +846,8 @@ const defaultProjects: Project[] = [
   "objectives": "Donner aux autorités une vision globale et précise de toutes les alertes en temps réel. Prioriser les urgences, faciliter la prise de décision, optimiser la répartition des équipes sur le terrain et digitaliser la chaîne de traitement des incidents.",
   "results": "Développement d'une carte administrative complète avec clustering, filtres par priorité, rafraîchissement en direct, gestion avancée des états des alertes et intégration complète avec le backend. L’application améliore la rapidité et l'efficacité des interventions.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "50",
@@ -827,7 +869,8 @@ const defaultProjects: Project[] = [
   "objectives": "Créer un module universel de paiement permettant aux marchands et aux applications tierces de proposer un checkout unifié compatible avec les solutions de paiement mobile les plus utilisées en Afrique de l’Ouest. L’objectif est d’améliorer l’adoption, réduire la friction au paiement et offrir une interface harmonisée.",
   "results": "Développement d’un checkout responsive avec sélection intelligente des méthodes de paiement, validation automatique des numéros, gestion sécurisée de la transaction et design professionnel. Le système améliore considérablement la fluidité du parcours de paiement et favorise la confiance des utilisateurs.",
   "demoUrl": "https://pay.jeko.africa/pl/451641bf-e868-40be-aa4c-b9fc6a22320e",
-  "codeUrl": "https://jeko.africa"
+  "codeUrl": "https://jeko.africa",
+  "countries": ["CI"]
 },
 {
   "id": "51",
@@ -849,7 +892,8 @@ const defaultProjects: Project[] = [
   "objectives": "Créer une application simple et intuitive pour permettre aux utilisateurs de suivre leur solde en temps réel, consulter leurs transactions et accéder facilement aux fonctionnalités essentielles telles que les transferts, dépôts, paiements, retraits et services financiers annexes.",
   "results": "Interface épurée avec affichage dynamique du solde, gestion des transactions récentes, boutons d’action rapide et navigation fluide. Les utilisateurs peuvent effectuer des opérations financières de manière rapide, sécurisée et agréable.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["TG"]
 },
 {
   "id": "52",
@@ -863,7 +907,8 @@ const defaultProjects: Project[] = [
   "objectives": "Créer une vitrine digitale impactante pour présenter la solution Jeko aux commerçants ivoiriens et faciliter l'acquisition de nouveaux utilisateurs.",
   "results": "Interface épurée avec taux de conversion optimisé, intégration des stores (App Store, Google Play) et mise en avant des +500 commerçants partenaires.",
   "demoUrl": "https://jeko.africa",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "53",
@@ -877,7 +922,8 @@ const defaultProjects: Project[] = [
   "objectives": "Rediriger les utilisateurs vers les stores appropriés selon leur appareil et simplifier le parcours d'installation de l'application Jeko Business.",
   "results": "Expérience fluide avec détection automatique de plateforme et redirection intelligente vers iOS ou Android.",
   "demoUrl": "https://jeko.africa/download",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "54",
@@ -891,7 +937,8 @@ const defaultProjects: Project[] = [
   "objectives": "Fournir un environnement de test interactif pour les développeurs souhaitant intégrer l'API Jeko Pay dans leurs applications, avec simulation complète du flux de paiement redirect.",
   "results": "Outil de test fonctionnel permettant de valider les intégrations avant mise en production, avec support de toutes les méthodes de paiement et gestion des callbacks.",
   "demoUrl": "https://demo.jeko.africa",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "55",
@@ -913,7 +960,8 @@ const defaultProjects: Project[] = [
   "objectives": "Démocratiser l’accès à la sécurité privée en Afrique en proposant une solution simple, rapide et communautaire pour réserver des agents de sécurité et surveiller les zones à risque en temps réel.",
   "results": "Mise en place d’une plateforme complète combinant application mobile et interface web, avec réservation d’agents, score de sécurité par zone, notifications en temps réel et système communautaire de vigilance.",
   "demoUrl": "https://www.alphsecurite.ci/",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "56",
@@ -935,7 +983,8 @@ const defaultProjects: Project[] = [
   "objectives": "Offrir aux utilisateurs un accès rapide et sécurisé à des services de sécurité privée à la demande, avec une expérience de réservation fluide et un suivi en temps réel des agents assignés.",
   "results": "Interface moderne avec sélection de mission par catégorie, géolocalisation automatique, système de réservation en quelques clics et offres promotionnelles pour les nouveaux utilisateurs (-15% sur la première mission).",
   "demoUrl": "https://www.alphsecurite.ci/",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "57",
@@ -957,7 +1006,8 @@ const defaultProjects: Project[] = [
   "objectives": "Digitaliser la surveillance sanitaire en Côte d'Ivoire en permettant aux citoyens de signaler rapidement les menaces de santé publique (COVID-19, Choléra, Ebola, etc.) avec géolocalisation et connexion aux services de santé partenaires comme MSF.",
   "results": "Système de signalement d'alertes par catégorie (Santé, Zoonoses, Environnement) avec niveaux de priorité, affichage des statistiques en temps réel et redirection vers les services de santé compétents pour une prise en charge rapide.",
   "demoUrl": "https://www.pluss.ci/",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "58",
@@ -979,7 +1029,8 @@ const defaultProjects: Project[] = [
   "objectives": "Centraliser la gestion des alertes sanitaires pour les autorités de santé publique, avec une vision globale des menaces en cours, le suivi des agents actifs et la coordination avec les services de santé partenaires.",
   "results": "Tableau de bord interactif affichant le total des alertes, les statuts (en attente, résolues), les agents actifs, et une liste détaillée des alertes récentes avec filtrage par priorité (Haute, Moyenne, Faible) et catégorie (COVID-19, Choléra, etc.).",
   "demoUrl": "https://pluss-backoffice.vercel.app/dashboard",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "59",
@@ -1000,7 +1051,8 @@ const defaultProjects: Project[] = [
   "objectives": "Créer une vitrine digitale attrayante pour présenter les créations de Décor de Rêve, faciliter la découverte des produits (bouquets d'argent, boxes, décorations) et simplifier le processus de commande via WhatsApp.",
   "results": "Site web moderne avec navigation fluide entre les catégories de produits, intégration WhatsApp pour les commandes instantanées, et design élégant mettant en valeur les créations artisanales.",
   "demoUrl": "https://decor-de-reve-frontsite.vercel.app",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "60",
@@ -1021,7 +1073,8 @@ const defaultProjects: Project[] = [
   "objectives": "Fournir un outil de gestion centralisé pour l'administration de l'entreprise : suivi des stocks, gestion des produits et catégories, traitement des commandes clients, bons d'entrée et gestion des fournisseurs.",
   "results": "Back-office complet avec tableau de bord affichant la valeur du stock (27 320 FCFA), revenus mensuels, commandes en attente, alertes stock bas et accès rapide aux fonctionnalités de gestion quotidienne.",
   "demoUrl": "https://decor-de-reve-backoffice.vercel.app/admin/dashboard",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "61",
@@ -1043,7 +1096,8 @@ const defaultProjects: Project[] = [
   "objectives": "Digitaliser et automatiser la gestion des missions de drones agricoles en Côte d'Ivoire. Centraliser le workflow entre clients (responsables de plantations), télépilotes et administrateurs pour optimiser les traitements (maturateur, herbicide, traitement à huile/eau) sur différentes cultures (canne à sucre, banane, maïs, hévéa).",
   "results": "Tableau de bord complet avec suivi de 8 missions, gestion de 6 entreprises et 8 plantations. Système de validation des rapports multi-équipes, assignation des drones/chauffeurs/véhicules, et génération automatisée des fichiers KML par drone.",
   "demoUrl": "https://agripilote.vercel.app/admin/dashboard",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "62",
@@ -1064,7 +1118,8 @@ const defaultProjects: Project[] = [
   "objectives": "Sécuriser l'employabilité domestique en Afrique en apportant transparence, traçabilité des expériences professionnelles et sécurité contractuelle via un système de QR Code unique pour démarrer et terminer les contrats.",
   "results": "Application complète avec 17 écrans fonctionnels : onboarding, inscription multi-étapes pour workers, système de contrats QR Code, messagerie temps réel, système d'évaluation obligatoire post-contrat et badges de réputation.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["KE", "BF", "CI"]
 },
 {
   "id": "63",
@@ -1085,7 +1140,8 @@ const defaultProjects: Project[] = [
   "objectives": "Digitaliser le système traditionnel de tontine africaine et proposer des plans d'épargne flexibles. Permettre aux utilisateurs de gérer leurs portefeuilles Tontine et Épargne avec validation des transactions par des admins dédiés.",
   "results": "Plateforme complète avec gestion de tontines (10 participants, ramassages périodiques), plans d'épargne personnalisés, historique des transactions, notifications de ramassage et système d'audit pour le super admin.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI", "NG"]
 },
 {
   "id": "64",
@@ -1106,7 +1162,8 @@ const defaultProjects: Project[] = [
   "objectives": "Motiver les utilisateurs à maintenir une routine fitness régulière grâce à un système de streak (jours consécutifs), des objectifs sur 86 jours avec récompenses (Apple Watch, inscription salle de sport) et un suivi quotidien des activités.",
   "results": "Interface gamifiée avec compteur de streak, progression d'objectif (20% accompli, 17/86 jours), suivi des séances sport et repas, statistiques détaillées et messages de motivation personnalisés.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "65",
@@ -1127,7 +1184,8 @@ const defaultProjects: Project[] = [
   "objectives": "Créer un portfolio unique et immersif reproduisant l'interface d'un logiciel de montage vidéo professionnel (DaVinci Resolve style) pour mettre en valeur les compétences d'un monteur vidéo, photographe et producteur.",
   "results": "Interface créative avec Media Pool pour les images/vidéos, Timeline interactive, Inspector affichant le profil et compétences (Montage 95%, Photographie 90%, Production 85%, Étalonnage 88%, Sound Design 75%), et lecteur vidéo intégré.",
   "demoUrl": "https://avp-prod-phi.vercel.app/",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["FR"]
 },
 {
   "id": "66",
@@ -1148,7 +1206,8 @@ const defaultProjects: Project[] = [
   "objectives": "Créer une landing page impactante pour présenter StediiHome aux familles et travailleurs domestiques au Kenya. Mettre en avant les avantages clés : identité vérifiée, historique impossible à falsifier et mise en relation rapide.",
   "results": "Site vitrine bilingue (FR/EN) avec deux parcours utilisateur (Employeur/Travailleur), présentation des services (ménage, cuisine, garde d'enfants, personnes âgées), statistiques en temps réel (156 workers, 4.8 rating, 89% vérifiés) et mockup mobile immersif.",
   "demoUrl": "https://stediihome.com",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["KE", "BF", "CI"]
 },
 {
   "id": "67",
@@ -1169,7 +1228,8 @@ const defaultProjects: Project[] = [
   "objectives": "Créer une vitrine digitale professionnelle reflétant l'ADN de WHARPE (Whole, Holistic, Analysis, Reactiveness, Partnership, Expertise) et présentant les services de transformation numérique pour les entreprises africaines.",
   "results": "Landing page moderne avec animations fluides, présentation des 6 valeurs fondatrices, deux sections services distinctes (B2B et B2C), formulaire de contact intégré et design tech inspiré des circuits électroniques.",
   "demoUrl": "https://wharpe.com",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "68",
@@ -1190,7 +1250,8 @@ const defaultProjects: Project[] = [
   "objectives": "Créer un site vitrine professionnel et immersif pour positionner Cropsky comme leader de l'expertise drone à l'international, avec une présentation claire des services industriels et de transport aérien.",
   "results": "Site bilingue (FR/EN) avec design dark thème cinématique, présentation des deux divisions (Industrielle et Aviation), mise en avant des valeurs (Innovation, Expertise, Vision) et partenariat WHARPE affiché.",
   "demoUrl": "https://cropsky.org",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "69",
@@ -1211,7 +1272,8 @@ const defaultProjects: Project[] = [
   "objectives": "Créer une vitrine institutionnelle pour l'AEDCI afin de fédérer les exploitants de drones civils en Côte d'Ivoire, promouvoir l'adhésion et positionner le pays comme pôle de référence drone en Afrique de l'Ouest.",
   "results": "Site avec design épuré aux couleurs nature/tech, présentation des 6 domaines d'application drone, bureau exécutif de 7 membres, 8+ entreprises affiliées et formulaire d'adhésion intégré. Basé à Grand-Bassam (VITIB).",
   "demoUrl": "https://aedci.org",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "61",
@@ -1225,7 +1287,8 @@ const defaultProjects: Project[] = [
   "objectives": "Simplifier l'accès aux soins médicaux en Côte d'Ivoire en permettant aux patients de trouver rapidement un médecin selon leur spécialité, leur localisation et leur disponibilité, le tout depuis une interface mobile intuitive.",
   "results": "Application fonctionnelle avec recherche par spécialité, profils médecins détaillés, système de prise de rendez-vous en temps réel, gestion des tickets de consultation et interface patient ergonomique.",
   "demoUrl": "",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "62",
@@ -1239,7 +1302,8 @@ const defaultProjects: Project[] = [
   "objectives": "Créer une présence digitale professionnelle et prestigieuse pour une personnalité politique, avec un site moderne mettant en avant son engagement pour le développement de la Côte d'Ivoire et la jeunesse ivoirienne.",
   "results": "Site vitrine élégant avec design premium, navigation fluide entre les sections (Biographie, Actualités, Galerie, Jeunesse), formulaire de contact intégré et optimisation SEO pour la visibilité publique.",
   "demoUrl": "https://mamadouk.wharpe.com",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "70",
@@ -1260,7 +1324,8 @@ const defaultProjects: Project[] = [
   "objectives": "Repenser entièrement la landing page de StediiHome avec une nouvelle direction artistique violet/purple, des typographies plus affirmées et un message principal renforcé pour augmenter la conversion lors du lancement progressif au Kenya.",
   "results": "Nouvelle V2 avec hero impactant, badge de lancement progressif au Kenya, double CTA Employeur/Travailleur, mise en avant des trois bénéfices clés (profils vérifiés par pièce d'identité, historique impossible à falsifier, mise en relation rapide) et identité visuelle violette cohérente.",
   "demoUrl": "https://stediihome.com",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["KE", "BF", "CI"]
 },
 {
   "id": "71",
@@ -1280,7 +1345,8 @@ const defaultProjects: Project[] = [
   "objectives": "Repenser la landing page de Jeko pour mieux convertir les commerçants ivoiriens et africains, en clarifiant le positionnement (QR code unique multi-opérateurs) et en modernisant l'identité visuelle de la marque.",
   "results": "Nouvelle V2 avec hero plus affirmé, mise en avant des opérateurs supportés (Wave, Orange Money, MTN, Moov, Visa, Mastercard), CTA optimisés vers les stores et présentation produit plus immersive.",
   "demoUrl": "https://jeko.africa",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CI"]
 },
 {
   "id": "72",
@@ -1302,7 +1368,8 @@ const defaultProjects: Project[] = [
   "objectives": "Simplifier la mise en relation entre demandeurs de forage et prestataires qualifiés via un parcours en 3 étapes (soumission → propositions → acceptation), tout en garantissant la confidentialité du budget client et le cloisonnement entre les 3 acteurs (client, prestataires, plateforme).",
   "results": "Plateforme avec front SvelteKit (soumission de projet, espace client, suivi temps réel, acceptation d'offre en un clic) et back AdonisJS (workflow d'appel d'offres en 8 étapes, gestion documentaire, offres masquées entre prestataires). Statistiques mises en avant : 100% budget protégé, 3 acteurs cloisonnés, 8 étapes contrôlées.",
   "demoUrl": "https://forage-frontend.vercel.app",
-  "codeUrl": ""
+  "codeUrl": "",
+  "countries": ["CM"]
 }
 ];
 

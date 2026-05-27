@@ -1370,6 +1370,76 @@ const defaultProjects: Project[] = [
   "demoUrl": "https://forage-frontend.vercel.app",
   "codeUrl": "",
   "countries": ["CM"]
+},
+{
+  "id": "73",
+  "title": "StediiHome – Back Office Admin",
+  "description": "Back office administrateur pour la plateforme StediiHome permettant de piloter l'activité opérationnelle : tableau de bord avec KPIs en temps réel (utilisateurs, workers, employeurs), modération des avis, vérification des documents d'identité, gestion des catégories/compétences/langues et système de notifications. Interface admin pour garantir la qualité et la conformité de la plateforme d'employabilité domestique.",
+  "imageUrl": "./images/stediihome-backoffice-preview.jpeg",
+  "technologies": [
+    "SvelteKit",
+    "TypeScript",
+    "TailwindCSS",
+    "Role-Based Access",
+    "Document Verification",
+    "Dashboard Analytics",
+    "REST API"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Outiller les administrateurs StediiHome pour modérer la plateforme à grande échelle : valider les documents d'identité des travailleurs, modérer les avis post-contrat, gérer le référentiel (catégories, compétences, langues) et superviser l'activité globale via un tableau de bord centralisé.",
+  "results": "Dashboard admin complet avec sidebar à 4 sections (Pilotage, Utilisateurs, Activité, Configuration, Communication), 5 KPI cards (utilisateurs, workers, employeurs, avis à modérer, documents à vérifier), panneau Actions requises priorisées et aperçu plateforme en temps réel. Interface épurée aux couleurs StediiHome (violet/purple).",
+  "demoUrl": "",
+  "codeUrl": "",
+  "countries": ["KE", "BF", "CI"]
+},
+{
+  "id": "74",
+  "title": "Banana House – E-commerce Bananes",
+  "description": "Site e-commerce de Banana House, grossiste spécialisé dans la vente de bananes fraîches en gros et détail en Côte d'Ivoire. Propose 3 variétés (Plantain à 500 FCFA/kg, Douce Cavendish à 400 FCFA/kg, Plantain Corne à 550 FCFA/kg) avec précommande en ligne, livraison nationale et retrait possible, pour particuliers, semi-grossistes et professionnels.",
+  "imageUrl": "./images/bananahouse-preview.png",
+  "technologies": [
+    "Next.js",
+    "TailwindCSS",
+    "E-commerce",
+    "Responsive Design",
+    "SEO",
+    "Vercel"
+  ],
+  "category": "e-commerce",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Digitaliser l'activité de Banana House en offrant une vitrine e-commerce moderne pour faciliter les commandes B2B et B2C de bananes fraîches, avec présentation claire des variétés, prix au kilo et options de livraison/retrait sur toute la Côte d'Ivoire.",
+  "results": "Site e-commerce avec catalogue de 3 variétés de bananes, fiches produits détaillées (cuisson, dessert, densité), système de précommande en ligne, mise en avant des arguments qualité (sélection rigoureuse, producteurs partenaires) et couverture nationale pour la livraison.",
+  "demoUrl": "https://bananahouse.ci/",
+  "codeUrl": "",
+  "countries": ["CI"]
+},
+{
+  "id": "75",
+  "title": "FinSim – Simulateur de Marché Financier",
+  "description": "Simulateur de marché financier gamifié pour Android et iOS, construit en Kotlin Multiplatform (KMP) avec une base de code partagée. Logique métier centralisée dans un module shared, UI native via Jetpack Compose (Android) et SwiftUI (iOS). Trade en temps réel sur des données de marché réelles : Forex, Crypto et bientôt BRVM, avec flux de prix WebSocket et cache Redis pour la performance.",
+  "imageUrl": "./images/finsim-preview.png",
+  "technologies": [
+    "Kotlin Multiplatform",
+    "Jetpack Compose",
+    "SwiftUI",
+    "Ktor",
+    "PostgreSQL",
+    "Redis",
+    "WebSocket",
+    "Docker",
+    "Hexagonal Architecture"
+  ],
+  "category": "fintech",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Explorer Kotlin Multiplatform sur un cas d'usage exigeant — un simulateur de trading temps réel — pour mutualiser la logique métier entre Android et iOS tout en conservant une UI 100% native sur chaque plateforme. Démocratiser l'apprentissage des marchés financiers (Forex, Crypto, BRVM) via une expérience gamifiée et sans risque.",
+  "results": "Application multiplateforme avec un seul langage (Kotlin) pour deux plateformes, backend Ktor en architecture hexagonale, PostgreSQL pour la persistance, Redis pour le cache temps réel et WebSocket pour les flux de prix. API locale containerisée Docker, UI native Jetpack Compose / SwiftUI, intégration de données de marché réelles Forex et Crypto (BRVM à venir).",
+  "demoUrl": "",
+  "codeUrl": "",
+  "countries": ["BJ", "BF", "CI", "GW", "ML", "NE", "SN", "TG"]
 }
 ];
 

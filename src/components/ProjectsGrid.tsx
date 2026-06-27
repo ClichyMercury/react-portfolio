@@ -1440,6 +1440,94 @@ const defaultProjects: Project[] = [
   "demoUrl": "",
   "codeUrl": "",
   "countries": ["BJ", "BF", "CI", "GW", "ML", "NE", "SN", "TG"]
+},
+{
+  "id": "76",
+  "title": "Alph Backoffice – Administration de Missions & Agents",
+  "description": "Back office d'administration de la plateforme Alph permettant de superviser l'ensemble de l'activité : tableau de bord avec KPIs en temps réel (utilisateurs, agents, missions, revenus, communautés, incidents), gestion des utilisateurs et des agents avec vérifications en attente, suivi des missions, paiements, modération des communautés et traitement des incidents signalés. Interface centralisée pour piloter l'opérationnel au quotidien.",
+  "imageUrl": "./images/alph-backoffice-preview.png",
+  "technologies": [
+    "Svelte",
+    "TailwindCSS",
+    "Dashboard Analytics",
+    "Role-Based Access",
+    "Chart.js",
+    "REST API"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Doter les administrateurs Alph d'un outil unique pour piloter la plateforme : valider les inscriptions d'utilisateurs et d'agents, suivre les missions et les revenus, animer les communautés et traiter les incidents signalés, le tout depuis un tableau de bord centralisé et lisible.",
+  "results": "Dashboard admin complet avec sidebar à 9 sections (Dashboard, Utilisateurs, Agents, Missions, Paiements, Communautés, Incidents, Notifications, Références, Système), 6 KPI cards avec indicateurs d'attente, graphique « Missions par mois » (missions vs revenus) et panneau d'activité récente en temps réel.",
+  "demoUrl": "",
+  "codeUrl": "",
+  "countries": ["CI"]
+},
+{
+  "id": "77",
+  "title": "Mon Médecin – Back Office Santé",
+  "description": "Back office d'administration de la plateforme Mon Médecin permettant de gérer les centres médicaux, les spécialités et les praticiens depuis une interface simple et moderne. Espace d'administration sécurisé pour structurer l'offre de soins et piloter le référentiel médical.",
+  "imageUrl": "./images/mon-medecin-admin-preview.png",
+  "technologies": [
+    "Vue.js",
+    "TailwindCSS",
+    "Healthcare",
+    "Dashboard",
+    "Authentication",
+    "REST API"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Offrir aux administrateurs de Mon Médecin une interface centralisée pour gérer les centres de santé, les spécialités et les praticiens, et garantir la fiabilité du référentiel médical présenté aux patients.",
+  "results": "Back-office avec authentification sécurisée, écran de connexion aux couleurs de la marque (vert santé) et modules de gestion des centres, spécialités et praticiens. Interface épurée et responsive pensée pour un usage quotidien par les administrateurs.",
+  "demoUrl": "",
+  "codeUrl": "",
+  "countries": ["CI"]
+},
+{
+  "id": "78",
+  "title": "NexStream – Espace IPTV Personnel",
+  "description": "Plateforme web NexStream permettant aux utilisateurs de créer leurs accès IPTV, de recharger leur compte et de suivre leurs abonnements en toute simplicité. Landing page moderne et espace client pour gérer ses chaînes sans complication, avec essai gratuit et suivi des serveurs en ligne.",
+  "imageUrl": "./images/nexstream-preview.png",
+  "technologies": [
+    "Next.js",
+    "TailwindCSS",
+    "Authentication",
+    "Subscription Management",
+    "Responsive Design",
+    "Vercel"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Simplifier la gestion d'un abonnement IPTV pour l'utilisateur final : création de compte, rechargement et suivi des abonnements depuis un espace personnel clair, avec une landing page convaincante et un essai gratuit de 48h.",
+  "results": "Landing page sombre et moderne avec parcours d'inscription / connexion, mise en avant des chiffres clés (serveurs, nombre de chaînes, essai gratuit 48h), statut des serveurs en ligne (Dream 4K) et espace personnel pour gérer ses accès et recharges.",
+  "demoUrl": "https://nexstream.live",
+  "codeUrl": "",
+  "countries": ["CI"]
+},
+{
+  "id": "79",
+  "title": "SOSMoney – Microcrédit Instantané",
+  "description": "Plateforme fintech SOSMoney proposant du microcrédit instantané accessible à tous : obtenez un prêt de 5 000 à 50 000 FCFA en quelques minutes, 100% en ligne depuis votre mobile. Landing page et application permettant d'emprunter, d'acheter et de rembourser simplement, avec une boutique intégrée et un réseau de partenaires.",
+  "imageUrl": "./images/sosmoney-preview.png",
+  "technologies": [
+    "Next.js",
+    "TailwindCSS",
+    "Fintech",
+    "Microcredit",
+    "Mobile-First",
+    "Responsive Design"
+  ],
+  "category": "fintech",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Démocratiser l'accès au crédit en Côte d'Ivoire en proposant un microcrédit instantané, 100% en ligne et accessible à tous, avec une validation en quelques minutes et un parcours mobile-first simple et rassurant.",
+  "results": "Landing page fintech au design soigné (univers violet, illustration 3D) mettant en avant le prêt instantané de 5 000 à 50 000 FCFA, la validation en quelques minutes, un taux à partir de 5%, des transactions chiffrées et une navigation Fonctionnalités / Prêt / Boutique / Partenaires.",
+  "demoUrl": "https://sosmoney-admin.vercel.app/",
+  "codeUrl": "",
+  "countries": ["CI"]
 }
 ];
 

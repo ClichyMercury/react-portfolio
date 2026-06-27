@@ -494,7 +494,7 @@ const defaultProjects: Project[] = [
     countries: ["CI"]
 },
   {
-  "id": "18",
+  "id": "1",
   "title": "Baromètre Santé",
   "description": "Advanced telemedicine platform with AI-powered health analytics, remote patient monitoring, and intelligent appointment orchestration for comprehensive digital healthcare.",
   "imageUrl": "./images/barometre-sante-preview.jpeg",
@@ -509,7 +509,7 @@ const defaultProjects: Project[] = [
   "countries": ["BJ"]
 },
    {
-    "id": "19",
+    "id": "2",
     "title": "Collards Greens Bank",
     "description": "Revolutionary micro-banking app empowering financial inclusion with AI-driven credit scoring and blockchain-secured transactions for underbanked communities.",
     "imageUrl": "./images/collards-greens-preview.png",
@@ -524,7 +524,7 @@ const defaultProjects: Project[] = [
     "countries": ["CI"]
 },
   {
-    "id": "20", 
+    "id": "3", 
     "title": "FindMacy",
     "description": "Smart pharmacy locator with real-time medication availability, AI-powered drug interaction checker, and integrated telemedicine consultations.",
     "imageUrl": "./images/findmacy-preview.png",
@@ -539,7 +539,7 @@ const defaultProjects: Project[] = [
     "countries": ["GN"]
 },
   {
-    "id": "21",
+    "id": "4",
     "title": "BabiWarren",
     "description": "Next-generation ride-sharing platform with dynamic pricing algorithms, carbon footprint tracking, and AI-optimized route planning for sustainable urban mobility.",
     "imageUrl": "./images/babiwarren-preview.png", 
@@ -554,7 +554,7 @@ const defaultProjects: Project[] = [
     "countries": ["CI"]
 },
   {
-    "id": "22",
+    "id": "5",
     "title": "Le Livreur",
     "description": "Intelligent multi-vendor delivery ecosystem with predictive logistics, real-time order orchestration, and AI-powered demand forecasting for local businesses.",
     "imageUrl": "./images/le-livreur-preview.png",
@@ -569,7 +569,7 @@ const defaultProjects: Project[] = [
     "countries": ["CI"]
 }, 
   {
-    "id": "23",
+    "id": "6",
     "title": "Le Livreur Agent",
     "description": "Dedicated mobile application for delivery agents featuring real-time GPS tracking, intelligent route optimization, and intuitive order management interface. Maximizes delivery efficiency with advanced tracking tools and seamless communication features.",
     "imageUrl": "./images/le-livreur-agent-preview.png",
@@ -584,7 +584,7 @@ const defaultProjects: Project[] = [
     "countries": ["CI"]
 },
   {
-    "id": "24",
+    "id": "7",
     "title": "Le Livreur Resto",
     "description": "Comprehensive restaurant management platform with real-time order interface, dynamic menu management, performance analytics, and seamless integration with the delivery ecosystem. Optimizes culinary operations and customer relationships.",
     "imageUrl": "./images/le-livreur-resto-preview.png",
@@ -599,7 +599,7 @@ const defaultProjects: Project[] = [
     "countries": ["CI"]
 }, 
   {
-    "id": "25",
+    "id": "8",
     "title": "AZPROD",
     "description": "Creative agency specializing in music production, artist booking, and digital influence across West Africa. We transform the music industry by connecting emerging talents, brands, and audiences through authentic collaborations and memorable events.",
     "imageUrl": "./images/azprod-preview.png",
@@ -614,7 +614,7 @@ const defaultProjects: Project[] = [
     "countries": ["BE", "FR"]
 },
   {
-    "id": "26",
+    "id": "9",
     "title": "MôyCom",
     "description": "Commercial management application for healthcare sales representatives featuring client tracking, product catalog management, order processing, and performance analytics. Streamlines pharmaceutical and medical equipment sales operations.",
     "imageUrl": "./images/moycom-preview.png",
@@ -629,7 +629,7 @@ const defaultProjects: Project[] = [
     "countries": ["CI"]
 },
   {
-    "id": "27",
+    "id": "10",
     "title": "Gestopedia",
     "description": "Intelligent inventory management system with real-time sales tracking, automated stock monitoring, and predictive analytics. Features comprehensive dashboard for sales, stock levels, and financial performance with integrated banking and budgeting tools.",
     "imageUrl": "./images/gestopedia-preview.png",
@@ -644,7 +644,7 @@ const defaultProjects: Project[] = [
     "countries": ["CI"]
 },
   {
-  "id": "28",
+  "id": "11",
   "title": "Jéko Cockpit",
   "description": "Back-office moderne pour la supervision et la gestion des paiements, transactions, membres et équipements connectés. Offre une visualisation claire des données financières et comportementales à travers un tableau de bord interactif.",
   "imageUrl": "./images/jeko-cockpit-preview.PNG",
@@ -659,7 +659,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
   {
-  "id": "29",
+  "id": "12",
   "title": "My Design Pro",
   "description": "Version avancée de l’application My Design, offrant aux créatifs un espace pour créer, partager et s’inspirer. Propose un environnement communautaire favorisant l’échange et la visibilité des œuvres.",
   "imageUrl": "./images/my-design-pro-preview.jpeg",
@@ -674,7 +674,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI", "TG"]
 },
   {
-  "id": "30",
+  "id": "13",
   "title": "My Design",
   "description": "Application mobile permettant aux utilisateurs de découvrir des créations graphiques variées : affiches, logos et visuels créatifs. Favorise l'inspiration et le partage dans une communauté créative.",
   "imageUrl": "./images/my-design-user-preview.jpeg",
@@ -689,7 +689,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI", "TG"]
 },
 {
-  "id": "31",
+  "id": "14",
   "title": "SOSMONEY ADMIN",
   "description": "Comprehensive employee loan management platform with automated approval workflows, real-time payment tracking, and intelligent risk assessment. Features advanced admin dashboard for loan processing, borrower management, and financial analytics.",
   "imageUrl": "./images/salary-credit-manager-preview.webp",
@@ -704,7 +704,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "32",
+  "id": "15",
   "title": "SOSMONEY Mobile",
   "description": "Mobile application for employee loan management allowing users to track their loan balance, payment history, and available credit limit. Features intuitive dashboard with loan evolution charts, repayment tracking, and instant notifications for payment reminders.",
   "imageUrl": "./images/salary-credit-mobile-preview.webp",
@@ -719,7 +719,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "33",
+  "id": "16",
   "title": "Simplex Visitor Tracker",
   "description": "GDPR-compliant visitor management system enabling real-time tracking of visitors within company premises without retaining identity cards. Features agent dashboard for assisted visits, badge verification, and comprehensive visit analytics with privacy-first approach.",
   "imageUrl": "./images/visitor-flow-tracker-preview.webp",
@@ -734,7 +734,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "34",
+  "id": "17",
   "title": "WaveLink",
   "description": "Application mobile de transfert et de souscription rapide en Côte d'Ivoire. Permet d’envoyer du crédit, des forfaits internet ou des minutes d’appel sur les réseaux Orange, MTN et Moov, avec un paiement instantané et sécurisé via Wave.",
   "imageUrl": "./images/wavelink-preview.jpeg",
@@ -749,7 +749,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "35",
+  "id": "18",
   "title": "Hooli Library",
   "description": "Bibliothèque numérique moderne permettant aux utilisateurs de lire, découvrir et gérer leurs livres préférés en ligne. Propose des recommandations personnalisées, des évaluations, et une interface élégante inspirée des meilleures plateformes de lecture.",
   "imageUrl": "./images/hooli-library-preview.jpeg",
@@ -764,7 +764,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "36",
+  "id": "19",
   "title": "GS Dot Bet",
   "description": "Application de suivi et de pronostic sportif offrant une expérience complète pour les passionnés de football. Suivez les scores en direct, les classements, et placez vos paris en toute sécurité depuis une interface moderne et immersive.",
   "imageUrl": "./images/gs-dot-bet-preview.jpeg",
@@ -779,7 +779,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "37",
+  "id": "20",
   "title": "Kotlin Bank UI & API",
   "description": "Suite bancaire complète alliant une application mobile Kotlin moderne (Jetpack Compose) et une API backend Ktor gamifiée, conçue pour démocratiser l’éducation financière en Afrique à travers la gamification et les fonctionnalités locales.",
   "imageUrl": "./images/kotlinbank-suite-preview.jpeg",
@@ -804,7 +804,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "48",
+  "id": "21",
   "title": "Alerte E25 – Application Citoyenne",
   "description": "Application mobile permettant aux citoyens de signaler en temps réel des incidents ou situations urgentes aux autorités locales. Elle intègre la géolocalisation, l'envoi d’alertes, la sélection de priorité, ainsi qu'une interface simple et intuitive pour faciliter la participation citoyenne.",
   "imageUrl": "./images/alerte_e25_client_preview.png",
@@ -827,7 +827,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "49",
+  "id": "22",
   "title": "Alerte E25 – Application Admin",
   "description": "Interface mobile dédiée aux autorités pour visualiser, filtrer et gérer les alertes envoyées par les citoyens. Elle affiche sur une carte toutes les alertes en temps réel avec un système de priorisation (Urgent, Élevée, Moyenne, Faible) et permet un suivi opérationnel efficace.",
   "imageUrl": "./images/alerte_e25_admin_preview.png",
@@ -850,7 +850,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "50",
+  "id": "23",
   "title": "Jeko Pay – Nouvelle Page de Checkout",
   "description": "Interface de paiement moderne développée autour de l’API Jeko Pay, permettant aux utilisateurs de régler leurs commandes via différents moyens de paiement mobiles (Wave, Orange Money, Moov Money, MTN MoMo, Djamo, Jeko). Le checkout offre une expérience fluide, sécurisée et multi-méthodes, optimisée pour le taux de conversion.",
   "imageUrl": "./images/jeko_pay_preview.png",
@@ -873,7 +873,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "51",
+  "id": "24",
   "title": "Payix – Application Mobile de Paiement",
   "description": "Application fintech permettant aux utilisateurs de gérer leur solde, effectuer des transferts, recharger leur portefeuille, effectuer des retraits, payer des services et accéder à des services de prêt. L’interface est moderne, fluide et pensée pour simplifier la gestion quotidienne des transactions.",
   "imageUrl": "./images/payix_preview.png",
@@ -896,7 +896,7 @@ const defaultProjects: Project[] = [
   "countries": ["TG"]
 },
 {
-  "id": "52",
+  "id": "25",
   "title": "Jeko Landing Page",
   "description": "Landing page moderne pour Jeko, solution de paiement mobile money unifiée permettant aux commerçants d'encaisser via un QR code unique (Wave, Orange Money, MTN, Moov, Visa, Mastercard).",
   "imageUrl": "./images/jeko-landing-preview.png",
@@ -911,7 +911,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "53",
+  "id": "26",
   "title": "Jeko Download Page",
   "description": "Page de téléchargement dédiée à l'application Jeko Business, permettant aux commerçants d'installer rapidement l'app pour finaliser leurs paiements.",
   "imageUrl": "./images/jeko-download-preview.png",
@@ -926,7 +926,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "54",
+  "id": "27",
   "title": "Jeko Demo – Paiement Redirect",
   "description": "Interface de démonstration permettant aux développeurs de tester l'API Jeko Pay en créant des paiements redirect avec sélection de boutique, montant et méthode de paiement (Wave, Orange Money, MTN, Moov, Djamo).",
   "imageUrl": "./images/jeko-demo-preview.png",
@@ -941,7 +941,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "55",
+  "id": "28",
   "title": "Alph Sécurité (Landing Page) – Sécurisation de quartier à la demande",
   "description": "landing page de preseentation de la solution Alph Sécurité, une Plateforme digitale permettant aux particuliers et communautés de sécuriser leur quartier en un clic, en réservant des agents de sécurité certifiés, en rejoignant des communautés de vigilance et en consultant le niveau de sécurité en temps réel.",
   "imageUrl": "./images/alph-securite-preview.png",
@@ -964,7 +964,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "56",
+  "id": "29",
   "title": "Alph Sécurité – Application Mobile Client",
   "description": "Application mobile permettant aux particuliers de réserver des agents de sécurité certifiés pour différents types de missions : garde rapprochée, sécurité bâtiment, sécurité événementielle et escorte VIP. Interface intuitive avec géolocalisation et système de réservation simplifié.",
   "imageUrl": "./images/alph-securite-mobile-preview.jpeg",
@@ -987,7 +987,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "57",
+  "id": "30",
   "title": "PLUSS Alert – Application Mobile Citoyenne",
   "description": "Application mobile de la Plateforme Une Seule Santé (PLUSS) de Côte d'Ivoire permettant aux citoyens de signaler en temps réel des alertes sanitaires liées aux zoonoses, épidémies et menaces de santé publique à l'interface Homme-Animal-Environnement.",
   "imageUrl": "./images/pluss-alert-mobile-preview.jpeg",
@@ -1010,7 +1010,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "58",
+  "id": "31",
   "title": "PLUSS CI – Backoffice Administration",
   "description": "Interface d'administration web de la Plateforme Une Seule Santé permettant aux autorités sanitaires de visualiser, filtrer et gérer les alertes signalées par les citoyens. Tableau de bord complet avec statistiques en temps réel, gestion des agents et suivi des services de santé.",
   "imageUrl": "./images/pluss-backoffice-preview.png",
@@ -1033,7 +1033,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "59",
+  "id": "32",
   "title": "Décor de Rêve – Site Vitrine",
   "description": "Site web e-commerce élégant pour Décor de Rêve, entreprise spécialisée dans les décors éblouissants, bouquets exquis, ballons colorés et bien plus. Transformez vos moments en souvenirs magiques avec une boutique en ligne intuitive et un système de commande via WhatsApp.",
   "imageUrl": "./images/decor-de-reve-frontsite-preview.png",
@@ -1055,7 +1055,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "60",
+  "id": "33",
   "title": "Décor de Rêve – Back Office",
   "description": "Application de gestion complète pour Décor de Rêve permettant la gestion des produits, catégories, commandes, inventaire et mouvements de stock. Tableau de bord avec indicateurs clés : valeur stock, revenus du mois, commandes en attente, stock bas et surstock.",
   "imageUrl": "./images/decor-de-reve-backoffice-preview.png",
@@ -1077,7 +1077,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "61",
+  "id": "34",
   "title": "AgriPilote – Plateforme de Gestion Agricole",
   "description": "Plateforme complète de gestion des missions de drones agricoles pour le traitement des plantations. Permet la coordination entre entreprises clientes, télépilotes et administrateurs avec suivi des missions, gestion des plantations, rapports de traitement et tableau de bord analytique.",
   "imageUrl": "./images/agripilote-preview.png",
@@ -1100,7 +1100,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "62",
+  "id": "35",
   "title": "StediiHome – Employabilité Domestique",
   "description": "Application mobile connectant les familles aux employés de maison via un système de contrats QR Code sécurisés, un historique professionnel vivant et des avis vérifiés. Deux parcours utilisateur : Employer (famille) et Worker (employé).",
   "imageUrl": "./images/stediihome-preview.jpeg",
@@ -1122,7 +1122,7 @@ const defaultProjects: Project[] = [
   "countries": ["KE", "BF", "CI"]
 },
 {
-  "id": "63",
+  "id": "36",
   "title": "SmartSaver – Tontine & Épargne Digitale",
   "description": "Application fintech de gestion de tontines et d'épargne digitale. Permet aux utilisateurs de participer à des tontines collectives avec choix de rang de ramassage et de lancer des plans d'épargne personnalisés avec suivi en temps réel.",
   "imageUrl": "./images/smartsaver-preview.jpeg",
@@ -1144,7 +1144,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI", "NG"]
 },
 {
-  "id": "64",
+  "id": "37",
   "title": "TransformMe – Application Fitness",
   "description": "Application de suivi fitness avec système de streak motivationnel, objectifs personnalisés et récompenses. Suivez vos séances de sport, vos repas et visualisez vos statistiques de progression avec des défis à long terme.",
   "imageUrl": "./images/transformme-preview.jpeg",
@@ -1166,7 +1166,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "65",
+  "id": "38",
   "title": "AVP PROD – Portfolio Monteur Vidéo",
   "description": "Portfolio web professionnel pour Ivan, monteur vidéo, photographe et producteur basé à Paris. Interface inspirée des logiciels de montage avec Media Pool, Timeline, Inspector et prévisualisation vidéo intégrée.",
   "imageUrl": "./images/avp-prod-preview.png",
@@ -1188,7 +1188,7 @@ const defaultProjects: Project[] = [
   "countries": ["FR"]
 },
 {
-  "id": "66",
+  "id": "39",
   "title": "StediiHome – Landing Page",
   "description": "Site vitrine moderne pour StediiHome, plateforme d'emploi domestique sécurisé en Afrique. Présente la solution permettant d'embaucher du personnel domestique fiable sans recruter à l'aveugle, avec profils vérifiés et historique de travail traçable.",
   "imageUrl": "./images/stediihome-landing-preview.png",
@@ -1210,7 +1210,7 @@ const defaultProjects: Project[] = [
   "countries": ["KE", "BF", "CI"]
 },
 {
-  "id": "67",
+  "id": "40",
   "title": "WHARPE – Landing Page",
   "description": "Site vitrine élégant pour WHARPE, cabinet informatique moderne accompagnant la transformation digitale en Afrique. Présente les deux pôles d'activité : Pôle Entreprises (développement sur mesure, cloud, maintenance) et Studio d'Innovation (apps mobiles, SaaS, marketplaces).",
   "imageUrl": "./images/wharpe-landing-preview.png",
@@ -1232,7 +1232,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "68",
+  "id": "41",
   "title": "Cropsky – Landing Page",
   "description": "Site vitrine pour Cropsky, centre d'expertise drone combinant technologie de pointe et savoir-faire professionnel au Canada, en Afrique et dans le monde. Présente les divisions Industrielle (inspection, surveillance, cartographie) et Aviation & Transport (livraison, mobilité urbaine aérienne).",
   "imageUrl": "./images/cropsky-landing-preview.png",
@@ -1254,7 +1254,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "69",
+  "id": "42",
   "title": "AEDCI – Landing Page",
   "description": "Site vitrine de l'Association des Exploitants de Drones Civils en Côte d'Ivoire, organisation professionnelle structurant et professionnalisant la filière drone au niveau national. Présente les missions, domaines d'application (audiovisuel, cartographie, agriculture, inspection) et le processus d'adhésion.",
   "imageUrl": "./images/aedci-landing-preview.png",
@@ -1276,7 +1276,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "61",
+  "id": "43",
   "title": "Mon Médecin",
   "description": "Application mobile de mise en relation patient-médecin, un véritable Uber de la médecine. Permet de rechercher un médecin par spécialité (généraliste, dentiste, ophtalmologue, dermatologue, pédiatre, cardiologue, ORL, gynécologue), de consulter les médecins populaires, de prendre rendez-vous et de gérer son parcours de soins complet.",
   "imageUrl": "./images/mon-medecin-preview.jpeg",
@@ -1291,7 +1291,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "62",
+  "id": "44",
   "title": "Mamadou Koné – Site Officiel",
   "description": "Site officiel d'une personnalité politique ivoirienne. Vitrine digitale complète avec biographie, actualités, galerie photo, espace jeunesse et formulaire de contact. Design premium aux tons dorés avec navigation élégante et mise en valeur du parcours public.",
   "imageUrl": "./images/mamadou-kone-preview.png",
@@ -1306,7 +1306,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "70",
+  "id": "45",
   "title": "StediiHome – Landing Page V2",
   "description": "Refonte complète de la landing page StediiHome avec une nouvelle identité visuelle violet/purple plus moderne et épurée. Met l'accent sur le slogan fort \"Embauchez du personnel domestique fiable, sans recruter à l'aveugle\" et propose un parcours bilingue clair pour Employeurs et Travailleurs avec une section de bénéfices clés visuellement plus impactante.",
   "imageUrl": "./images/steddihome_landing_page_v2.png",
@@ -1328,7 +1328,7 @@ const defaultProjects: Project[] = [
   "countries": ["KE", "BF", "CI"]
 },
 {
-  "id": "71",
+  "id": "46",
   "title": "Jeko – Landing Page V2",
   "description": "Refonte de la landing page Jeko avec une nouvelle direction visuelle plus moderne et orientée conversion. Met en avant la solution de paiement mobile money unifiée pour les commerçants africains avec un design plus impactant, une hiérarchie typographique renforcée et une démonstration produit plus claire.",
   "imageUrl": "./images/jeko-landing-v2-preview.png",
@@ -1349,7 +1349,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "72",
+  "id": "47",
   "title": "Forage – Plateforme Mise en Relation",
   "description": "Plateforme numérique \"Le forage, simplifié\" mettant en relation clients (particuliers/entreprises) et entreprises de forage qualifiées dans les domaines eau, géotechnique et pétrolier. Le client soumet son projet, reçoit des offres confidentielles de prestataires cloisonnés et signe en toute confiance — budget protégé, workflow contrôlé en 8 étapes et messagerie centralisée.",
   "imageUrl": "./images/forage-preview.png",
@@ -1372,7 +1372,7 @@ const defaultProjects: Project[] = [
   "countries": ["CM"]
 },
 {
-  "id": "73",
+  "id": "48",
   "title": "StediiHome – Back Office Admin",
   "description": "Back office administrateur pour la plateforme StediiHome permettant de piloter l'activité opérationnelle : tableau de bord avec KPIs en temps réel (utilisateurs, workers, employeurs), modération des avis, vérification des documents d'identité, gestion des catégories/compétences/langues et système de notifications. Interface admin pour garantir la qualité et la conformité de la plateforme d'employabilité domestique.",
   "imageUrl": "./images/stediihome-backoffice-preview.jpeg",
@@ -1395,7 +1395,7 @@ const defaultProjects: Project[] = [
   "countries": ["KE", "BF", "CI"]
 },
 {
-  "id": "74",
+  "id": "49",
   "title": "Banana House – E-commerce Bananes",
   "description": "Site e-commerce de Banana House, grossiste spécialisé dans la vente de bananes fraîches en gros et détail en Côte d'Ivoire. Propose 3 variétés (Plantain à 500 FCFA/kg, Douce Cavendish à 400 FCFA/kg, Plantain Corne à 550 FCFA/kg) avec précommande en ligne, livraison nationale et retrait possible, pour particuliers, semi-grossistes et professionnels.",
   "imageUrl": "./images/bananahouse-preview.png",
@@ -1417,7 +1417,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "75",
+  "id": "50",
   "title": "FinSim – Simulateur de Marché Financier",
   "description": "Simulateur de marché financier gamifié pour Android et iOS, construit en Kotlin Multiplatform (KMP) avec une base de code partagée. Logique métier centralisée dans un module shared, UI native via Jetpack Compose (Android) et SwiftUI (iOS). Trade en temps réel sur des données de marché réelles : Forex, Crypto et bientôt BRVM, avec flux de prix WebSocket et cache Redis pour la performance.",
   "imageUrl": "./images/finsim-preview.png",
@@ -1442,7 +1442,7 @@ const defaultProjects: Project[] = [
   "countries": ["BJ", "BF", "CI", "GW", "ML", "NE", "SN", "TG"]
 },
 {
-  "id": "76",
+  "id": "51",
   "title": "Alph Backoffice – Administration de Missions & Agents",
   "description": "Back office d'administration de la plateforme Alph permettant de superviser l'ensemble de l'activité : tableau de bord avec KPIs en temps réel (utilisateurs, agents, missions, revenus, communautés, incidents), gestion des utilisateurs et des agents avec vérifications en attente, suivi des missions, paiements, modération des communautés et traitement des incidents signalés. Interface centralisée pour piloter l'opérationnel au quotidien.",
   "imageUrl": "./images/alph-backoffice-preview.png",
@@ -1464,7 +1464,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "77",
+  "id": "52",
   "title": "Mon Médecin – Back Office Santé",
   "description": "Back office d'administration de la plateforme Mon Médecin permettant de gérer les centres médicaux, les spécialités et les praticiens depuis une interface simple et moderne. Espace d'administration sécurisé pour structurer l'offre de soins et piloter le référentiel médical.",
   "imageUrl": "./images/mon-medecin-admin-preview.png",
@@ -1486,7 +1486,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "78",
+  "id": "53",
   "title": "NexStream – Espace IPTV Personnel",
   "description": "Plateforme web NexStream permettant aux utilisateurs de créer leurs accès IPTV, de recharger leur compte et de suivre leurs abonnements en toute simplicité. Landing page moderne et espace client pour gérer ses chaînes sans complication, avec essai gratuit et suivi des serveurs en ligne.",
   "imageUrl": "./images/nexstream-preview.png",
@@ -1508,7 +1508,7 @@ const defaultProjects: Project[] = [
   "countries": ["CI"]
 },
 {
-  "id": "79",
+  "id": "54",
   "title": "SOSMoney – Microcrédit Instantané",
   "description": "Plateforme fintech SOSMoney proposant du microcrédit instantané accessible à tous : obtenez un prêt de 5 000 à 50 000 FCFA en quelques minutes, 100% en ligne depuis votre mobile. Landing page et application permettant d'emprunter, d'acheter et de rembourser simplement, avec une boutique intégrée et un réseau de partenaires.",
   "imageUrl": "./images/sosmoney-preview.png",

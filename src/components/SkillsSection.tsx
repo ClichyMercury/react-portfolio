@@ -39,7 +39,7 @@ const SkillsSection = ({ skills = defaultSkills }: { skills?: Skill[] }) => {
       <motion.div className="max-w-5xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8" style={{ y: statsY, opacity: statsOpacity }}>
         {[
           { number: "6+", label: "Years of Experience" },
-          { number: "49+", label: "Projects Completed" },
+          { number: "54+", label: "Projects Completed" },
           { number: "15+", label: "Technologies Mastered" },
           { number: "100%", label: "Client Satisfaction" },
         ].map((s) => (

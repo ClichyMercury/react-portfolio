@@ -8,7 +8,7 @@ const ProfessionalBio = () => {
   const highlights = [
     "6+ years of experience in mobile and web development",
     "Expertise in Flutter, React, and cloud technologies",
-    "49+ successfully delivered projects",
+    "54+ successfully delivered projects",
     "User-centered approach focused on performance",
   ];
 
@@ -45,7 +45,7 @@ const ProfessionalBio = () => {
         <motion.div className="flex flex-wrap justify-center gap-16 lg:gap-24 mb-24" style={{ y: contentY, opacity: contentOpacity }}>
           {[
             { number: "6+", label: "Years" },
-            { number: "49+", label: "Projects" },
+            { number: "54+", label: "Projects" },
             { number: "100%", label: "Satisfaction" },
           ].map((s, i) => (
             <motion.div key={i} className="text-center"

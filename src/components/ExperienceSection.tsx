@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Calendar, MapPin, Building, ChevronRight } from "lucide-react";
-import { Badge } from "./ui/badge";
+import { motion, AnimatePresence } from "framer-motion";
+import { MapPin, ChevronRight, Building } from "lucide-react";
 import SectionHeader from "./SectionHeader";
-import NebulaOrbs from "./NebulaOrbs";
+import SectionRail from "./fx/SectionRail";
 import { getTechIcon } from "@/lib/techIcons";
 
 interface Experience {
@@ -23,230 +22,197 @@ interface ExperienceSectionProps {
   experiences?: Experience[];
 }
 
+const pseudoHash = (seed: string) => {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) {
+    h = (Math.imul(31, h) + seed.charCodeAt(i)) | 0;
+  }
+  return Math.abs(h).toString(16).padStart(7, "0").slice(0, 7);
+};
+
+const TYPE_LABEL: Record<string, string> = {
+  professional: "employee",
+  freelance: "freelance",
+  personal: "personal",
+};
+
+const shortPeriod = (period: string) =>
+  period
+    .replace(/January|February|March|April|May|June|July|August|September|October|November|December/g, (m) => m.slice(0, 3))
+    .replace(" - ", " → ");
+
 const ExperienceSection = ({
   experiences = defaultExperiences,
 }: ExperienceSectionProps) => {
-  const [visibleCount, setVisibleCount] = useState<number>(6);
-
-  const experiencesToShow = experiences.slice(0, visibleCount);
-  const hasMoreExperiences = visibleCount < experiences.length;
-
-  const getTypeBadgeClass = (type: string) => {
-    switch (type) {
-      case "professional":
-        return "border-white/20 text-white/50";
-      case "freelance":
-        return "border-white/15 text-white/40";
-      default:
-        return "border-white/10 text-white/30";
-    }
-  };
+  const [expandedId, setExpandedId] = useState<string | null>(experiences[0]?.id ?? null);
 
   return (
     <section
       id="experience"
-      className="min-h-screen py-40 lg:py-52 px-6 relative overflow-hidden"
+      className="min-h-screen py-32 lg:py-44 px-6 relative"
     >
-      <NebulaOrbs variant="purple" />
-      {/* Tentacle decoration */}
-      <svg
-        className="absolute top-0 left-0 w-32 h-full opacity-[0.02] pointer-events-none"
-        viewBox="0 0 100 1000"
-      >
-        <motion.path
-          d="M20,0 Q60,200 30,400 Q0,600 50,800 Q80,900 40,1000"
-          stroke="white"
-          strokeWidth="1"
-          fill="none"
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          transition={{ duration: 3 }}
-          viewport={{ once: true }}
-        />
-      </svg>
-
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <SectionRail index="05" label="commit_history" motif="leds" />
+      <div className="relative z-10 max-w-5xl mx-auto">
         <SectionHeader
-          label="Journey"
-          title="My"
-          titleHighlight="Experience"
-          description="A rich journey filled with diverse projects and stimulating technical challenges."
+          index="05"
+          label="commit_history"
+          title="Career"
+          titleHighlight="Git Log"
+          description="Every role, merged into main. Click a commit to inspect it."
         />
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Timeline line - desktop only */}
-          <div className="hidden md:block absolute left-8 top-0 bottom-0 w-[1px]" style={{ background: "linear-gradient(to bottom, var(--border-medium), transparent, var(--border-medium))" }}></div>
-
-          <div className="space-y-6 md:space-y-10">
-            {experiencesToShow.map((experience, index) => (
-              <motion.div
-                key={experience.id}
-                className="relative"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.06 }}
-                viewport={{ once: true }}
-              >
-                {/* Desktop: horizontal layout with timeline */}
-                <div className="hidden md:flex gap-8">
-                  {/* Timeline dot - company logo */}
-                  <div className="relative z-10 flex-shrink-0">
-                    <div className="w-16 h-16 glass-effect rounded-full flex items-center justify-center overflow-hidden">
-                      {experience.logo ? (
-                        <img src={experience.logo} alt={experience.company} className="w-10 h-10 object-contain rounded-full" />
-                      ) : (
-                        <Building className="h-5 w-5 text-[var(--theme-muted)]" />
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Desktop Content */}
-                  <div className="flex-1 pb-4">
-                    <div className="glass-effect rounded-3xl p-6 hover-lift tentacle-glow">
-                      <div className="flex flex-row items-start justify-between gap-4 mb-4">
-                        <div>
-                          <h3 className="text-lg font-semibold text-white mb-1">{experience.role}</h3>
-                          <p className="text-sm font-medium" style={{ color: "var(--accent)" }}>{experience.company}</p>
-                        </div>
-                        <div className="flex flex-col items-end gap-2">
-                          <div className="flex items-center gap-2 text-xs" style={{ color: "var(--fg-muted)" }}>
-                            <Calendar className="h-3 w-3" />{experience.period}
-                          </div>
-                          <div className="flex items-center gap-2 text-xs" style={{ color: "var(--fg-muted)" }}>
-                            <MapPin className="h-3 w-3" />{experience.location}
-                          </div>
-                          <Badge variant="outline" className="text-[10px] uppercase tracking-wider"
-                            style={{ borderColor: "var(--border-medium)", color: "var(--fg-faint)" }}
-                          >
-                            {experience.type === "professional" ? "Employee" : experience.type === "freelance" ? "Freelance" : "Personal"}
-                          </Badge>
-                        </div>
-                      </div>
-
-                      <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--fg-muted)" }}>{experience.description}</p>
-
-                      {experience.achievements.length > 0 && (
-                        <div className="mb-4">
-                          <h4 className="text-[10px] font-medium mb-3 uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>Key Achievements</h4>
-                          <div className="space-y-2">
-                            {experience.achievements.map((a, idx) => (
-                              <div key={idx} className="flex items-start gap-2">
-                                <ChevronRight className="h-3 w-3 mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }} />
-                                <p className="text-xs leading-relaxed" style={{ color: "var(--fg-muted)" }}>{a}</p>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {experience.technologies.length > 0 && (
-                        <div>
-                          <h4 className="text-[10px] font-medium mb-3 uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>Technologies</h4>
-                          <div className="flex flex-wrap gap-1.5">
-                            {experience.technologies.map((t, idx) => {
-                              const icon = getTechIcon(t);
-                              return (
-                                <span key={idx} className="inline-flex items-center gap-1.5 text-[10px] px-2.5 py-1 rounded-full"
-                                  style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}
-                                >
-                                  {icon && <img src={icon} alt="" className="w-3.5 h-3.5" />}
-                                  {t}
-                                </span>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Mobile: card layout, logo on top */}
-                <div className="md:hidden glass-effect rounded-2xl p-5 tentacle-glow">
-                  {/* Header: logo + company + badge */}
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 glass-effect rounded-full flex items-center justify-center overflow-hidden flex-shrink-0">
-                      {experience.logo ? (
-                        <img src={experience.logo} alt={experience.company} className="w-8 h-8 object-contain rounded-full" />
-                      ) : (
-                        <Building className="h-4 w-4 text-[var(--theme-muted)]" />
-                      )}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium truncate" style={{ color: "var(--accent)" }}>{experience.company}</p>
-                      <div className="flex items-center gap-2 text-[10px]" style={{ color: "var(--fg-muted)" }}>
-                        <Calendar className="h-2.5 w-2.5 flex-shrink-0" />{experience.period}
-                      </div>
-                    </div>
-                    <Badge variant="outline" className="text-[9px] uppercase tracking-wider flex-shrink-0"
-                      style={{ borderColor: "var(--border-medium)", color: "var(--fg-faint)" }}
-                    >
-                      {experience.type === "professional" ? "Employee" : experience.type === "freelance" ? "Freelance" : "Personal"}
-                    </Badge>
-                  </div>
-
-                  {/* Role */}
-                  <h3 className="text-base font-semibold text-white mb-1">{experience.role}</h3>
-                  <div className="flex items-center gap-1.5 text-[10px] mb-3" style={{ color: "var(--fg-muted)" }}>
-                    <MapPin className="h-2.5 w-2.5" />{experience.location}
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-xs leading-relaxed mb-3" style={{ color: "var(--fg-muted)" }}>{experience.description}</p>
-
-                  {/* Achievements - collapsed, show max 3 on mobile */}
-                  {experience.achievements.length > 0 && (
-                    <div className="mb-3">
-                      <div className="space-y-1.5">
-                        {experience.achievements.slice(0, 3).map((a, idx) => (
-                          <div key={idx} className="flex items-start gap-1.5">
-                            <ChevronRight className="h-2.5 w-2.5 mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }} />
-                            <p className="text-[11px] leading-relaxed" style={{ color: "var(--fg-muted)" }}>{a}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Tech chips - horizontal scroll on mobile */}
-                  {experience.technologies.length > 0 && (
-                    <div className="flex flex-wrap gap-1">
-                      {experience.technologies.map((t, idx) => {
-                        const icon = getTechIcon(t);
-                        return (
-                          <span key={idx} className="inline-flex items-center gap-1 text-[9px] px-2 py-0.5 rounded-full"
-                            style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}
-                          >
-                            {icon && <img src={icon} alt="" className="w-3 h-3" />}
-                            {t}
-                          </span>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+        <div className="panel rounded-xl overflow-hidden hud-corners">
+          <div className="flex items-center gap-3 px-4 sm:px-5 py-3 font-mono text-[11px]" style={{ background: "var(--bg-elevated)", borderBottom: "1px solid var(--border-subtle)" }}>
+            <span style={{ color: "var(--accent)" }}>$</span>
+            <span style={{ color: "var(--fg)" }}>git log --oneline --all</span>
+            <span className="animate-blink inline-block w-[7px] h-[12px]" style={{ background: "var(--accent)" }} />
+            <span className="ml-auto hidden sm:inline text-[9px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>
+              {experiences.length} commits
+            </span>
           </div>
 
-          {/* View More Button */}
-          {hasMoreExperiences && (
-            <div className="text-center mt-12">
-              <motion.button
-                onClick={() => setVisibleCount(prev => prev + 6)}
-                className="px-8 py-3 border border-white/20 rounded-full text-xs font-medium uppercase tracking-[0.15em] text-white/50 hover:text-white hover:bg-white/5 transition-all duration-500"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                View More ({Math.min(6, experiences.length - visibleCount)} more)
-              </motion.button>
-            </div>
-          )}
+          <div className="relative">
+            <div className="absolute left-[26px] sm:left-[30px] top-0 bottom-0 w-[1px]" style={{ background: "var(--border-medium)" }} />
+
+            {experiences.map((experience, index) => {
+              const isOpen = expandedId === experience.id;
+              const hash = pseudoHash(experience.company + experience.role);
+              return (
+                <motion.div
+                  key={experience.id}
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: Math.min(index, 8) * 0.05 }}
+                  viewport={{ once: true }}
+                  style={{ borderBottom: index < experiences.length - 1 || isOpen ? "1px solid var(--border-subtle)" : "none" }}
+                >
+                  <button
+                    onClick={() => setExpandedId(isOpen ? null : experience.id)}
+                    className="relative w-full flex items-center gap-3 sm:gap-4 px-4 sm:px-5 py-3.5 text-left transition-colors duration-300 hover:bg-[rgba(0,229,255,0.03)]"
+                    data-cursor={isOpen ? "collapse" : "inspect"}
+                  >
+                    <span
+                      className="relative z-10 flex-shrink-0 w-[13px] h-[13px] rounded-full ml-[3px] sm:ml-[5px]"
+                      style={{
+                        background: "var(--bg)",
+                        border: `2px solid ${index === 0 ? "var(--accent)" : isOpen ? "var(--fg-muted)" : "var(--border-medium)"}`,
+                        boxShadow: index === 0 ? "0 0 10px rgba(0,229,255,0.5)" : "none",
+                      }}
+                    />
+
+                    <span className="hidden sm:inline flex-shrink-0 font-mono text-[11px]" style={{ color: "#E3B341" }}>{hash}</span>
+
+                    {index === 0 && (
+                      <span className="hidden md:inline flex-shrink-0 px-1.5 py-0.5 rounded font-mono text-[9px]" style={{ background: "rgba(0,229,255,0.12)", color: "var(--accent)" }}>
+                        HEAD → main
+                      </span>
+                    )}
+
+                    <span className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-baseline sm:gap-2">
+                      <span className={`text-sm font-medium truncate transition-colors duration-300 ${isOpen ? "text-[var(--accent)]" : ""}`}>
+                        {experience.role}
+                      </span>
+                      <span className="font-mono text-[10px] truncate" style={{ color: "var(--fg-muted)" }}>
+                        @ {experience.company}
+                      </span>
+                    </span>
+
+                    <span className="hidden lg:inline flex-shrink-0 font-mono text-[9px] uppercase tracking-[0.15em] px-1.5 py-0.5 rounded" style={{ border: "1px solid var(--border-subtle)", color: "var(--fg-faint)" }}>
+                      {TYPE_LABEL[experience.type]}
+                    </span>
+
+                    <span className="flex-shrink-0 font-mono text-[9px] sm:text-[10px] text-right" style={{ color: "var(--fg-faint)" }}>
+                      {shortPeriod(experience.period)}
+                    </span>
+
+                    <motion.span
+                      className="flex-shrink-0"
+                      animate={{ rotate: isOpen ? 90 : 0 }}
+                      transition={{ duration: 0.25 }}
+                      style={{ color: isOpen ? "var(--accent)" : "var(--fg-faint)" }}
+                    >
+                      <ChevronRight className="h-3.5 w-3.5" />
+                    </motion.span>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: [0.19, 1, 0.22, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="relative pl-12 sm:pl-16 pr-4 sm:pr-6 pb-6 pt-1">
+                          <div className="rounded-lg p-4 sm:p-5" style={{ background: "var(--bg)", border: "1px solid var(--border-subtle)" }}>
+                            <div className="flex items-start gap-4 mb-4">
+                              <div className="w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0" style={{ background: "var(--bg-card)", border: "1px solid var(--border-subtle)" }}>
+                                {experience.logo ? (
+                                  <img src={experience.logo} alt={experience.company} loading="lazy" decoding="async" className="w-7 h-7 object-contain rounded" />
+                                ) : (
+                                  <Building className="h-4 w-4" style={{ color: "var(--fg-faint)" }} />
+                                )}
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="font-mono text-[10px] mb-1" style={{ color: "#E3B341" }}>
+                                  commit {hash} <span style={{ color: "var(--fg-faint)" }}>· {experience.period}</span>
+                                </div>
+                                <div className="flex items-center gap-2 font-mono text-[10px]" style={{ color: "var(--fg-faint)" }}>
+                                  <MapPin className="h-2.5 w-2.5" />{experience.location}
+                                  <span className="lg:hidden px-1.5 py-0.5 rounded" style={{ border: "1px solid var(--border-subtle)" }}>{TYPE_LABEL[experience.type]}</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--fg-muted)" }}>{experience.description}</p>
+
+                            {experience.achievements.length > 0 && (
+                              <div className="mb-4">
+                                <h4 className="font-mono text-[9px] mb-2.5 uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>// changelog</h4>
+                                <div className="space-y-1.5">
+                                  {experience.achievements.map((a, idx) => (
+                                    <div key={idx} className="flex items-start gap-2">
+                                      <span className="font-mono text-[10px] mt-0.5 flex-shrink-0" style={{ color: "var(--accent)" }}>+</span>
+                                      <p className="text-xs leading-relaxed" style={{ color: "var(--fg-muted)" }}>{a}</p>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
+                            {experience.technologies.length > 0 && (
+                              <div className="flex flex-wrap gap-1.5">
+                                {experience.technologies.map((t, idx) => {
+                                  const icon = getTechIcon(t);
+                                  return (
+                                    <span key={idx} className="inline-flex items-center gap-1.5 font-mono text-[9px] px-2 py-1 rounded"
+                                      style={{ background: "var(--bg-elevated)", border: "1px solid var(--border-subtle)", color: "var(--fg-muted)" }}
+                                    >
+                                      {icon && <img src={icon} alt="" className="w-3 h-3" />}
+                                      {t}
+                                    </span>
+                                  );
+                                })}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          <div className="px-4 sm:px-5 py-2.5 font-mono text-[10px]" style={{ background: "var(--bg-elevated)", borderTop: "1px solid var(--border-subtle)", color: "var(--fg-faint)" }}>
+            <span style={{ color: "var(--accent)" }}>$</span> 6+ years · 0 merge conflicts unresolved
+          </div>
         </div>
       </div>
 
-      <div className="tentacle-line mt-32 max-w-md mx-auto"></div>
+      <div className="tentacle-line mt-28 max-w-md mx-auto"></div>
     </section>
   );
 };
@@ -466,7 +432,7 @@ const defaultExperiences: Experience[] = [
   {
     id: "9",
     company: "Softskills",
-    logo: "/images/softskills.png",
+    logo: "/images/softskills.webp",
     role: "Software Engineer",
     period: "March 2020 - June 2022",
     location: "Côte d'Ivoire",

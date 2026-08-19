@@ -1,82 +1,76 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
-import NebulaOrbs from "./NebulaOrbs";
+import TechConstellation from "./fx/TechConstellation";
+import Counter from "./fx/Counter";
+import SectionRail from "./fx/SectionRail";
 
 interface Skill {
   name: string;
-  icon: string; // URL to icon
+  icon: string;
   category: "languages" | "frameworks" | "tools";
 }
 
 const SkillsSection = ({ skills = defaultSkills }: { skills?: Skill[] }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const statsY = useTransform(scrollYProgress, [0.3, 0.6], [60, 0]);
-  const statsOpacity = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
-
-  const languages = skills.filter((s) => s.category === "languages");
-  const frameworks = skills.filter((s) => s.category === "frameworks");
-  const tools = skills.filter((s) => s.category === "tools");
-  const row1 = [...languages, ...frameworks];
-  const row2 = [...tools, ...languages.slice(0, 4)];
-  const row3 = [...frameworks, ...tools.slice(0, 5)];
-
   return (
-    <section ref={ref} id="skills" className="min-h-screen py-40 lg:py-52 px-6 relative overflow-hidden">
-      <NebulaOrbs variant="purple" />
-      <div className="relative z-10 max-w-5xl mx-auto">
-        <SectionHeader label="Expertise" title="Skills &" titleHighlight="Technologies"
-          description="Mastering cutting-edge technologies to build exceptional digital experiences." />
-      </div>
+    <section id="skills" className="min-h-screen py-32 lg:py-44 px-6 relative">
+      <SectionRail index="02" label="arsenal" motif="bars" bars={[95, 88, 70, 62, 78, 55, 40]} />
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <SectionHeader
+          index="02"
+          label="arsenal"
+          title="Tech"
+          titleHighlight="Constellation"
+          description="Every star is a technology I've shipped with. Hover to trace the connections — grab one and throw it."
+        />
 
-      <div className="space-y-5 mb-32 overflow-hidden">
-        <MarqueeRow items={row1} speed="animate-marquee" />
-        <MarqueeRow items={row2} speed="animate-marquee-reverse" />
-        <MarqueeRow items={row3} speed="animate-marquee" />
-      </div>
+        <motion.div
+          className="panel rounded-2xl hud-corners overflow-hidden mb-16"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+          viewport={{ once: true }}
+        >
+          <div className="flex items-center justify-between px-4 py-2.5" style={{ borderBottom: "1px solid var(--border-subtle)", background: "var(--bg-elevated)" }}>
+            <span className="font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--accent)" }}>
+              star_map.render( )
+            </span>
+            <div className="flex items-center gap-4 font-mono text-[9px] uppercase tracking-[0.15em]" style={{ color: "var(--fg-faint)" }}>
+              <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full" style={{ background: "#00E5FF" }} />languages</span>
+              <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full" style={{ background: "#7DF9FF" }} />frameworks</span>
+              <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full" style={{ background: "#4A90D9" }} />tools</span>
+            </div>
+          </div>
+          <TechConstellation skills={skills} />
+        </motion.div>
 
-      <motion.div className="max-w-5xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-8" style={{ y: statsY, opacity: statsOpacity }}>
-        {[
-          { number: "6+", label: "Years of Experience" },
-          { number: "54+", label: "Projects Completed" },
-          { number: "15+", label: "Technologies Mastered" },
-          { number: "100%", label: "Client Satisfaction" },
-        ].map((s) => (
-          <motion.div key={s.label} className="text-center py-8 rounded-3xl glass-effect hover-lift" whileHover={{ scale: 1.03 }}>
-            <div className="text-4xl lg:text-5xl font-bold text-white mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>{s.number}</div>
-            <div className="text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>{s.label}</div>
-          </motion.div>
-        ))}
-      </motion.div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {[
+            { value: 6, suffix: "+", label: "Years of Experience" },
+            { value: 54, suffix: "+", label: "Projects Completed" },
+            { value: 15, suffix: "+", label: "Technologies Mastered" },
+            { value: 100, suffix: "%", label: "Client Satisfaction" },
+          ].map((s) => (
+            <motion.div
+              key={s.label}
+              className="text-center py-8 rounded-xl panel tentacle-glow"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <Counter value={s.value} suffix={s.suffix} className="block text-3xl lg:text-5xl font-semibold mb-2" />
+              <div className="font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>{s.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
-  );
-};
-
-const MarqueeRow = ({ items, speed }: { items: Skill[]; speed: string }) => {
-  const doubled = [...items, ...items];
-  return (
-    <div className="flex overflow-hidden">
-      <div className={`flex gap-4 ${speed}`} style={{ willChange: "transform" }}>
-        {doubled.map((s, i) => (
-          <motion.div key={`${s.name}-${i}`}
-            className="flex-shrink-0 flex items-center gap-3 px-5 py-3 rounded-full text-sm font-medium whitespace-nowrap transition-all duration-300"
-            style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}
-            whileHover={{ scale: 1.1, rotate: -2, background: "var(--accent)", color: "var(--bg)", borderColor: "var(--accent)" }}
-          >
-            {s.icon && <img src={s.icon} alt={s.name} className="w-5 h-5 object-contain" />}
-            {s.name}
-          </motion.div>
-        ))}
-      </div>
-    </div>
   );
 };
 
 const D = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons";
 
 const defaultSkills: Skill[] = [
-  // Languages
   { name: "Dart", icon: `${D}/dart/dart-original.svg`, category: "languages" },
   { name: "Java", icon: `${D}/java/java-original.svg`, category: "languages" },
   { name: "JavaScript", icon: `${D}/javascript/javascript-original.svg`, category: "languages" },
@@ -87,8 +81,6 @@ const defaultSkills: Skill[] = [
   { name: "Rust", icon: `${D}/rust/rust-original.svg`, category: "languages" },
   { name: "PHP", icon: `${D}/php/php-original.svg`, category: "languages" },
   { name: "HTML/CSS", icon: `${D}/html5/html5-original.svg`, category: "languages" },
-
-  // Frameworks
   { name: "Flutter", icon: `${D}/flutter/flutter-original.svg`, category: "frameworks" },
   { name: "Flutter BLoC", icon: `${D}/flutter/flutter-original.svg`, category: "frameworks" },
   { name: "Provider", icon: `${D}/flutter/flutter-original.svg`, category: "frameworks" },
@@ -98,8 +90,6 @@ const defaultSkills: Skill[] = [
   { name: "Flask", icon: `${D}/flask/flask-original.svg`, category: "frameworks" },
   { name: "Node.js", icon: `${D}/nodejs/nodejs-original.svg`, category: "frameworks" },
   { name: "React", icon: `${D}/react/react-original.svg`, category: "frameworks" },
-
-  // Tools
   { name: "Firebase", icon: `${D}/firebase/firebase-original.svg`, category: "tools" },
   { name: "Supabase", icon: `${D}/supabase/supabase-original.svg`, category: "tools" },
   { name: "Git", icon: `${D}/git/git-original.svg`, category: "tools" },

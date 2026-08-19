@@ -7,33 +7,39 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   useEffect(() => {
     const el = document.getElementById("loading-screen");
     if (el) el.classList.add("hidden");
-    const t1 = setTimeout(() => setExit(true), 1800);
-    const t2 = setTimeout(() => onComplete(), 2500);
+    const t1 = setTimeout(() => setExit(true), 1600);
+    const t2 = setTimeout(() => onComplete(), 2200);
     return () => { clearTimeout(t1); clearTimeout(t2); };
   }, [onComplete]);
 
+  const lines = [
+    "> boot gs.dev --env=production",
+    "> mounting modules: flutter react cloud",
+    "> rendering interface...",
+  ];
+
   return (
     <motion.div
-      className="fixed inset-0 z-[99999] flex flex-col items-center justify-center"
+      className="fixed inset-0 z-[99999] flex items-center justify-center"
       style={{ background: "var(--bg)" }}
-      animate={exit ? { opacity: 0, scale: 1.1 } : { opacity: 1, scale: 1 }}
-      transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
+      animate={exit ? { opacity: 0 } : { opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
     >
-      <motion.img src="/images/GS-removebg-preview.png" alt="GS"
-        className="w-24 h-24 object-contain logo-themed"
-        initial={{ opacity: 0, scale: 0.7 }}
-        animate={{ opacity: 1, scale: [1, 1.05, 1] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-      />
-      <motion.div className="mt-8 flex gap-1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
-        {"LOADING".split("").map((c, i) => (
-          <motion.span key={i} className="text-[10px] tracking-[0.3em] font-light"
-            style={{ color: "var(--fg-faint)" }}
-            animate={{ opacity: [0.3, 0.8, 0.3] }}
-            transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.08 }}
-          >{c}</motion.span>
+      <div className="font-mono text-xs leading-loose" style={{ color: "var(--fg-faint)" }}>
+        {lines.map((line, i) => (
+          <motion.div key={i}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.15 + i * 0.4 }}
+          >
+            {line} <span style={{ color: "var(--accent)" }}>[OK]</span>
+          </motion.div>
         ))}
-      </motion.div>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }}>
+          <span style={{ color: "var(--accent)" }}>&gt;</span> welcome
+          <span className="animate-blink inline-block w-[7px] h-[13px] ml-1 align-middle" style={{ background: "var(--accent)" }} />
+        </motion.div>
+      </div>
     </motion.div>
   );
 };

@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Badge } from "./ui/badge";
-import { Building, Users, Calendar, ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Building, Users, Calendar, ExternalLink, Lock } from "lucide-react";
 import SectionHeader from "./SectionHeader";
-import NebulaOrbs from "./NebulaOrbs";
+import Counter from "./fx/Counter";
+import SectionRail from "./fx/SectionRail";
 import { getTechIcon } from "@/lib/techIcons";
 import { getCountry } from "@/lib/countries";
 
@@ -28,14 +28,229 @@ interface TeamProjectsProps {
   projects?: TeamProject[];
 }
 
+const FEED_DURATION = 6;
+
+const MonitoringRoom = ({ projects }: { projects: TeamProject[] }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  const active = projects[Math.min(activeIndex, projects.length - 1)];
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [projects]);
+
+  useEffect(() => {
+    if (paused || projects.length <= 1) return;
+    const t = setInterval(() => {
+      setActiveIndex((i) => (i + 1) % projects.length);
+    }, FEED_DURATION * 1000);
+    return () => clearInterval(t);
+  }, [paused, projects.length, activeIndex]);
+
+  if (!active) return null;
+
+  const resolvedCountries = (active.countries ?? [])
+    .map((code) => getCountry(code))
+    .filter((c): c is NonNullable<ReturnType<typeof getCountry>> => Boolean(c));
+
+  return (
+    <div
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <motion.div
+        className="panel rounded-xl overflow-hidden hud-corners"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
+        viewport={{ once: true }}
+      >
+        <div className="flex items-center justify-between px-4 py-2.5" style={{ borderBottom: "1px solid var(--border-subtle)", background: "var(--bg-elevated)" }}>
+          <span className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--accent)" }}>
+            main_feed // cam_{String(activeIndex + 1).padStart(2, "0")}
+            <span className="flex items-center gap-1.5" style={{ color: "#FF4D4D" }}>
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#FF4D4D" }} />rec
+            </span>
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>
+            {paused ? "⏸ paused" : `feed ${activeIndex + 1}/${projects.length}`}
+          </span>
+        </div>
+
+        <div className="grid lg:grid-cols-3">
+          <div className="relative lg:col-span-2 h-64 sm:h-96 lg:h-[500px] overflow-hidden" style={{ background: "var(--bg)" }}>
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={active.id}
+                src={active.imageUrl}
+                alt={active.title}
+                className="absolute inset-0 w-full h-full object-cover"
+                initial={{ opacity: 0, scale: 1.06, filter: "brightness(2) saturate(0)" }}
+                animate={{ opacity: 1, scale: 1, filter: "brightness(1) saturate(1)" }}
+                exit={{ opacity: 0, filter: "brightness(0.3) saturate(0)" }}
+                transition={{ duration: 0.45, ease: [0.19, 1, 0.22, 1] }}
+              />
+            </AnimatePresence>
+            <div className="absolute inset-0 scanlines opacity-30 pointer-events-none" />
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, transparent 55%, rgba(5,6,10,0.5) 100%)" }} />
+
+            {active.isNDA && (
+              <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-1 rounded font-mono text-[9px] uppercase tracking-wider" style={{ background: "rgba(5,6,10,0.85)", border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}>
+                <Lock className="h-2.5 w-2.5" />NDA
+              </div>
+            )}
+
+            <div className="absolute bottom-0 inset-x-0 px-5 pb-4 pt-14" style={{ background: "linear-gradient(to top, rgba(5,6,10,0.95), transparent)" }}>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={active.id}
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <h3 className="text-xl sm:text-2xl font-medium leading-tight mb-1.5">{active.title}</h3>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-[10px]" style={{ color: "var(--fg-muted)" }}>
+                    <span className="flex items-center gap-1.5"><Building className="h-3 w-3" />{active.company}</span>
+                    <span className="flex items-center gap-1.5"><Users className="h-3 w-3" />{active.teamSize}</span>
+                    <span className="flex items-center gap-1.5"><Calendar className="h-3 w-3" />{active.period}</span>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {!paused && (
+              <motion.div
+                key={`progress-${active.id}`}
+                className="absolute bottom-0 left-0 h-[2px] origin-left"
+                style={{ background: "var(--accent)", width: "100%" }}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: FEED_DURATION, ease: "linear" }}
+              />
+            )}
+          </div>
+
+          <div className="p-5 lg:p-6 flex flex-col gap-4" style={{ borderLeft: "1px solid var(--border-subtle)" }}>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.id}
+                className="flex flex-col gap-4 flex-grow"
+                initial={{ opacity: 0, x: 16 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -10 }}
+                transition={{ duration: 0.35 }}
+              >
+                <div>
+                  <h4 className="font-mono text-[9px] mb-2 uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>// mission_brief</h4>
+                  <p className="text-xs sm:text-sm leading-relaxed" style={{ color: "var(--fg-muted)" }}>{active.description}</p>
+                </div>
+
+                <div>
+                  <h4 className="font-mono text-[9px] mb-2 uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>// role</h4>
+                  <p className="text-xs font-mono" style={{ color: "var(--fg)" }}>{active.role}</p>
+                </div>
+
+                {active.achievements.length > 0 && (
+                  <div>
+                    <h4 className="font-mono text-[9px] mb-2 uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>// highlights</h4>
+                    <div className="space-y-1.5">
+                      {active.achievements.slice(0, 2).map((a, idx) => (
+                        <div key={idx} className="flex items-start gap-2">
+                          <span className="font-mono text-[9px] mt-0.5" style={{ color: "var(--accent)" }}>+</span>
+                          <p className="text-[11px] leading-relaxed" style={{ color: "var(--fg-muted)" }}>{a}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="flex flex-wrap gap-1">
+                  {active.technologies.slice(0, 6).map((tech, idx) => {
+                    const icon = getTechIcon(tech);
+                    return (
+                      <span key={idx}
+                        className="inline-flex items-center gap-1.5 font-mono text-[9px] px-2 py-1 rounded"
+                        style={{ background: "var(--bg-elevated)", border: "1px solid var(--border-subtle)", color: "var(--fg-muted)" }}
+                      >
+                        {icon && <img src={icon} alt="" className="w-3 h-3" />}
+                        {tech}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                <div className="flex items-center justify-between mt-auto pt-2">
+                  {resolvedCountries.length > 0 && (
+                    <span className="flex gap-1 text-sm">
+                      {resolvedCountries.map((c) => (
+                        <span key={c.code} title={c.name}>{c.flag}</span>
+                      ))}
+                    </span>
+                  )}
+                  {active.projectUrl && !active.isNDA && (
+                    <a
+                      href={active.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider transition-colors hover:text-[var(--accent)] animated-underline"
+                      style={{ color: "var(--fg-muted)" }}
+                    >
+                      <ExternalLink className="h-3 w-3" />
+                      view_feed
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </motion.div>
+
+      <div className="flex gap-2 mt-3 overflow-x-auto pb-2" style={{ scrollbarWidth: "thin" }}>
+        {projects.map((project, i) => (
+          <button
+            key={project.id}
+            onClick={() => setActiveIndex(i)}
+            className="group relative flex-shrink-0 w-28 sm:w-32 rounded overflow-hidden transition-all duration-300"
+            style={{
+              border: `1px solid ${i === activeIndex ? "var(--accent)" : "var(--border-subtle)"}`,
+              boxShadow: i === activeIndex ? "0 0 16px rgba(0,229,255,0.25)" : "none",
+            }}
+            data-cursor="switch"
+          >
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              loading="lazy"
+              decoding="async"
+              className={`w-full h-16 sm:h-20 object-cover transition-all duration-300 ${i === activeIndex ? "" : "grayscale opacity-50 group-hover:opacity-80"}`}
+            />
+            <span
+              className="absolute bottom-0 inset-x-0 px-1.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.1em] truncate text-left"
+              style={{
+                background: "rgba(5,6,10,0.85)",
+                color: i === activeIndex ? "var(--accent)" : "var(--fg-faint)",
+              }}
+            >
+              cam_{String(i + 1).padStart(2, "0")}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const TeamProjects = ({ projects = defaultTeamProjects }: TeamProjectsProps) => {
   const [selectedType, setSelectedType] = useState<string>("all");
 
   const projectTypes = [
-    { value: "all", label: "All" },
-    { value: "enterprise", label: "Enterprise" },
-    { value: "freelance", label: "Freelance" },
-    { value: "collaboration", label: "Collaboration" },
+    { value: "all", label: "all" },
+    { value: "enterprise", label: "enterprise" },
+    { value: "freelance", label: "freelance" },
+    { value: "collaboration", label: "collab" },
   ];
 
   const filteredProjects = selectedType === "all"
@@ -45,200 +260,60 @@ const TeamProjects = ({ projects = defaultTeamProjects }: TeamProjectsProps) => 
   return (
     <section
       id="team-projects"
-      className="min-h-screen py-40 lg:py-52 px-6 relative overflow-hidden"
+      className="min-h-screen py-32 lg:py-44 px-6 relative"
     >
-      <NebulaOrbs variant="cyber" />
+      <SectionRail index="04" label="control_room" motif="sweep" />
       <div className="relative z-10 max-w-7xl mx-auto">
         <SectionHeader
-          label="Collaborative Work"
+          index="04"
+          label="control_room"
           title="Team"
           titleHighlight="Projects"
-          description="Collaborative projects where I've contributed my expertise as part of professional teams and client engagements."
+          description="Collaborative projects where I've contributed my expertise as part of professional teams and client engagements. Live feeds from the field."
         />
 
-        {/* Filter - Apple segmented control */}
         <motion.div
-          className="flex justify-center mb-16"
+          className="flex flex-wrap gap-2 mb-10"
           initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
+          {projectTypes.map((type) => (
+            <button
+              key={type.value}
+              onClick={() => setSelectedType(type.value)}
+              className="px-4 py-2 rounded font-mono text-[10px] uppercase tracking-[0.15em] transition-all duration-300"
+              style={{
+                background: selectedType === type.value ? "var(--accent)" : "transparent",
+                color: selectedType === type.value ? "var(--bg)" : "var(--fg-muted)",
+                border: `1px solid ${selectedType === type.value ? "var(--accent)" : "var(--border-medium)"}`,
+              }}
+            >
+              {type.label}
+            </button>
+          ))}
+        </motion.div>
+
+        <MonitoringRoom projects={filteredProjects} />
+
+        <motion.div
+          className="mt-16 grid grid-cols-2 md:grid-cols-5 gap-4"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex gap-1 p-1 rounded-full" style={{ border: "1px solid var(--border-subtle)", background: "var(--bg-card)" }}>
-            {projectTypes.map((type) => (
-              <button
-                key={type.value}
-                onClick={() => setSelectedType(type.value)}
-                className="px-6 py-2.5 rounded-full text-xs font-medium tracking-[0.12em] transition-all duration-400"
-                style={{
-                  background: selectedType === type.value ? "var(--accent)" : "transparent",
-                  color: selectedType === type.value ? "var(--bg)" : "var(--fg-muted)",
-                }}
-              >
-                {type.label}
-              </button>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.06 }}
-              viewport={{ once: true }}
-            >
-              <div className="glass-effect rounded-2xl hover-lift tentacle-glow h-full flex flex-col overflow-hidden group">
-                {/* Image */}
-                <div className="relative h-44 overflow-hidden">
-                  <img
-                    src={project.imageUrl}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-                  />
-                  {project.isNDA && (
-                    <div className="absolute top-3 right-3">
-                      <Badge variant="outline" className="bg-white/10 border-white/20 text-white/60 text-[10px]">
-                        NDA
-                      </Badge>
-                    </div>
-                  )}
-                </div>
-
-                <div className="p-5 flex-grow flex flex-col space-y-3">
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex-1">
-                      <h3 className="text-sm font-semibold text-white/80 mb-1 line-clamp-1">
-                        {project.title}
-                      </h3>
-                      <div className="flex items-center gap-2 text-white/40 text-xs">
-                        <Building className="h-3 w-3" />
-                        {project.company}
-                      </div>
-                    </div>
-                    <Badge
-                      variant="outline"
-                      className="border-white/10 text-white/30 text-[9px] uppercase tracking-wider"
-                    >
-                      {project.projectType}
-                    </Badge>
-                  </div>
-
-                  <p className="text-white/30 text-xs leading-relaxed line-clamp-2">
-                    {project.description}
-                  </p>
-
-                  {/* Countries */}
-                  {project.countries && project.countries.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.countries
-                        .map((code) => getCountry(code))
-                        .filter((c): c is NonNullable<ReturnType<typeof getCountry>> => Boolean(c))
-                        .map((c) => (
-                          <span
-                            key={c.code}
-                            className="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full"
-                            style={{ background: "var(--bg-elevated)", color: "var(--fg-muted)", border: "1px solid var(--border-subtle)" }}
-                          >
-                            <span className="text-sm leading-none">{c.flag}</span>
-                            {c.name}
-                          </span>
-                        ))}
-                    </div>
-                  )}
-
-                  {/* Details */}
-                  <div className="space-y-1.5 text-white/25 text-[11px]">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="h-3 w-3" />
-                      {project.period}
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Users className="h-3 w-3" />
-                      {project.teamSize}
-                    </div>
-                  </div>
-
-                  {/* Achievements */}
-                  {project.achievements.length > 0 && (
-                    <div>
-                      <div className="space-y-1">
-                        {project.achievements.slice(0, 2).map((achievement, idx) => (
-                          <div key={idx} className="flex items-start gap-2">
-                            <div className="w-1 h-1 bg-white/20 rounded-full mt-1.5 flex-shrink-0"></div>
-                            <p className="text-white/30 text-[11px] leading-relaxed">
-                              {achievement}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Technologies */}
-                  <div className="flex flex-wrap gap-1 mt-auto pt-2">
-                    {project.technologies.slice(0, 4).map((tech, idx) => {
-                      const icon = getTechIcon(tech);
-                      return (
-                        <span key={idx}
-                          className="inline-flex items-center gap-1.5 text-[10px] px-2.5 py-1 rounded-full"
-                          style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}
-                        >
-                          {icon && <img src={icon} alt="" className="w-3.5 h-3.5" />}
-                          {tech}
-                        </span>
-                      );
-                    })}
-                    {project.technologies.length > 4 && (
-                      <Badge
-                        variant="outline"
-                        className="border-white/[0.05] text-white/20 bg-transparent text-[10px] px-2 py-0.5"
-                      >
-                        +{project.technologies.length - 4}
-                      </Badge>
-                    )}
-                  </div>
-
-                  {project.projectUrl && !project.isNDA && (
-                    <a
-                      href={project.projectUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-white/30 hover:text-white/60 transition-colors text-xs animated-underline w-fit"
-                    >
-                      <ExternalLink className="h-3 w-3" />
-                      View Project
-                    </a>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Stats */}
-        <motion.div
-          className="mt-20 grid grid-cols-2 md:grid-cols-5 gap-6"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
           {[
-            { label: "Team Projects", value: projects.length.toString() },
-            { label: "Companies", value: new Set(projects.map(p => p.company)).size.toString() },
-            { label: "Technologies", value: new Set(projects.flatMap(p => p.technologies)).size.toString() },
-            { label: "Collaborations", value: projects.length.toString() },
-            { label: "Countries", value: new Set(projects.flatMap(p => p.countries ?? [])).size.toString() },
+            { label: "Team Projects", value: projects.length },
+            { label: "Companies", value: new Set(projects.map(p => p.company)).size },
+            { label: "Technologies", value: new Set(projects.flatMap(p => p.technologies)).size },
+            { label: "Collaborations", value: projects.length },
+            { label: "Countries", value: new Set(projects.flatMap(p => p.countries ?? [])).size },
           ].map((stat, index) => (
-            <div key={index} className="text-center glass-effect p-8 rounded-2xl tentacle-glow">
-              <div className="text-2xl font-bold text-white mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>
-                {stat.value}
-              </div>
-              <div className="text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>
+            <div key={index} className="text-center panel p-6 rounded-xl tentacle-glow">
+              <Counter value={stat.value} className="block text-2xl lg:text-3xl font-semibold mb-1" />
+              <div className="font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>
                 {stat.label}
               </div>
             </div>
@@ -246,7 +321,7 @@ const TeamProjects = ({ projects = defaultTeamProjects }: TeamProjectsProps) => 
         </motion.div>
       </div>
 
-      <div className="tentacle-line mt-32 max-w-md mx-auto"></div>
+      <div className="tentacle-line mt-28 max-w-md mx-auto"></div>
     </section>
   );
 };
@@ -404,7 +479,7 @@ const defaultTeamProjects: TeamProject[] = [
     role: "Full-Stack Developer",
     period: "2023 - Present",
     teamSize: "6-person government tech team",
-    imageUrl: "./images/dmg-dashboard-preview.png",
+    imageUrl: "./images/dmg-dashboard-preview.webp",
     technologies: ["SvelteKit", "Laravel", "REST API", "PostgreSQL", "Role-Based Access", "SMS Integration", "Document Management"],
     projectType: "enterprise",
     achievements: [
@@ -426,7 +501,7 @@ const defaultTeamProjects: TeamProject[] = [
     role: "Mobile Developer (Maintenance)",
     period: "2025",
     teamSize: "Équipe technique fintech",
-    imageUrl: "./images/transfert-ci-preview.png",
+    imageUrl: "./images/transfert-ci-preview.webp",
     technologies: ["React", "Ionic", "Capacitor", "TypeScript", "iOS", "Android", "REST API"],
     projectType: "freelance",
     achievements: [

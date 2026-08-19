@@ -1,8 +1,8 @@
-import { useState } from "react";
-import ProjectCard from "./ProjectCard";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
-import NebulaOrbs from "./NebulaOrbs";
+import ProjectModal, { ModalProject } from "./ProjectModal";
+import SectionRail from "./fx/SectionRail";
 
 interface Project {
   id: string;
@@ -24,10 +24,180 @@ interface ProjectsGridProps {
   projects?: Project[];
 }
 
+const toModal = (p: Project): ModalProject => ({
+  title: p.title,
+  description: p.description,
+  imageUrl: p.imageUrl,
+  technologies: p.technologies,
+  category: p.category,
+  objectives: p.objectives,
+  results: p.results,
+  demoUrl: p.demoUrl,
+  codeUrl: p.codeUrl,
+  isPortrait: p.isPortrait,
+  countries: p.countries,
+});
+
+const STAMPS = ["TOP SECRET", "CLASSIFIED", "CONFIDENTIAL", "EYES ONLY"];
+
+const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelect: (p: Project) => void }) => {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const drag = useRef({ down: false, startX: 0, scrollLeft: 0, moved: false });
+
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (!rowRef.current) return;
+    drag.current = { down: true, startX: e.clientX, scrollLeft: rowRef.current.scrollLeft, moved: false };
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!drag.current.down || !rowRef.current) return;
+    const dx = e.clientX - drag.current.startX;
+    if (Math.abs(dx) > 6) drag.current.moved = true;
+    rowRef.current.scrollLeft = drag.current.scrollLeft - dx;
+  };
+
+  const endDrag = () => {
+    drag.current.down = false;
+  };
+
+  const onClickCapture = (e: React.MouseEvent) => {
+    if (drag.current.moved) {
+      e.preventDefault();
+      e.stopPropagation();
+      drag.current.moved = false;
+    }
+  };
+
+  return (
+    <div className="relative mb-24">
+      <div className="flex items-center gap-3 mb-6 font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>
+        <span style={{ color: "var(--accent)" }}>★</span> featured_archive // clearance_level_5
+        <div className="flex-1 tentacle-line" />
+      </div>
+
+      <div className="relative">
+        <div
+          ref={rowRef}
+          className="flex items-end overflow-x-auto overflow-y-hidden pt-10 pb-3 px-2 select-none"
+          style={{ scrollbarWidth: "thin" }}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={endDrag}
+          onPointerLeave={endDrag}
+          onClickCapture={onClickCapture}
+          data-cursor="drag"
+        >
+          {projects.map((project, i) => (
+            <motion.button
+              key={project.id}
+              className="group relative flex-shrink-0 w-72 sm:w-80 lg:w-[340px] text-left"
+              style={{ marginLeft: i === 0 ? 0 : -36, zIndex: i + 1 }}
+              initial={{ y: 120, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 + Math.min(i, 8) * 0.08, duration: 0.55, ease: [0.19, 1, 0.22, 1] }}
+              whileHover={{ y: -18, zIndex: 40, rotate: i % 2 === 0 ? -0.8 : 0.8 }}
+              onClick={() => onSelect(project)}
+              data-cursor="declassify"
+            >
+              <div
+                className="relative w-max max-w-[85%] px-3 py-1.5 rounded-t font-mono text-[9px] uppercase tracking-[0.15em] truncate transition-colors duration-300 group-hover:text-[var(--accent)]"
+                style={{
+                  background: "var(--bg-elevated)",
+                  border: "1px solid var(--border-medium)",
+                  borderBottom: "none",
+                  color: "var(--fg-muted)",
+                  marginLeft: `${(i % 3) * 26 + 6}%`,
+                }}
+              >
+                {project.title}
+              </div>
+
+              <div
+                className="relative h-80 rounded-lg overflow-hidden transition-shadow duration-300 group-hover:shadow-[0_-10px_40px_rgba(0,229,255,0.15)]"
+                style={{
+                  border: "1px solid var(--border-medium)",
+                  boxShadow: "-12px 0 24px rgba(0,0,0,0.45)",
+                  background: "var(--bg)",
+                }}
+              >
+                <img
+                  src={project.imageUrl}
+                  alt={project.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 w-full h-full object-cover transition-all duration-500 grayscale-[0.5] group-hover:grayscale-0 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 scanlines opacity-25 pointer-events-none" />
+                <div className="absolute inset-x-0 bottom-0 h-28 pointer-events-none" style={{ background: "linear-gradient(to top, rgba(5,6,10,0.95), transparent)" }} />
+
+                <div
+                  className="absolute top-4 -right-2 px-2 py-0.5 font-mono text-[10px] font-bold tracking-[0.2em] rotate-[-12deg] pointer-events-none"
+                  style={{
+                    color: "#FF4D4D",
+                    border: "2px double #FF4D4D",
+                    background: "rgba(5,6,10,0.55)",
+                    opacity: 0.9,
+                  }}
+                >
+                  {STAMPS[i % STAMPS.length]}
+                </div>
+
+                <p className="absolute bottom-9 left-3.5 right-3.5 font-mono text-[10px] leading-relaxed line-clamp-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0" style={{ color: "var(--fg)" }}>
+                  {project.description}
+                </p>
+
+                <div className="absolute bottom-0 inset-x-0 flex items-center justify-between px-3.5 py-2.5 font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-muted)", background: "rgba(10,13,20,0.85)", borderTop: "1px solid var(--border-subtle)", backdropFilter: "blur(6px)" }}>
+                  <span>case_#{String(i + 1).padStart(3, "0")}</span>
+                  <span style={{ color: "var(--accent)" }}>{project.category} ↗</span>
+                </div>
+              </div>
+            </motion.button>
+          ))}
+        </div>
+      </div>
+
+      <div
+        className="relative w-full rounded-lg overflow-hidden"
+        style={{
+          background: "linear-gradient(180deg, #151B28, #0A0D14)",
+          border: "1px solid var(--border-medium)",
+          borderTop: "1px solid rgba(0,229,255,0.35)",
+        }}
+      >
+        <div className="flex items-center justify-between px-5 sm:px-8 py-5">
+          <div className="flex items-center gap-2.5">
+            {[0, 1].map((d) => (
+              <span key={d} className="w-2 h-2 rounded-full" style={{ background: "var(--border-medium)", boxShadow: "inset 0 1px 2px rgba(0,0,0,0.8)" }} />
+            ))}
+          </div>
+
+          <div className="flex flex-col items-center gap-2.5">
+            <div className="px-4 py-1 rounded font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.25em]" style={{ border: "1px solid var(--border-medium)", background: "var(--bg)", color: "var(--fg-muted)" }}>
+              featured_cases — {projects.length} dossiers
+            </div>
+            <div className="w-32 sm:w-44 h-2 rounded-full" style={{ background: "var(--bg)", border: "1px solid var(--border-medium)", boxShadow: "inset 0 2px 4px rgba(0,0,0,0.7)" }} />
+          </div>
+
+          <div className="flex items-center gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#28C840" }} />
+            {[0, 1].map((d) => (
+              <span key={d} className="w-2 h-2 rounded-full" style={{ background: "var(--border-medium)", boxShadow: "inset 0 1px 2px rgba(0,0,0,0.8)" }} />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-3 text-center font-mono text-[9px] uppercase tracking-[0.3em] opacity-50" style={{ color: "var(--fg-faint)" }}>
+        [ drag_to_browse — click_to_declassify ]
+      </div>
+    </div>
+  );
+};
+
 const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
-  const [visibleCount, setVisibleCount] = useState<number>(6);
-  const [visibleFeaturedCount, setVisibleFeaturedCount] = useState<number>(6);
+  const [modalProject, setModalProject] = useState<Project | null>(null);
 
   const categories = [
     "all",
@@ -42,158 +212,90 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
   const featuredProjects = projects.filter((p) => p.featured);
   const regularProjects = filteredProjects.filter((p) => !p.featured);
 
-  const projectsToShow = regularProjects.slice(0, visibleCount);
-  const hasMoreProjects = visibleCount < regularProjects.length;
-
-  const featuredProjectsToShow = featuredProjects.slice(0, visibleFeaturedCount);
-  const hasMoreFeaturedProjects = visibleFeaturedCount < featuredProjects.length;
-
   return (
     <section
       id="projects"
-      className="min-h-screen py-40 lg:py-52 px-6 relative overflow-hidden"
+      className="min-h-screen py-32 lg:py-44 px-6 relative"
     >
-      <NebulaOrbs variant="mixed" />
+      <SectionRail index="03" label="deployments" motif="crosshair" />
       <div className="relative z-10 max-w-7xl mx-auto">
         <SectionHeader
-          label="Portfolio"
+          index="03"
+          label="deployments"
           title="Featured"
           titleHighlight="Projects"
           description="Discover my latest mobile applications and web projects, crafted with precision and innovation."
         />
 
-        {/* Category Filter - Apple segmented control */}
+        {selectedCategory === "all" && featuredProjects.length > 0 && (
+          <FeaturedDossiers projects={featuredProjects} onSelect={setModalProject} />
+        )}
+
         <motion.div
-          className="flex justify-center mb-16"
+          className="flex flex-wrap gap-2 mb-14"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="inline-flex flex-wrap justify-center gap-1 p-1 rounded-full" style={{ border: "1px solid var(--border-subtle)", background: "var(--bg-card)" }}>
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-5 py-2.5 rounded-full text-xs font-medium capitalize tracking-[0.12em] transition-all duration-400 ${
-                  selectedCategory === category
-                    ? "text-[var(--bg)]"
-                    : "hover:text-white"
-                }`}
-                style={{
-                  background: selectedCategory === category ? "var(--accent)" : "transparent",
-                  color: selectedCategory === category ? "var(--bg)" : "var(--fg-muted)",
-                }}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className="px-4 py-2 rounded font-mono text-[10px] uppercase tracking-[0.15em] transition-all duration-300"
+              style={{
+                background: selectedCategory === category ? "var(--accent)" : "transparent",
+                color: selectedCategory === category ? "var(--bg)" : "var(--fg-muted)",
+                border: `1px solid ${selectedCategory === category ? "var(--accent)" : "var(--border-medium)"}`,
+              }}
+            >
+              {category}
+            </button>
+          ))}
         </motion.div>
 
-        {/* Featured Projects */}
-        {featuredProjects.length > 0 && selectedCategory === "all" && (
-          <motion.div
-            className="mb-20"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-lg font-semibold text-white/60 mb-8 flex items-center gap-3" style={{ fontFamily: "'Playfair Display', serif" }}>
-              <div className="w-8 h-[1px] bg-white/20"></div>
-              Featured Work
-            </h3>
-            <div className="grid lg:grid-cols-2 gap-8">
-              {featuredProjectsToShow.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.08 }}
-                  viewport={{ once: true }}
-                >
-                  <ProjectCard
-                    title={project.title}
-                    description={project.description}
-                    imageUrl={project.imageUrl}
-                    technologies={project.technologies.map((tech) => ({
-                      name: tech,
-                    }))}
-                    projectUrl={project.demoUrl}
-                    githubUrl={project.codeUrl}
-                    detailedDescription={project.description}
-                    objectives={project.objectives}
-                    results={project.results}
-                    isPortrait={project.isPortrait}
-                    countries={project.countries}
-                  />
-                </motion.div>
-              ))}
-            </div>
-            {hasMoreFeaturedProjects && (
-              <div className="text-center mt-10">
-                <motion.button
-                  onClick={() => setVisibleFeaturedCount(prev => prev + 6)}
-                  className="px-8 py-3 border border-white/20 rounded-full text-xs font-medium uppercase tracking-[0.15em] text-white/50 hover:text-white hover:bg-white/5 transition-all duration-500"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  View More Featured ({Math.min(6, featuredProjects.length - visibleFeaturedCount)} more)
-                </motion.button>
-              </div>
-            )}
-          </motion.div>
-        )}
-
-        {/* Regular Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {(selectedCategory === "all"
-            ? projectsToShow
-            : filteredProjects
-          ).map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.06 }}
-              viewport={{ once: true }}
-            >
-              <ProjectCard
-                title={project.title}
-                description={project.description}
-                imageUrl={project.imageUrl}
-                technologies={project.technologies.map((tech) => ({
-                  name: tech,
-                }))}
-                projectUrl={project.demoUrl}
-                githubUrl={project.codeUrl}
-                detailedDescription={project.description}
-                objectives={project.objectives}
-                results={project.results}
-                isPortrait={project.isPortrait}
-                countries={project.countries}
-              />
-            </motion.div>
-          ))}
+        <div className="flex items-center gap-3 mb-6 font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>
+          <span style={{ color: "var(--accent)" }}>◈</span> field_gallery // tap_for_intel
+          <div className="flex-1 tentacle-line" />
+          <span style={{ color: "var(--accent)" }}>{regularProjects.length} units</span>
         </div>
 
-        {/* View More Button */}
-        {hasMoreProjects && selectedCategory === "all" && (
-          <div className="text-center mt-16">
+        <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4">
+          {regularProjects.map((project, index) => (
             <motion.button
-              onClick={() => setVisibleCount(prev => prev + 6)}
-              className="px-8 py-3 border border-white/20 rounded-full text-xs font-medium uppercase tracking-[0.15em] text-white/50 hover:text-white hover:bg-white/5 transition-all duration-500"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              key={project.id}
+              className="group relative block w-full mb-3 sm:mb-4 break-inside-avoid rounded-lg overflow-hidden text-left transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,229,255,0.12)]"
+              style={{ border: "1px solid var(--border-subtle)", background: "var(--bg-card)" }}
+              onClick={() => setModalProject(project)}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: (index % 4) * 0.06 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.97 }}
+              data-cursor="view"
             >
-              View More ({Math.min(6, regularProjects.length - visibleCount)} more)
+              <img
+                src={project.imageUrl}
+                alt={project.title}
+                loading="lazy"
+                className="w-full h-auto transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <span
+                className="absolute bottom-0 inset-x-0 flex items-center justify-between gap-2 px-2.5 py-2 font-mono text-[9px] uppercase tracking-[0.1em]"
+                style={{ background: "linear-gradient(to top, rgba(5,6,10,0.92), transparent)", color: "var(--fg-muted)" }}
+              >
+                <span className="truncate transition-colors duration-300 group-hover:text-[var(--fg)]">{project.title}</span>
+                <span className="flex-shrink-0" style={{ color: "var(--accent)" }}>{project.category}</span>
+              </span>
             </motion.button>
-          </div>
-        )}
+          ))}
+        </div>
       </div>
 
-      <div className="tentacle-line mt-32 max-w-md mx-auto"></div>
+      <ProjectModal project={modalProject ? toModal(modalProject) : null} onClose={() => setModalProject(null)} />
+
+      <div className="tentacle-line mt-28 max-w-md mx-auto"></div>
     </section>
   );
 };
@@ -256,7 +358,7 @@ const defaultProjects: Project[] = [
     title: "Medical Volunteer Website",
     description:
       "Complete website redesign for Medical Volunteer organization celebrating 25 years of healthcare advocacy.",
-    imageUrl: "./images/volunteer-medical-preview.png", 
+    imageUrl: "./images/volunteer-medical-preview.webp", 
     technologies: ["SvelteKit", "HTML5", "CSS3", "JavaScript", "Vercel"],
     category: "web",
     isPortrait: false,
@@ -274,7 +376,7 @@ const defaultProjects: Project[] = [
     title: "MELOUKA Artisan Website",
     description:
       "Modern showcase website for MELOUKA, an Ivorian handicraft knitting company with dynamic product management.",
-    imageUrl: "./images/melouka-preview.png", 
+    imageUrl: "./images/melouka-preview.webp", 
     technologies: ["SvelteKit", "Supabase", "Tailwind CSS", "Vercel"],
     category: "web",
     isPortrait: false,
@@ -572,7 +674,7 @@ const defaultProjects: Project[] = [
     "id": "6",
     "title": "Le Livreur Agent",
     "description": "Dedicated mobile application for delivery agents featuring real-time GPS tracking, intelligent route optimization, and intuitive order management interface. Maximizes delivery efficiency with advanced tracking tools and seamless communication features.",
-    "imageUrl": "./images/le-livreur-agent-preview.png",
+    "imageUrl": "./images/le-livreur-agent-preview.webp",
     "technologies": ["Flutter", "GPS Tracking", "Route Optimization", "Real-time Notifications", "Offline Mode", "Performance Analytics"],
     "category": "e-commerce",
     "featured": false,
@@ -587,7 +689,7 @@ const defaultProjects: Project[] = [
     "id": "7",
     "title": "Le Livreur Resto",
     "description": "Comprehensive restaurant management platform with real-time order interface, dynamic menu management, performance analytics, and seamless integration with the delivery ecosystem. Optimizes culinary operations and customer relationships.",
-    "imageUrl": "./images/le-livreur-resto-preview.png",
+    "imageUrl": "./images/le-livreur-resto-preview.webp",
     "technologies": ["Flutter", "Restaurant POS", "Menu Management", "Order Analytics", "Kitchen Display", "Customer Feedback"],
     "category": "e-commerce",
     "featured": false,
@@ -602,7 +704,7 @@ const defaultProjects: Project[] = [
     "id": "8",
     "title": "AZPROD",
     "description": "Creative agency specializing in music production, artist booking, and digital influence across West Africa. We transform the music industry by connecting emerging talents, brands, and audiences through authentic collaborations and memorable events.",
-    "imageUrl": "./images/azprod-preview.png",
+    "imageUrl": "./images/azprod-preview.webp",
     "technologies": ["Booking Management", "Event Production", "Influencer Marketing", "Artist Development", "Digital Strategy", "Content Creation"],
     "category": "entertainment",
     "featured": true,
@@ -647,7 +749,7 @@ const defaultProjects: Project[] = [
   "id": "11",
   "title": "Jéko Cockpit",
   "description": "Back-office moderne pour la supervision et la gestion des paiements, transactions, membres et équipements connectés. Offre une visualisation claire des données financières et comportementales à travers un tableau de bord interactif.",
-  "imageUrl": "./images/jeko-cockpit-preview.PNG",
+  "imageUrl": "./images/jeko-cockpit-preview.webp",
   "technologies": ["Svelte.js", "Recharts", "TailwindCSS", "API REST", "Responsive UI", "Dashboard Analytics"],
   "category": "fintech",
   "featured": true,
@@ -807,7 +909,7 @@ const defaultProjects: Project[] = [
   "id": "21",
   "title": "Alerte E25 – Application Citoyenne",
   "description": "Application mobile permettant aux citoyens de signaler en temps réel des incidents ou situations urgentes aux autorités locales. Elle intègre la géolocalisation, l'envoi d’alertes, la sélection de priorité, ainsi qu'une interface simple et intuitive pour faciliter la participation citoyenne.",
-  "imageUrl": "./images/alerte_e25_client_preview.png",
+  "imageUrl": "./images/alerte_e25_client_preview.webp",
   "technologies": [
     "Flutter",
     "Dart",
@@ -830,7 +932,7 @@ const defaultProjects: Project[] = [
   "id": "22",
   "title": "Alerte E25 – Application Admin",
   "description": "Interface mobile dédiée aux autorités pour visualiser, filtrer et gérer les alertes envoyées par les citoyens. Elle affiche sur une carte toutes les alertes en temps réel avec un système de priorisation (Urgent, Élevée, Moyenne, Faible) et permet un suivi opérationnel efficace.",
-  "imageUrl": "./images/alerte_e25_admin_preview.png",
+  "imageUrl": "./images/alerte_e25_admin_preview.webp",
   "technologies": [
     "Flutter",
     "Dart",
@@ -853,7 +955,7 @@ const defaultProjects: Project[] = [
   "id": "23",
   "title": "Jeko Pay – Nouvelle Page de Checkout",
   "description": "Interface de paiement moderne développée autour de l’API Jeko Pay, permettant aux utilisateurs de régler leurs commandes via différents moyens de paiement mobiles (Wave, Orange Money, Moov Money, MTN MoMo, Djamo, Jeko). Le checkout offre une expérience fluide, sécurisée et multi-méthodes, optimisée pour le taux de conversion.",
-  "imageUrl": "./images/jeko_pay_preview.png",
+  "imageUrl": "./images/jeko_pay_preview.webp",
   "technologies": [
     "TypeScript",
     "SvelteKit",
@@ -876,7 +978,7 @@ const defaultProjects: Project[] = [
   "id": "24",
   "title": "Payix – Application Mobile de Paiement",
   "description": "Application fintech permettant aux utilisateurs de gérer leur solde, effectuer des transferts, recharger leur portefeuille, effectuer des retraits, payer des services et accéder à des services de prêt. L’interface est moderne, fluide et pensée pour simplifier la gestion quotidienne des transactions.",
-  "imageUrl": "./images/payix_preview.png",
+  "imageUrl": "./images/payix_preview.webp",
   "technologies": [
     "Flutter",
     "Dart",
@@ -899,7 +1001,7 @@ const defaultProjects: Project[] = [
   "id": "25",
   "title": "Jeko Landing Page",
   "description": "Landing page moderne pour Jeko, solution de paiement mobile money unifiée permettant aux commerçants d'encaisser via un QR code unique (Wave, Orange Money, MTN, Moov, Visa, Mastercard).",
-  "imageUrl": "./images/jeko-landing-preview.png",
+  "imageUrl": "./images/jeko-landing-preview.webp",
   "technologies": ["SvelteKit", "TailwindCSS", "Responsive Design", "Framer Motion", "Vercel"],
   "category": "fintech",
   "featured": true,
@@ -944,7 +1046,7 @@ const defaultProjects: Project[] = [
   "id": "28",
   "title": "Alph Sécurité (Landing Page) – Sécurisation de quartier à la demande",
   "description": "landing page de preseentation de la solution Alph Sécurité, une Plateforme digitale permettant aux particuliers et communautés de sécuriser leur quartier en un clic, en réservant des agents de sécurité certifiés, en rejoignant des communautés de vigilance et en consultant le niveau de sécurité en temps réel.",
-  "imageUrl": "./images/alph-securite-preview.png",
+  "imageUrl": "./images/alph-securite-preview.webp",
   "technologies": [
     "Vue.js",
     "TailwindCSS",
@@ -1013,7 +1115,7 @@ const defaultProjects: Project[] = [
   "id": "31",
   "title": "PLUSS CI – Backoffice Administration",
   "description": "Interface d'administration web de la Plateforme Une Seule Santé permettant aux autorités sanitaires de visualiser, filtrer et gérer les alertes signalées par les citoyens. Tableau de bord complet avec statistiques en temps réel, gestion des agents et suivi des services de santé.",
-  "imageUrl": "./images/pluss-backoffice-preview.png",
+  "imageUrl": "./images/pluss-backoffice-preview.webp",
   "technologies": [
     "SvelteKit",
     "TypeScript",
@@ -1036,7 +1138,7 @@ const defaultProjects: Project[] = [
   "id": "32",
   "title": "Décor de Rêve – Site Vitrine",
   "description": "Site web e-commerce élégant pour Décor de Rêve, entreprise spécialisée dans les décors éblouissants, bouquets exquis, ballons colorés et bien plus. Transformez vos moments en souvenirs magiques avec une boutique en ligne intuitive et un système de commande via WhatsApp.",
-  "imageUrl": "./images/decor-de-reve-frontsite-preview.png",
+  "imageUrl": "./images/decor-de-reve-frontsite-preview.webp",
   "technologies": [
     "SvelteKit",
     "TailwindCSS",
@@ -1058,7 +1160,7 @@ const defaultProjects: Project[] = [
   "id": "33",
   "title": "Décor de Rêve – Back Office",
   "description": "Application de gestion complète pour Décor de Rêve permettant la gestion des produits, catégories, commandes, inventaire et mouvements de stock. Tableau de bord avec indicateurs clés : valeur stock, revenus du mois, commandes en attente, stock bas et surstock.",
-  "imageUrl": "./images/decor-de-reve-backoffice-preview.png",
+  "imageUrl": "./images/decor-de-reve-backoffice-preview.webp",
   "technologies": [
     "SvelteKit",
     "TailwindCSS",
@@ -1080,7 +1182,7 @@ const defaultProjects: Project[] = [
   "id": "34",
   "title": "AgriPilote – Plateforme de Gestion Agricole",
   "description": "Plateforme complète de gestion des missions de drones agricoles pour le traitement des plantations. Permet la coordination entre entreprises clientes, télépilotes et administrateurs avec suivi des missions, gestion des plantations, rapports de traitement et tableau de bord analytique.",
-  "imageUrl": "./images/agripilote-preview.png",
+  "imageUrl": "./images/agripilote-preview.webp",
   "technologies": [
     "SvelteKit",
     "TailwindCSS",
@@ -1169,7 +1271,7 @@ const defaultProjects: Project[] = [
   "id": "38",
   "title": "AVP PROD – Portfolio Monteur Vidéo",
   "description": "Portfolio web professionnel pour Ivan, monteur vidéo, photographe et producteur basé à Paris. Interface inspirée des logiciels de montage avec Media Pool, Timeline, Inspector et prévisualisation vidéo intégrée.",
-  "imageUrl": "./images/avp-prod-preview.png",
+  "imageUrl": "./images/avp-prod-preview.webp",
   "technologies": [
     "SvelteKit",
     "Video Player",
@@ -1191,7 +1293,7 @@ const defaultProjects: Project[] = [
   "id": "39",
   "title": "StediiHome – Landing Page",
   "description": "Site vitrine moderne pour StediiHome, plateforme d'emploi domestique sécurisé en Afrique. Présente la solution permettant d'embaucher du personnel domestique fiable sans recruter à l'aveugle, avec profils vérifiés et historique de travail traçable.",
-  "imageUrl": "./images/stediihome-landing-preview.png",
+  "imageUrl": "./images/stediihome-landing-preview.webp",
   "technologies": [
     "Next.js",
     "TailwindCSS",
@@ -1213,7 +1315,7 @@ const defaultProjects: Project[] = [
   "id": "40",
   "title": "WHARPE – Landing Page",
   "description": "Site vitrine élégant pour WHARPE, cabinet informatique moderne accompagnant la transformation digitale en Afrique. Présente les deux pôles d'activité : Pôle Entreprises (développement sur mesure, cloud, maintenance) et Studio d'Innovation (apps mobiles, SaaS, marketplaces).",
-  "imageUrl": "./images/wharpe-landing-preview.png",
+  "imageUrl": "./images/wharpe-landing-preview.webp",
   "technologies": [
     "SvelteKit",
     "TailwindCSS",
@@ -1235,7 +1337,7 @@ const defaultProjects: Project[] = [
   "id": "41",
   "title": "Cropsky – Landing Page",
   "description": "Site vitrine pour Cropsky, centre d'expertise drone combinant technologie de pointe et savoir-faire professionnel au Canada, en Afrique et dans le monde. Présente les divisions Industrielle (inspection, surveillance, cartographie) et Aviation & Transport (livraison, mobilité urbaine aérienne).",
-  "imageUrl": "./images/cropsky-landing-preview.png",
+  "imageUrl": "./images/cropsky-landing-preview.webp",
   "technologies": [
     "SvelteKit",
     "TailwindCSS",
@@ -1257,7 +1359,7 @@ const defaultProjects: Project[] = [
   "id": "42",
   "title": "AEDCI – Landing Page",
   "description": "Site vitrine de l'Association des Exploitants de Drones Civils en Côte d'Ivoire, organisation professionnelle structurant et professionnalisant la filière drone au niveau national. Présente les missions, domaines d'application (audiovisuel, cartographie, agriculture, inspection) et le processus d'adhésion.",
-  "imageUrl": "./images/aedci-landing-preview.png",
+  "imageUrl": "./images/aedci-landing-preview.webp",
   "technologies": [
     "SvelteKit",
     "TailwindCSS",
@@ -1294,7 +1396,7 @@ const defaultProjects: Project[] = [
   "id": "44",
   "title": "Mamadou Koné – Site Officiel",
   "description": "Site officiel d'une personnalité politique ivoirienne. Vitrine digitale complète avec biographie, actualités, galerie photo, espace jeunesse et formulaire de contact. Design premium aux tons dorés avec navigation élégante et mise en valeur du parcours public.",
-  "imageUrl": "./images/mamadou-kone-preview.png",
+  "imageUrl": "./images/mamadou-kone-preview.webp",
   "technologies": ["HTML/CSS", "JavaScript", "Responsive Design", "SEO", "CMS Integration"],
   "category": "web",
   "featured": true,
@@ -1331,7 +1433,7 @@ const defaultProjects: Project[] = [
   "id": "46",
   "title": "Jeko – Landing Page V2",
   "description": "Refonte de la landing page Jeko avec une nouvelle direction visuelle plus moderne et orientée conversion. Met en avant la solution de paiement mobile money unifiée pour les commerçants africains avec un design plus impactant, une hiérarchie typographique renforcée et une démonstration produit plus claire.",
-  "imageUrl": "./images/jeko-landing-v2-preview.png",
+  "imageUrl": "./images/jeko-landing-v2-preview.webp",
   "technologies": [
     "SvelteKit",
     "TailwindCSS",
@@ -1352,7 +1454,7 @@ const defaultProjects: Project[] = [
   "id": "47",
   "title": "Forage – Plateforme Mise en Relation",
   "description": "Plateforme numérique \"Le forage, simplifié\" mettant en relation clients (particuliers/entreprises) et entreprises de forage qualifiées dans les domaines eau, géotechnique et pétrolier. Le client soumet son projet, reçoit des offres confidentielles de prestataires cloisonnés et signe en toute confiance — budget protégé, workflow contrôlé en 8 étapes et messagerie centralisée.",
-  "imageUrl": "./images/forage-preview.png",
+  "imageUrl": "./images/forage-preview.webp",
   "technologies": [
     "SvelteKit",
     "AdonisJS",
@@ -1398,7 +1500,7 @@ const defaultProjects: Project[] = [
   "id": "49",
   "title": "Banana House – E-commerce Bananes",
   "description": "Site e-commerce de Banana House, grossiste spécialisé dans la vente de bananes fraîches en gros et détail en Côte d'Ivoire. Propose 3 variétés (Plantain à 500 FCFA/kg, Douce Cavendish à 400 FCFA/kg, Plantain Corne à 550 FCFA/kg) avec précommande en ligne, livraison nationale et retrait possible, pour particuliers, semi-grossistes et professionnels.",
-  "imageUrl": "./images/bananahouse-preview.png",
+  "imageUrl": "./images/bananahouse-preview.webp",
   "technologies": [
     "Next.js",
     "TailwindCSS",
@@ -1420,7 +1522,7 @@ const defaultProjects: Project[] = [
   "id": "50",
   "title": "FinSim – Simulateur de Marché Financier",
   "description": "Simulateur de marché financier gamifié pour Android et iOS, construit en Kotlin Multiplatform (KMP) avec une base de code partagée. Logique métier centralisée dans un module shared, UI native via Jetpack Compose (Android) et SwiftUI (iOS). Trade en temps réel sur des données de marché réelles : Forex, Crypto et bientôt BRVM, avec flux de prix WebSocket et cache Redis pour la performance.",
-  "imageUrl": "./images/finsim-preview.png",
+  "imageUrl": "./images/finsim-preview.webp",
   "technologies": [
     "Kotlin Multiplatform",
     "Jetpack Compose",
@@ -1467,7 +1569,7 @@ const defaultProjects: Project[] = [
   "id": "52",
   "title": "Mon Médecin – Back Office Santé",
   "description": "Back office d'administration de la plateforme Mon Médecin permettant de gérer les centres médicaux, les spécialités et les praticiens depuis une interface simple et moderne. Espace d'administration sécurisé pour structurer l'offre de soins et piloter le référentiel médical.",
-  "imageUrl": "./images/mon-medecin-admin-preview.png",
+  "imageUrl": "./images/mon-medecin-admin-preview.webp",
   "technologies": [
     "Vue.js",
     "TailwindCSS",
@@ -1511,7 +1613,7 @@ const defaultProjects: Project[] = [
   "id": "54",
   "title": "SOSMoney – Microcrédit Instantané",
   "description": "Plateforme fintech SOSMoney proposant du microcrédit instantané accessible à tous : obtenez un prêt de 5 000 à 50 000 FCFA en quelques minutes, 100% en ligne depuis votre mobile. Landing page et application permettant d'emprunter, d'acheter et de rembourser simplement, avec une boutique intégrée et un réseau de partenaires.",
-  "imageUrl": "./images/sosmoney-preview.png",
+  "imageUrl": "./images/sosmoney-preview.webp",
   "technologies": [
     "Next.js",
     "TailwindCSS",

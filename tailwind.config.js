@@ -51,12 +51,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        octopus: {
-          ink: "#0a0a0a",
-          deep: "#050505",
-          tentacle: "#1a1a1a",
-          highlight: "#ffffff",
-        },
+      },
+      fontFamily: {
+        sans: ['"Space Grotesk"', "sans-serif"],
+        mono: ['"JetBrains Mono"', "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",

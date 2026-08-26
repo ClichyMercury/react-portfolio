@@ -19,7 +19,7 @@ const ProfessionalBio = () => {
   const highlights = [
     "6+ years of experience in mobile and web development",
     "Expertise in Flutter, React, and cloud technologies",
-    "54+ successfully delivered projects",
+    "59+ successfully delivered projects",
     "User-centered approach focused on performance",
   ];
 
@@ -121,7 +121,7 @@ const ProfessionalBio = () => {
             <div className="grid grid-cols-3 gap-2 sm:gap-4">
               {[
                 { value: 6, suffix: "+", label: "Years" },
-                { value: 54, suffix: "+", label: "Projects" },
+                { value: 59, suffix: "+", label: "Projects" },
                 { value: 100, suffix: "%", label: "Satisfaction" },
               ].map((s) => (
                 <div key={s.label} className="panel rounded-xl p-3 sm:p-5 text-center tentacle-glow min-w-0">

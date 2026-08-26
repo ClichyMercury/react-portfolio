@@ -34,7 +34,7 @@ const COMMANDS: Record<string, string[]> = {
   whoami: [
     "Gaël SASSAN — Software Developer",
     "6+ years building mobile & web products",
-    "54+ projects shipped from Abidjan 🇨🇮 to the world",
+    "59+ projects shipped from Abidjan 🇨🇮 to the world",
     "Currently: Front End Lead @ Jèko",
   ],
   stack: [

@@ -46,7 +46,7 @@ const SkillsSection = ({ skills = defaultSkills }: { skills?: Skill[] }) => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { value: 6, suffix: "+", label: "Years of Experience" },
-            { value: 54, suffix: "+", label: "Projects Completed" },
+            { value: 59, suffix: "+", label: "Projects Completed" },
             { value: 15, suffix: "+", label: "Technologies Mastered" },
             { value: 100, suffix: "%", label: "Client Satisfaction" },
           ].map((s) => (

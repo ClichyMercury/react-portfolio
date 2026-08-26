@@ -145,7 +145,7 @@ const HeroSection = ({ onCtaClick = () => {} }: HeroSectionProps) => {
           >
             scroll ↓
           </motion.span>
-          <span className="hidden sm:inline">54+ deployments</span>
+          <span className="hidden sm:inline">59+ deployments</span>
         </motion.div>
       </div>
     </section>

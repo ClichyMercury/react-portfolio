@@ -41,7 +41,21 @@ const toModal = (p: Project): ModalProject => ({
 const STAMPS = ["TOP SECRET", "CLASSIFIED", "CONFIDENTIAL", "EYES ONLY"];
 
 const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelect: (p: Project) => void }) => {
+  const [expanded, setExpanded] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
+
+  const toggleExpanded = () => {
+    setExpanded((v) => {
+      if (v) {
+        requestAnimationFrame(() => {
+          sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      }
+      return !v;
+    });
+  };
+
   const drag = useRef({ down: false, startX: 0, scrollLeft: 0, moved: false });
 
   const onPointerDown = (e: React.PointerEvent) => {
@@ -69,12 +83,66 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
   };
 
   return (
-    <div className="relative mb-24">
+    <div ref={sectionRef} className="relative mb-24 scroll-mt-24">
       <div className="flex items-center gap-3 mb-6 font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>
         <span style={{ color: "var(--accent)" }}>★</span> featured_archive // clearance_level_5
         <div className="flex-1 tentacle-line" />
+        <button
+          type="button"
+          onClick={toggleExpanded}
+          aria-expanded={expanded}
+          className="flex-shrink-0 flex items-center gap-1.5 transition-colors duration-300 hover:text-[var(--accent)]"
+          style={{ color: "var(--fg-muted)" }}
+          data-cursor="view"
+        >
+          {expanded ? "collapse" : "expand_all"}
+          <span className="transition-transform duration-300" style={{ display: "inline-block", transform: expanded ? "rotate(180deg)" : "none", color: "var(--accent)" }}>▾</span>
+        </button>
       </div>
 
+      {expanded ? (
+        <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4 mb-3">
+          {projects.map((project, i) => (
+            <motion.button
+              key={project.id}
+              className="group relative block w-full mb-3 sm:mb-4 break-inside-avoid rounded-lg overflow-hidden text-left transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,229,255,0.12)]"
+              style={{ border: "1px solid var(--border-subtle)", background: "var(--bg-card)" }}
+              onClick={() => onSelect(project)}
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: (i % 4) * 0.06 }}
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.97 }}
+              data-cursor="declassify"
+            >
+              <img
+                src={project.imageUrl}
+                alt={project.title}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-auto transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <div className="absolute inset-0 scanlines opacity-20 pointer-events-none" />
+              <div
+                className="absolute top-3 -right-1 px-2 py-0.5 font-mono text-[9px] font-bold tracking-[0.2em] rotate-[-12deg] pointer-events-none"
+                style={{ color: "#FF4D4D", border: "2px double #FF4D4D", background: "rgba(5,6,10,0.55)", opacity: 0.9 }}
+              >
+                {STAMPS[i % STAMPS.length]}
+              </div>
+              <span
+                className="absolute bottom-0 inset-x-0 flex flex-col gap-1 px-2.5 py-2 font-mono text-[9px] uppercase tracking-[0.1em]"
+                style={{ background: "linear-gradient(to top, rgba(5,6,10,0.94), transparent)", color: "var(--fg-muted)" }}
+              >
+                <span className="truncate transition-colors duration-300 group-hover:text-[var(--fg)]">{project.title}</span>
+                <span className="flex items-center justify-between gap-2">
+                  <span>case_#{String(i + 1).padStart(3, "0")}</span>
+                  <span className="flex-shrink-0" style={{ color: "var(--accent)" }}>{project.category} ↗</span>
+                </span>
+              </span>
+            </motion.button>
+          ))}
+        </div>
+      ) : (
       <div className="relative">
         <div
           ref={rowRef}
@@ -156,6 +224,7 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
           ))}
         </div>
       </div>
+      )}
 
       <div
         className="relative w-full rounded-lg overflow-hidden"
@@ -173,9 +242,17 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
           </div>
 
           <div className="flex flex-col items-center gap-2.5">
-            <div className="px-4 py-1 rounded font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.25em]" style={{ border: "1px solid var(--border-medium)", background: "var(--bg)", color: "var(--fg-muted)" }}>
+            <button
+              type="button"
+              onClick={toggleExpanded}
+              aria-expanded={expanded}
+              className="px-4 py-1 rounded font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.25em] flex items-center gap-2 transition-colors duration-300 hover:text-[var(--accent)] hover:border-[var(--accent)]"
+              style={{ border: "1px solid var(--border-medium)", background: "var(--bg)", color: "var(--fg-muted)" }}
+              data-cursor="view"
+            >
               featured_cases — {projects.length} dossiers
-            </div>
+              <span className="transition-transform duration-300" style={{ display: "inline-block", transform: expanded ? "rotate(180deg)" : "none", color: "var(--accent)" }}>▾</span>
+            </button>
             <div className="w-32 sm:w-44 h-2 rounded-full" style={{ background: "var(--bg)", border: "1px solid var(--border-medium)", boxShadow: "inset 0 2px 4px rgba(0,0,0,0.7)" }} />
           </div>
 
@@ -189,7 +266,7 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
       </div>
 
       <div className="mt-3 text-center font-mono text-[9px] uppercase tracking-[0.3em] opacity-50" style={{ color: "var(--fg-faint)" }}>
-        [ drag_to_browse — click_to_declassify ]
+        {expanded ? "[ click_to_declassify — collapse_to_stack ]" : "[ drag_to_browse — click_to_declassify — expand_for_grid ]"}
       </div>
     </div>
   );
@@ -1628,6 +1705,124 @@ const defaultProjects: Project[] = [
   "objectives": "Démocratiser l'accès au crédit en Côte d'Ivoire en proposant un microcrédit instantané, 100% en ligne et accessible à tous, avec une validation en quelques minutes et un parcours mobile-first simple et rassurant.",
   "results": "Landing page fintech au design soigné (univers violet, illustration 3D) mettant en avant le prêt instantané de 5 000 à 50 000 FCFA, la validation en quelques minutes, un taux à partir de 5%, des transactions chiffrées et une navigation Fonctionnalités / Prêt / Boutique / Partenaires.",
   "demoUrl": "https://sosmoney-admin.vercel.app/",
+  "codeUrl": "",
+  "countries": ["CI"]
+}
+,
+{
+  "id": "55",
+  "title": "SIGAPE-OH – Portail National de l'Eau",
+  "description": "Front client de SIGAPE-OH, le service public numérique de l'eau porté par la DGRE (Ministère des Eaux et Forêts, Côte d'Ivoire). Site vitrine institutionnel et espace demandeur permettant de déposer une demande d'autorisation de prélèvement d'eau via un assistant en 7 étapes, de suivre son instruction en temps réel et de télécharger l'autorisation signée — 100% dématérialisé.",
+  "imageUrl": "./images/sigape-oh-front-preview.webp",
+  "technologies": [
+    "SvelteKit 2",
+    "Svelte 5 Runes",
+    "TypeScript",
+    "Tailwind CSS v4",
+    "Laravel API",
+    "Sanctum Auth",
+    "Cartographie"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Dématérialiser intégralement la procédure d'autorisation de prélèvement d'eau brute prévue par le Code de l'eau ivoirien : offrir au demandeur un parcours guidé en 7 étapes avec sauvegarde de brouillon, dépôt de pièces justificatives, suivi temps réel de l'instruction et récupération de l'autorisation, le tout dans une identité institutionnelle bleue moderne.",
+  "results": "Site vitrine public (Accueil, Autorisations, Cartographie, Réseau, Statistiques, Actualités) couplé à un espace demandeur protégé : assistant de demande 7 étapes, timeline de workflow en temps réel, messagerie de complément de dossier et téléchargement du PDF signé. 12 types d'autorisations, 31 régions couvertes, service disponible 24/7.",
+  "demoUrl": "",
+  "codeUrl": "",
+  "countries": ["CI"]
+},
+{
+  "id": "56",
+  "title": "Axelle Sanogo – Application Mobile",
+  "description": "Application mobile e-commerce de la maison de maroquinerie ivoirienne Axelle Sanogo, déclinaison native du site axellesanogo.ci. Catalogue des collections Signature et Prestige, recherche par référence, précommandes avec remise, avis clients et paiement Mobile Money pour acheter sacs et accessoires en cuir directement depuis son téléphone.",
+  "imageUrl": "./images/axelle-sanogo-app-preview.webp",
+  "technologies": [
+    "Flutter",
+    "E-commerce",
+    "Mobile Money",
+    "REST API",
+    "Product Catalog",
+    "Push Notifications"
+  ],
+  "category": "ecommerce",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Prolonger l'expérience de la marque Axelle Sanogo sur mobile en offrant une boutique native fluide : navigation par univers (Sacs femme, Accessoires, Cartes cadeau), recherche instantanée, précommandes et paiement adapté au marché ivoirien.",
+  "results": "Application au design éditorial fidèle à l'identité de la marque : collection Signature filtrable, badges de précommande -10%, notation et avis par produit, affichage des prix en FCFA avec prix barrés, et navigation par onglets (Collection, Recherche, Panier, Boutique).",
+  "demoUrl": "https://axellesanogo.ci",
+  "codeUrl": "",
+  "countries": ["CI"]
+},
+{
+  "id": "57",
+  "title": "WeCatho – Communauté Catholique Mondiale",
+  "description": "Application mobile connectant les catholiques du monde entier autour d'une carte interactive de membres géolocalisés, d'une messagerie chiffrée et de groupes de prière thématiques. Pensée pour les fidèles, pèlerins et paroisses, elle prépare également une boutique d'objets liturgiques de Lourdes et une billetterie d'événements chrétiens.",
+  "imageUrl": "./images/wecatho-preview.webp",
+  "technologies": [
+    "Flutter",
+    "Mapbox",
+    "Firebase",
+    "End-to-End Encryption",
+    "Geolocation",
+    "Real-time Chat",
+    "Multilingual"
+  ],
+  "category": "social",
+  "featured": false,
+  "isPortrait": true,
+  "objectives": "Favoriser les échanges spirituels et les rencontres entre catholiques de tous pays via une carte mondiale de membres, une messagerie sécurisée de bout en bout et des groupes par paroisse, pays ou thème de prière, le tout dans une interface multilingue et modérée.",
+  "results": "Carte interactive avec clustering des membres par zone (Europe et Afrique de l'Ouest), recherche filtrée de frères et sœurs, panneau des membres à proximité, et navigation dédiée Carte / Pile / Messages / Paramètres dans un thème sombre et doré à l'esthétique liturgique.",
+  "demoUrl": "",
+  "codeUrl": "",
+  "countries": ["CI", "BJ", "SN", "FR", "BE", "CD"]
+}
+,
+{
+  "id": "58",
+  "title": "SIGAPE-OH – Back-office DGRE",
+  "description": "Back-office administratif de SIGAPE-OH destiné aux agents de la DGRE. Il pilote l'instruction des demandes d'autorisation d'eau le long d'un workflow à 9 étapes — de la recevabilité à la signature électronique du Ministre — avec gestion fine des rôles, cartographie des ouvrages, statistiques et administration complète de la plateforme.",
+  "imageUrl": "./images/sigape-oh-backoffice-preview.webp",
+  "technologies": [
+    "SvelteKit 2",
+    "Svelte 5 Runes",
+    "TypeScript",
+    "Tailwind CSS v4",
+    "Laravel 12",
+    "PostgreSQL",
+    "Role-Based Access",
+    "Data Visualization"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Doter l'administration d'un outil d'instruction centralisé où chaque agent n'agit que sur les dossiers relevant de son étape : agent de réception, service technique, service juridique, directeur, directeur général, cabinet du ministre et ministre signataire, avec journalisation de chaque transition du workflow.",
+  "results": "Tableau de bord temps réel (dossiers à traiter, en cours, délivrés, délai moyen, rejets), graphiques d'évolution mensuelle, répartition par type d'autorisation et par région, file d'instruction, cartographie, plus un module d'administration complet : utilisateurs, rôles et permissions, types d'autorisations, modèles de documents et actualités.",
+  "demoUrl": "",
+  "codeUrl": "",
+  "countries": ["CI"]
+}
+,
+{
+  "id": "59",
+  "title": "DGRE – Portail des Autorisations d'Eau (V1)",
+  "description": "Première version du portail de la Direction Générale des Ressources en Eau (Ministère des Eaux et Forêts, Côte d'Ivoire), dans l'identité institutionnelle verte et orange « Eaux et Forêts ». Site vitrine et espace demandeur permettant de déposer, suivre et recevoir en ligne ses autorisations d'utilisation de l'eau — sans déplacement et sans papier. Cette V1 a ensuite évolué vers la charte bleue SIGAPE-OH.",
+  "imageUrl": "./images/dgre-preview.webp",
+  "technologies": [
+    "SvelteKit 2",
+    "Svelte 5 Runes",
+    "TypeScript",
+    "Tailwind CSS v4",
+    "Oswald",
+    "Laravel API",
+    "Sanctum Auth"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Poser les fondations du service public numérique de l'eau : dématérialiser la procédure d'autorisation de prélèvement prévue par le Code de l'eau ivoirien, avec une identité visuelle alignée sur celle du Ministère des Eaux et Forêts (vert institutionnel, orange d'accent, typographie Oswald).",
+  "results": "Portail public complet avec espace demandeur sécurisé, dépôt et suivi de dossier en ligne, documentation et FAQ réglementaires, et bandeau d'indicateurs clés : 12 480 demandes traitées, 9 760 autorisations délivrées, 15 jours de délai moyen de traitement et 31 régions couvertes.",
+  "demoUrl": "",
   "codeUrl": "",
   "countries": ["CI"]
 }

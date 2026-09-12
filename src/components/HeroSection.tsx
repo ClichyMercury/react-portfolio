@@ -3,7 +3,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import DecodeText from "./fx/DecodeText";
 import Magnetic from "./fx/Magnetic";
 
-const ROLES = ["FLUTTER ENGINEER", "REACT DEVELOPER", "MOBILE ARCHITECT", "FULL-STACK BUILDER"];
+const ROLES = ["FLUTTER ENGINEER", "SVELTEKIT DEVELOPER", "MOBILE ARCHITECT", "FULL-STACK BUILDER"];
 
 interface HeroSectionProps {
   onCtaClick?: () => void;
@@ -145,7 +145,7 @@ const HeroSection = ({ onCtaClick = () => {} }: HeroSectionProps) => {
           >
             scroll ↓
           </motion.span>
-          <span className="hidden sm:inline">59+ deployments</span>
+          <span className="hidden sm:inline">61+ deployments</span>
         </motion.div>
       </div>
     </section>

@@ -238,3 +238,123 @@
   ::-webkit-scrollbar-thumb { background: var(--border-medium); border-radius: 2px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 }
+
+.tech-mosaic {
+  container-type: inline-size;
+}
+
+.tech-mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--tile-min, 108px), 1fr));
+  gap: var(--tile-gap, 8px);
+}
+
+.tech-tile {
+  --tile-pad: 12px;
+  --tile-icon: 30px;
+  --tile-font: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: var(--tile-pad) 6px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  text-decoration: none;
+  overflow: hidden;
+  transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+.tech-tile:hover {
+  border-color: var(--tile-tint);
+  transform: translateY(-2px);
+}
+
+.tech-tile:focus-visible {
+  outline: 2px solid var(--tile-tint);
+  outline-offset: 2px;
+}
+
+.tech-tile-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--tile-tint) 22%, transparent), transparent 70%);
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.tech-tile:hover .tech-tile-glow {
+  opacity: 1;
+}
+
+.tech-tile-icon {
+  width: var(--tile-icon);
+  height: var(--tile-icon);
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.tech-tile:hover .tech-tile-icon {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.tech-tile-label {
+  position: relative;
+  font-family: "JetBrains Mono", monospace;
+  font-size: var(--tile-font);
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: var(--fg-muted);
+  transition: color 0.25s ease;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tech-tile:hover .tech-tile-label {
+  color: var(--fg);
+}
+
+@container (max-width: 860px) {
+  .tech-mosaic-grid { --tile-min: 96px; --tile-gap: 7px; }
+  .tech-tile { --tile-pad: 11px; --tile-icon: 28px; --tile-font: 9.5px; }
+}
+
+@container (max-width: 680px) {
+  .tech-mosaic-grid { --tile-min: 84px; --tile-gap: 6px; }
+  .tech-tile { --tile-pad: 10px; --tile-icon: 26px; --tile-font: 9px; gap: 6px; }
+}
+
+@container (max-width: 520px) {
+  .tech-mosaic-grid { --tile-min: 68px; --tile-gap: 6px; }
+  .tech-tile { --tile-pad: 9px; --tile-icon: 24px; --tile-font: 8px; gap: 5px; letter-spacing: 0.02em; }
+}
+
+@container (max-width: 420px) {
+  .tech-mosaic-grid { --tile-min: 56px; --tile-gap: 5px; }
+  .tech-tile { --tile-pad: 8px; --tile-icon: 22px; gap: 0; }
+  .tech-tile-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+@container (max-width: 340px) {
+  .tech-mosaic-grid { --tile-min: 48px; }
+  .tech-tile { --tile-pad: 7px; --tile-icon: 20px; }
+}

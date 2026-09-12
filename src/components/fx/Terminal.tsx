@@ -34,13 +34,13 @@ const COMMANDS: Record<string, string[]> = {
   whoami: [
     "Gaël SASSAN — Software Developer",
     "6+ years building mobile & web products",
-    "59+ projects shipped from Abidjan 🇨🇮 to the world",
+    "61+ projects shipped from Abidjan 🇨🇮 to the world",
     "Currently: Front End Lead @ Jèko",
   ],
   stack: [
-    "primary   : Flutter · Dart · React · TypeScript",
+    "primary   : Flutter · Dart · SvelteKit · TypeScript",
     "backend   : Laravel · Node.js · Flask · Firebase · Supabase",
-    "also      : Kotlin · Swift · Rust · Python · SvelteKit",
+    "also      : Kotlin · Swift · Rust · Python · Java",
     "infra     : Docker · AWS · Git · Linux",
   ],
   socials: [

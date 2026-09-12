@@ -1825,6 +1825,55 @@ const defaultProjects: Project[] = [
   "demoUrl": "",
   "codeUrl": "",
   "countries": ["CI"]
+},
+{
+  "id": "60",
+  "title": "MIABA Group – Mobilité Premium en Afrique",
+  "description": "Site vitrine et plateforme de réservation de MIABA Group, service de chauffeur privé et de location de véhicules haut de gamme basé à Abidjan. Transferts aéroport avec suivi de vol, mise à disposition de chauffeur, location avec ou sans conducteur et offre corporate, présentés dans une identité sombre et dorée, en français et en anglais.",
+  "imageUrl": "./images/miaba-landing-preview.webp",
+  "technologies": [
+    "SvelteKit 2",
+    "Svelte 5 Runes",
+    "TypeScript",
+    "Tailwind CSS",
+    "i18n EN/FR",
+    "Booking Flow",
+    "WhatsApp API",
+    "SEO"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Positionner MIABA Group comme la référence de la mobilité premium en Afrique de l'Ouest : rassurer une clientèle d'affaires et internationale grâce à des tarifs fixes affichés, un suivi de vol, une disponibilité 24/7 et des chauffeurs vérifiés, tout en rendant la réservation possible en quelques clics ou via WhatsApp.",
+  "results": "Landing page premium bilingue articulée autour de 6 services (accueil aéroport, dépose aéroport, transfert point à point, chauffeur privé, location avec chauffeur, location sans chauffeur), d'une flotte Mercedes-Benz détaillée (S 300 VIP dès 150 000 FCFA, CLS 450 AMG dès 130 000 FCFA, Classe E dès 110 000 FCFA), d'un espace Corporate, d'un programme partenaires et de parcours de réservation directe ou WhatsApp.",
+  "demoUrl": "https://miaba.africa",
+  "codeUrl": "",
+  "countries": ["CI"]
+}
+,
+{
+  "id": "61",
+  "title": "Axelle Sanogo – Back-office E-commerce",
+  "description": "Back-office de gestion de la maison de maroquinerie ivoirienne Axelle Sanogo, pendant administratif du site axellesanogo.ci et de l'application mobile. Il centralise le catalogue produits, les commandes et devis, la base clients et prospects, les avis, le programme de récompenses et la newsletter dans une interface aux codes luxe de la marque.",
+  "imageUrl": "./images/axelle-sanogo-backoffice-preview.webp",
+  "technologies": [
+    "SvelteKit 2",
+    "Svelte 5 Runes",
+    "TypeScript",
+    "Tailwind CSS",
+    "REST API",
+    "Role-Based Access",
+    "Data Visualization",
+    "Vercel"
+  ],
+  "category": "web",
+  "featured": true,
+  "isPortrait": false,
+  "objectives": "Donner à la marque un outil unique pour piloter sa boutique en ligne et son application mobile : administrer les produits par univers et catégories, suivre commandes et devis, gérer la relation client (prospects, avis, récompenses, newsletter) et publier les remises de précommande sans intervention technique.",
+  "results": "Interface d'administration complète — tableau de bord, catalogue de 24 produits en vue grille ou liste avec filtres par univers, catégorie et état du stock, badges de remise et de niveau, prix en FCFA avec prix barrés, notes et nombre d'avis par produit — ainsi que les modules Commandes, Devis, Clients, Prospects, Avis, Récompenses et Newsletter.",
+  "demoUrl": "https://as-mobile-back-office.vercel.app",
+  "codeUrl": "",
+  "countries": ["CI"]
 }
 ];
 

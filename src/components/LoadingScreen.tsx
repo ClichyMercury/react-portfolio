@@ -22,7 +22,7 @@ const lines: [string, string][] = [
   ["linking framer-motion runtime", "OK"],
   ["linking tailwind atomic sheet", "OK"],
   ["decrypting clearance_level_5", "OK"],
-  ["loading dossiers · 59 archived", "OK"],
+  ["loading dossiers · 61 archived", "OK"],
   ["indexing 15 technologies", "OK"],
   ["resolving 24 deployment targets", "OK"],
   ["parsing 8 client sectors", "OK"],

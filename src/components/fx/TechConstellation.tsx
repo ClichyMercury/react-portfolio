@@ -18,6 +18,8 @@ interface Node {
   phase: number;
 }
 
+const LABEL_HIDE_W = 420;
+
 const CATEGORY_TINT: Record<string, string> = {
   languages: "#00E5FF",
   frameworks: "#7DF9FF",
@@ -213,10 +215,13 @@ const TechConstellation = ({ skills }: { skills: StarSkill[] }) => {
           ctx.fill();
         }
 
-        ctx.font = `${isHot ? "500 11px" : "400 9px"} 'JetBrains Mono', monospace`;
-        ctx.textAlign = "center";
-        ctx.fillStyle = isHot ? "#E6EDF3" : "rgba(148,160,173,0.55)";
-        ctx.fillText(n.skill.name, n.x, n.y + (isHot ? 30 : 24));
+        if (isHot || W > LABEL_HIDE_W) {
+          const idle = W > 860 ? 9 : W > 680 ? 8.5 : W > 520 ? 8 : 7.5;
+          ctx.font = `${isHot ? "500 11px" : `400 ${idle}px`} 'JetBrains Mono', monospace`;
+          ctx.textAlign = "center";
+          ctx.fillStyle = isHot ? "#E6EDF3" : "rgba(148,160,173,0.55)";
+          ctx.fillText(n.skill.name, n.x, n.y + (isHot ? 30 : 24));
+        }
       }
 
       raf = requestAnimationFrame(draw);

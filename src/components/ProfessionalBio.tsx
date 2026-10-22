@@ -5,15 +5,28 @@ import Counter from "./fx/Counter";
 import SectionRail from "./fx/SectionRail";
 import { PROJECT_COUNT } from "./ProjectsGrid";
 
+export const PROFILE = {
+  name: "Gaël Sassan",
+  title: "Software Developer",
+  role: "Front End Lead @ Jèko",
+  base: "Abidjan, Côte d'Ivoire",
+  years: 6,
+  focus: "Flutter · SvelteKit · Cloud",
+  bio: "Passionate about software development for over 6 years, I specialize in creating innovative mobile applications and high-performance web solutions. My expertise covers the entire development lifecycle, from design to production, with a particular focus on user experience and modern technologies.",
+  email: "gaelelscientifico@gmail.com",
+  github: "https://github.com/ClichyMercury",
+  linkedin: "https://www.linkedin.com/in/gael-yad-eugene-sassan-17a69b1b6/",
+};
+
 const ProfessionalBio = () => {
-  const bio = "Passionate about software development for over 6 years, I specialize in creating innovative mobile applications and high-performance web solutions. My expertise covers the entire development lifecycle, from design to production, with a particular focus on user experience and modern technologies.";
+  const bio = PROFILE.bio;
 
   const dataSheet = [
-    { key: "name", value: "GAËL SASSAN" },
-    { key: "role", value: "Front End Lead @ Jèko" },
-    { key: "base", value: "Abidjan, Côte d'Ivoire" },
-    { key: "exp", value: "6+ years" },
-    { key: "focus", value: "Flutter · SvelteKit · Cloud" },
+    { key: "name", value: PROFILE.name.toUpperCase() },
+    { key: "role", value: PROFILE.role },
+    { key: "base", value: PROFILE.base },
+    { key: "exp", value: `${PROFILE.years}+ years` },
+    { key: "focus", value: PROFILE.focus },
     { key: "status", value: "● available", accent: true },
   ];
 

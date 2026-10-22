@@ -358,3 +358,44 @@
   .tech-mosaic-grid { --tile-min: 48px; }
   .tech-tile { --tile-pad: 7px; --tile-icon: 20px; }
 }
+
+.cv-page,
+.cv-page * {
+  cursor: auto !important;
+}
+
+.cv-page a,
+.cv-page button {
+  cursor: pointer !important;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm 14mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  body::before,
+  body::after {
+    display: none !important;
+  }
+
+  .cv-page {
+    background: #fff !important;
+  }
+
+  .cv-sheet {
+    max-width: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .cv-block {
+    break-inside: avoid;
+  }
+}

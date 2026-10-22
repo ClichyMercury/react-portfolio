@@ -204,4 +204,6 @@ const defaultSkills: Skill[] = [
   { name: "VSCode", icon: `${D}/vscode/vscode-original.svg`, category: "tools", url: "https://code.visualstudio.com" },
 ];
 
+export const SKILLS = defaultSkills;
+
 export default SkillsSection;

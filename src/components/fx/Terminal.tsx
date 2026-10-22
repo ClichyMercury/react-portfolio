@@ -52,7 +52,6 @@ const COMMANDS: Record<string, string[]> = {
     "linkedin → https://www.linkedin.com/in/gael-yad-eugene-sassan-17a69b1b6/",
   ],
   email: ["gaelelscientifico@gmail.com — response time < 24h"],
-  cv: ["full resume & recommendations available on linkedin:", "→ https://www.linkedin.com/in/gael-yad-eugene-sassan-17a69b1b6/"],
   coffee: ["☕ brewing... done. back to shipping."],
   "sudo hire-me": ["[sudo] password for visitor: ********", "access granted. → scrolling to contact"],
 };
@@ -192,6 +191,12 @@ const Terminal = () => {
         setOpen(false);
         window.dispatchEvent(new CustomEvent(INSPECT_EVENT, { detail: node.id }));
       }, 1400);
+      return;
+    }
+    if (cmd === "cv" || cmd === "resume") {
+      next.push({ type: "out", text: "compiling resume from live portfolio data..." }, { type: "out", text: "→ opening /cv" });
+      setLines((l) => [...l, ...next]);
+      setTimeout(() => window.location.assign("/cv"), 700);
       return;
     }
     if (cmd === "projects") {

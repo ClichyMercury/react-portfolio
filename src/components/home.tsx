@@ -15,6 +15,7 @@ import SectionRail from "./fx/SectionRail";
 import Magnetic from "./fx/Magnetic";
 import DecodeText from "./fx/DecodeText";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -122,6 +123,13 @@ const Home = () => {
                   )}
                 </button>
               ))}
+              <Link
+                to="/cv"
+                className="px-3 py-1.5 rounded font-mono text-[10px] uppercase tracking-[0.15em] transition-colors duration-300 hover:text-[var(--bg)] hover:bg-[var(--accent)]"
+                style={{ border: "1px solid var(--accent)", color: "var(--accent)" }}
+              >
+                cv
+              </Link>
             </nav>
 
             <button
@@ -343,8 +351,11 @@ const ContactSection = () => {
                 </motion.a>
               ))}
             </div>
-            <div className="px-5 py-3 font-mono text-[10px]" style={{ borderTop: "1px solid var(--border-subtle)", color: "var(--fg-faint)" }}>
-              <span style={{ color: "var(--accent)" }}>$</span> avg_response_time: &lt; 24h · timezone: GMT (Abidjan)
+            <div className="flex flex-wrap items-center justify-between gap-2 px-5 py-3 font-mono text-[10px]" style={{ borderTop: "1px solid var(--border-subtle)", color: "var(--fg-faint)" }}>
+              <span><span style={{ color: "var(--accent)" }}>$</span> avg_response_time: &lt; 24h · timezone: GMT (Abidjan)</span>
+              <Link to="/cv" className="uppercase tracking-[0.2em] transition-colors hover:text-[var(--accent)]" style={{ color: "var(--fg-muted)" }}>
+                open resume.pdf →
+              </Link>
             </div>
           </div>
         </motion.div>

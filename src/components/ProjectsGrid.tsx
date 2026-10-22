@@ -1993,4 +1993,6 @@ const defaultProjects: Project[] = [
 
 export const PROJECT_COUNT = defaultProjects.length;
 
+export const PROJECTS = defaultProjects;
+
 export default ProjectsGrid;

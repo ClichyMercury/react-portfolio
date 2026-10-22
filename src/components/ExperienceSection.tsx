@@ -454,4 +454,6 @@ const defaultExperiences: Experience[] = [
   },
 ];
 
+export const EXPERIENCES = defaultExperiences;
+
 export default ExperienceSection;

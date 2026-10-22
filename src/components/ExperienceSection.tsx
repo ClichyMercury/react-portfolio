@@ -51,10 +51,10 @@ const ExperienceSection = ({
       id="experience"
       className="min-h-screen py-32 lg:py-44 px-6 relative"
     >
-      <SectionRail index="05" label="commit_history" motif="leds" />
+      <SectionRail index="06" label="commit_history" motif="leds" />
       <div className="relative z-10 max-w-5xl mx-auto">
         <SectionHeader
-          index="05"
+          index="06"
           label="commit_history"
           title="Career"
           titleHighlight="Git Log"

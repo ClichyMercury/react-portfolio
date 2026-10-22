@@ -6,6 +6,7 @@ import ProjectsGrid from "./ProjectsGrid";
 import SkillsSection from "./SkillsSection";
 import ExperienceSection from "./ExperienceSection";
 import TeamProjects from "./TeamProjects";
+import ServerRoom from "./ServerRoom";
 import CustomCursor from "./CustomCursor";
 import ScrollProgress from "./ScrollProgress";
 import Terminal from "./fx/Terminal";
@@ -42,7 +43,7 @@ const Home = () => {
   }, [menuOpen]);
 
   useEffect(() => {
-    const ids = ["hero", "bio", "skills", "projects", "team-projects", "experience", "contact"];
+    const ids = ["hero", "bio", "skills", "projects", "team-projects", "server-room", "experience", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -69,8 +70,9 @@ const Home = () => {
     { id: "skills", label: "skills", num: "02" },
     { id: "projects", label: "projects", num: "03" },
     { id: "team-projects", label: "team_work", num: "04" },
-    { id: "experience", label: "experience", num: "05" },
-    { id: "contact", label: "contact", num: "06" },
+    { id: "server-room", label: "server_room", num: "05" },
+    { id: "experience", label: "experience", num: "06" },
+    { id: "contact", label: "contact", num: "07" },
   ];
 
   return (
@@ -187,6 +189,7 @@ const Home = () => {
         <SkillsSection />
         <ProjectsGrid />
         <TeamProjects />
+        <ServerRoom />
         <ExperienceSection />
         <ContactSection />
       </main>
@@ -256,12 +259,12 @@ const ContactSection = () => {
 
   return (
     <section ref={ref} id="contact" className="min-h-screen py-32 lg:py-44 px-6 relative flex items-center">
-      <SectionRail index="06" label="transmission" motif="sweep" />
+      <SectionRail index="07" label="transmission" motif="sweep" />
       <div className="relative z-10 max-w-3xl mx-auto w-full">
         <motion.div className="mb-16" style={{ y: headingY, opacity: headingOpacity }}>
           <div className="flex items-center gap-4 mb-6">
             <span className="font-mono text-[11px] uppercase tracking-[0.3em]" style={{ color: "var(--accent)" }}>
-              [ 06 // transmission ]
+              [ 07 // transmission ]
             </span>
             <div className="flex-1 tentacle-line" />
           </div>

@@ -4,6 +4,7 @@ import { TerminalSquare, X } from "lucide-react";
 import MatrixRain from "./MatrixRain";
 import { beep } from "./sound";
 import { PROJECT_COUNT } from "../ProjectsGrid";
+import { BACKEND_NODES, FRAMEWORKS, INSPECT_EVENT } from "../ServerRoom";
 
 const KONAMI = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
 
@@ -20,6 +21,8 @@ const COMMANDS: Record<string, string[]> = {
     "  whoami       — who is Gaël Sassan",
     "  stack        — favorite technologies",
     "  projects     — jump to projects",
+    "  backends     — list my APIs",
+    "  inspect <api>— open an API in the server room",
     "  experience   — jump to experience",
     "  contact      — jump to contact",
     "  socials      — github & linkedin",
@@ -151,6 +154,44 @@ const Terminal = () => {
           setLines((l) => [...l, { type: "out", text: s }]);
         }, 450 * (i + 1))
       );
+      return;
+    }
+    if (cmd === "backends" || cmd === "ls /backends") {
+      next.push({ type: "out", text: `${BACKEND_NODES.length} nodes online:` });
+      BACKEND_NODES.forEach((n, i) =>
+        next.push({
+          type: "out",
+          text: `  ${String(i + 1).padStart(2, "0")}  ${n.id.padEnd(24)}${FRAMEWORKS[n.framework].label.padEnd(10)}${n.approx ? "~" : " "}${n.endpoints} ep`,
+        })
+      );
+      next.push({ type: "out", text: "→ type `inspect <api>`, e.g. `inspect transfertcm`" });
+      setLines((l) => [...l, ...next]);
+      return;
+    }
+    if (cmd === "inspect" || cmd.startsWith("inspect ")) {
+      const query = cmd.slice(7).trim();
+      const node = query
+        ? BACKEND_NODES.find((n) => n.id === query) ??
+          BACKEND_NODES.find((n) => n.id.includes(query) || n.name.toLowerCase().includes(query))
+        : undefined;
+      if (!node) {
+        next.push({ type: "out", text: query ? `no node matching "${query}" — try \`backends\`` : "usage: inspect <api> — try `backends`" });
+        setLines((l) => [...l, ...next]);
+        return;
+      }
+      next.push(
+        { type: "out", text: `▣ ${node.name} [${FRAMEWORKS[node.framework].label}]` },
+        { type: "out", text: `  endpoints ${node.approx ? "~" : ""}${node.endpoints} · migrations ${node.migrations ?? "—"} · tests ${node.tests}` },
+        { type: "out", text: `  stack     ${node.stack.join(" · ")}` },
+        { type: "out", text: `  infra     ${node.infra.join(" · ")}` },
+        { type: "out", text: "→ opening inspector..." }
+      );
+      setLines((l) => [...l, ...next]);
+      setTimeout(() => {
+        beep("success");
+        setOpen(false);
+        window.dispatchEvent(new CustomEvent(INSPECT_EVENT, { detail: node.id }));
+      }, 1400);
       return;
     }
     if (cmd === "projects") {

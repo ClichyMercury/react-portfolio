@@ -6,6 +6,7 @@ import TechMosaic from "./fx/TechMosaic";
 import Counter from "./fx/Counter";
 import SectionRail from "./fx/SectionRail";
 import { PROJECT_COUNT } from "./ProjectsGrid";
+import Telemetry from "./Telemetry";
 
 interface Skill {
   name: string;
@@ -91,6 +92,8 @@ const SkillsSection = ({ skills = defaultSkills }: { skills?: Skill[] }) => {
             </motion.div>
           ))}
         </div>
+
+        <Telemetry />
       </div>
     </section>
   );

@@ -1,0 +1,167 @@
+{
+  "generatedAt": "2026-10-22",
+  "months": [
+    {
+      "month": "2024-11",
+      "commits": 0
+    },
+    {
+      "month": "2024-12",
+      "commits": 0
+    },
+    {
+      "month": "2025-01",
+      "commits": 0
+    },
+    {
+      "month": "2025-02",
+      "commits": 0
+    },
+    {
+      "month": "2025-03",
+      "commits": 3
+    },
+    {
+      "month": "2025-04",
+      "commits": 49
+    },
+    {
+      "month": "2025-05",
+      "commits": 19
+    },
+    {
+      "month": "2025-06",
+      "commits": 35
+    },
+    {
+      "month": "2025-07",
+      "commits": 34
+    },
+    {
+      "month": "2025-08",
+      "commits": 57
+    },
+    {
+      "month": "2025-09",
+      "commits": 74
+    },
+    {
+      "month": "2025-10",
+      "commits": 92
+    },
+    {
+      "month": "2025-11",
+      "commits": 71
+    },
+    {
+      "month": "2025-12",
+      "commits": 68
+    },
+    {
+      "month": "2026-01",
+      "commits": 102
+    },
+    {
+      "month": "2026-02",
+      "commits": 118
+    },
+    {
+      "month": "2026-03",
+      "commits": 95
+    },
+    {
+      "month": "2026-04",
+      "commits": 140
+    },
+    {
+      "month": "2026-05",
+      "commits": 174
+    },
+    {
+      "month": "2026-06",
+      "commits": 186
+    },
+    {
+      "month": "2026-07",
+      "commits": 199
+    },
+    {
+      "month": "2026-08",
+      "commits": 288
+    },
+    {
+      "month": "2026-09",
+      "commits": 335
+    },
+    {
+      "month": "2026-10",
+      "commits": 191
+    }
+  ],
+  "stacks": [
+    {
+      "name": "SvelteKit",
+      "commits": 1142,
+      "repos": 28,
+      "last": "2026-10"
+    },
+    {
+      "name": "Flutter",
+      "commits": 590,
+      "repos": 22,
+      "last": "2026-10"
+    },
+    {
+      "name": "React",
+      "commits": 196,
+      "repos": 3,
+      "last": "2026-10"
+    },
+    {
+      "name": "Laravel",
+      "commits": 180,
+      "repos": 10,
+      "last": "2026-10"
+    },
+    {
+      "name": "AdonisJS",
+      "commits": 118,
+      "repos": 4,
+      "last": "2026-10"
+    },
+    {
+      "name": "Vue",
+      "commits": 41,
+      "repos": 5,
+      "last": "2026-10"
+    },
+    {
+      "name": "NestJS",
+      "commits": 30,
+      "repos": 3,
+      "last": "2026-07"
+    },
+    {
+      "name": "Next.js",
+      "commits": 11,
+      "repos": 4,
+      "last": "2026-10"
+    },
+    {
+      "name": "Fastify",
+      "commits": 10,
+      "repos": 1,
+      "last": "2026-10"
+    },
+    {
+      "name": "Angular",
+      "commits": 6,
+      "repos": 1,
+      "last": "2026-07"
+    }
+  ],
+  "totals": {
+    "repos": 82,
+    "commits": 2330
+  }
+}

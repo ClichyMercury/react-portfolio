@@ -4,7 +4,7 @@ import DecodeText from "./fx/DecodeText";
 import Magnetic from "./fx/Magnetic";
 import { PROJECT_COUNT } from "./ProjectsGrid";
 
-const ROLES = ["FLUTTER ENGINEER", "SVELTEKIT DEVELOPER", "MOBILE ARCHITECT", "FULL-STACK BUILDER"];
+const ROLES = ["PRODUCT BUILDER", "SVELTEKIT DEVELOPER", "FLUTTER ENGINEER", "API ENGINEER"];
 
 interface HeroSectionProps {
   onCtaClick?: () => void;

@@ -275,6 +275,17 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
 
 const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const galleryRef = useRef<HTMLDivElement>(null);
+
+  const toggleGallery = () => {
+    setGalleryOpen((open) => {
+      if (open) {
+        requestAnimationFrame(() => galleryRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+      }
+      return !open;
+    });
+  };
   const [modalProject, setModalProject] = useState<Project | null>(null);
 
   const categories = [
@@ -333,7 +344,10 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => {
+                setSelectedCategory(category);
+                if (category !== "all") setGalleryOpen(true);
+              }}
               className="px-4 py-2 rounded font-mono text-[10px] uppercase tracking-[0.15em] transition-all duration-300"
               style={{
                 background: selectedCategory === category ? "var(--accent)" : "transparent",
@@ -346,13 +360,28 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
           ))}
         </motion.div>
 
-        <div className="flex items-center gap-3 mb-6 font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>
+        <div ref={galleryRef} className="flex items-center gap-3 mb-6 font-mono text-[10px] uppercase tracking-[0.25em] scroll-mt-24" style={{ color: "var(--fg-faint)" }}>
           <span style={{ color: "var(--accent)" }}>◈</span> field_gallery // tap_for_intel
           <div className="flex-1 tentacle-line" />
           <span style={{ color: "var(--accent)" }}>{regularProjects.length} units</span>
+          <button
+            type="button"
+            onClick={toggleGallery}
+            aria-expanded={galleryOpen}
+            className="flex-shrink-0 flex items-center gap-1.5 transition-colors duration-300 hover:text-[var(--accent)]"
+            style={{ color: "var(--fg-muted)" }}
+            data-cursor="view"
+          >
+            {galleryOpen ? "collapse" : "open_drawer"}
+            <span className="transition-transform duration-300" style={{ display: "inline-block", transform: galleryOpen ? "rotate(180deg)" : "none", color: "var(--accent)" }}>▾</span>
+          </button>
         </div>
 
-        <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4">
+        <div className="relative">
+        <div
+          className="columns-2 sm:columns-3 lg:columns-4 gap-3 sm:gap-4 overflow-hidden"
+          style={{ maxHeight: galleryOpen ? "none" : 420 }}
+        >
           {regularProjects.map((project, index) => (
             <motion.button
               key={project.id}
@@ -382,6 +411,23 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
               </span>
             </motion.button>
           ))}
+        </div>
+        {!galleryOpen && (
+          <div
+            className="absolute inset-x-0 bottom-0 h-56 flex items-end justify-center pb-4"
+            style={{ background: "linear-gradient(to bottom, transparent, var(--bg) 80%)" }}
+          >
+            <button
+              type="button"
+              onClick={toggleGallery}
+              className="flex items-center gap-2 px-5 py-2.5 rounded font-mono text-[10px] uppercase tracking-[0.2em] transition-colors duration-300 hover:bg-[var(--accent)] hover:text-[var(--bg)]"
+              style={{ border: "1px solid var(--accent)", color: "var(--accent)", background: "var(--bg)" }}
+              data-cursor="view"
+            >
+              open drawer · {regularProjects.length} units ▾
+            </button>
+          </div>
+        )}
         </div>
       </div>
 

@@ -20,21 +20,19 @@ const platformsFor = (technologies: string[]) => {
   return ["Mobile"];
 };
 
-const Phone = ({ app, size }: { app: LabApp; size: "main" | "side" }) => (
-  <div
-    className={`relative rounded-[2.2rem] p-2 ${size === "main" ? "w-[220px] sm:w-[250px]" : "w-[150px] sm:w-[175px]"}`}
+const Screen = ({ app, size }: { app: LabApp; size: "main" | "side" }) => (
+  <img
+    src={app.imageUrl}
+    alt={app.title}
+    loading="lazy"
+    decoding="async"
+    draggable={false}
+    className={`block w-auto max-w-full rounded-xl object-contain ${size === "main" ? "h-[380px] sm:h-[460px]" : "h-[260px] sm:h-[300px]"}`}
     style={{
-      background: "linear-gradient(145deg, #1B2230, #0A0D14)",
       border: "1px solid var(--border-medium)",
       boxShadow: size === "main" ? "0 30px 80px rgba(0,0,0,0.6), 0 0 40px rgba(0,229,255,0.12)" : "0 20px 50px rgba(0,0,0,0.5)",
     }}
-  >
-    <div className="relative rounded-[1.7rem] overflow-hidden aspect-[9/19.5]" style={{ background: "var(--bg)" }}>
-      <img src={app.imageUrl} alt={app.title} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover object-top" />
-      <span className="absolute top-2 left-1/2 -translate-x-1/2 w-16 h-4 rounded-full" style={{ background: "#05060A" }} />
-      <div className="absolute inset-0 scanlines opacity-10 pointer-events-none" />
-    </div>
-  </div>
+  />
 );
 
 const DeviceLab = ({ apps, onSelect }: { apps: LabApp[]; onSelect: (id: string) => void }) => {
@@ -68,7 +66,7 @@ const DeviceLab = ({ apps, onSelect }: { apps: LabApp[]; onSelect: (id: string) 
         <div className="grid lg:grid-cols-5">
           <div className="lg:col-span-3 relative flex items-center justify-center gap-4 sm:gap-8 py-10 px-4 overflow-hidden" style={{ background: "radial-gradient(ellipse at center, rgba(0,229,255,0.06), transparent 70%)" }}>
             <button onClick={() => go(-1)} className="hidden sm:block opacity-40 hover:opacity-80 transition-opacity" style={{ transform: "perspective(900px) rotateY(18deg)" }} aria-label="Previous app">
-              <Phone app={prev} size="side" />
+              <Screen app={prev} size="side" />
             </button>
 
             <motion.button
@@ -91,13 +89,13 @@ const DeviceLab = ({ apps, onSelect }: { apps: LabApp[]; onSelect: (id: string) 
                   exit={{ opacity: 0, y: -12, scale: 0.98 }}
                   transition={{ duration: 0.35, ease: [0.19, 1, 0.22, 1] }}
                 >
-                  <Phone app={active} size="main" />
+                  <Screen app={active} size="main" />
                 </motion.div>
               </AnimatePresence>
             </motion.button>
 
             <button onClick={() => go(1)} className="hidden sm:block opacity-40 hover:opacity-80 transition-opacity" style={{ transform: "perspective(900px) rotateY(-18deg)" }} aria-label="Next app">
-              <Phone app={next} size="side" />
+              <Screen app={next} size="side" />
             </button>
           </div>
 

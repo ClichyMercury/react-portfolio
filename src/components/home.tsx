@@ -7,6 +7,7 @@ import SkillsSection from "./SkillsSection";
 import ExperienceSection from "./ExperienceSection";
 import TeamProjects from "./TeamProjects";
 import ServerRoom from "./ServerRoom";
+import MissionDebriefs from "./MissionDebriefs";
 import CustomCursor from "./CustomCursor";
 import ScrollProgress from "./ScrollProgress";
 import Terminal from "./fx/Terminal";
@@ -44,7 +45,7 @@ const Home = () => {
   }, [menuOpen]);
 
   useEffect(() => {
-    const ids = ["hero", "bio", "skills", "projects", "team-projects", "server-room", "experience", "contact"];
+    const ids = ["hero", "bio", "skills", "projects", "team-projects", "server-room", "debriefs", "experience", "contact"];
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -72,8 +73,9 @@ const Home = () => {
     { id: "projects", label: "projects", num: "03" },
     { id: "team-projects", label: "team_work", num: "04" },
     { id: "server-room", label: "server_room", num: "05" },
-    { id: "experience", label: "experience", num: "06" },
-    { id: "contact", label: "contact", num: "07" },
+    { id: "debriefs", label: "debriefs", num: "06" },
+    { id: "experience", label: "experience", num: "07" },
+    { id: "contact", label: "contact", num: "08" },
   ];
 
   return (
@@ -107,7 +109,7 @@ const Home = () => {
               </button>
             </Magnetic>
 
-            <nav className="hidden lg:flex items-center gap-7">
+            <nav className="hidden xl:flex items-center gap-6">
               {nav.slice(1).map((i) => (
                 <button key={i.id} onClick={() => scrollTo(i.id)}
                   className="relative font-mono text-[10px] uppercase tracking-[0.15em] transition-colors duration-300 hover:text-[var(--accent)]"
@@ -134,7 +136,7 @@ const Home = () => {
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className="relative z-[200] flex lg:hidden items-center gap-2 transition-colors"
+              className="relative z-[200] flex xl:hidden items-center gap-2 transition-colors"
               style={{ color: "var(--fg-muted)" }}
             >
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] hidden sm:block">
@@ -186,6 +188,7 @@ const Home = () => {
                   style={{ color: "var(--fg-faint)" }}
                 >{l.name}</a>
               ))}
+              <Link to="/cv" className="font-mono text-[11px] uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>cv</Link>
             </motion.div>
           </motion.div>
         )}
@@ -198,6 +201,7 @@ const Home = () => {
         <ProjectsGrid />
         <TeamProjects />
         <ServerRoom />
+        <MissionDebriefs />
         <ExperienceSection />
         <ContactSection />
       </main>
@@ -267,12 +271,12 @@ const ContactSection = () => {
 
   return (
     <section ref={ref} id="contact" className="min-h-screen py-32 lg:py-44 px-6 relative flex items-center">
-      <SectionRail index="07" label="transmission" motif="sweep" />
+      <SectionRail index="08" label="transmission" motif="sweep" />
       <div className="relative z-10 max-w-3xl mx-auto w-full">
         <motion.div className="mb-16" style={{ y: headingY, opacity: headingOpacity }}>
           <div className="flex items-center gap-4 mb-6">
             <span className="font-mono text-[11px] uppercase tracking-[0.3em]" style={{ color: "var(--accent)" }}>
-              [ 07 // transmission ]
+              [ 08 // transmission ]
             </span>
             <div className="flex-1 tentacle-line" />
           </div>

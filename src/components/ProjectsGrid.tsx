@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
 import ProjectModal, { ModalProject } from "./ProjectModal";
 import SectionRail from "./fx/SectionRail";
+import DeviceLab from "./DeviceLab";
 
 interface Project {
   id: string;
@@ -287,6 +288,13 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
       : projects.filter((project) => project.category === selectedCategory);
 
   const featuredProjects = projects.filter((p) => p.featured);
+  const mobileApps = projects
+    .filter((p) => p.isPortrait)
+    .sort((a, b) => Number(b.id) - Number(a.id));
+  const openProject = (id: string) => {
+    const project = projects.find((p) => p.id === id);
+    if (project) setModalProject(project);
+  };
   const regularProjects =
     selectedCategory === "all"
       ? filteredProjects.filter((p) => !p.featured)
@@ -309,6 +317,10 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
 
         {selectedCategory === "all" && featuredProjects.length > 0 && (
           <FeaturedDossiers projects={featuredProjects} onSelect={setModalProject} />
+        )}
+
+        {selectedCategory === "all" && mobileApps.length > 0 && (
+          <DeviceLab apps={mobileApps} onSelect={openProject} />
         )}
 
         <motion.div

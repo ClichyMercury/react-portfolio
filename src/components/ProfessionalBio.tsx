@@ -3,6 +3,7 @@ import { Award, User, Heart } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import Counter from "./fx/Counter";
 import SectionRail from "./fx/SectionRail";
+import { PROJECT_COUNT } from "./ProjectsGrid";
 
 const ProfessionalBio = () => {
   const bio = "Passionate about software development for over 6 years, I specialize in creating innovative mobile applications and high-performance web solutions. My expertise covers the entire development lifecycle, from design to production, with a particular focus on user experience and modern technologies.";
@@ -121,7 +122,7 @@ const ProfessionalBio = () => {
             <div className="grid grid-cols-3 gap-2 sm:gap-4">
               {[
                 { value: 6, suffix: "+", label: "Years" },
-                { value: 61, suffix: "+", label: "Projects" },
+                { value: PROJECT_COUNT, suffix: "+", label: "Projects" },
                 { value: 100, suffix: "%", label: "Satisfaction" },
               ].map((s) => (
                 <div key={s.label} className="panel rounded-xl p-3 sm:p-5 text-center tentacle-glow min-w-0">

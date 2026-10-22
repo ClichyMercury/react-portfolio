@@ -5,6 +5,7 @@ import TechConstellation from "./fx/TechConstellation";
 import TechMosaic from "./fx/TechMosaic";
 import Counter from "./fx/Counter";
 import SectionRail from "./fx/SectionRail";
+import { PROJECT_COUNT } from "./ProjectsGrid";
 
 interface Skill {
   name: string;
@@ -73,7 +74,7 @@ const SkillsSection = ({ skills = defaultSkills }: { skills?: Skill[] }) => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             { value: 6, suffix: "+", label: "Years of Experience" },
-            { value: 61, suffix: "+", label: "Projects Completed" },
+            { value: PROJECT_COUNT, suffix: "+", label: "Projects Completed" },
             { value: skills.length, suffix: "+", label: "Technologies Used" },
             { value: 100, suffix: "%", label: "Client Satisfaction" },
           ].map((s) => (

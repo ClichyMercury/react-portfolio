@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TerminalSquare, X } from "lucide-react";
 import MatrixRain from "./MatrixRain";
 import { beep } from "./sound";
+import { PROJECT_COUNT } from "../ProjectsGrid";
 
 const KONAMI = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
 
@@ -34,7 +35,7 @@ const COMMANDS: Record<string, string[]> = {
   whoami: [
     "Gaël SASSAN — Software Developer",
     "6+ years building mobile & web products",
-    "61+ projects shipped from Abidjan 🇨🇮 to the world",
+    `${PROJECT_COUNT}+ projects shipped from Abidjan 🇨🇮 to the world`,
     "Currently: Front End Lead @ Jèko",
   ],
   stack: [

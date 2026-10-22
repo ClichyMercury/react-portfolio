@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { PROJECT_COUNT } from "./ProjectsGrid";
 
 const BOOT_MS = 1600;
 const EXIT_MS = 2200;
@@ -22,7 +23,7 @@ const lines: [string, string][] = [
   ["linking framer-motion runtime", "OK"],
   ["linking tailwind atomic sheet", "OK"],
   ["decrypting clearance_level_5", "OK"],
-  ["loading dossiers · 61 archived", "OK"],
+  [`loading dossiers · ${PROJECT_COUNT} archived`, "OK"],
   ["indexing 15 technologies", "OK"],
   ["resolving 24 deployment targets", "OK"],
   ["parsing 8 client sectors", "OK"],

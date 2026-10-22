@@ -383,6 +383,42 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
 // Real projects based on your LinkedIn profile
 const defaultProjects: Project[] = [
   {
+    id: "83",
+    title: "Les Entreprises G&N – Boutique en ligne",
+    description:
+      "Boutique en ligne en production sur lesentreprisesgn.com pour Les Entreprises G&N, producteur de Cocody Angré (Abidjan) : Mon Gari, Mon Tapioca et coffrets à offrir, 100 % naturels. Vitrine e-commerce avec panier, commande et suivi par lien sécurisé, commandes sur mesure, recettes, avis clients, et un back-office complet pour la gérance.",
+    imageUrl: "./images/gn-entreprises-preview.webp",
+    technologies: ["SvelteKit", "Svelte 5 Runes", "TypeScript", "Tailwind CSS v4", "Supabase", "PostgreSQL", "Row Level Security", "Vercel"],
+    category: "e-commerce",
+    featured: true,
+    isPortrait: false,
+    objectives:
+      "Permettre à une marque locale de vendre ses produits en ligne sans compte client : commande depuis le site ou WhatsApp, livraison à Abidjan et paiement à la livraison, avec un outil simple pour gérer catalogue, commandes, demandes sur mesure et avis.",
+    results:
+      "Site public (boutique, catégories, fiches produits, panier, formules, prestations, recettes express, commandes personnalisées, avis, histoire de la marque) et back-office (tableau de bord, saisie et suivi des commandes, clients, produits, catégories, recettes, avis, paramètres). Sécurité gérée en base : RLS, suivi de commande par jeton secret et prix recalculés côté serveur.",
+    demoUrl: "https://lesentreprisesgn.com",
+    codeUrl: "",
+    countries: ["CI"],
+  },
+  {
+    id: "84",
+    title: "Herycia – Styliste Mobile",
+    description:
+      "Application mobile qui aide à composer ses tenues : on choisit ses pièces et leurs couleurs, un mannequin virtuel les habille en direct selon la silhouette (droite, sablier, ample), puis l'app évalue l'harmonie de la tenue et propose des améliorations. Elle inclut un catalogue de looks, un guide des couleurs et des favoris.",
+    imageUrl: "./images/herycia-preview.webp",
+    technologies: ["Flutter", "Riverpod", "go_router", "Freezed", "Drift", "Dio", "OpenAPI", "Offline-first"],
+    category: "creative",
+    featured: false,
+    isPortrait: true,
+    objectives:
+      "Donner à chacun des conseils de style simples et bienveillants : partir d'une pièce pour obtenir des tenues complètes, ou composer une tenue entière et comprendre pourquoi les couleurs fonctionnent ensemble, avec des explications sans jugement.",
+    results:
+      "Composition de tenue sur mannequin 2D, évaluation avec un score d'harmonie et des pistes d'amélioration, suggestions à partir d'une pièce, catalogue de looks par style et occasion, guide des couleurs, favoris et tenues sauvegardées, et suggestions calculées sur l'appareil hors ligne. L'app tourne sur un serveur simulé intégré dont le contrat d'API est documenté en OpenAPI pour le futur back-end Laravel.",
+    demoUrl: "",
+    codeUrl: "https://github.com/ClichyMercury/herycia",
+    countries: ["CI"],
+  },
+  {
     id: "1",
     title: "MetaChange",
     description:
@@ -1770,6 +1806,186 @@ const defaultProjects: Project[] = [
     results:
       "Interface d'administration complète — tableau de bord, catalogue de 24 produits en vue grille ou liste avec filtres par univers, catégorie et état du stock, badges de remise et de niveau, prix en FCFA avec prix barrés, notes et nombre d'avis par produit — ainsi que les modules Commandes, Devis, Clients, Prospects, Avis, Récompenses et Newsletter.",
     demoUrl: "https://as-mobile-back-office.vercel.app",
+    codeUrl: "",
+    countries: ["CI"],
+  },
+  {
+    id: "79",
+    title: "Ma Cantine – Site Vitrine",
+    description:
+      "Site de présentation de Ma Cantine, le service qui livre au bureau le plat du jour des cantines de quartier d'Abidjan. Il présente les plats, le fonctionnement de la commande, l'application client, les abonnements et l'espace restaurateur, dans une identité chaleureuse orange et brun.",
+    imageUrl: "./images/ma-cantine-site-preview.webp",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "SEO", "Vercel"],
+    category: "web",
+    featured: true,
+    isPortrait: false,
+    objectives:
+      "Faire découvrir le service aux employés de bureau et aux restaurateurs : expliquer simplement la commande du déjeuner livré au bureau, mettre en avant la cuisine locale et orienter chaque visiteur vers l'application client ou l'espace restaurateur.",
+    results:
+      "Landing page complète avec hero illustré par l'application, sections Les plats, Comment ça marche, L'app client, Abonnements et Restaurateurs, créneaux de livraison de 11h30 à 14h, commande pour le jour même ou le lendemain, et page de crédits pour les photos de plats.",
+    demoUrl: "https://ma-cantine-site.vercel.app/",
+    codeUrl: "",
+    countries: ["CI"],
+  },
+  {
+    id: "80",
+    title: "Ma Cantine – Application Client",
+    description:
+      "Application mobile pour commander son déjeuner et se le faire livrer au bureau à Abidjan. Le client choisit le plat du jour d'une cantine pour aujourd'hui ou demain, indique son lieu de travail et règle à la livraison ou via une formule d'abonnement. Elle s'appuie sur l'API Ma Cantine développée en Fastify.",
+    imageUrl: "./images/ma-cantine-client-preview.webp",
+    technologies: ["Flutter", "Riverpod", "go_router", "Dio", "Secure Storage", "Fastify API", "REST API"],
+    category: "e-commerce",
+    featured: false,
+    isPortrait: true,
+    objectives:
+      "Rendre la commande du déjeuner aussi simple que possible pour les employés de bureau : menu du jour clair, panier par restaurateur, choix du lieu de livraison et formules semaine ou mois pour ceux qui commandent régulièrement.",
+    results:
+      "Parcours complet de l'inscription à la livraison : menu Nos Plats (aujourd'hui / demain), panier, choix du lieu de travail, paiement à la livraison ou mobile money, historique et détail des commandes, abonnements avec solde de repas, et session sécurisée avec rafraîchissement automatique du token.",
+    demoUrl: "",
+    codeUrl: "",
+    countries: ["CI"],
+  },
+  {
+    id: "81",
+    title: "Ma Cantine – Espace Restaurateur",
+    description:
+      "Application multiplateforme (web, desktop, mobile) qui permet aux restaurateurs de gérer leur cantine sur Ma Cantine : commandes, livraisons groupées, plats du jour, formules d'abonnement, abonnés et avis clients, depuis un tableau de bord connecté à l'API Fastify.",
+    imageUrl: "./images/ma-cantine-resto-preview.webp",
+    technologies: ["Flutter", "Flutter Web", "Provider", "get_it", "fl_chart", "PDF Generation", "Fastify API"],
+    category: "e-commerce",
+    featured: true,
+    isPortrait: false,
+    objectives:
+      "Donner aux petits restaurateurs un outil simple pour recevoir et préparer leurs commandes, organiser les livraisons par lieu de travail, publier leurs plats du jour et fidéliser leurs clients, quel que soit l'écran utilisé.",
+    results:
+      "Tableau de bord (chiffre d'affaires, commandes, panier moyen, évolution des ventes, plats les plus vendus), gestion des commandes de l'acceptation à la livraison, regroupement des livraisons avec impression d'étiquettes en PDF, plats du jour avec stock, formules et offres, abonnés, réponses aux avis, horaires et ouverture de la cantine, le tout dans une interface responsive.",
+    demoUrl: "https://ma-cantine-resto.vercel.app",
+    codeUrl: "",
+    countries: ["CI"],
+  },
+  {
+    id: "82",
+    title: "Ma Cantine – Back-office Admin",
+    description:
+      "Back-office réservé à l'équipe Ma Cantine pour superviser toute la plateforme : restaurateurs, commandes, utilisateurs, lieux de travail, avis et annonces. Application Flutter multiplateforme qui s'appuie sur les routes d'administration de l'API Fastify.",
+    imageUrl: "./images/ma-cantine-admin-preview.webp",
+    technologies: ["Flutter", "Flutter Web", "Provider", "fl_chart", "Fastify", "TypeScript", "MikroORM", "PostgreSQL", "JWT Auth"],
+    category: "web",
+    featured: true,
+    isPortrait: false,
+    objectives:
+      "Permettre à l'équipe de piloter la plateforme au quotidien : valider les restaurateurs avant leur mise en ligne, suivre les ventes et commissions, modérer les avis, communiquer avec les clients et les restaurateurs, et garder une trace de chaque action d'administration.",
+    results:
+      "Tableau de bord des ventes et commissions sur 7, 30 ou 90 jours avec top restaurateurs et ventes par zone, validation et suspension des restaurateurs avec commission personnalisée, gestion des commandes, utilisateurs et lieux de travail (fusion des doublons), modération des avis, annonces ciblées, paramètres et journal des actions admin.",
+    demoUrl: "https://ma-cantine-admin.vercel.app",
+    codeUrl: "",
+    countries: ["CI"],
+  },
+  {
+    id: "85",
+    title: "TransfertCM – Landing Page",
+    description:
+      "Site de présentation de TransfertCM, la plateforme camerounaise qui permet d'acheter du crédit et des forfaits MTN ou Orange pour soi ou pour ses proches, à toute heure, depuis son téléphone. Il présente les services, le fonctionnement, le portefeuille, les tarifs et la FAQ, et oriente vers le téléchargement de l'application.",
+    imageUrl: "./images/transfertcm-landing-preview.webp",
+    technologies: ["SvelteKit", "Svelte 5", "TypeScript", "Tailwind CSS v4", "Static Adapter", "Docker", "Nginx"],
+    category: "fintech",
+    featured: true,
+    isPortrait: false,
+    objectives:
+      "Présenter clairement le service aux utilisateurs camerounais : recharge de crédit et de forfaits sur les réseaux MTN et Orange, portefeuille rechargeable et frais transparents, avec un parcours direct vers l'application mobile.",
+    results:
+      "Landing page avec mise en avant de l'application, sections Services, Comment ça marche, Portefeuille, Tarifs et Questions fréquentes, liens vers Google Play et l'App Store, et rappel des conditions clés (frais fixes par commande, crédit à partir de 150 XAF).",
+    demoUrl: "https://transfertcm.miaba.africa",
+    codeUrl: "",
+    countries: ["CM"],
+  },
+  {
+    id: "86",
+    title: "TransfertCM – Back-office & Espace Cabine",
+    description:
+      "Plateforme web de gestion de TransfertCM avec deux espaces : le back-office de l'équipe (commandes, cabines, finance, fraude, support, équipe) et l'espace des cabines, les agents qui exécutent les recharges. Elle s'appuie sur une API AdonisJS d'environ 260 routes avec temps réel Socket.io.",
+    imageUrl: "./images/transfertcm-backoffice-preview.webp",
+    technologies: ["SvelteKit", "TypeScript", "Tailwind CSS v4", "AdonisJS", "PostgreSQL", "Redis", "Socket.io", "S3", "Docker"],
+    category: "fintech",
+    featured: true,
+    isPortrait: false,
+    objectives:
+      "Donner à l'équipe un poste de pilotage complet de la plateforme et aux cabines un espace de travail dédié pour recevoir, exécuter et suivre les commandes de recharge, avec des rôles et permissions distincts pour chaque profil.",
+    results:
+      "Back-office avec tableau de bord, commandes et attribution aux cabines, gestion des cabines et de leur solde UV, finance, rapports, anti-fraude, réclamations, call center, messagerie, notifications, abonnements, rémunérations et gestion de l'équipe. Espace cabine avec tableau de bord, commandes en temps réel, messagerie, documents, performance et abonnement. Côté API : paiements avec circuit breaker, portefeuille, moteur d'attribution automatique des commandes et protections de charge.",
+    demoUrl: "https://transfertcm.miaba.africa/login",
+    codeUrl: "",
+    countries: ["CM"],
+  },
+  {
+    id: "87",
+    title: "TransfertCM – Application Mobile",
+    description:
+      "Application mobile TransfertCM pour recharger du crédit et des forfaits MTN ou Orange au Cameroun. Le client gère son portefeuille, envoie du crédit à ses contacts et programme des transferts. La même application intègre aussi un mode cabine pour les agents qui traitent les commandes en temps réel.",
+    imageUrl: "./images/transfertcm-mobile-preview.webp",
+    technologies: ["Flutter", "Riverpod", "go_router", "Dio", "Freezed", "Socket.io", "Biometric Auth", "AdonisJS API"],
+    category: "fintech",
+    featured: false,
+    isPortrait: true,
+    objectives:
+      "Rendre la recharge de crédit aussi rapide que possible : un portefeuille, quelques gestes pour envoyer, recharger, transférer ou programmer, et un suivi clair de chaque commande, avec un accès sécurisé par code PIN et biométrie.",
+    results:
+      "Côté client : inscription par téléphone et code PIN, portefeuille avec envoi, recharge, transfert et programmation, forfaits, contacts, historique des commandes, réclamations, support et parrainage. Côté cabine : connexion agent, réception et traitement des commandes en temps réel, messagerie et profil.",
+    demoUrl: "",
+    codeUrl: "",
+    countries: ["CM"],
+  },
+  {
+    id: "88",
+    title: "DIAB Consulting – Site Vitrine",
+    description:
+      "Site vitrine de DIAB Consulting, cabinet multiservice qui accompagne particuliers et entreprises entre la Côte d'Ivoire et le Maroc. Il présente une dizaine de pôles d'activité (marketing digital, électricité, automobile, écoute juridique, BTP, événementiel, import/export…) dans une identité bleu nuit et or, avec prise de contact directe sur WhatsApp.",
+    imageUrl: "./images/diab-consulting-preview.webp",
+    technologies: ["SvelteKit", "Svelte 5 Runes", "TypeScript", "Tailwind CSS v4", "Playwright", "SEO", "Vercel"],
+    category: "web",
+    featured: true,
+    isPortrait: false,
+    objectives:
+      "Donner au cabinet une présence en ligne professionnelle qui rassure et rende lisible une offre très large, en guidant chaque visiteur vers le bon pôle d'activité puis vers une demande de devis.",
+    results:
+      "Site complet avec accueil, page Nos activités et fiche détaillée par pôle, page À propos, contact et mentions légales, bouton de devis WhatsApp toujours accessible, animations d'apparition au défilement et balises SEO sur chaque page.",
+    demoUrl: "https://diaby-consulting.vercel.app",
+    codeUrl: "",
+    countries: ["CI", "MA"],
+  },
+  {
+    id: "89",
+    title: "APCI – Anciens Parlementaires de Côte d'Ivoire",
+    description:
+      "Site institutionnel bilingue de l'Assemblée des Anciens Parlementaires de Côte d'Ivoire, dans une palette « Hémicycle » bordeaux profond, or vieilli et ivoire. Il réunit l'histoire de l'association, l'annuaire des membres, un mémorial, les actualités et un espace membre, le tout alimenté par une API Laravel dédiée.",
+    imageUrl: "./images/apci-preview.webp",
+    technologies: ["SvelteKit", "Svelte 5 Runes", "Tailwind CSS v4", "Paraglide i18n", "Laravel", "PostgreSQL", "Sanctum", "Full-text Search"],
+    category: "web",
+    featured: true,
+    isPortrait: false,
+    objectives:
+      "Préserver et transmettre la mémoire parlementaire ivoirienne tout en offrant aux anciens élus un outil de vie associative : adhésion en ligne, espace privé, événements et communication avec le public, en français et en anglais.",
+    results:
+      "Plus de trente pages : histoire, vision, missions, mot du président, annuaire et fiches des membres, mémorial avec archives et galerie des présidents, actualités, galeries photo et vidéo, documentation, actions sociales, partenariats, recherche avec autocomplétion, adhésion, inscription aux événements et espace membre. Toutes les requêtes passent par le serveur SvelteKit : le navigateur ne parle jamais directement à l'API et le jeton reste dans un cookie httpOnly.",
+    demoUrl: "https://apci-web.vercel.app/histoire",
+    codeUrl: "",
+    countries: ["CI"],
+  },
+  {
+    id: "90",
+    title: "AFAC-CI – Anciens Combattants de Côte d'Ivoire",
+    description:
+      "Site institutionnel bilingue de l'Association Fraternelle des Anciens Combattants de Côte d'Ivoire, aux couleurs de l'association : vert profond, or et accents nationaux ivoiriens. Il est construit autour d'un mémorial numérique qui rend hommage aux anciens combattants et transmet leur histoire.",
+    imageUrl: "./images/afacci-preview.webp",
+    technologies: ["SvelteKit", "Svelte 5 Runes", "TypeScript", "Tailwind CSS v4", "Paraglide i18n"],
+    category: "web",
+    featured: true,
+    isPortrait: false,
+    objectives:
+      "Préserver la mémoire des anciens combattants ivoiriens, valoriser leur histoire auprès du public et des jeunes générations, et donner à l'association un outil de vie associative : adhésion, dons, événements et espace membre.",
+    results:
+      "Front-end complet d'une vingtaine de pages : histoire et chronologie, présentation de l'association et de son bureau, mot du président, nos héros, mémorial numérique (livre d'honneur, recherche des disparus par nom, grade ou région, galerie des héros, témoignages, archives, mur du souvenir interactif, grandes missions), actualités, événements, galerie, actions sociales, documentation, partenaires, adhésion, contact, dons et espace membre.",
+    demoUrl: "",
     codeUrl: "",
     countries: ["CI"],
   },

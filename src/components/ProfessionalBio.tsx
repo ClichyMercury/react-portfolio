@@ -20,7 +20,7 @@ const ProfessionalBio = () => {
   const highlights = [
     "6+ years of experience in mobile and web development",
     "Expertise in Flutter, SvelteKit, and cloud technologies",
-    "61+ successfully delivered projects",
+    `${PROJECT_COUNT}+ successfully delivered projects`,
     "User-centered approach focused on performance",
   ];
 

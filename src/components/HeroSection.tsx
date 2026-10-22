@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import DecodeText from "./fx/DecodeText";
 import Magnetic from "./fx/Magnetic";
+import { PROJECT_COUNT } from "./ProjectsGrid";
 
 const ROLES = ["FLUTTER ENGINEER", "SVELTEKIT DEVELOPER", "MOBILE ARCHITECT", "FULL-STACK BUILDER"];
 
@@ -145,7 +146,7 @@ const HeroSection = ({ onCtaClick = () => {} }: HeroSectionProps) => {
           >
             scroll ↓
           </motion.span>
-          <span className="hidden sm:inline">61+ deployments</span>
+          <span className="hidden sm:inline">{PROJECT_COUNT}+ deployments</span>
         </motion.div>
       </div>
     </section>

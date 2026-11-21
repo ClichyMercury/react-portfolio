@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Download, Mail, Github, Linkedin, Globe, MapPin } from "lucide-react";
 import { PROFILE, PROFILE_I18N } from "./ProfessionalBio";
-import { EXPERIENCES } from "./ExperienceSection";
+import { EXPERIENCES, companyName } from "./ExperienceSection";
 import { SKILLS } from "./SkillsSection";
 import { PROJECTS, PROJECT_COUNT } from "./ProjectsGrid";
 import { BACKEND_NODES, FRAMEWORKS } from "./ServerRoom";
@@ -96,7 +96,7 @@ const CvPage = () => {
             <div key={e.id} className="cv-block">
               <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                 <h3 className="font-semibold text-[13.5px] print:text-[12px]">
-                  {pick(e.role)} <span style={{ color: "#0B7285" }}>· {e.company}</span>
+                  {pick(e.role)} <span style={{ color: "#0B7285" }}>· {companyName(e, locale)}</span>
                 </h3>
                 <span className="font-mono text-[10.5px] print:text-[9.5px]" style={{ color: "#6B7280" }}>{pick(e.period)} · {pick(e.location).split(",")[0]}</span>
               </div>

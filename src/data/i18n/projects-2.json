@@ -125,34 +125,6 @@
       "results": "Development of a complete front-to-back architecture: a smooth Kotlin app built with Jetpack Compose and a high-performance Ktor API. Together they deliver an immersive experience with gamification, educational modules and the integration of African realities into money management."
     }
   },
-  "38": {
-    "fr": {
-      "title": "Alerte E25 – Application Citoyenne",
-      "description": "Application mobile permettant aux citoyens de signaler en temps réel des incidents ou situations urgentes aux autorités locales. Elle intègre la géolocalisation, l'envoi d’alertes, la sélection de priorité, ainsi qu'une interface simple et intuitive pour faciliter la participation citoyenne.",
-      "objectives": "Offrir aux populations un outil simple, rapide et fiable pour signaler les urgences : incendies, accidents, agressions, nuisances publiques ou anomalies urbaines. L’objectif principal est de digitaliser la collaboration entre citoyens et autorités pour réduire les temps d'intervention.",
-      "results": "Mise en place d’un parcours fluide de déclaration d’alerte, intégration de la carte interactive, récupération précise de la localisation, catégorisation des incidents et synchronisation en temps réel avec l’API. L’application permet une meilleure visibilité des urgences et améliore la communication citoyenne."
-    },
-    "en": {
-      "title": "Alerte E25 – Citizen App",
-      "description": "Mobile app that lets citizens report incidents or emergencies to local authorities in real time. It includes geolocation, alert sending, priority selection and a simple, intuitive interface to encourage citizen participation.",
-      "objectives": "Give people a simple, fast and reliable tool to report emergencies: fires, accidents, assaults, public nuisances or urban issues. The main goal is to digitize collaboration between citizens and authorities to reduce response times.",
-      "results": "Implementation of a smooth alert-reporting flow, an interactive map, accurate location capture, incident categorization and real-time synchronization with the API. The app gives better visibility of emergencies and improves communication with citizens."
-    }
-  },
-  "39": {
-    "fr": {
-      "title": "Alerte E25 – Application Admin",
-      "description": "Interface mobile dédiée aux autorités pour visualiser, filtrer et gérer les alertes envoyées par les citoyens. Elle affiche sur une carte toutes les alertes en temps réel avec un système de priorisation (Urgent, Élevée, Moyenne, Faible) et permet un suivi opérationnel efficace.",
-      "objectives": "Donner aux autorités une vision globale et précise de toutes les alertes en temps réel. Prioriser les urgences, faciliter la prise de décision, optimiser la répartition des équipes sur le terrain et digitaliser la chaîne de traitement des incidents.",
-      "results": "Développement d'une carte administrative complète avec clustering, filtres par priorité, rafraîchissement en direct, gestion avancée des états des alertes et intégration complète avec le backend. L’application améliore la rapidité et l'efficacité des interventions."
-    },
-    "en": {
-      "title": "Alerte E25 – Admin App",
-      "description": "Mobile interface for authorities to view, filter and manage alerts sent by citizens. It displays all alerts on a map in real time with a prioritization system (Urgent, High, Medium, Low) and enables effective operational follow-up.",
-      "objectives": "Give authorities a complete, accurate view of all alerts in real time. Prioritize emergencies, support decision-making, optimize the deployment of field teams and digitize the incident-handling chain.",
-      "results": "Development of a complete admin map with clustering, priority filters, live refresh, advanced alert status management and full backend integration. The app improves the speed and efficiency of interventions."
-    }
-  },
   "40": {
     "fr": {
       "title": "Jeko Pay – Nouvelle Page de Checkout",

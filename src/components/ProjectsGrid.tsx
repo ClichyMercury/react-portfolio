@@ -455,6 +455,60 @@ const ProjectsGrid = ({ projects: sourceProjects = defaultProjects }: ProjectsGr
 // Real projects based on your LinkedIn profile
 const defaultProjects: Project[] = [
   {
+    id: "91",
+    title: "Kawaida – Page client NFC",
+    description:
+      "Page de fidélité ouverte par les clients des restaurants et fast-foods d'Abidjan en approchant leur téléphone d'un tag NFC ou en scannant un QR code, sans application à installer. Carte de tampons, quiz entre clients, classement de la semaine, avis et récompenses.",
+    imageUrl: "/images/kawaida-client-preview.webp",
+    technologies: ["SvelteKit", "Svelte 5", "TypeScript", "Tailwind CSS", "NFC", "QR Code", "BFF"],
+    category: "web",
+    featured: false,
+    isPortrait: true,
+    objectives:
+      "Permettre à un restaurant de fidéliser ses clients en quelques secondes : un geste sur le tag NFC de la table suffit, le client est reconnu par son appareil, sans compte ni mot de passe.",
+    results:
+      "Parcours client complet en rendu serveur : accueil, inscription en un écran avec consentement WhatsApp, carte de fidélité, quiz avec jokers, classement hebdomadaire, dépôt d'avis et retrait des récompenses. Le serveur SvelteKit sert de BFF vers l'API Laravel et garde les identifiants côté serveur.",
+    demoUrl: "",
+    codeUrl: "",
+    countries: ["CI"],
+  },
+  {
+    id: "92",
+    title: "Kawaida Pro – Back-office restaurateur",
+    description:
+      "Espace de gestion des restaurateurs abonnés à Kawaida : tableau de bord, fichier clients, relances WhatsApp, avis à traiter, récompenses à remettre, quiz et réglages de l'établissement, plus un espace admin pour l'équipe Kawaida.",
+    imageUrl: "/images/kawaida-backoffice-preview.webp",
+    technologies: ["SvelteKit", "Svelte 5", "TypeScript", "Tailwind CSS", "BFF", "Vitest", "Playwright"],
+    category: "web",
+    featured: true,
+    isPortrait: false,
+    objectives:
+      "Donner au restaurateur une vue claire de ses clients fidèles et des outils simples pour les faire revenir : relances, anniversaires, avis et récompenses.",
+    results:
+      "Tableau de bord par période, liste de clients filtrable avec export, traitement des avis, suivi et remise des récompenses, configuration du quiz et de l'établissement. Le jeton de l'API reste côté serveur dans un cookie httpOnly. Tests unitaires et de bout en bout.",
+    demoUrl: "",
+    codeUrl: "",
+    countries: ["CI"],
+  },
+  {
+    id: "93",
+    title: "Yemo – Portefeuille mobile",
+    description:
+      "Application de portefeuille mobile construite autour d'une carte QR personnelle : envoyer de l'argent, recharger, retirer vers le mobile money et payer en scannant un QR code. Historique des opérations, notifications et support de six pays d'Afrique de l'Ouest.",
+    imageUrl: "/images/yemo-preview.webp",
+    technologies: ["Flutter", "GetX", "Firebase Cloud Messaging", "QR Code", "Mobile Scanner", "REST API"],
+    category: "fintech",
+    featured: false,
+    isPortrait: true,
+    objectives:
+      "Offrir un portefeuille simple et rassurant, utilisable en quelques gestes : la carte QR sert à la fois d'identité de paiement et de point d'entrée vers toutes les opérations.",
+    results:
+      "Accueil centré sur la carte QR avec solde masquable, envoi, recharge et retrait, scan de QR avec retours sonores, historique détaillé des opérations, notifications push, mode sombre et animations. Identité visuelle et parcours ajustés au fil des retours du client.",
+    demoUrl: "",
+    codeUrl: "",
+    countries: ["CI", "BF", "BJ", "ML", "SN", "TG"],
+  },
+  {
     id: "83",
     title: "Les Entreprises G&N – Boutique en ligne",
     description:
@@ -1141,42 +1195,6 @@ const defaultProjects: Project[] = [
       "Développement d’une architecture complète front–back : application Kotlin fluide avec Jetpack Compose et API Ktor performante. L’ensemble offre une expérience immersive avec gamification, modules éducatifs, et intégration des réalités africaines dans la gestion financière.",
     demoUrl: "https://github.com/ClichyMercury/KotlinBankAPI",
     codeUrl: "https://github.com/ClichyMercury/KotlinBankUI",
-    countries: ["CI"],
-  },
-  {
-    id: "38",
-    title: "Alerte E25 – Application Citoyenne",
-    description:
-      "Application mobile permettant aux citoyens de signaler en temps réel des incidents ou situations urgentes aux autorités locales. Elle intègre la géolocalisation, l'envoi d’alertes, la sélection de priorité, ainsi qu'une interface simple et intuitive pour faciliter la participation citoyenne.",
-    imageUrl: "/images/alerte_e25_client_preview.webp",
-    technologies: ["Flutter", "Dart", "Provider", "OpenStreetMap", "REST API", "Geolocator", "Firebase Messaging"],
-    category: "security",
-    featured: false,
-    isPortrait: true,
-    objectives:
-      "Offrir aux populations un outil simple, rapide et fiable pour signaler les urgences : incendies, accidents, agressions, nuisances publiques ou anomalies urbaines. L’objectif principal est de digitaliser la collaboration entre citoyens et autorités pour réduire les temps d'intervention.",
-    results:
-      "Mise en place d’un parcours fluide de déclaration d’alerte, intégration de la carte interactive, récupération précise de la localisation, catégorisation des incidents et synchronisation en temps réel avec l’API. L’application permet une meilleure visibilité des urgences et améliore la communication citoyenne.",
-    demoUrl: "",
-    codeUrl: "",
-    countries: ["CI"],
-  },
-  {
-    id: "39",
-    title: "Alerte E25 – Application Admin",
-    description:
-      "Interface mobile dédiée aux autorités pour visualiser, filtrer et gérer les alertes envoyées par les citoyens. Elle affiche sur une carte toutes les alertes en temps réel avec un système de priorisation (Urgent, Élevée, Moyenne, Faible) et permet un suivi opérationnel efficace.",
-    imageUrl: "/images/alerte_e25_admin_preview.webp",
-    technologies: ["Flutter", "Dart", "Provider", "OpenStreetMap", "Cluster Markers", "REST API", "Firebase Messaging"],
-    category: "security",
-    featured: false,
-    isPortrait: true,
-    objectives:
-      "Donner aux autorités une vision globale et précise de toutes les alertes en temps réel. Prioriser les urgences, faciliter la prise de décision, optimiser la répartition des équipes sur le terrain et digitaliser la chaîne de traitement des incidents.",
-    results:
-      "Développement d'une carte administrative complète avec clustering, filtres par priorité, rafraîchissement en direct, gestion avancée des états des alertes et intégration complète avec le backend. L’application améliore la rapidité et l'efficacité des interventions.",
-    demoUrl: "",
-    codeUrl: "",
     countries: ["CI"],
   },
   {

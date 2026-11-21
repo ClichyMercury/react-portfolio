@@ -56,6 +56,8 @@ const TERMS_FR: Record<string, string> = {
   "File storage": "Stockage fichiers",
   Mail: "E-mail",
   "SMS gateway": "Passerelle SMS",
+  "NFC client page": "page client NFC",
+  "Redis queue": "File Redis",
 };
 
 const localizeNode = (node: BackendNode, locale: Locale): BackendNode =>
@@ -361,6 +363,33 @@ const Wire = () => (
 
 const defaultNodes: BackendNode[] = [
   {
+    id: "kawaida-api",
+    name: "Kawaida API",
+    framework: "laravel",
+    summary:
+      "API de Kawaida, plateforme de fidélisation pour restaurants et fast-foods d'Abidjan : le client approche son téléphone d'un tag NFC ou scanne un QR code, sans application à installer.",
+    endpoints: 96,
+    migrations: 8,
+    tests: 25,
+    stack: ["Laravel 13", "Sanctum", "PostgreSQL", "Redis", "Query Builder", "Laravel Phone"],
+    clients: ["NFC client page", "back-office"],
+    infra: ["SQL database", "Redis queue"],
+    highlights: [
+      "Multi-restaurant avec isolation stricte des données de chaque établissement",
+      "Fidélité par tampons, quiz, avis, récompenses et relances WhatsApp",
+      "Client reconnu par appareil, sans compte ni mot de passe",
+    ],
+    en: {
+      summary: "API for Kawaida, a loyalty platform for restaurants and fast-food outlets in Abidjan: customers tap an NFC tag or scan a QR code, with no app to install.",
+      highlights: [
+        "Multi-restaurant with strict per-venue data isolation",
+        "Stamp loyalty, quiz, reviews, rewards and WhatsApp follow-ups",
+        "Customers recognised by device, no account or password",
+      ],
+    },
+    sample: ["POST", "/public/r/{slug}/identify", 200],
+  },
+  {
     id: "transfertcm",
     name: "TransfertCM API",
     framework: "adonis",
@@ -453,28 +482,6 @@ const defaultNodes: BackendNode[] = [
       highlights: ["9-step review workflow up to the Minister's signature", "Each officer can only act on the files at their own step", "Every workflow transition is logged"],
     },
     sample: ["PATCH", "/applications/{id}/step", 200],
-  },
-  {
-    id: "ccdo-dmg",
-    name: "CCDO-DMG API",
-    framework: "laravel",
-    summary:
-      "API du Centre de Commandement des Opérations de la Direction des Moyens Généraux : suivi des opérations, des moyens et des équipes.",
-    endpoints: 167,
-    migrations: 60,
-    tests: 11,
-    stack: ["Laravel", "Sanctum", "JWT", "Laravel Reverb"],
-    clients: ["dashboard", "client apps"],
-    infra: ["SQL database", "Reverb websockets"],
-    highlights: [
-      "Mises à jour en temps réel avec Laravel Reverb",
-      "Authentification par jetons Sanctum et JWT",
-    ],
-    en: {
-      summary: "API for the Operations Command Centre of the General Resources Directorate: tracking operations, resources and teams.",
-      highlights: ["Real-time updates with Laravel Reverb", "Authentication with Sanctum and JWT tokens"],
-    },
-    sample: ["GET", "/operations", 200],
   },
   {
     id: "miaba-api",
@@ -671,44 +678,6 @@ const defaultNodes: BackendNode[] = [
       highlights: ["One API for a public mobile app and an admin back-office"],
     },
     sample: ["GET", "/products?collection=…", 200],
-  },
-  {
-    id: "ccdo-staff-timekeeping",
-    name: "CCDO Pointage API",
-    framework: "laravel",
-    summary:
-      "API de gestion des arrivées et départs du personnel : pointage sur une tablette à l'entrée du service, validé par le chef de dispositif.",
-    endpoints: 49,
-    migrations: 12,
-    tests: 16,
-    stack: ["Laravel", "JWT", "Laravel Reverb"],
-    clients: ["entry tablet", "supervisor app"],
-    infra: ["SQL database", "Reverb websockets"],
-    highlights: ["Validation des pointages en temps réel par le chef de dispositif"],
-    en: {
-      summary: "API for tracking staff arrivals and departures: check-in on a tablet at the service entrance, validated by the shift supervisor.",
-      highlights: ["Real-time check-in validation by the shift supervisor"],
-    },
-    sample: ["POST", "/check-ins", 201],
-  },
-  {
-    id: "civis-alerte",
-    name: "Civis Alerte API",
-    framework: "laravel",
-    summary:
-      "J'ai travaillé sur l'API Civis Alerte : signalements citoyens, agents et services, contacts familiaux et notifications SMS.",
-    endpoints: 35,
-    migrations: 32,
-    tests: 2,
-    stack: ["Laravel", "JWT", "Filament"],
-    clients: ["citizen app", "agent app", "admin"],
-    infra: ["SQL database", "SMS gateway"],
-    highlights: ["Back-office d'administration avec Filament"],
-    en: {
-      summary: "I worked on the Civis Alerte API: citizen reports, officers and services, family contacts and SMS notifications.",
-      highlights: ["Admin back-office built with Filament"],
-    },
-    sample: ["POST", "/alerts", 201],
   },
   {
     id: "poto-map-api",

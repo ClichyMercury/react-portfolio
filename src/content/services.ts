@@ -232,7 +232,7 @@ export const SERVICES: Record<ServiceKey, ServiceContent> = {
       { id: "47", title: "PLUSS Alert – Application Mobile Citoyenne", image: "/images/pluss-alert-mobile-preview.jpeg", url: "https://www.pluss.ci/", portrait: true, place: ABIDJAN },
       { id: "73", title: "Axelle Sanogo – Application Mobile", image: "/images/axelle-sanogo-app-preview.webp", url: "https://axellesanogo.ci", portrait: true, place: ABIDJAN },
       { id: "32", title: "SOSMONEY Mobile", image: "/images/salary-credit-mobile-preview.webp", portrait: true, place: ABIDJAN },
-      { id: "38", title: "Alerte E25 – Application Citoyenne", image: "/images/alerte_e25_client_preview.webp", portrait: true, place: ABIDJAN },
+      { id: "60", title: "Mon Médecin", image: "/images/mon-medecin-preview.jpeg", portrait: true, place: ABIDJAN },
       { id: "87", title: "TransfertCM – Application Mobile", image: "/images/transfertcm-mobile-preview.webp", portrait: true, place: { fr: "Cameroun", en: "Cameroon" } },
       { id: "41", title: "Payix – Application Mobile de Paiement", image: "/images/payix_preview.webp", portrait: true, place: { fr: "Togo", en: "Togo" } },
     ],

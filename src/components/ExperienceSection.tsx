@@ -9,6 +9,7 @@ import { useLocale, type Locale, type Localized } from "@/i18n";
 export interface Experience {
   id: string;
   company: string;
+  companyFr?: string;
   logo?: string;
   role: Localized<string>;
   period: Localized<string>;
@@ -18,6 +19,9 @@ export interface Experience {
   technologies: string[];
   type: "professional" | "freelance" | "personal";
 }
+
+export const companyName = (e: Experience, locale: "fr" | "en") => (locale === "fr" && e.companyFr ? e.companyFr : e.company);
+
 
 interface ExperienceSectionProps {
   experiences?: Experience[];
@@ -134,7 +138,7 @@ const ExperienceSection = ({
                         {pick(experience.role)}
                       </span>
                       <span className="font-mono text-[10px] truncate" style={{ color: "var(--fg-muted)" }}>
-                        @ {experience.company}
+                        @ {companyName(experience, locale)}
                       </span>
                     </span>
 
@@ -170,7 +174,7 @@ const ExperienceSection = ({
                             <div className="flex items-start gap-4 mb-4">
                               <div className="w-10 h-10 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0" style={{ background: "var(--bg-card)", border: "1px solid var(--border-subtle)" }}>
                                 {experience.logo ? (
-                                  <img src={experience.logo} alt={experience.company} loading="lazy" decoding="async" className="w-7 h-7 object-contain rounded" />
+                                  <img src={experience.logo} alt={companyName(experience, locale)} loading="lazy" decoding="async" className="w-7 h-7 object-contain rounded" />
                                 ) : (
                                   <Building className="h-4 w-4" style={{ color: "var(--fg-faint)" }} />
                                 )}
@@ -340,29 +344,26 @@ const defaultExperiences: Experience[] = [
   {
     id: "3b",
     company: "Government of Côte d'Ivoire",
+    companyFr: "Gouvernement de Côte d'Ivoire",
     logo: "/images/ci.png",
     role: { fr: "Consultant informatique", en: "IT Consultant" },
     period: { fr: "2023 - Aujourd'hui", en: "2023 - Present" },
     location: ABIDJAN,
     type: "freelance",
     description: {
-      fr: "Missions de conseil technique sur plusieurs projets gouvernementaux de transformation numérique. Contribution au développement d'applications critiques dans des secteurs stratégiques : santé publique, sécurité nationale et administration publique.",
-      en: "Provided technical consulting services for various governmental digital transformation projects. Contributed to the development of critical applications in strategic sectors including public health, national security, and public administration.",
+      fr: "Accompagnement technique d'institutions publiques dans leurs projets numériques, de la conception à la mise en production.",
+      en: "Technical support for public institutions on their digital projects, from design to production.",
     },
     achievements: {
       fr: [
-        "Contribution à des solutions numériques de surveillance en santé publique",
-        "Développement d'applications au service de la sécurité nationale et de la sécurité des citoyens",
-        "Création de plateformes administratives pour les opérations gouvernementales",
-        "Respect des normes gouvernementales de sécurité et de protection des données",
-        "Collaboration avec plusieurs ministères et institutions publiques",
+        "Conception et développement d'applications web et mobiles",
+        "Conseil sur l'architecture technique et la sécurité des données",
+        "Collaboration avec des équipes métier et institutionnelles",
       ],
       en: [
-        "Contributed to digital solutions for public health surveillance systems",
-        "Developed applications supporting national security and citizen safety initiatives",
-        "Built administrative platforms for governmental operations",
-        "Ensured compliance with governmental security and data protection standards",
-        "Collaborated with multiple ministries and public institutions",
+        "Designed and built web and mobile applications",
+        "Advised on technical architecture and data security",
+        "Worked alongside business and institutional teams",
       ],
     },
     technologies: [

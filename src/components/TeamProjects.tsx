@@ -554,40 +554,6 @@ const defaultTeamProjects: TeamProject[] = [
     countries: ["CI"]
   },
   {
-    id: "8",
-    title: { fr: "DMG - Gestion Administrative", en: "DMG - Administrative Management" },
-    company: "Government of Côte d'Ivoire",
-    description: {
-      fr: "Hub central de gestion administrative pour la Direction et Management Général (DMG). Plateforme web complète intégrant 17 services : courriers, bons, rendez-vous, accueil visiteurs, historique visites, GRIS/GIS, coordonnateur, logs SMS, archives, gestion du personnel, comptabilité, parc auto et webmasters.",
-      en: "Central administrative management hub for the Direction et Management Général (DMG). A complete web platform integrating 17 services: mail, vouchers, appointments, visitor reception, visit history, GRIS/GIS, coordinator, SMS logs, archives, staff management, accounting, vehicle fleet and webmasters.",
-    },
-    role: { fr: "Développeur full-stack", en: "Full-Stack Developer" },
-    period: { fr: "2023 - Aujourd'hui", en: "2023 - Present" },
-    teamSize: { fr: "Équipe tech gouvernementale de 6 personnes", en: "6-person government tech team" },
-    imageUrl: "/images/dmg-dashboard-preview.webp",
-    technologies: ["SvelteKit", "Laravel", "REST API", "PostgreSQL", "Role-Based Access", "SMS Integration", "Document Management"],
-    projectType: "enterprise",
-    achievements: {
-      fr: [
-        "Développement du tableau de bord centralisé avec accès rapide aux 17 services administratifs",
-        "Implémentation du système de gestion des courriers et bons avec workflow de validation",
-        "Création du module de gestion des rendez-vous et accueil visiteurs avec suivi en temps réel",
-        "Intégration du système GRIS/GIS et gestion du parc automobile avec logs SMS automatisés",
-        "Mise en place du contrôle d'accès basé sur les rôles (Directeur DMG, Coordonnateur, Webmaster)",
-      ],
-      en: [
-        "Built the centralized dashboard with quick access to the 17 administrative services",
-        "Implemented mail and voucher management with an approval workflow",
-        "Created the appointment and visitor reception module with real-time tracking",
-        "Integrated the GRIS/GIS system and vehicle fleet management with automated SMS logs",
-        "Set up role-based access control (DMG Director, Coordinator, Webmaster)",
-      ],
-    },
-    projectUrl: "",
-    isNDA: true,
-    countries: ["CI"]
-  },
-  {
     id: "9",
     title: { fr: "Transfert CI - Maintenance Mobile", en: "Transfert CI - Mobile Maintenance" },
     company: "Transfert CI",

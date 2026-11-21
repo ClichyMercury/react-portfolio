@@ -418,5 +418,47 @@
       "objectives": "Preserve the memory of Ivorian veterans, share their history with the public and younger generations, and give the association a tool for association life: membership, donations, events and a member area.",
       "results": "Complete front end of around twenty pages: history and timeline, presentation of the association and its board, president's message, our heroes, digital memorial (book of honor, search for the missing by name, rank or region, heroes gallery, testimonies, archives, interactive wall of remembrance, major missions), news, events, gallery, social initiatives, documentation, partners, membership, contact, donations and member area."
     }
+  },
+  "91": {
+    "fr": {
+      "title": "Kawaida – Page client NFC",
+      "description": "Page de fidélité ouverte par les clients des restaurants et fast-foods d'Abidjan en approchant leur téléphone d'un tag NFC ou en scannant un QR code, sans application à installer. Carte de tampons, quiz entre clients, classement de la semaine, avis et récompenses.",
+      "objectives": "Permettre à un restaurant de fidéliser ses clients en quelques secondes : un geste sur le tag NFC de la table suffit, le client est reconnu par son appareil, sans compte ni mot de passe.",
+      "results": "Parcours client complet en rendu serveur : accueil, inscription en un écran avec consentement WhatsApp, carte de fidélité, quiz avec jokers, classement hebdomadaire, dépôt d'avis et retrait des récompenses. Le serveur SvelteKit sert de BFF vers l'API Laravel et garde les identifiants côté serveur."
+    },
+    "en": {
+      "title": "Kawaida – NFC Customer Page",
+      "description": "Loyalty page that restaurant and fast-food customers in Abidjan open by tapping an NFC tag or scanning a QR code, with no app to install. Stamp card, quiz between customers, weekly leaderboard, reviews and rewards.",
+      "objectives": "Let a restaurant build customer loyalty in seconds: one tap on the table's NFC tag is enough, and the customer is recognised by their device, with no account or password.",
+      "results": "Complete server-rendered customer journey: welcome, one-screen sign-up with WhatsApp consent, loyalty card, quiz with jokers, weekly leaderboard, reviews and reward redemption. The SvelteKit server acts as a BFF to the Laravel API and keeps credentials server-side."
+    }
+  },
+  "92": {
+    "fr": {
+      "title": "Kawaida Pro – Back-office restaurateur",
+      "description": "Espace de gestion des restaurateurs abonnés à Kawaida : tableau de bord, fichier clients, relances WhatsApp, avis à traiter, récompenses à remettre, quiz et réglages de l'établissement, plus un espace admin pour l'équipe Kawaida.",
+      "objectives": "Donner au restaurateur une vue claire de ses clients fidèles et des outils simples pour les faire revenir : relances, anniversaires, avis et récompenses.",
+      "results": "Tableau de bord par période, liste de clients filtrable avec export, traitement des avis, suivi et remise des récompenses, configuration du quiz et de l'établissement. Le jeton de l'API reste côté serveur dans un cookie httpOnly. Tests unitaires et de bout en bout."
+    },
+    "en": {
+      "title": "Kawaida Pro – Restaurant Back Office",
+      "description": "Management space for restaurants subscribed to Kawaida: dashboard, customer database, WhatsApp follow-ups, reviews to handle, rewards to hand out, quiz and venue settings, plus an admin space for the Kawaida team.",
+      "objectives": "Give restaurant owners a clear view of their loyal customers and simple tools to bring them back: follow-ups, birthdays, reviews and rewards.",
+      "results": "Dashboard by period, filterable customer list with export, review handling, reward tracking and redemption, quiz and venue configuration. The API token stays server-side in an httpOnly cookie. Unit and end-to-end tests."
+    }
+  },
+  "93": {
+    "fr": {
+      "title": "Yemo – Portefeuille mobile",
+      "description": "Application de portefeuille mobile construite autour d'une carte QR personnelle : envoyer de l'argent, recharger, retirer vers le mobile money et payer en scannant un QR code. Historique des opérations, notifications et support de six pays d'Afrique de l'Ouest.",
+      "objectives": "Offrir un portefeuille simple et rassurant, utilisable en quelques gestes : la carte QR sert à la fois d'identité de paiement et de point d'entrée vers toutes les opérations.",
+      "results": "Accueil centré sur la carte QR avec solde masquable, envoi, recharge et retrait, scan de QR avec retours sonores, historique détaillé des opérations, notifications push, mode sombre et animations. Identité visuelle et parcours ajustés au fil des retours du client."
+    },
+    "en": {
+      "title": "Yemo – Mobile Wallet",
+      "description": "Mobile wallet app built around a personal QR card: send money, top up, withdraw to mobile money and pay by scanning a QR code. Transaction history, notifications and support for six West African countries.",
+      "objectives": "Offer a simple, reassuring wallet that works in a few taps: the QR card is both the payment identity and the entry point to every operation.",
+      "results": "Home screen centred on the QR card with a hideable balance, send, top-up and withdrawal, QR scanning with sound feedback, detailed transaction history, push notifications, dark mode and animations. Visual identity and flows refined through client feedback."
+    }
   }
 }

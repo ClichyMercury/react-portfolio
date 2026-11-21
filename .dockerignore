@@ -1,0 +1,11 @@
+node_modules
+build
+.git
+.github
+.vscode
+.claude
+.env
+.env.*
+.DS_Store
+pocketbase
+README.md

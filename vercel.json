@@ -3,11 +3,9 @@
   "buildCommand": "npm run build",
   "outputDirectory": "build",
   "installCommand": "npm install",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/cv",
-      "destination": "/cv.html"
-    },
     {
       "source": "/(.*)",
       "destination": "/index.html"

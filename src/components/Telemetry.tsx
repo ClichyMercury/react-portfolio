@@ -1,20 +1,24 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import telemetry from "@/data/telemetry.json";
+import { useLocale, type Locale, type Localized } from "@/i18n";
 
 type Ring = "core" | "active" | "dormant";
 
-const RING_STYLE: Record<Ring, { label: string; color: string }> = {
-  core: { label: "core", color: "var(--accent)" },
-  active: { label: "active", color: "var(--fg-muted)" },
-  dormant: { label: "dormant", color: "var(--fg-faint)" },
+const RING_STYLE: Record<Ring, { label: Localized; color: string }> = {
+  core: { label: { fr: "cœur", en: "core" }, color: "var(--accent)" },
+  active: { label: { fr: "actif", en: "active" }, color: "var(--fg-muted)" },
+  dormant: { label: { fr: "dormant", en: "dormant" }, color: "var(--fg-faint)" },
 };
 
-const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const MONTH_NAMES: Localized<string[]> = {
+  fr: ["Janv.", "Févr.", "Mars", "Avr.", "Mai", "Juin", "Juil.", "Août", "Sept.", "Oct.", "Nov.", "Déc."],
+  en: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+};
 
-const formatMonth = (key: string) => {
+const formatMonth = (key: string, locale: Locale) => {
   const [y, m] = key.split("-");
-  return `${MONTH_NAMES[Number(m) - 1]} ${y}`;
+  return `${MONTH_NAMES[locale][Number(m) - 1]} ${y}`;
 };
 
 const monthsBetween = (from: string, to: string) => {
@@ -24,6 +28,8 @@ const monthsBetween = (from: string, to: string) => {
 };
 
 const Telemetry = () => {
+  const { locale, pick } = useLocale();
+  const fmt = (key: string) => formatMonth(key, locale);
   const [hovered, setHovered] = useState<number | null>(null);
   const [showTable, setShowTable] = useState(false);
   const { months, stacks, totals, generatedAt } = telemetry;
@@ -53,19 +59,19 @@ const Telemetry = () => {
       viewport={{ once: true }}
     >
       <div className="flex items-center gap-3 mb-6 font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>
-        <span style={{ color: "var(--accent)" }}>◉</span> telemetry // git_activity
+        <span style={{ color: "var(--accent)" }}>◉</span> {pick({ fr: "télémétrie // activité_git", en: "telemetry // git_activity" })}
         <div className="flex-1 tentacle-line" />
-        <span>synced {generatedAt}</span>
+        <span>{pick({ fr: "synchro", en: "synced" })} {generatedAt}</span>
       </div>
 
       <div className="grid lg:grid-cols-5 gap-4">
         <div className="lg:col-span-3 panel rounded-xl p-5 sm:p-6 hud-corners">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
             {[
-              { label: "commits", value: totals.commits.toLocaleString("en-US") },
-              { label: "repositories", value: String(totals.repos) },
-              { label: "active months", value: `${activeMonths}/${months.length}` },
-              { label: "peak month", value: formatMonth(busiest.month) },
+              { label: "commits", value: totals.commits.toLocaleString(pick({ fr: "fr-FR", en: "en-US" })) },
+              { label: pick({ fr: "dépôts", en: "repositories" }), value: String(totals.repos) },
+              { label: pick({ fr: "mois actifs", en: "active months" }), value: `${activeMonths}/${months.length}` },
+              { label: pick({ fr: "mois record", en: "peak month" }), value: fmt(busiest.month) },
             ].map((k) => (
               <div key={k.label}>
                 <span className="block text-xl sm:text-2xl font-semibold leading-tight">{k.value}</span>
@@ -75,14 +81,14 @@ const Telemetry = () => {
           </div>
 
           <div className="flex items-center justify-between mb-2">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-muted)" }}>commits per month · last {months.length} months</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-muted)" }}>{pick({ fr: `commits par mois · ${months.length} derniers mois`, en: `commits per month · last ${months.length} months` })}</span>
             <button
               onClick={() => setShowTable((v) => !v)}
               className="font-mono text-[10px] uppercase tracking-[0.15em] transition-colors hover:text-[var(--accent)]"
               style={{ color: "var(--fg-faint)" }}
               aria-expanded={showTable}
             >
-              {showTable ? "chart" : "table"}
+              {showTable ? pick({ fr: "graphique", en: "chart" }) : pick({ fr: "tableau", en: "table" })}
             </button>
           </div>
 
@@ -106,7 +112,7 @@ const Telemetry = () => {
                     onMouseEnter={() => setHovered(i)}
                     onFocus={() => setHovered(i)}
                     tabIndex={0}
-                    aria-label={`${formatMonth(m.month)}: ${m.commits} commits`}
+                    aria-label={`${fmt(m.month)}${pick({ fr: " :", en: ":" })} ${m.commits} commits`}
                   >
                     <motion.div
                       className="w-full rounded-t"
@@ -127,7 +133,7 @@ const Telemetry = () => {
                         }`}
                         style={{ background: "var(--bg-elevated)", border: "1px solid var(--border-medium)", color: "var(--fg)" }}
                       >
-                        {formatMonth(m.month)} · <span style={{ color: "var(--accent)" }}>{m.commits}</span> commits
+                        {fmt(m.month)} · <span style={{ color: "var(--accent)" }}>{m.commits}</span> commits
                       </div>
                     )}
                   </div>
@@ -136,7 +142,7 @@ const Telemetry = () => {
               <div className="flex gap-[2px] mt-2">
                 {months.map((m, i) => (
                   <span key={m.month} className="flex-1 text-center font-mono text-[9px]" style={{ color: "var(--fg-faint)" }}>
-                    {i % 6 === 0 || i === months.length - 1 ? formatMonth(m.month).replace(" 20", " '") : ""}
+                    {i % 6 === 0 || i === months.length - 1 ? fmt(m.month).replace(" 20", " '") : ""}
                   </span>
                 ))}
               </div>
@@ -146,18 +152,18 @@ const Telemetry = () => {
 
         <div className="lg:col-span-2 panel rounded-xl p-5 sm:p-6 hud-corners">
           <div className="flex items-center justify-between mb-4">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-muted)" }}>stack radar · commits</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-muted)" }}>{pick({ fr: "radar des stacks · commits", en: "stack radar · commits" })}</span>
             <div className="flex gap-3">
               {(Object.keys(RING_STYLE) as Ring[]).map((r) => (
                 <span key={r} className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.15em]" style={{ color: "var(--fg-faint)" }}>
-                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: RING_STYLE[r].color }} />{RING_STYLE[r].label}
+                  <span className="w-1.5 h-1.5 rounded-full" style={{ background: RING_STYLE[r].color }} />{pick(RING_STYLE[r].label)}
                 </span>
               ))}
             </div>
           </div>
           <ul className="space-y-2.5">
             {rings.map((s, i) => (
-              <li key={s.name} className="grid grid-cols-[88px_1fr_auto] items-center gap-3" title={`${s.name}: ${s.commits} commits in ${s.repos} repos, last commit ${formatMonth(s.last)}`}>
+              <li key={s.name} className="grid grid-cols-[88px_1fr_auto] items-center gap-3" title={pick({ fr: `${s.name} : ${s.commits} commits dans ${s.repos} dépôts, dernier commit ${fmt(s.last)}`, en: `${s.name}: ${s.commits} commits in ${s.repos} repos, last commit ${fmt(s.last)}` })}>
                 <span className="flex items-center gap-2 font-mono text-[11px] truncate" style={{ color: "var(--fg)" }}>
                   <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: RING_STYLE[s.ring].color }} />
                   {s.name}
@@ -179,7 +185,10 @@ const Telemetry = () => {
             ))}
           </ul>
           <p className="mt-5 font-mono text-[9px] leading-relaxed" style={{ color: "var(--fg-faint)" }}>
-            core: ≥7% of commits and used this month · active: used in the last 3 months · dormant: older. Derived from git history, no code read.
+            {pick({
+              fr: "cœur : ≥7 % des commits et utilisé ce mois-ci · actif : utilisé ces 3 derniers mois · dormant : plus ancien. Calculé à partir de l'historique git, sans lecture du code.",
+              en: "core: ≥7% of commits and used this month · active: used in the last 3 months · dormant: older. Derived from git history, no code read.",
+            })}
           </p>
         </div>
       </div>

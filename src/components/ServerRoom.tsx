@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import SectionHeader from "./SectionHeader";
 import SectionRail from "./fx/SectionRail";
 import Counter from "./fx/Counter";
+import { useLocale, type Locale } from "@/i18n";
 
 type Framework = "laravel" | "adonis" | "nest" | "fastify";
 
@@ -20,7 +21,51 @@ interface BackendNode {
   infra: string[];
   highlights: string[];
   sample: [string, string, number];
+  en: { summary: string; highlights: string[] };
 }
+
+const TERMS_FR: Record<string, string> = {
+  "mobile app": "app mobile",
+  "cabin space": "espace cabines",
+  "merchant app": "app marchande",
+  partners: "partenaires",
+  "public site": "site public",
+  "member space": "espace membres",
+  "citizen portal": "portail usagers",
+  dashboard: "tableau de bord",
+  "client apps": "apps clientes",
+  "SvelteKit front": "front SvelteKit",
+  "web app": "app web",
+  "client app": "app client",
+  "restaurant app": "app restaurateur",
+  "showcase site": "site vitrine",
+  "field teams": "équipes terrain",
+  "client space": "espace client",
+  "company space": "espace entreprise",
+  "entry tablet": "tablette d'entrée",
+  "supervisor app": "app chef de dispositif",
+  "citizen app": "app citoyenne",
+  "agent app": "app agents",
+  "Media storage": "Stockage médias",
+  "Document storage": "Stockage documents",
+  "SQL database": "Base SQL",
+  "Reverb websockets": "WebSockets Reverb",
+  "Uploads · Sharp": "Fichiers · Sharp",
+  "Mail · SMS": "E-mail · SMS",
+  "Image storage": "Stockage images",
+  "File storage": "Stockage fichiers",
+  Mail: "E-mail",
+  "SMS gateway": "Passerelle SMS",
+};
+
+const localizeNode = (node: BackendNode, locale: Locale): BackendNode =>
+  locale === "en"
+    ? { ...node, summary: node.en.summary, highlights: node.en.highlights }
+    : {
+        ...node,
+        clients: node.clients.map((c) => TERMS_FR[c] ?? c),
+        infra: node.infra.map((c) => TERMS_FR[c] ?? c),
+      };
 
 const S = "https://cdn.simpleicons.org";
 
@@ -53,7 +98,9 @@ const latency = (seed: string) => {
   return 18 + (h % 70);
 };
 
-const ServerRoom = ({ nodes = defaultNodes }: { nodes?: BackendNode[] }) => {
+const ServerRoom = ({ nodes: sourceNodes = defaultNodes }: { nodes?: BackendNode[] }) => {
+  const { locale, pick } = useLocale();
+  const nodes = useMemo(() => sourceNodes.map((n) => localizeNode(n, locale)), [sourceNodes, locale]);
   const [filter, setFilter] = useState<Framework | "all">("all");
   const [activeId, setActiveId] = useState(nodes[0].id);
   const inspectorRef = useRef<HTMLDivElement>(null);
@@ -97,9 +144,12 @@ const ServerRoom = ({ nodes = defaultNodes }: { nodes?: BackendNode[] }) => {
         <SectionHeader
           index="05"
           label="server_room"
-          title="Server"
-          titleHighlight="Room"
-          description="The APIs behind my apps. No source code here: only architecture, volumes and technical choices, measured from the repositories."
+          title={pick({ fr: "Salle", en: "Server" })}
+          titleHighlight={pick({ fr: "des serveurs", en: "Room" })}
+          description={pick({
+            fr: "Les API derrière mes applications. Aucun code source ici : seulement l'architecture, les volumes et les choix techniques, mesurés à partir des dépôts.",
+            en: "The APIs behind my apps. No source code here: only architecture, volumes and technical choices, measured from the repositories.",
+          })}
         />
 
         <motion.div
@@ -111,9 +161,9 @@ const ServerRoom = ({ nodes = defaultNodes }: { nodes?: BackendNode[] }) => {
           viewport={{ once: true }}
         >
           {[
-            { label: "nodes online", value: nodes.length, suffix: "" },
-            { label: "endpoints served", value: totals.endpoints, suffix: "+" },
-            { label: "test files", value: totals.tests, suffix: "+" },
+            { label: pick({ fr: "nœuds en ligne", en: "nodes online" }), value: nodes.length, suffix: "" },
+            { label: pick({ fr: "endpoints servis", en: "endpoints served" }), value: totals.endpoints, suffix: "+" },
+            { label: pick({ fr: "fichiers de tests", en: "test files" }), value: totals.tests, suffix: "+" },
             { label: "frameworks", value: totals.frameworks, suffix: "" },
           ].map((s) => (
             <div key={s.label} className="px-5 py-5" style={{ background: "var(--bg-card)" }}>
@@ -136,7 +186,7 @@ const ServerRoom = ({ nodes = defaultNodes }: { nodes?: BackendNode[] }) => {
               }}
             >
               {f !== "all" && <FrameworkLogo framework={f} size={12} />}
-              {f === "all" ? "all" : FRAMEWORKS[f].label}
+              {f === "all" ? pick({ fr: "tous", en: "all" }) : FRAMEWORKS[f].label}
             </button>
           ))}
         </div>
@@ -144,9 +194,9 @@ const ServerRoom = ({ nodes = defaultNodes }: { nodes?: BackendNode[] }) => {
         <div className="grid lg:grid-cols-5 gap-4">
           <div className="lg:col-span-2 panel rounded-xl overflow-hidden hud-corners">
             <div className="flex items-center justify-between px-4 py-2.5" style={{ borderBottom: "1px solid var(--border-subtle)", background: "var(--bg-elevated)" }}>
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--accent)" }}>rack_a // {visible.length} nodes</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--accent)" }}>rack_a // {visible.length} {pick({ fr: "nœuds", en: "nodes" })}</span>
               <span className="flex items-center gap-1.5 font-mono text-[10px]" style={{ color: "var(--fg-faint)" }}>
-                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#28C840" }} />all systems nominal
+                <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#28C840" }} />{pick({ fr: "tous systèmes opérationnels", en: "all systems nominal" })}
               </span>
             </div>
             <div className="max-h-[420px] lg:max-h-[640px] overflow-y-auto" style={{ scrollbarWidth: "thin" }}>
@@ -192,7 +242,7 @@ const ServerRoom = ({ nodes = defaultNodes }: { nodes?: BackendNode[] }) => {
 
           <div ref={inspectorRef} className="lg:col-span-3 panel rounded-xl overflow-hidden hud-corners tentacle-glow scroll-mt-24">
             <div className="flex items-center justify-between px-4 py-2.5" style={{ borderBottom: "1px solid var(--border-subtle)", background: "var(--bg-elevated)" }}>
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] truncate" style={{ color: "var(--accent)" }}>inspect // {active.id}</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em] truncate" style={{ color: "var(--accent)" }}>{pick({ fr: "inspection", en: "inspect" })} // {active.id}</span>
               <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] flex-shrink-0" style={{ color: FRAMEWORKS[active.framework].color }}>
                 <FrameworkLogo framework={active.framework} size={14} />
                 {FRAMEWORKS[active.framework].label}
@@ -215,7 +265,7 @@ const ServerRoom = ({ nodes = defaultNodes }: { nodes?: BackendNode[] }) => {
                   {[
                     { label: "endpoints", value: `${active.approx ? "~" : ""}${active.endpoints}` },
                     { label: "migrations", value: active.migrations ? String(active.migrations) : "—" },
-                    { label: "test files", value: String(active.tests) },
+                    { label: pick({ fr: "fichiers de tests", en: "test files" }), value: String(active.tests) },
                   ].map((m) => (
                     <div key={m.label} className="px-3 py-3" style={{ background: "var(--bg)" }}>
                       <span className="block text-lg sm:text-xl font-semibold">{m.value}</span>
@@ -224,7 +274,7 @@ const ServerRoom = ({ nodes = defaultNodes }: { nodes?: BackendNode[] }) => {
                   ))}
                 </div>
 
-                <span className="block mb-3 font-mono text-[9px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>// topology</span>
+                <span className="block mb-3 font-mono text-[9px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>{pick({ fr: "// topologie", en: "// topology" })}</span>
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-0 mb-6">
                   <div className="flex sm:flex-col flex-wrap gap-1.5 sm:w-[30%]">
                     {active.clients.map((c) => (
@@ -248,7 +298,7 @@ const ServerRoom = ({ nodes = defaultNodes }: { nodes?: BackendNode[] }) => {
                   </div>
                 </div>
 
-                <span className="block mb-3 font-mono text-[9px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>// engineering</span>
+                <span className="block mb-3 font-mono text-[9px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>{pick({ fr: "// ingénierie", en: "// engineering" })}</span>
                 <ul className="space-y-2 mb-6">
                   {active.highlights.map((h, i) => (
                     <motion.li
@@ -277,7 +327,7 @@ const ServerRoom = ({ nodes = defaultNodes }: { nodes?: BackendNode[] }) => {
                   </motion.div>
                   <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="whitespace-nowrap">
                     <span style={{ color: "#28C840" }}>← {active.sample[2]} {STATUS_TEXT[active.sample[2]]}</span>
-                    <span style={{ color: "var(--fg-faint)" }}> · {latency(active.id)}ms · simulated trace</span>
+                    <span style={{ color: "var(--fg-faint)" }}> · {latency(active.id)}ms · {pick({ fr: "trace simulée", en: "simulated trace" })}</span>
                   </motion.div>
                 </div>
               </motion.div>
@@ -286,7 +336,10 @@ const ServerRoom = ({ nodes = defaultNodes }: { nodes?: BackendNode[] }) => {
         </div>
 
         <p className="mt-6 font-mono text-[10px]" style={{ color: "var(--fg-faint)" }}>
-          <span style={{ color: "var(--accent)" }}>$</span> volumes counted from each repository · traces are fictitious · no source code, keys or real endpoints exposed
+          <span style={{ color: "var(--accent)" }}>$</span> {pick({
+            fr: "volumes comptés dans chaque dépôt · traces fictives · aucun code source, clé ou endpoint réel exposé",
+            en: "volumes counted from each repository · traces are fictitious · no source code, keys or real endpoints exposed",
+          })}
         </p>
       </div>
 
@@ -325,6 +378,10 @@ const defaultNodes: BackendNode[] = [
       "Moteur d'attribution automatique des commandes aux cabines",
       "Anti-fraude, limitation de débit et protection de charge",
     ],
+    en: {
+      summary: "API for TransfertCM, a platform for airtime, data bundles and mobile money in Cameroon. It serves the mobile app, the back-office and the cabin space where top-ups are carried out.",
+      highlights: ["Circuit breaker on payment providers", "Engine that automatically assigns orders to cabins", "Anti-fraud, rate limiting and load shedding"],
+    },
     sample: ["POST", "/orders", 201],
   },
   {
@@ -345,6 +402,10 @@ const defaultNodes: BackendNode[] = [
       "Files de traitement BullMQ instrumentées avec OpenTelemetry",
       "Plus de 650 fichiers de tests",
     ],
+    en: {
+      summary: "I worked on the API of Jèko, a payment platform exposing partner, private and admin APIs for merchant apps, the cockpit and integrations.",
+      highlights: ["API contracts described in TypeSpec", "BullMQ job queues instrumented with OpenTelemetry", "Over 650 test files"],
+    },
     sample: ["POST", "/payments", 201],
   },
   {
@@ -364,6 +425,10 @@ const defaultNodes: BackendNode[] = [
       "Contenus traduits FR/EN stockés en jsonb",
       "Journal d'audit de toutes les actions d'administration",
     ],
+    en: {
+      summary: "API for the Assembly of Former Members of Parliament of Côte d'Ivoire: editorial content, directory, memorial, documents, galleries, private member space and search.",
+      highlights: ["PostgreSQL full-text search (tsvector and GIN index)", "FR/EN translated content stored as jsonb", "Audit log of every administrative action"],
+    },
     sample: ["GET", "/members?search=…", 200],
   },
   {
@@ -383,6 +448,10 @@ const defaultNodes: BackendNode[] = [
       "Chaque agent n'agit que sur les dossiers de son étape",
       "Journalisation de chaque transition du workflow",
     ],
+    en: {
+      summary: "API for SIGAPE-OH, the DGRE (Ministry of Water and Forests) system for managing water abstraction permits: application filing, review and issuance.",
+      highlights: ["9-step review workflow up to the Minister's signature", "Each officer can only act on the files at their own step", "Every workflow transition is logged"],
+    },
     sample: ["PATCH", "/applications/{id}/step", 200],
   },
   {
@@ -401,6 +470,10 @@ const defaultNodes: BackendNode[] = [
       "Mises à jour en temps réel avec Laravel Reverb",
       "Authentification par jetons Sanctum et JWT",
     ],
+    en: {
+      summary: "API for the Operations Command Centre of the General Resources Directorate: tracking operations, resources and teams.",
+      highlights: ["Real-time updates with Laravel Reverb", "Authentication with Sanctum and JWT tokens"],
+    },
     sample: ["GET", "/operations", 200],
   },
   {
@@ -419,6 +492,10 @@ const defaultNodes: BackendNode[] = [
       "Filtres et tris déclaratifs avec Spatie Query Builder",
       "Rôles et permissions, journal d'activité",
     ],
+    en: {
+      summary: "REST API for MIABA, a mobility marketplace. The backend serves JSON only, consumed by the SvelteKit front end.",
+      highlights: ["Declarative filters and sorting with Spatie Query Builder", "Roles and permissions, activity log"],
+    },
     sample: ["GET", "/listings?filter[city]=…", 200],
   },
   {
@@ -438,6 +515,10 @@ const defaultNodes: BackendNode[] = [
       "Webhooks des prestataires de paiement et portefeuille",
       "Temps réel avec Socket.io et adaptateur Redis",
     ],
+    en: {
+      summary: "New TransfertCI backend, migrated from Supabase to AdonisJS: mobile money transfers, cabin management, customer support and an internal social network.",
+      highlights: ["Migration from Supabase to a dedicated AdonisJS API", "Payment provider and wallet webhooks", "Real time with Socket.io and the Redis adapter"],
+    },
     sample: ["POST", "/transfers", 201],
   },
   {
@@ -456,6 +537,10 @@ const defaultNodes: BackendNode[] = [
       "52 modèles de données décrits avec Prisma",
       "Documentation OpenAPI générée avec Swagger",
     ],
+    en: {
+      summary: "NestJS backend for MaCom, organised with Domain-Driven Design and full authentication.",
+      highlights: ["Domain-Driven Design architecture", "52 data models described with Prisma", "OpenAPI documentation generated with Swagger"],
+    },
     sample: ["POST", "/auth/login", 200],
   },
   {
@@ -474,6 +559,10 @@ const defaultNodes: BackendNode[] = [
       "Une API pour quatre applications",
       "Validation des schémas avec TypeBox et mots de passe en Argon2",
     ],
+    en: {
+      summary: "I worked on the Ma Cantine API, which powers the customer app, the restaurant space, the back-office and the showcase site.",
+      highlights: ["One API for four applications", "Schema validation with TypeBox and Argon2 password hashing"],
+    },
     sample: ["GET", "/dishes?day=tomorrow", 200],
   },
   {
@@ -492,6 +581,10 @@ const defaultNodes: BackendNode[] = [
       "Produits composés et mouvements de stock",
       "Chaîne complète : bon de commande, vente, livraison",
     ],
+    en: {
+      summary: "I worked on the Décor de Rêve API: catalogue, stock, customer orders, supplier purchases, delivery notes and showcase site.",
+      highlights: ["Composite products and stock movements", "Full chain: purchase order, sale, delivery"],
+    },
     sample: ["POST", "/sales-orders", 201],
   },
   {
@@ -510,6 +603,10 @@ const defaultNodes: BackendNode[] = [
       "Planification des missions drone et affectation des télépilotes",
       "Rapports de traitement journaliers par parcelle",
     ],
+    en: {
+      summary: "I worked on the AgriPilote API, which organises agricultural drone spraying missions: plots, plantations, drone pilot teams and reports.",
+      highlights: ["Drone mission planning and pilot assignment", "Daily treatment reports per plot"],
+    },
     sample: ["GET", "/missions", 200],
   },
   {
@@ -528,6 +625,10 @@ const defaultNodes: BackendNode[] = [
       "Workflow d'appel d'offres en 8 étapes",
       "Offres masquées entre prestataires concurrents",
     ],
+    en: {
+      summary: "API for the matchmaking platform for borehole drilling services: clients, companies and administrators around a call for tenders.",
+      highlights: ["8-step call-for-tenders workflow", "Bids hidden between competing providers"],
+    },
     sample: ["POST", "/projects/{id}/offers", 201],
   },
   {
@@ -546,6 +647,10 @@ const defaultNodes: BackendNode[] = [
       "Paiements Stripe et PayDunya",
       "Temps réel avec Laravel Reverb et notifications Firebase",
     ],
+    en: {
+      summary: "REST backend for the Catholic mobile app Catho et Fier.",
+      highlights: ["Stripe and PayDunya payments", "Real time with Laravel Reverb and Firebase notifications"],
+    },
     sample: ["GET", "/feed", 200],
   },
   {
@@ -561,6 +666,10 @@ const defaultNodes: BackendNode[] = [
     clients: ["mobile app", "back-office"],
     infra: ["SQL database", "Image storage"],
     highlights: ["Une API pour une app mobile publique et un back-office d'administration"],
+    en: {
+      summary: "REST API for the Axelle Sanogo leather goods brand, serving two clients: the mobile app (public catalogue) and the back-office (administration).",
+      highlights: ["One API for a public mobile app and an admin back-office"],
+    },
     sample: ["GET", "/products?collection=…", 200],
   },
   {
@@ -576,6 +685,10 @@ const defaultNodes: BackendNode[] = [
     clients: ["entry tablet", "supervisor app"],
     infra: ["SQL database", "Reverb websockets"],
     highlights: ["Validation des pointages en temps réel par le chef de dispositif"],
+    en: {
+      summary: "API for tracking staff arrivals and departures: check-in on a tablet at the service entrance, validated by the shift supervisor.",
+      highlights: ["Real-time check-in validation by the shift supervisor"],
+    },
     sample: ["POST", "/check-ins", 201],
   },
   {
@@ -591,6 +704,10 @@ const defaultNodes: BackendNode[] = [
     clients: ["citizen app", "agent app", "admin"],
     infra: ["SQL database", "SMS gateway"],
     highlights: ["Back-office d'administration avec Filament"],
+    en: {
+      summary: "I worked on the Civis Alerte API: citizen reports, officers and services, family contacts and SMS notifications.",
+      highlights: ["Admin back-office built with Filament"],
+    },
     sample: ["POST", "/alerts", 201],
   },
   {
@@ -605,6 +722,10 @@ const defaultNodes: BackendNode[] = [
     clients: ["mobile app"],
     infra: ["SQL database", "SMS gateway"],
     highlights: ["Connexion sans mot de passe par OTP SMS"],
+    en: {
+      summary: "I worked on the Poto Map API: authentication with a one-time code sent by SMS, and user management.",
+      highlights: ["Passwordless sign-in with SMS OTP"],
+    },
     sample: ["POST", "/auth/otp", 201],
   },
 ];

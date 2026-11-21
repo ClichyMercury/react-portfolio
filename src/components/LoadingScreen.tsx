@@ -1,56 +1,103 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { PROJECT_COUNT } from "./ProjectsGrid";
+import { useLocale, type Localized } from "@/i18n";
 
 const BOOT_MS = 1600;
 const EXIT_MS = 2200;
 
-const lines: [string, string][] = [
-  ["boot gs.dev --env=production", "OK"],
-  ["kernel darwin/arm64 · node v20.11", "OK"],
-  ["verifying signature 0xGS4A91F", "OK"],
-  ["establishing uplink abidjan.ci", "200"],
-  ["handshake tls1.3 · aes-256-gcm", "OK"],
-  ["resolving dns · edge node lagos", "34ms"],
-  ["cdn cache warm · 12 regions", "OK"],
-  ["mounting /core/flutter", "OK"],
-  ["mounting /core/react", "OK"],
-  ["mounting /core/sveltekit", "OK"],
-  ["mounting /core/laravel", "OK"],
-  ["mounting /core/firebase", "OK"],
-  ["mounting /core/postgres", "OK"],
-  ["mounting /core/cloud", "OK"],
-  ["linking framer-motion runtime", "OK"],
-  ["linking tailwind atomic sheet", "OK"],
-  ["decrypting clearance_level_5", "OK"],
-  [`loading dossiers · ${PROJECT_COUNT} archived`, "OK"],
-  ["indexing 15 technologies", "OK"],
-  ["resolving 24 deployment targets", "OK"],
-  ["parsing 8 client sectors", "OK"],
-  ["fintech · medical · security", "OK"],
-  ["ecommerce · social · iot", "OK"],
-  ["hydrating project manifest", "OK"],
-  ["building category filters", "OK"],
-  ["allocating image buffers", "48mb"],
-  ["decoding webp atlas", "OK"],
-  ["warming shader cache", "OK"],
-  ["compiling duotone pipeline", "OK"],
-  ["injecting scanlines · grain", "OK"],
-  ["calibrating motion engine", "60fps"],
-  ["binding scroll observers", "OK"],
-  ["mapping cursor field", "OK"],
-  ["audio subsystem standby", "MUTED"],
-  ["geo lock · 15 countries", "OK"],
-  ["integrity check · 6y experience", "PASS"],
-  ["security sweep · no anomalies", "CLEAR"],
-  ["session token issued", "OK"],
-  ["flushing boot log", "OK"],
-  ["rendering interface", "OK"],
-];
+const LINES: Localized<[string, string][]> = {
+  fr: [
+    ["boot gs.dev --env=production", "OK"],
+    ["kernel darwin/arm64 · node v20.11", "OK"],
+    ["vérification signature 0xGS4A91F", "OK"],
+    ["ouverture liaison abidjan.ci", "200"],
+    ["handshake tls1.3 · aes-256-gcm", "OK"],
+    ["résolution dns · nœud edge lagos", "34ms"],
+    ["cache cdn préchauffé · 12 régions", "OK"],
+    ["montage /core/flutter", "OK"],
+    ["montage /core/react", "OK"],
+    ["montage /core/sveltekit", "OK"],
+    ["montage /core/laravel", "OK"],
+    ["montage /core/firebase", "OK"],
+    ["montage /core/postgres", "OK"],
+    ["montage /core/cloud", "OK"],
+    ["liaison runtime framer-motion", "OK"],
+    ["liaison feuille atomique tailwind", "OK"],
+    ["déchiffrement clearance_level_5", "OK"],
+    [`chargement dossiers · ${PROJECT_COUNT} archivés`, "OK"],
+    ["indexation 15 technologies", "OK"],
+    ["résolution 24 cibles de déploiement", "OK"],
+    ["analyse 8 secteurs clients", "OK"],
+    ["fintech · médical · sécurité", "OK"],
+    ["e-commerce · social · iot", "OK"],
+    ["hydratation manifeste projets", "OK"],
+    ["construction filtres catégories", "OK"],
+    ["allocation tampons image", "48mo"],
+    ["décodage atlas webp", "OK"],
+    ["préchauffage cache shaders", "OK"],
+    ["compilation pipeline duotone", "OK"],
+    ["injection scanlines · grain", "OK"],
+    ["calibrage moteur d'animation", "60fps"],
+    ["liaison observateurs de défilement", "OK"],
+    ["cartographie champ curseur", "OK"],
+    ["sous-système audio en veille", "MUET"],
+    ["verrou géo · 15 pays", "OK"],
+    ["contrôle intégrité · 6 ans d'expérience", "VALIDÉ"],
+    ["balayage sécurité · aucune anomalie", "RAS"],
+    ["jeton de session émis", "OK"],
+    ["purge journal de démarrage", "OK"],
+    ["rendu de l'interface", "OK"],
+  ],
+  en: [
+    ["boot gs.dev --env=production", "OK"],
+    ["kernel darwin/arm64 · node v20.11", "OK"],
+    ["verifying signature 0xGS4A91F", "OK"],
+    ["establishing uplink abidjan.ci", "200"],
+    ["handshake tls1.3 · aes-256-gcm", "OK"],
+    ["resolving dns · edge node lagos", "34ms"],
+    ["cdn cache warm · 12 regions", "OK"],
+    ["mounting /core/flutter", "OK"],
+    ["mounting /core/react", "OK"],
+    ["mounting /core/sveltekit", "OK"],
+    ["mounting /core/laravel", "OK"],
+    ["mounting /core/firebase", "OK"],
+    ["mounting /core/postgres", "OK"],
+    ["mounting /core/cloud", "OK"],
+    ["linking framer-motion runtime", "OK"],
+    ["linking tailwind atomic sheet", "OK"],
+    ["decrypting clearance_level_5", "OK"],
+    [`loading dossiers · ${PROJECT_COUNT} archived`, "OK"],
+    ["indexing 15 technologies", "OK"],
+    ["resolving 24 deployment targets", "OK"],
+    ["parsing 8 client sectors", "OK"],
+    ["fintech · medical · security", "OK"],
+    ["ecommerce · social · iot", "OK"],
+    ["hydrating project manifest", "OK"],
+    ["building category filters", "OK"],
+    ["allocating image buffers", "48mb"],
+    ["decoding webp atlas", "OK"],
+    ["warming shader cache", "OK"],
+    ["compiling duotone pipeline", "OK"],
+    ["injecting scanlines · grain", "OK"],
+    ["calibrating motion engine", "60fps"],
+    ["binding scroll observers", "OK"],
+    ["mapping cursor field", "OK"],
+    ["audio subsystem standby", "MUTED"],
+    ["geo lock · 15 countries", "OK"],
+    ["integrity check · 6y experience", "PASS"],
+    ["security sweep · no anomalies", "CLEAR"],
+    ["session token issued", "OK"],
+    ["flushing boot log", "OK"],
+    ["rendering interface", "OK"],
+  ],
+};
 
 const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [exit, setExit] = useState(false);
   const [pct, setPct] = useState(0);
+  const { pick } = useLocale();
+  const lines = pick(LINES);
 
   useEffect(() => {
     const el = document.getElementById("loading-screen");
@@ -112,10 +159,10 @@ const LoadingScreen = ({ onComplete }: { onComplete: () => void }) => {
         </div>
         <div className="mt-2.5 flex items-center justify-between font-mono text-[8px] sm:text-[10px]" style={{ color: "var(--fg-faint)" }}>
           <span>
-            <span style={{ color: "var(--accent)" }}>&gt;</span> welcome
+            <span style={{ color: "var(--accent)" }}>&gt;</span> {pick({ fr: "bienvenue", en: "welcome" })}
             <span className="animate-blink inline-block w-[6px] h-[10px] ml-1 align-middle" style={{ background: "var(--accent)" }} />
           </span>
-          <span className="uppercase tracking-[0.2em]">{lines.length} tasks</span>
+          <span className="uppercase tracking-[0.2em]">{lines.length} {pick({ fr: "tâches", en: "tasks" })}</span>
         </div>
       </div>
     </motion.div>

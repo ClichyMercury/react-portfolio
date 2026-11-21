@@ -5,63 +5,125 @@ import MatrixRain from "./MatrixRain";
 import { beep } from "./sound";
 import { PROJECT_COUNT } from "../ProjectsGrid";
 import { BACKEND_NODES, FRAMEWORKS, INSPECT_EVENT } from "../ServerRoom";
+import { useLocale, type Localized } from "@/i18n";
 
 const KONAMI = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
 
 interface Line {
-  type: "cmd" | "out";
+  type: "cmd" | "out" | "intro";
   text: string;
 }
 
 const PROMPT = "gs@portfolio:~$";
 
-const COMMANDS: Record<string, string[]> = {
-  help: [
-    "available commands:",
-    "  whoami       — who is Gaël Sassan",
-    "  stack        — favorite technologies",
-    "  projects     — jump to projects",
-    "  backends     — list my APIs",
-    "  inspect <api>— open an API in the server room",
-    "  experience   — jump to experience",
-    "  contact      — jump to contact",
-    "  socials      — github & linkedin",
-    "  email        — direct address",
-    "  cv           — resume access",
-    "  matrix       — wake up, neo",
-    "  hack         — breach protocol",
-    "  coffee       — brew one",
-    "  sudo hire-me — try it",
-    "  clear        — clear terminal",
-    "  exit         — close terminal",
+const COMMANDS: Localized<Record<string, string[]>> = {
+  fr: {
+    help: [
+      "commandes disponibles :",
+      "  whoami       — qui est Gaël Sassan",
+      "  stack        — technologies favorites",
+      "  projects     — aller aux projets",
+      "  backends     — lister mes APIs",
+      "  inspect <api>— ouvrir une API dans la salle serveurs",
+      "  experience   — aller à l'expérience",
+      "  contact      — aller au contact",
+      "  socials      — github & linkedin",
+      "  email        — adresse directe",
+      "  cv           — accès au CV",
+      "  matrix       — réveille-toi, neo",
+      "  hack         — protocole d'intrusion",
+      "  coffee       — en préparer un",
+      "  sudo hire-me — essayez",
+      "  clear        — effacer le terminal",
+      "  exit         — fermer le terminal",
+    ],
+    whoami: [
+      "Gaël SASSAN — Développeur logiciel",
+      "6+ ans à concevoir des produits mobiles & web",
+      `${PROJECT_COUNT}+ projets livrés d'Abidjan 🇨🇮 au reste du monde`,
+      "Actuellement : Lead Front End @ Jèko",
+    ],
+    stack: [
+      "principal : Flutter · Dart · SvelteKit · TypeScript",
+      "backend   : Laravel · Node.js · Flask · Firebase · Supabase",
+      "aussi     : Kotlin · Swift · Rust · Python · Java",
+      "infra     : Docker · AWS · Git · Linux",
+    ],
+    socials: [
+      "github   → https://github.com/ClichyMercury",
+      "linkedin → https://www.linkedin.com/in/gael-yad-eugene-sassan-17a69b1b6/",
+    ],
+    email: ["gaelelscientifico@gmail.com — réponse en moins de 24 h"],
+    coffee: ["☕ préparation... terminé. retour à la livraison."],
+    "sudo hire-me": ["[sudo] mot de passe pour visiteur : ********", "accès accordé. → défilement vers le contact"],
+  },
+  en: {
+    help: [
+      "available commands:",
+      "  whoami       — who is Gaël Sassan",
+      "  stack        — favorite technologies",
+      "  projects     — jump to projects",
+      "  backends     — list my APIs",
+      "  inspect <api>— open an API in the server room",
+      "  experience   — jump to experience",
+      "  contact      — jump to contact",
+      "  socials      — github & linkedin",
+      "  email        — direct address",
+      "  cv           — resume access",
+      "  matrix       — wake up, neo",
+      "  hack         — breach protocol",
+      "  coffee       — brew one",
+      "  sudo hire-me — try it",
+      "  clear        — clear terminal",
+      "  exit         — close terminal",
+    ],
+    whoami: [
+      "Gaël SASSAN — Software Developer",
+      "6+ years building mobile & web products",
+      `${PROJECT_COUNT}+ projects shipped from Abidjan 🇨🇮 to the world`,
+      "Currently: Front End Lead @ Jèko",
+    ],
+    stack: [
+      "primary   : Flutter · Dart · SvelteKit · TypeScript",
+      "backend   : Laravel · Node.js · Flask · Firebase · Supabase",
+      "also      : Kotlin · Swift · Rust · Python · Java",
+      "infra     : Docker · AWS · Git · Linux",
+    ],
+    socials: [
+      "github   → https://github.com/ClichyMercury",
+      "linkedin → https://www.linkedin.com/in/gael-yad-eugene-sassan-17a69b1b6/",
+    ],
+    email: ["gaelelscientifico@gmail.com — response time < 24h"],
+    coffee: ["☕ brewing... done. back to shipping."],
+    "sudo hire-me": ["[sudo] password for visitor: ********", "access granted. → scrolling to contact"],
+  },
+};
+
+const HACK_STEPS: Localized<string[]> = {
+  fr: [
+    "initialisation du protocole d'intrusion...",
+    "analyse de la cible : visitor.device [OK]",
+    "contournement du pare-feu [██████████] 100%",
+    "déchiffrement des clés d'accès au mainframe...",
+    "ACCÈS ACCORDÉ.",
+    "...je plaisante. la seule chose que je pirate, c'est la productivité ☕",
   ],
-  whoami: [
-    "Gaël SASSAN — Software Developer",
-    "6+ years building mobile & web products",
-    `${PROJECT_COUNT}+ projects shipped from Abidjan 🇨🇮 to the world`,
-    "Currently: Front End Lead @ Jèko",
+  en: [
+    "initializing breach protocol...",
+    "scanning target: visitor.device [OK]",
+    "bypassing firewall [██████████] 100%",
+    "decrypting mainframe access keys...",
+    "ACCESS GRANTED.",
+    "...just kidding. the only thing I hack is productivity ☕",
   ],
-  stack: [
-    "primary   : Flutter · Dart · SvelteKit · TypeScript",
-    "backend   : Laravel · Node.js · Flask · Firebase · Supabase",
-    "also      : Kotlin · Swift · Rust · Python · Java",
-    "infra     : Docker · AWS · Git · Linux",
-  ],
-  socials: [
-    "github   → https://github.com/ClichyMercury",
-    "linkedin → https://www.linkedin.com/in/gael-yad-eugene-sassan-17a69b1b6/",
-  ],
-  email: ["gaelelscientifico@gmail.com — response time < 24h"],
-  coffee: ["☕ brewing... done. back to shipping."],
-  "sudo hire-me": ["[sudo] password for visitor: ********", "access granted. → scrolling to contact"],
 };
 
 const Terminal = () => {
   const [open, setOpen] = useState(false);
   const [matrix, setMatrix] = useState(false);
-  const [lines, setLines] = useState<Line[]>([
-    { type: "out", text: "GS-OS v6.0 — type `help` to begin" },
-  ]);
+  const { pick, route } = useLocale();
+  const commands = pick(COMMANDS);
+  const [lines, setLines] = useState<Line[]>([{ type: "intro", text: "" }]);
   const [input, setInput] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
@@ -128,7 +190,7 @@ const Terminal = () => {
       return;
     }
     if (cmd === "matrix") {
-      next.push({ type: "out", text: "wake up, neo..." });
+      next.push({ type: "out", text: pick({ fr: "réveille-toi, neo...", en: "wake up, neo..." }) });
       setLines((l) => [...l, ...next]);
       setTimeout(() => {
         beep("alert");
@@ -139,14 +201,7 @@ const Terminal = () => {
     }
     if (cmd === "hack") {
       setLines((l) => [...l, ...next]);
-      const steps = [
-        "initializing breach protocol...",
-        "scanning target: visitor.device [OK]",
-        "bypassing firewall [██████████] 100%",
-        "decrypting mainframe access keys...",
-        "ACCESS GRANTED.",
-        "...just kidding. the only thing I hack is productivity ☕",
-      ];
+      const steps = pick(HACK_STEPS);
       steps.forEach((s, i) =>
         setTimeout(() => {
           beep(i === steps.length - 2 ? "success" : "alert");
@@ -156,14 +211,14 @@ const Terminal = () => {
       return;
     }
     if (cmd === "backends" || cmd === "ls /backends") {
-      next.push({ type: "out", text: `${BACKEND_NODES.length} nodes online:` });
+      next.push({ type: "out", text: pick({ fr: `${BACKEND_NODES.length} nœuds en ligne :`, en: `${BACKEND_NODES.length} nodes online:` }) });
       BACKEND_NODES.forEach((n, i) =>
         next.push({
           type: "out",
           text: `  ${String(i + 1).padStart(2, "0")}  ${n.id.padEnd(24)}${FRAMEWORKS[n.framework].label.padEnd(10)}${n.approx ? "~" : " "}${n.endpoints} ep`,
         })
       );
-      next.push({ type: "out", text: "→ type `inspect <api>`, e.g. `inspect transfertcm`" });
+      next.push({ type: "out", text: pick({ fr: "→ tapez `inspect <api>`, ex. `inspect transfertcm`", en: "→ type `inspect <api>`, e.g. `inspect transfertcm`" }) });
       setLines((l) => [...l, ...next]);
       return;
     }
@@ -174,7 +229,9 @@ const Terminal = () => {
           BACKEND_NODES.find((n) => n.id.includes(query) || n.name.toLowerCase().includes(query))
         : undefined;
       if (!node) {
-        next.push({ type: "out", text: query ? `no node matching "${query}" — try \`backends\`` : "usage: inspect <api> — try `backends`" });
+        next.push({ type: "out", text: query
+          ? pick({ fr: `aucun nœud ne correspond à "${query}" — essayez \`backends\``, en: `no node matching "${query}" — try \`backends\`` })
+          : pick({ fr: "usage : inspect <api> — essayez `backends`", en: "usage: inspect <api> — try `backends`" }) });
         setLines((l) => [...l, ...next]);
         return;
       }
@@ -183,7 +240,7 @@ const Terminal = () => {
         { type: "out", text: `  endpoints ${node.approx ? "~" : ""}${node.endpoints} · migrations ${node.migrations ?? "—"} · tests ${node.tests}` },
         { type: "out", text: `  stack     ${node.stack.join(" · ")}` },
         { type: "out", text: `  infra     ${node.infra.join(" · ")}` },
-        { type: "out", text: "→ opening inspector..." }
+        { type: "out", text: pick({ fr: "→ ouverture de l'inspecteur...", en: "→ opening inspector..." }) }
       );
       setLines((l) => [...l, ...next]);
       setTimeout(() => {
@@ -194,27 +251,31 @@ const Terminal = () => {
       return;
     }
     if (cmd === "cv" || cmd === "resume") {
-      next.push({ type: "out", text: "compiling resume from live portfolio data..." }, { type: "out", text: "→ opening /cv" });
+      const cvPath = route("cv");
+      next.push(
+        { type: "out", text: pick({ fr: "compilation du CV à partir des données du portfolio...", en: "compiling resume from live portfolio data..." }) },
+        { type: "out", text: pick({ fr: `→ ouverture de ${cvPath}`, en: `→ opening ${cvPath}` }) }
+      );
       setLines((l) => [...l, ...next]);
-      setTimeout(() => window.location.assign("/cv"), 700);
+      setTimeout(() => window.location.assign(cvPath), 700);
       return;
     }
     if (cmd === "projects") {
-      next.push({ type: "out", text: "→ warping to projects" });
+      next.push({ type: "out", text: pick({ fr: "→ saut vers les projets", en: "→ warping to projects" }) });
       setOpen(false);
       scrollToSection("projects");
     } else if (cmd === "experience") {
-      next.push({ type: "out", text: "→ warping to experience" });
+      next.push({ type: "out", text: pick({ fr: "→ saut vers l'expérience", en: "→ warping to experience" }) });
       setOpen(false);
       scrollToSection("experience");
     } else if (cmd === "contact" || cmd === "sudo hire-me") {
-      (COMMANDS[cmd] || ["→ warping to contact"]).forEach((t) => next.push({ type: "out", text: t }));
+      (commands[cmd] || [pick({ fr: "→ saut vers le contact", en: "→ warping to contact" })]).forEach((t) => next.push({ type: "out", text: t }));
       setOpen(false);
       scrollToSection("contact");
-    } else if (COMMANDS[cmd]) {
-      COMMANDS[cmd].forEach((t) => next.push({ type: "out", text: t }));
+    } else if (commands[cmd]) {
+      commands[cmd].forEach((t) => next.push({ type: "out", text: t }));
     } else {
-      next.push({ type: "out", text: `command not found: ${cmd} — try \`help\`` });
+      next.push({ type: "out", text: pick({ fr: `commande introuvable : ${cmd} — essayez \`help\``, en: `command not found: ${cmd} — try \`help\`` }) });
     }
     setLines((l) => [...l, ...next]);
   };
@@ -234,7 +295,7 @@ const Terminal = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 2 }}
-        aria-label="Open terminal"
+        aria-label={pick({ fr: "Ouvrir le terminal", en: "Open terminal" })}
       >
         <TerminalSquare className="w-5 h-5" />
       </motion.button>
@@ -266,7 +327,7 @@ const Terminal = () => {
                 <span className="font-mono text-[10px] tracking-[0.2em] uppercase" style={{ color: "var(--fg-faint)" }}>
                   gs — terminal
                 </span>
-                <button onClick={() => setOpen(false)} style={{ color: "var(--fg-faint)" }}>
+                <button onClick={() => setOpen(false)} style={{ color: "var(--fg-faint)" }} aria-label={pick({ fr: "Fermer le terminal", en: "Close terminal" })}>
                   <X className="w-4 h-4" />
                 </button>
               </div>
@@ -283,7 +344,9 @@ const Terminal = () => {
                       <span style={{ color: "var(--fg)" }}>{line.text}</span>
                     </div>
                   ) : (
-                    <div key={i} style={{ color: "var(--fg-muted)", whiteSpace: "pre-wrap" }}>{line.text}</div>
+                    <div key={i} style={{ color: "var(--fg-muted)", whiteSpace: "pre-wrap" }}>
+                      {line.type === "intro" ? pick({ fr: "GS-OS v6.0 — tapez `help` pour commencer", en: "GS-OS v6.0 — type `help` to begin" }) : line.text}
+                    </div>
                   )
                 )}
                 <div className="flex items-center gap-2">
@@ -303,6 +366,7 @@ const Terminal = () => {
                     }}
                     className="flex-1 bg-transparent outline-none border-0"
                     style={{ color: "var(--fg)" }}
+                    aria-label={pick({ fr: "Commande du terminal", en: "Terminal command" })}
                     spellCheck={false}
                     autoComplete="off"
                   />

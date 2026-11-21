@@ -1,7 +1,9 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
-import ProjectModal, { ModalProject } from "./ProjectModal";
+import ProjectModal, { ModalProject, categoryLabel } from "./ProjectModal";
+import { useLocale, type Localized } from "@/i18n";
+import { localizeProject } from "@/data/projectsI18n";
 import SectionRail from "./fx/SectionRail";
 import DeviceLab from "./DeviceLab";
 
@@ -39,9 +41,14 @@ const toModal = (p: Project): ModalProject => ({
   countries: p.countries,
 });
 
-const STAMPS = ["TOP SECRET", "CLASSIFIED", "CONFIDENTIAL", "EYES ONLY"];
+const STAMPS: Localized<string[]> = {
+  fr: ["TOP SECRET", "CLASSIFIÉ", "CONFIDENTIEL", "ACCÈS RESTREINT"],
+  en: ["TOP SECRET", "CLASSIFIED", "CONFIDENTIAL", "EYES ONLY"],
+};
 
 const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelect: (p: Project) => void }) => {
+  const { locale, pick } = useLocale();
+  const stamps = pick(STAMPS);
   const [expanded, setExpanded] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const rowRef = useRef<HTMLDivElement>(null);
@@ -86,7 +93,7 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
   return (
     <div ref={sectionRef} className="relative mb-24 scroll-mt-24">
       <div className="flex items-center gap-3 mb-6 font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>
-        <span style={{ color: "var(--accent)" }}>★</span> featured_archive // clearance_level_5
+        <span style={{ color: "var(--accent)" }}>★</span> {pick({ fr: "archives_vedettes // habilitation_niveau_5", en: "featured_archive // clearance_level_5" })}
         <div className="flex-1 tentacle-line" />
         <button
           type="button"
@@ -96,7 +103,7 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
           style={{ color: "var(--fg-muted)" }}
           data-cursor="view"
         >
-          {expanded ? "collapse" : "expand_all"}
+          {expanded ? pick({ fr: "replier", en: "collapse" }) : pick({ fr: "tout_déplier", en: "expand_all" })}
           <span className="transition-transform duration-300" style={{ display: "inline-block", transform: expanded ? "rotate(180deg)" : "none", color: "var(--accent)" }}>▾</span>
         </button>
       </div>
@@ -128,7 +135,7 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
                 className="absolute top-3 -right-1 px-2 py-0.5 font-mono text-[9px] font-bold tracking-[0.2em] rotate-[-12deg] pointer-events-none"
                 style={{ color: "#FF4D4D", border: "2px double #FF4D4D", background: "rgba(5,6,10,0.55)", opacity: 0.9 }}
               >
-                {STAMPS[i % STAMPS.length]}
+                {stamps[i % stamps.length]}
               </div>
               <span
                 className="absolute bottom-0 inset-x-0 flex flex-col gap-1 px-2.5 py-2 font-mono text-[9px] uppercase tracking-[0.1em]"
@@ -136,8 +143,8 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
               >
                 <span className="truncate transition-colors duration-300 group-hover:text-[var(--fg)]">{project.title}</span>
                 <span className="flex items-center justify-between gap-2">
-                  <span>case_#{String(i + 1).padStart(3, "0")}</span>
-                  <span className="flex-shrink-0" style={{ color: "var(--accent)" }}>{project.category} ↗</span>
+                  <span>{pick({ fr: "dossier_#", en: "case_#" })}{String(i + 1).padStart(3, "0")}</span>
+                  <span className="flex-shrink-0" style={{ color: "var(--accent)" }}>{categoryLabel(project.category, locale)} ↗</span>
                 </span>
               </span>
             </motion.button>
@@ -209,7 +216,7 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
                     opacity: 0.9,
                   }}
                 >
-                  {STAMPS[i % STAMPS.length]}
+                  {stamps[i % stamps.length]}
                 </div>
 
                 <p className="absolute bottom-9 left-3.5 right-3.5 font-mono text-[10px] leading-relaxed line-clamp-2 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0" style={{ color: "var(--fg)" }}>
@@ -217,8 +224,8 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
                 </p>
 
                 <div className="absolute bottom-0 inset-x-0 flex items-center justify-between px-3.5 py-2.5 font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-muted)", background: "rgba(10,13,20,0.85)", borderTop: "1px solid var(--border-subtle)", backdropFilter: "blur(6px)" }}>
-                  <span>case_#{String(i + 1).padStart(3, "0")}</span>
-                  <span style={{ color: "var(--accent)" }}>{project.category} ↗</span>
+                  <span>{pick({ fr: "dossier_#", en: "case_#" })}{String(i + 1).padStart(3, "0")}</span>
+                  <span style={{ color: "var(--accent)" }}>{categoryLabel(project.category, locale)} ↗</span>
                 </div>
               </div>
             </motion.button>
@@ -251,7 +258,7 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
               style={{ border: "1px solid var(--border-medium)", background: "var(--bg)", color: "var(--fg-muted)" }}
               data-cursor="view"
             >
-              featured_cases — {projects.length} dossiers
+              {pick({ fr: "dossiers_vedettes", en: "featured_cases" })} — {projects.length} dossiers
               <span className="transition-transform duration-300" style={{ display: "inline-block", transform: expanded ? "rotate(180deg)" : "none", color: "var(--accent)" }}>▾</span>
             </button>
             <div className="w-32 sm:w-44 h-2 rounded-full" style={{ background: "var(--bg)", border: "1px solid var(--border-medium)", boxShadow: "inset 0 2px 4px rgba(0,0,0,0.7)" }} />
@@ -267,13 +274,17 @@ const FeaturedDossiers = ({ projects, onSelect }: { projects: Project[]; onSelec
       </div>
 
       <div className="mt-3 text-center font-mono text-[9px] uppercase tracking-[0.3em] opacity-50" style={{ color: "var(--fg-faint)" }}>
-        {expanded ? "[ click_to_declassify — collapse_to_stack ]" : "[ drag_to_browse — click_to_declassify — expand_for_grid ]"}
+        {expanded
+          ? pick({ fr: "[ cliquer_pour_déclassifier — replier_en_pile ]", en: "[ click_to_declassify — collapse_to_stack ]" })
+          : pick({ fr: "[ glisser_pour_parcourir — cliquer_pour_déclassifier — déplier_en_grille ]", en: "[ drag_to_browse — click_to_declassify — expand_for_grid ]" })}
       </div>
     </div>
   );
 };
 
-const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
+const ProjectsGrid = ({ projects: sourceProjects = defaultProjects }: ProjectsGridProps) => {
+  const { locale, pick } = useLocale();
+  const projects = useMemo(() => sourceProjects.map((p) => localizeProject(p, locale)), [sourceProjects, locale]);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [galleryOpen, setGalleryOpen] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -321,9 +332,12 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
         <SectionHeader
           index="03"
           label="deployments"
-          title="Featured"
-          titleHighlight="Projects"
-          description="Discover my latest mobile applications and web projects, crafted with precision and innovation."
+          title={pick({ fr: "Projets", en: "Featured" })}
+          titleHighlight={pick({ fr: "phares", en: "Projects" })}
+          description={pick({
+            fr: "Découvrez mes dernières applications mobiles et mes projets web, conçus avec précision et sens de l'innovation.",
+            en: "Discover my latest mobile applications and web projects, crafted with precision and innovation.",
+          })}
         />
 
         {selectedCategory === "all" && featuredProjects.length > 0 && (
@@ -355,15 +369,15 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
                 border: `1px solid ${selectedCategory === category ? "var(--accent)" : "var(--border-medium)"}`,
               }}
             >
-              {category}
+              {categoryLabel(category, locale)}
             </button>
           ))}
         </motion.div>
 
         <div ref={galleryRef} className="flex items-center gap-3 mb-6 font-mono text-[10px] uppercase tracking-[0.25em] scroll-mt-24" style={{ color: "var(--fg-faint)" }}>
-          <span style={{ color: "var(--accent)" }}>◈</span> field_gallery // tap_for_intel
+          <span style={{ color: "var(--accent)" }}>◈</span> {pick({ fr: "galerie_terrain // toucher_pour_infos", en: "field_gallery // tap_for_intel" })}
           <div className="flex-1 tentacle-line" />
-          <span style={{ color: "var(--accent)" }}>{regularProjects.length} units</span>
+          <span style={{ color: "var(--accent)" }}>{regularProjects.length} {pick({ fr: "unités", en: "units" })}</span>
           <button
             type="button"
             onClick={toggleGallery}
@@ -372,7 +386,7 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
             style={{ color: "var(--fg-muted)" }}
             data-cursor="view"
           >
-            {galleryOpen ? "collapse" : "open_drawer"}
+            {galleryOpen ? pick({ fr: "replier", en: "collapse" }) : pick({ fr: "ouvrir_tiroir", en: "open_drawer" })}
             <span className="transition-transform duration-300" style={{ display: "inline-block", transform: galleryOpen ? "rotate(180deg)" : "none", color: "var(--accent)" }}>▾</span>
           </button>
         </div>
@@ -407,7 +421,7 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
                 style={{ background: "linear-gradient(to top, rgba(5,6,10,0.92), transparent)", color: "var(--fg-muted)" }}
               >
                 <span className="truncate transition-colors duration-300 group-hover:text-[var(--fg)]">{project.title}</span>
-                <span className="flex-shrink-0" style={{ color: "var(--accent)" }}>{project.category}</span>
+                <span className="flex-shrink-0" style={{ color: "var(--accent)" }}>{categoryLabel(project.category, locale)}</span>
               </span>
             </motion.button>
           ))}
@@ -424,7 +438,7 @@ const ProjectsGrid = ({ projects = defaultProjects }: ProjectsGridProps) => {
               style={{ border: "1px solid var(--accent)", color: "var(--accent)", background: "var(--bg)" }}
               data-cursor="view"
             >
-              open drawer · {regularProjects.length} units ▾
+              {pick({ fr: "ouvrir le tiroir", en: "open drawer" })} · {regularProjects.length} {pick({ fr: "unités", en: "units" })} ▾
             </button>
           </div>
         )}
@@ -445,7 +459,7 @@ const defaultProjects: Project[] = [
     title: "Les Entreprises G&N – Boutique en ligne",
     description:
       "Boutique en ligne en production sur lesentreprisesgn.com pour Les Entreprises G&N, producteur de Cocody Angré (Abidjan) : Mon Gari, Mon Tapioca et coffrets à offrir, 100 % naturels. Vitrine e-commerce avec panier, commande et suivi par lien sécurisé, commandes sur mesure, recettes, avis clients, et un back-office complet pour la gérance.",
-    imageUrl: "./images/gn-entreprises-preview.webp",
+    imageUrl: "/images/gn-entreprises-preview.webp",
     technologies: ["SvelteKit", "Svelte 5 Runes", "TypeScript", "Tailwind CSS v4", "Supabase", "PostgreSQL", "Row Level Security", "Vercel"],
     category: "e-commerce",
     featured: true,
@@ -463,7 +477,7 @@ const defaultProjects: Project[] = [
     title: "Herycia – Styliste Mobile",
     description:
       "Application mobile qui aide à composer ses tenues : on choisit ses pièces et leurs couleurs, un mannequin virtuel les habille en direct selon la silhouette (droite, sablier, ample), puis l'app évalue l'harmonie de la tenue et propose des améliorations. Elle inclut un catalogue de looks, un guide des couleurs et des favoris.",
-    imageUrl: "./images/herycia-preview.webp",
+    imageUrl: "/images/herycia-preview.webp",
     technologies: ["Flutter", "Riverpod", "go_router", "Freezed", "Drift", "Dio", "OpenAPI", "Offline-first"],
     category: "creative",
     featured: false,
@@ -481,7 +495,7 @@ const defaultProjects: Project[] = [
     title: "MetaChange",
     description:
       "Innovative cryptocurrency exchange app designed for the African market, offering simple and secure crypto-to-mobile money transactions.",
-    imageUrl: "./images/metachanage-preview.jpeg",
+    imageUrl: "/images/metachanage-preview.jpeg",
     technologies: ["Flutter", "Blockchain", "Mobile Payments", "KYC", "Encryption"],
     category: "fintech",
     isPortrait: true,
@@ -498,7 +512,7 @@ const defaultProjects: Project[] = [
     title: "Galaxy Stream",
     description:
       "Powerful video streaming app that brings the latest movies, TV shows, and trending content using the TMDB API.",
-    imageUrl: "./images/galaxy-stream-preview.jpeg",
+    imageUrl: "/images/galaxy-stream-preview.jpeg",
     technologies: ["Flutter", "TMDB API", "Firebase", "Provider"],
     category: "entertainment",
     isPortrait: true,
@@ -515,7 +529,7 @@ const defaultProjects: Project[] = [
     title: "Vidalossa Online Store",
     description:
       "Modern e-commerce app with secure payments powered by Flutterwave and real-time Firebase integration.",
-    imageUrl: "./images/vidalossa-preview.jpeg",
+    imageUrl: "/images/vidalossa-preview.jpeg",
     technologies: ["Flutter", "Firebase", "Flutterwave", "E-commerce"],
     category: "e-commerce",
     isPortrait: true,
@@ -532,7 +546,7 @@ const defaultProjects: Project[] = [
     title: "Medical Volunteer Website",
     description:
       "Complete website redesign for Medical Volunteer organization celebrating 25 years of healthcare advocacy.",
-    imageUrl: "./images/volunteer-medical-preview.webp",
+    imageUrl: "/images/volunteer-medical-preview.webp",
     technologies: ["SvelteKit", "HTML5", "CSS3", "JavaScript", "Vercel"],
     category: "web",
     featured: true,
@@ -550,7 +564,7 @@ const defaultProjects: Project[] = [
     title: "MELOUKA Artisan Website",
     description:
       "Modern showcase website for MELOUKA, an Ivorian handicraft knitting company with dynamic product management.",
-    imageUrl: "./images/melouka-preview.webp",
+    imageUrl: "/images/melouka-preview.webp",
     technologies: ["SvelteKit", "Supabase", "Tailwind CSS", "Vercel"],
     category: "web",
     featured: true,
@@ -568,7 +582,7 @@ const defaultProjects: Project[] = [
     title: "RecipeMaster",
     description:
       "Web application for managing and organizing favorite recipes with internationalization support (FR, EN, ES).",
-    imageUrl: "./images/recipe-master-preview.jpeg",
+    imageUrl: "/images/recipe-master-preview.jpeg",
     technologies: ["SvelteKit", "JSON Server", "Paraglide", "JavaScript"],
     category: "web",
     featured: true,
@@ -586,7 +600,7 @@ const defaultProjects: Project[] = [
     title: "Moyivawa Health App",
     description:
       "E-health application for medication management and medical consultations with mobile payment integration.",
-    imageUrl: "./images/moyivawa-preview.jpeg",
+    imageUrl: "/images/moyivawa-preview.jpeg",
     technologies: ["Flutter", "Provider", "Mobile Payments", "Healthcare"],
     category: "medical",
     isPortrait: true,
@@ -603,7 +617,7 @@ const defaultProjects: Project[] = [
     title: "Minimal Contacts",
     description:
       "Lightweight contact manager app using RandomUser.me API for dynamic contact generation and management.",
-    imageUrl: "./images/minimal-contacts-preview.jpeg",
+    imageUrl: "/images/minimal-contacts-preview.jpeg",
     technologies: ["Flutter", "REST APIs", "Flutter BLoC", "Dart"],
     category: "education",
     isPortrait: true,
@@ -620,7 +634,7 @@ const defaultProjects: Project[] = [
     title: "RanTube",
     description:
       "Random YouTube video generator app with free and premium features, analytics integration.",
-    imageUrl: "./images/rantube-preview.jpeg",
+    imageUrl: "/images/rantube-preview.jpeg",
     technologies: ["Flutter", "Flutter BLoC", "Firebase", "YouTube API", "Google Analytics"],
     category: "entertainment",
     isPortrait: true,
@@ -637,7 +651,7 @@ const defaultProjects: Project[] = [
     title: "Djassaman Budget Manager",
     description:
       "Intelligent budget management application built with Flask and SQLAlchemy for tracking finances.",
-    imageUrl: "./images/djassaman-preview.jpeg",
+    imageUrl: "/images/djassaman-preview.jpeg",
     technologies: ["Flask", "SQLAlchemy", "HTML", "CSS", "Python", "JavaScript"],
     category: "fintech",
     featured: true,
@@ -655,7 +669,7 @@ const defaultProjects: Project[] = [
     title: "Zem VTC App",
     description:
       "Innovative ride-hailing app offering smooth, secure and accessible transportation experience for passengers and drivers.",
-    imageUrl: "./images/zem-preview.jpeg",
+    imageUrl: "/images/zem-preview.jpeg",
     technologies: ["Flutter", "Laravel", "GPS", "Google Maps", "PHP"],
     category: "transport",
     isPortrait: true,
@@ -672,7 +686,7 @@ const defaultProjects: Project[] = [
     title: "FOSOPIQ Event Management",
     description:
       "Event management platform for humanitarian foundation activities across Education, Social, Health, and Environment sectors.",
-    imageUrl: "./images/fosopiq-preview.jpeg",
+    imageUrl: "/images/fosopiq-preview.jpeg",
     technologies: ["Flutter", "Provider", "Event Management", "Analytics"],
     category: "education",
     isPortrait: true,
@@ -689,7 +703,7 @@ const defaultProjects: Project[] = [
     title: "SOS AVC Medical Alert",
     description:
       "Life-saving application designed to respond quickly to stroke emergencies with immediate assistance features.",
-    imageUrl: "./images/sosavc-preview.jpeg",
+    imageUrl: "/images/sosavc-preview.jpeg",
     technologies: ["Flutter", "Firebase", "Google Maps", "Laravel", "Emergency Services"],
     category: "medical",
     isPortrait: true,
@@ -706,7 +720,7 @@ const defaultProjects: Project[] = [
     title: "Maturus Scoring",
     description:
       "Organizational maturity assessment app helping companies measure, analyze and optimize their organizational performance.",
-    imageUrl: "./images/maturus-preview.jpeg",
+    imageUrl: "/images/maturus-preview.jpeg",
     technologies: ["Flutter", "Laravel", "Analytics", "Scoring Algorithms"],
     category: "security",
     isPortrait: true,
@@ -723,7 +737,7 @@ const defaultProjects: Project[] = [
     title: "Meter Manager IoT",
     description:
       "Smart electricity consumption monitoring app with real-time analysis, forecasting and optimization features.",
-    imageUrl: "./images/meter-manager-preview.jpeg",
+    imageUrl: "/images/meter-manager-preview.jpeg",
     technologies: ["Flutter", "Laravel", "IoT", "Data Analytics", "Energy Management"],
     category: "iot",
     isPortrait: true,
@@ -740,7 +754,7 @@ const defaultProjects: Project[] = [
     title: "Sikka Digital Tontine",
     description:
       "Secure digital tontine app enabling users to easily manage group savings and contributions with encryption.",
-    imageUrl: "./images/sikka-preview.jpeg",
+    imageUrl: "/images/sikka-preview.jpeg",
     technologies: ["Flutter", "Django REST", "Encryption", "Financial Services"],
     category: "fintech",
     isPortrait: true,
@@ -757,7 +771,7 @@ const defaultProjects: Project[] = [
     title: "IBH (Ivoire Beat Hub)",
     description:
       "Creative workspace app for artists - a Google Keep clone designed for capturing and organizing musical inspirations.",
-    imageUrl: "./images/ibh-preview.jpeg",
+    imageUrl: "/images/ibh-preview.jpeg",
     technologies: ["Flutter", "Firebase", "Audio Recording", "Cloud Storage"],
     category: "creative",
     isPortrait: true,
@@ -774,7 +788,7 @@ const defaultProjects: Project[] = [
     title: "Baromètre Santé",
     description:
       "Advanced telemedicine platform with AI-powered health analytics, remote patient monitoring, and intelligent appointment orchestration for comprehensive digital healthcare.",
-    imageUrl: "./images/barometre-sante-preview.jpeg",
+    imageUrl: "/images/barometre-sante-preview.jpeg",
     technologies: ["Flutter", "Telemedicine APIs", "Health Analytics", "Real-time Monitoring", "AI Diagnostics", "Secure Video Calls"],
     category: "medical",
     featured: false,
@@ -792,7 +806,7 @@ const defaultProjects: Project[] = [
     title: "Collards Greens Bank",
     description:
       "Revolutionary micro-banking app empowering financial inclusion with AI-driven credit scoring and blockchain-secured transactions for underbanked communities.",
-    imageUrl: "./images/collards-greens-preview.png",
+    imageUrl: "/images/collards-greens-preview.png",
     technologies: ["Flutter", "Blockchain", "AI/ML", "Biometric Auth", "Micro-finance", "NSIA Integration"],
     category: "fintech",
     featured: false,
@@ -810,7 +824,7 @@ const defaultProjects: Project[] = [
     title: "FindMacy",
     description:
       "Smart pharmacy locator with real-time medication availability, AI-powered drug interaction checker, and integrated telemedicine consultations.",
-    imageUrl: "./images/findmacy-preview.png",
+    imageUrl: "/images/findmacy-preview.png",
     technologies: ["Flutter", "Google Maps API", "Real-time Database", "AI Drug Analysis", "Geolocation"],
     category: "medical",
     featured: false,
@@ -828,7 +842,7 @@ const defaultProjects: Project[] = [
     title: "BabiWarren",
     description:
       "Next-generation ride-sharing platform with dynamic pricing algorithms, carbon footprint tracking, and AI-optimized route planning for sustainable urban mobility.",
-    imageUrl: "./images/babiwarren-preview.png",
+    imageUrl: "/images/babiwarren-preview.png",
     technologies: ["Flutter", "Machine Learning", "Real-time GPS", "Carbon Analytics", "Dynamic Pricing", "Route Optimization"],
     category: "transport",
     featured: false,
@@ -846,7 +860,7 @@ const defaultProjects: Project[] = [
     title: "Le Livreur",
     description:
       "Intelligent multi-vendor delivery ecosystem with predictive logistics, real-time order orchestration, and AI-powered demand forecasting for local businesses.",
-    imageUrl: "./images/le-livreur-preview.png",
+    imageUrl: "/images/le-livreur-preview.png",
     technologies: ["Flutter", "Predictive Analytics", "Multi-vendor API", "Real-time Tracking", "Smart Logistics", "Demand Forecasting"],
     category: "e-commerce",
     featured: false,
@@ -864,7 +878,7 @@ const defaultProjects: Project[] = [
     title: "Le Livreur Agent",
     description:
       "Dedicated mobile application for delivery agents featuring real-time GPS tracking, intelligent route optimization, and intuitive order management interface. Maximizes delivery efficiency with advanced tracking tools and seamless communication features.",
-    imageUrl: "./images/le-livreur-agent-preview.webp",
+    imageUrl: "/images/le-livreur-agent-preview.webp",
     technologies: ["Flutter", "GPS Tracking", "Route Optimization", "Real-time Notifications", "Offline Mode", "Performance Analytics"],
     category: "e-commerce",
     featured: false,
@@ -882,7 +896,7 @@ const defaultProjects: Project[] = [
     title: "Le Livreur Resto",
     description:
       "Comprehensive restaurant management platform with real-time order interface, dynamic menu management, performance analytics, and seamless integration with the delivery ecosystem. Optimizes culinary operations and customer relationships.",
-    imageUrl: "./images/le-livreur-resto-preview.webp",
+    imageUrl: "/images/le-livreur-resto-preview.webp",
     technologies: ["Flutter", "Restaurant POS", "Menu Management", "Order Analytics", "Kitchen Display", "Customer Feedback"],
     category: "e-commerce",
     featured: false,
@@ -900,7 +914,7 @@ const defaultProjects: Project[] = [
     title: "AZPROD",
     description:
       "Creative agency specializing in music production, artist booking, and digital influence across West Africa. We transform the music industry by connecting emerging talents, brands, and audiences through authentic collaborations and memorable events.",
-    imageUrl: "./images/azprod-preview.webp",
+    imageUrl: "/images/azprod-preview.webp",
     technologies: ["Booking Management", "Event Production", "Influencer Marketing", "Artist Development", "Digital Strategy", "Content Creation"],
     category: "entertainment",
     featured: true,
@@ -918,7 +932,7 @@ const defaultProjects: Project[] = [
     title: "MôyCom",
     description:
       "Commercial management application for healthcare sales representatives featuring client tracking, product catalog management, order processing, and performance analytics. Streamlines pharmaceutical and medical equipment sales operations.",
-    imageUrl: "./images/moycom-preview.png",
+    imageUrl: "/images/moycom-preview.png",
     technologies: ["Flutter", "CRM Integration", "Sales Analytics", "Inventory Management", "Client Tracking", "Mobile Commerce"],
     category: "medical",
     featured: false,
@@ -936,7 +950,7 @@ const defaultProjects: Project[] = [
     title: "Gestopedia",
     description:
       "Intelligent inventory management system with real-time sales tracking, automated stock monitoring, and predictive analytics. Features comprehensive dashboard for sales, stock levels, and financial performance with integrated banking and budgeting tools.",
-    imageUrl: "./images/gestopedia-preview.png",
+    imageUrl: "/images/gestopedia-preview.png",
     technologies: ["Flutter", "Real-time Analytics", "Inventory Automation", "Financial Integration", "Predictive Forecasting", "Business Intelligence"],
     category: "fintech",
     featured: false,
@@ -954,7 +968,7 @@ const defaultProjects: Project[] = [
     title: "Jéko Cockpit",
     description:
       "Back-office moderne pour la supervision et la gestion des paiements, transactions, membres et équipements connectés. Offre une visualisation claire des données financières et comportementales à travers un tableau de bord interactif.",
-    imageUrl: "./images/jeko-cockpit-preview.webp",
+    imageUrl: "/images/jeko-cockpit-preview.webp",
     technologies: ["Svelte.js", "Recharts", "TailwindCSS", "API REST", "Responsive UI", "Dashboard Analytics"],
     category: "fintech",
     featured: true,
@@ -972,7 +986,7 @@ const defaultProjects: Project[] = [
     title: "My Design Pro",
     description:
       "Version avancée de l’application My Design, offrant aux créatifs un espace pour créer, partager et s’inspirer. Propose un environnement communautaire favorisant l’échange et la visibilité des œuvres.",
-    imageUrl: "./images/my-design-pro-preview.jpeg",
+    imageUrl: "/images/my-design-pro-preview.jpeg",
     technologies: ["Flutter", "Firebase Auth", "Cloud Storage", "REST API", "Responsive UI", "Community Features"],
     category: "creative",
     featured: false,
@@ -990,7 +1004,7 @@ const defaultProjects: Project[] = [
     title: "My Design",
     description:
       "Application mobile permettant aux utilisateurs de découvrir des créations graphiques variées : affiches, logos et visuels créatifs. Favorise l'inspiration et le partage dans une communauté créative.",
-    imageUrl: "./images/my-design-user-preview.jpeg",
+    imageUrl: "/images/my-design-user-preview.jpeg",
     technologies: ["Flutter", "REST API", "Firebase", "Responsive UI", "Grid Layout", "Material Design"],
     category: "creative",
     featured: false,
@@ -1008,7 +1022,7 @@ const defaultProjects: Project[] = [
     title: "SOSMONEY ADMIN",
     description:
       "Comprehensive employee loan management platform with automated approval workflows, real-time payment tracking, and intelligent risk assessment. Features advanced admin dashboard for loan processing, borrower management, and financial analytics.",
-    imageUrl: "./images/salary-credit-manager-preview.webp",
+    imageUrl: "/images/salary-credit-manager-preview.webp",
     technologies: ["React", "Spring Boot", "Java", "REST API", "Financial Analytics", "Risk Assessment"],
     category: "fintech",
     featured: true,
@@ -1026,7 +1040,7 @@ const defaultProjects: Project[] = [
     title: "SOSMONEY Mobile",
     description:
       "Mobile application for employee loan management allowing users to track their loan balance, payment history, and available credit limit. Features intuitive dashboard with loan evolution charts, repayment tracking, and instant notifications for payment reminders.",
-    imageUrl: "./images/salary-credit-mobile-preview.webp",
+    imageUrl: "/images/salary-credit-mobile-preview.webp",
     technologies: ["Flutter", "REST API", "Charts", "Push Notifications", "Secure Authentication", "Financial Tracking"],
     category: "fintech",
     featured: false,
@@ -1044,7 +1058,7 @@ const defaultProjects: Project[] = [
     title: "Simplex Visitor Tracker",
     description:
       "GDPR-compliant visitor management system enabling real-time tracking of visitors within company premises without retaining identity cards. Features agent dashboard for assisted visits, badge verification, and comprehensive visit analytics with privacy-first approach.",
-    imageUrl: "./images/visitor-flow-tracker-preview.webp",
+    imageUrl: "/images/visitor-flow-tracker-preview.webp",
     technologies: ["Flutter", "GDPR Compliance", "Badge System", "Real-time Tracking", "Privacy Management", "Visit Analytics"],
     category: "security",
     featured: false,
@@ -1062,7 +1076,7 @@ const defaultProjects: Project[] = [
     title: "WaveLink",
     description:
       "Application mobile de transfert et de souscription rapide en Côte d'Ivoire. Permet d’envoyer du crédit, des forfaits internet ou des minutes d’appel sur les réseaux Orange, MTN et Moov, avec un paiement instantané et sécurisé via Wave.",
-    imageUrl: "./images/wavelink-preview.jpeg",
+    imageUrl: "/images/wavelink-preview.jpeg",
     technologies: ["Flutter", "Wave API", "Mobile Money", "UI Responsive", "Payment Integration", "Telecom Services"],
     category: "fintech",
     featured: false,
@@ -1080,7 +1094,7 @@ const defaultProjects: Project[] = [
     title: "Hooli Library",
     description:
       "Bibliothèque numérique moderne permettant aux utilisateurs de lire, découvrir et gérer leurs livres préférés en ligne. Propose des recommandations personnalisées, des évaluations, et une interface élégante inspirée des meilleures plateformes de lecture.",
-    imageUrl: "./images/hooli-library-preview.jpeg",
+    imageUrl: "/images/hooli-library-preview.jpeg",
     technologies: ["Flutter", "Firebase", "Cloud Storage", "Recommendation Engine", "Responsive UI", "Book API"],
     category: "education",
     featured: false,
@@ -1098,7 +1112,7 @@ const defaultProjects: Project[] = [
     title: "GS Dot Bet",
     description:
       "Application de suivi et de pronostic sportif offrant une expérience complète pour les passionnés de football. Suivez les scores en direct, les classements, et placez vos paris en toute sécurité depuis une interface moderne et immersive.",
-    imageUrl: "./images/gs-dot-bet-preview.jpeg",
+    imageUrl: "/images/gs-dot-bet-preview.jpeg",
     technologies: ["Flutter", "Live Data API", "Sports Odds API", "Firebase", "Animations", "Dark Mode UI"],
     category: "sports-betting",
     featured: false,
@@ -1116,7 +1130,7 @@ const defaultProjects: Project[] = [
     title: "Kotlin Bank UI & API",
     description:
       "Suite bancaire complète alliant une application mobile Kotlin moderne (Jetpack Compose) et une API backend Ktor gamifiée, conçue pour démocratiser l’éducation financière en Afrique à travers la gamification et les fonctionnalités locales.",
-    imageUrl: "./images/kotlinbank-suite-preview.jpeg",
+    imageUrl: "/images/kotlinbank-suite-preview.jpeg",
     technologies: ["Kotlin", "Jetpack Compose", "Ktor", "Material 3", "MVVM", "StateFlow", "PostgreSQL", "JWT Auth", "REST API"],
     category: "fintech",
     featured: false,
@@ -1134,7 +1148,7 @@ const defaultProjects: Project[] = [
     title: "Alerte E25 – Application Citoyenne",
     description:
       "Application mobile permettant aux citoyens de signaler en temps réel des incidents ou situations urgentes aux autorités locales. Elle intègre la géolocalisation, l'envoi d’alertes, la sélection de priorité, ainsi qu'une interface simple et intuitive pour faciliter la participation citoyenne.",
-    imageUrl: "./images/alerte_e25_client_preview.webp",
+    imageUrl: "/images/alerte_e25_client_preview.webp",
     technologies: ["Flutter", "Dart", "Provider", "OpenStreetMap", "REST API", "Geolocator", "Firebase Messaging"],
     category: "security",
     featured: false,
@@ -1152,7 +1166,7 @@ const defaultProjects: Project[] = [
     title: "Alerte E25 – Application Admin",
     description:
       "Interface mobile dédiée aux autorités pour visualiser, filtrer et gérer les alertes envoyées par les citoyens. Elle affiche sur une carte toutes les alertes en temps réel avec un système de priorisation (Urgent, Élevée, Moyenne, Faible) et permet un suivi opérationnel efficace.",
-    imageUrl: "./images/alerte_e25_admin_preview.webp",
+    imageUrl: "/images/alerte_e25_admin_preview.webp",
     technologies: ["Flutter", "Dart", "Provider", "OpenStreetMap", "Cluster Markers", "REST API", "Firebase Messaging"],
     category: "security",
     featured: false,
@@ -1170,7 +1184,7 @@ const defaultProjects: Project[] = [
     title: "Jeko Pay – Nouvelle Page de Checkout",
     description:
       "Interface de paiement moderne développée autour de l’API Jeko Pay, permettant aux utilisateurs de régler leurs commandes via différents moyens de paiement mobiles (Wave, Orange Money, Moov Money, MTN MoMo, Djamo, Jeko). Le checkout offre une expérience fluide, sécurisée et multi-méthodes, optimisée pour le taux de conversion.",
-    imageUrl: "./images/jeko_pay_preview.webp",
+    imageUrl: "/images/jeko_pay_preview.webp",
     technologies: ["TypeScript", "SvelteKit", "REST API", "Jeko Pay API", "OAuth2", "Responsive UI", "Mobile Money Integration"],
     category: "fintech",
     featured: true,
@@ -1188,7 +1202,7 @@ const defaultProjects: Project[] = [
     title: "Payix – Application Mobile de Paiement",
     description:
       "Application fintech permettant aux utilisateurs de gérer leur solde, effectuer des transferts, recharger leur portefeuille, effectuer des retraits, payer des services et accéder à des services de prêt. L’interface est moderne, fluide et pensée pour simplifier la gestion quotidienne des transactions.",
-    imageUrl: "./images/payix_preview.webp",
+    imageUrl: "/images/payix_preview.webp",
     technologies: ["Flutter", "Dart", "Provider", "REST API", "Firebase", "Secure Storage", "Mobile Money Integration"],
     category: "fintech",
     featured: false,
@@ -1206,7 +1220,7 @@ const defaultProjects: Project[] = [
     title: "Jeko Landing Page",
     description:
       "Landing page moderne pour Jeko, solution de paiement mobile money unifiée permettant aux commerçants d'encaisser via un QR code unique (Wave, Orange Money, MTN, Moov, Visa, Mastercard).",
-    imageUrl: "./images/jeko-landing-preview.webp",
+    imageUrl: "/images/jeko-landing-preview.webp",
     technologies: ["SvelteKit", "TailwindCSS", "Responsive Design", "Framer Motion", "Vercel"],
     category: "fintech",
     featured: true,
@@ -1224,7 +1238,7 @@ const defaultProjects: Project[] = [
     title: "Jeko Download Page",
     description:
       "Page de téléchargement dédiée à l'application Jeko Business, permettant aux commerçants d'installer rapidement l'app pour finaliser leurs paiements.",
-    imageUrl: "./images/jeko-download-preview.png",
+    imageUrl: "/images/jeko-download-preview.png",
     technologies: ["SvelteKit", "TailwindCSS", "Deep Linking", "App Store Connect", "Google Play"],
     category: "fintech",
     featured: true,
@@ -1242,7 +1256,7 @@ const defaultProjects: Project[] = [
     title: "Jeko Demo – Paiement Redirect",
     description:
       "Interface de démonstration permettant aux développeurs de tester l'API Jeko Pay en créant des paiements redirect avec sélection de boutique, montant et méthode de paiement (Wave, Orange Money, MTN, Moov, Djamo).",
-    imageUrl: "./images/jeko-demo-preview.png",
+    imageUrl: "/images/jeko-demo-preview.png",
     technologies: ["SvelteKit", "TailwindCSS", "Jeko Pay API", "REST API", "OAuth2"],
     category: "fintech",
     featured: true,
@@ -1260,7 +1274,7 @@ const defaultProjects: Project[] = [
     title: "Alph Sécurité (Landing Page) – Sécurisation de quartier à la demande",
     description:
       "landing page de preseentation de la solution Alph Sécurité, une Plateforme digitale permettant aux particuliers et communautés de sécuriser leur quartier en un clic, en réservant des agents de sécurité certifiés, en rejoignant des communautés de vigilance et en consultant le niveau de sécurité en temps réel.",
-    imageUrl: "./images/alph-securite-preview.webp",
+    imageUrl: "/images/alph-securite-preview.webp",
     technologies: ["Vue.js", "TailwindCSS", "API REST", "Laravel", "Geolocation", "Notifications temps réel", "Payment Integration"],
     category: "security",
     featured: true,
@@ -1278,7 +1292,7 @@ const defaultProjects: Project[] = [
     title: "Alph Sécurité – Application Mobile Client",
     description:
       "Application mobile permettant aux particuliers de réserver des agents de sécurité certifiés pour différents types de missions : garde rapprochée, sécurité bâtiment, sécurité événementielle et escorte VIP. Interface intuitive avec géolocalisation et système de réservation simplifié.",
-    imageUrl: "./images/alph-securite-mobile-preview.jpeg",
+    imageUrl: "/images/alph-securite-mobile-preview.jpeg",
     technologies: ["Flutter", "Dart", "Provider", "Google Maps API", "REST API", "Firebase Messaging", "Payment Integration"],
     category: "security",
     featured: false,
@@ -1296,7 +1310,7 @@ const defaultProjects: Project[] = [
     title: "PLUSS Alert – Application Mobile Citoyenne",
     description:
       "Application mobile de la Plateforme Une Seule Santé (PLUSS) de Côte d'Ivoire permettant aux citoyens de signaler en temps réel des alertes sanitaires liées aux zoonoses, épidémies et menaces de santé publique à l'interface Homme-Animal-Environnement.",
-    imageUrl: "./images/pluss-alert-mobile-preview.jpeg",
+    imageUrl: "/images/pluss-alert-mobile-preview.jpeg",
     technologies: ["Flutter", "Dart", "Provider", "REST API", "Firebase Messaging", "Geolocation", "One Health Integration"],
     category: "medical",
     featured: false,
@@ -1314,7 +1328,7 @@ const defaultProjects: Project[] = [
     title: "PLUSS CI – Backoffice Administration",
     description:
       "Interface d'administration web de la Plateforme Une Seule Santé permettant aux autorités sanitaires de visualiser, filtrer et gérer les alertes signalées par les citoyens. Tableau de bord complet avec statistiques en temps réel, gestion des agents et suivi des services de santé.",
-    imageUrl: "./images/pluss-backoffice-preview.webp",
+    imageUrl: "/images/pluss-backoffice-preview.webp",
     technologies: ["SvelteKit", "TypeScript", "TailwindCSS", "REST API", "Dashboard Analytics", "Real-time Updates", "Vercel"],
     category: "medical",
     featured: true,
@@ -1332,7 +1346,7 @@ const defaultProjects: Project[] = [
     title: "Décor de Rêve – Site Vitrine",
     description:
       "Site web e-commerce élégant pour Décor de Rêve, entreprise spécialisée dans les décors éblouissants, bouquets exquis, ballons colorés et bien plus. Transformez vos moments en souvenirs magiques avec une boutique en ligne intuitive et un système de commande via WhatsApp.",
-    imageUrl: "./images/decor-de-reve-frontsite-preview.webp",
+    imageUrl: "/images/decor-de-reve-frontsite-preview.webp",
     technologies: ["SvelteKit", "TailwindCSS", "E-commerce", "WhatsApp Integration", "Responsive Design", "Vercel"],
     category: "e-commerce",
     featured: true,
@@ -1350,7 +1364,7 @@ const defaultProjects: Project[] = [
     title: "Décor de Rêve – Back Office",
     description:
       "Application de gestion complète pour Décor de Rêve permettant la gestion des produits, catégories, commandes, inventaire et mouvements de stock. Tableau de bord avec indicateurs clés : valeur stock, revenus du mois, commandes en attente, stock bas et surstock.",
-    imageUrl: "./images/decor-de-reve-backoffice-preview.webp",
+    imageUrl: "/images/decor-de-reve-backoffice-preview.webp",
     technologies: ["SvelteKit", "TailwindCSS", "Dashboard Analytics", "Inventory Management", "REST API", "Vercel"],
     category: "e-commerce",
     featured: true,
@@ -1368,7 +1382,7 @@ const defaultProjects: Project[] = [
     title: "AgriPilote – Plateforme de Gestion Agricole",
     description:
       "Plateforme complète de gestion des missions de drones agricoles pour le traitement des plantations. Permet la coordination entre entreprises clientes, télépilotes et administrateurs avec suivi des missions, gestion des plantations, rapports de traitement et tableau de bord analytique.",
-    imageUrl: "./images/agripilote-preview.webp",
+    imageUrl: "/images/agripilote-preview.webp",
     technologies: ["SvelteKit", "TailwindCSS", "REST API", "Dashboard Analytics", "Multi-tenant Architecture", "Role-based Access", "Vercel"],
     category: "iot",
     featured: true,
@@ -1386,7 +1400,7 @@ const defaultProjects: Project[] = [
     title: "StediiHome – Employabilité Domestique",
     description:
       "Application mobile connectant les familles aux employés de maison via un système de contrats QR Code sécurisés, un historique professionnel vivant et des avis vérifiés. Deux parcours utilisateur : Employer (famille) et Worker (employé).",
-    imageUrl: "./images/stediihome-preview.jpeg",
+    imageUrl: "/images/stediihome-preview.jpeg",
     technologies: ["Flutter", "Firebase", "QR Code System", "Real-time Chat", "Review System", "Multi-role Auth"],
     category: "services",
     featured: false,
@@ -1404,7 +1418,7 @@ const defaultProjects: Project[] = [
     title: "SmartSaver – Tontine & Épargne Digitale",
     description:
       "Application fintech de gestion de tontines et d'épargne digitale. Permet aux utilisateurs de participer à des tontines collectives avec choix de rang de ramassage et de lancer des plans d'épargne personnalisés avec suivi en temps réel.",
-    imageUrl: "./images/smartsaver-preview.jpeg",
+    imageUrl: "/images/smartsaver-preview.jpeg",
     technologies: ["Flutter", "Firebase", "Mobile Money", "Push Notifications", "Transaction Management", "Admin Dashboard"],
     category: "fintech",
     featured: false,
@@ -1422,7 +1436,7 @@ const defaultProjects: Project[] = [
     title: "TransformMe – Application Fitness",
     description:
       "Application de suivi fitness avec système de streak motivationnel, objectifs personnalisés et récompenses. Suivez vos séances de sport, vos repas et visualisez vos statistiques de progression avec des défis à long terme.",
-    imageUrl: "./images/transformme-preview.jpeg",
+    imageUrl: "/images/transformme-preview.jpeg",
     technologies: ["Flutter", "Firebase", "Health Tracking", "Gamification", "Push Notifications", "Analytics Dashboard"],
     category: "medical",
     featured: false,
@@ -1440,7 +1454,7 @@ const defaultProjects: Project[] = [
     title: "AVP PROD – Portfolio Monteur Vidéo",
     description:
       "Portfolio web professionnel pour Ivan, monteur vidéo, photographe et producteur basé à Paris. Interface inspirée des logiciels de montage avec Media Pool, Timeline, Inspector et prévisualisation vidéo intégrée.",
-    imageUrl: "./images/avp-prod-preview.webp",
+    imageUrl: "/images/avp-prod-preview.webp",
     technologies: ["SvelteKit", "Video Player", "Timeline UI", "Responsive Design", "i18n (FR/EN)", "Vercel"],
     category: "creative",
     featured: true,
@@ -1458,7 +1472,7 @@ const defaultProjects: Project[] = [
     title: "StediiHome – Landing Page",
     description:
       "Site vitrine moderne pour StediiHome, plateforme d'emploi domestique sécurisé en Afrique. Présente la solution permettant d'embaucher du personnel domestique fiable sans recruter à l'aveugle, avec profils vérifiés et historique de travail traçable.",
-    imageUrl: "./images/stediihome-landing-preview.webp",
+    imageUrl: "/images/stediihome-landing-preview.webp",
     technologies: ["Next.js", "TailwindCSS", "Responsive Design", "i18n (FR/EN)", "Framer Motion", "Vercel"],
     category: "web",
     featured: true,
@@ -1476,7 +1490,7 @@ const defaultProjects: Project[] = [
     title: "WHARPE – Landing Page",
     description:
       "Site vitrine élégant pour WHARPE, cabinet informatique moderne accompagnant la transformation digitale en Afrique. Présente les deux pôles d'activité : Pôle Entreprises (développement sur mesure, cloud, maintenance) et Studio d'Innovation (apps mobiles, SaaS, marketplaces).",
-    imageUrl: "./images/wharpe-landing-preview.webp",
+    imageUrl: "/images/wharpe-landing-preview.webp",
     technologies: ["SvelteKit", "TailwindCSS", "Framer Motion", "Responsive Design", "i18n (FR)", "Vercel"],
     category: "web",
     featured: true,
@@ -1494,7 +1508,7 @@ const defaultProjects: Project[] = [
     title: "Cropsky – Landing Page",
     description:
       "Site vitrine pour Cropsky, centre d'expertise drone combinant technologie de pointe et savoir-faire professionnel au Canada, en Afrique et dans le monde. Présente les divisions Industrielle (inspection, surveillance, cartographie) et Aviation & Transport (livraison, mobilité urbaine aérienne).",
-    imageUrl: "./images/cropsky-landing-preview.webp",
+    imageUrl: "/images/cropsky-landing-preview.webp",
     technologies: ["SvelteKit", "TailwindCSS", "Framer Motion", "Responsive Design", "i18n (FR/EN)", "Vercel"],
     category: "web",
     featured: true,
@@ -1512,7 +1526,7 @@ const defaultProjects: Project[] = [
     title: "AEDCI – Landing Page",
     description:
       "Site vitrine de l'Association des Exploitants de Drones Civils en Côte d'Ivoire, organisation professionnelle structurant et professionnalisant la filière drone au niveau national. Présente les missions, domaines d'application (audiovisuel, cartographie, agriculture, inspection) et le processus d'adhésion.",
-    imageUrl: "./images/aedci-landing-preview.webp",
+    imageUrl: "/images/aedci-landing-preview.webp",
     technologies: ["SvelteKit", "TailwindCSS", "Framer Motion", "Responsive Design", "i18n (FR)", "Vercel"],
     category: "web",
     featured: true,
@@ -1530,7 +1544,7 @@ const defaultProjects: Project[] = [
     title: "Mon Médecin",
     description:
       "Application mobile de mise en relation patient-médecin, un véritable Uber de la médecine. Permet de rechercher un médecin par spécialité (généraliste, dentiste, ophtalmologue, dermatologue, pédiatre, cardiologue, ORL, gynécologue), de consulter les médecins populaires, de prendre rendez-vous et de gérer son parcours de soins complet.",
-    imageUrl: "./images/mon-medecin-preview.jpeg",
+    imageUrl: "/images/mon-medecin-preview.jpeg",
     technologies: ["Flutter", "Dart", "Provider", "REST API", "Geolocation", "Appointment Booking", "Healthcare", "Push Notifications"],
     category: "medical",
     featured: false,
@@ -1548,7 +1562,7 @@ const defaultProjects: Project[] = [
     title: "Mamadou Koné – Site Officiel",
     description:
       "Site officiel d'une personnalité politique ivoirienne. Vitrine digitale complète avec biographie, actualités, galerie photo, espace jeunesse et formulaire de contact. Design premium aux tons dorés avec navigation élégante et mise en valeur du parcours public.",
-    imageUrl: "./images/mamadou-kone-preview.webp",
+    imageUrl: "/images/mamadou-kone-preview.webp",
     technologies: ["HTML/CSS", "JavaScript", "Responsive Design", "SEO", "CMS Integration"],
     category: "web",
     featured: true,
@@ -1566,7 +1580,7 @@ const defaultProjects: Project[] = [
     title: "StediiHome – Landing Page V2",
     description:
       "Refonte complète de la landing page StediiHome avec une nouvelle identité visuelle violet/purple plus moderne et épurée. Met l'accent sur le slogan fort \"Embauchez du personnel domestique fiable, sans recruter à l'aveugle\" et propose un parcours bilingue clair pour Employeurs et Travailleurs avec une section de bénéfices clés visuellement plus impactante.",
-    imageUrl: "./images/steddihome_landing_page_v2.png",
+    imageUrl: "/images/steddihome_landing_page_v2.png",
     technologies: ["Next.js", "TailwindCSS", "Framer Motion", "Responsive Design", "i18n (FR/EN)", "Vercel"],
     category: "web",
     featured: true,
@@ -1584,7 +1598,7 @@ const defaultProjects: Project[] = [
     title: "Jeko – Landing Page V2",
     description:
       "Refonte de la landing page Jeko avec une nouvelle direction visuelle plus moderne et orientée conversion. Met en avant la solution de paiement mobile money unifiée pour les commerçants africains avec un design plus impactant, une hiérarchie typographique renforcée et une démonstration produit plus claire.",
-    imageUrl: "./images/jeko-landing-v2-preview.webp",
+    imageUrl: "/images/jeko-landing-v2-preview.webp",
     technologies: ["SvelteKit", "TailwindCSS", "Framer Motion", "Responsive Design", "Vercel"],
     category: "fintech",
     featured: true,
@@ -1602,7 +1616,7 @@ const defaultProjects: Project[] = [
     title: "Forage – Plateforme Mise en Relation",
     description:
       "Plateforme numérique \"Le forage, simplifié\" mettant en relation clients (particuliers/entreprises) et entreprises de forage qualifiées dans les domaines eau, géotechnique et pétrolier. Le client soumet son projet, reçoit des offres confidentielles de prestataires cloisonnés et signe en toute confiance — budget protégé, workflow contrôlé en 8 étapes et messagerie centralisée.",
-    imageUrl: "./images/forage-preview.webp",
+    imageUrl: "/images/forage-preview.webp",
     technologies: ["SvelteKit", "AdonisJS", "TypeScript", "PostgreSQL", "TailwindCSS", "REST API", "Vercel"],
     category: "web",
     featured: true,
@@ -1620,7 +1634,7 @@ const defaultProjects: Project[] = [
     title: "StediiHome – Back Office Admin",
     description:
       "Back office administrateur pour la plateforme StediiHome permettant de piloter l'activité opérationnelle : tableau de bord avec KPIs en temps réel (utilisateurs, workers, employeurs), modération des avis, vérification des documents d'identité, gestion des catégories/compétences/langues et système de notifications. Interface admin pour garantir la qualité et la conformité de la plateforme d'employabilité domestique.",
-    imageUrl: "./images/stediihome-backoffice-preview.jpeg",
+    imageUrl: "/images/stediihome-backoffice-preview.jpeg",
     technologies: ["SvelteKit", "TypeScript", "TailwindCSS", "Role-Based Access", "Document Verification", "Dashboard Analytics", "REST API"],
     category: "web",
     featured: true,
@@ -1638,7 +1652,7 @@ const defaultProjects: Project[] = [
     title: "Banana House – E-commerce Bananes",
     description:
       "Site e-commerce de Banana House, grossiste spécialisé dans la vente de bananes fraîches en gros et détail en Côte d'Ivoire. Propose 3 variétés (Plantain à 500 FCFA/kg, Douce Cavendish à 400 FCFA/kg, Plantain Corne à 550 FCFA/kg) avec précommande en ligne, livraison nationale et retrait possible, pour particuliers, semi-grossistes et professionnels.",
-    imageUrl: "./images/bananahouse-preview.webp",
+    imageUrl: "/images/bananahouse-preview.webp",
     technologies: ["Next.js", "TailwindCSS", "E-commerce", "Responsive Design", "SEO", "Vercel"],
     category: "e-commerce",
     featured: true,
@@ -1656,7 +1670,7 @@ const defaultProjects: Project[] = [
     title: "FinSim – Simulateur de Marché Financier",
     description:
       "Simulateur de marché financier gamifié pour Android et iOS, construit en Kotlin Multiplatform (KMP) avec une base de code partagée. Logique métier centralisée dans un module shared, UI native via Jetpack Compose (Android) et SwiftUI (iOS). Trade en temps réel sur des données de marché réelles : Forex, Crypto et bientôt BRVM, avec flux de prix WebSocket et cache Redis pour la performance.",
-    imageUrl: "./images/finsim-preview.webp",
+    imageUrl: "/images/finsim-preview.webp",
     technologies: ["Kotlin Multiplatform", "Jetpack Compose", "SwiftUI", "Ktor", "PostgreSQL", "Redis", "WebSocket", "Docker", "Hexagonal Architecture"],
     category: "fintech",
     featured: true,
@@ -1674,7 +1688,7 @@ const defaultProjects: Project[] = [
     title: "Alph Backoffice – Administration de Missions & Agents",
     description:
       "Back office d'administration de la plateforme Alph permettant de superviser l'ensemble de l'activité : tableau de bord avec KPIs en temps réel (utilisateurs, agents, missions, revenus, communautés, incidents), gestion des utilisateurs et des agents avec vérifications en attente, suivi des missions, paiements, modération des communautés et traitement des incidents signalés. Interface centralisée pour piloter l'opérationnel au quotidien.",
-    imageUrl: "./images/alph-backoffice-preview.png",
+    imageUrl: "/images/alph-backoffice-preview.png",
     technologies: ["Svelte", "TailwindCSS", "Dashboard Analytics", "Role-Based Access", "Chart.js", "REST API"],
     category: "web",
     featured: true,
@@ -1692,7 +1706,7 @@ const defaultProjects: Project[] = [
     title: "Mon Médecin – Back Office Santé",
     description:
       "Back office d'administration de la plateforme Mon Médecin permettant de gérer les centres médicaux, les spécialités et les praticiens depuis une interface simple et moderne. Espace d'administration sécurisé pour structurer l'offre de soins et piloter le référentiel médical.",
-    imageUrl: "./images/mon-medecin-admin-preview.webp",
+    imageUrl: "/images/mon-medecin-admin-preview.webp",
     technologies: ["Vue.js", "TailwindCSS", "Healthcare", "Dashboard", "Authentication", "REST API"],
     category: "web",
     featured: true,
@@ -1710,7 +1724,7 @@ const defaultProjects: Project[] = [
     title: "NexStream – Espace IPTV Personnel",
     description:
       "Plateforme web NexStream permettant aux utilisateurs de créer leurs accès IPTV, de recharger leur compte et de suivre leurs abonnements en toute simplicité. Landing page moderne et espace client pour gérer ses chaînes sans complication, avec essai gratuit et suivi des serveurs en ligne.",
-    imageUrl: "./images/nexstream-preview.png",
+    imageUrl: "/images/nexstream-preview.png",
     technologies: ["Next.js", "TailwindCSS", "Authentication", "Subscription Management", "Responsive Design", "Vercel"],
     category: "web",
     featured: true,
@@ -1728,7 +1742,7 @@ const defaultProjects: Project[] = [
     title: "SOSMoney – Microcrédit Instantané",
     description:
       "Plateforme fintech SOSMoney proposant du microcrédit instantané accessible à tous : obtenez un prêt de 5 000 à 50 000 FCFA en quelques minutes, 100% en ligne depuis votre mobile. Landing page et application permettant d'emprunter, d'acheter et de rembourser simplement, avec une boutique intégrée et un réseau de partenaires.",
-    imageUrl: "./images/sosmoney-preview.webp",
+    imageUrl: "/images/sosmoney-preview.webp",
     technologies: ["Next.js", "TailwindCSS", "Fintech", "Microcredit", "Mobile-First", "Responsive Design"],
     category: "fintech",
     featured: true,
@@ -1746,7 +1760,7 @@ const defaultProjects: Project[] = [
     title: "SIGAPE-OH – Portail National de l'Eau",
     description:
       "Front client de SIGAPE-OH, le service public numérique de l'eau porté par la DGRE (Ministère des Eaux et Forêts, Côte d'Ivoire). Site vitrine institutionnel et espace demandeur permettant de déposer une demande d'autorisation de prélèvement d'eau via un assistant en 7 étapes, de suivre son instruction en temps réel et de télécharger l'autorisation signée — 100% dématérialisé.",
-    imageUrl: "./images/sigape-oh-front-preview.webp",
+    imageUrl: "/images/sigape-oh-front-preview.webp",
     technologies: ["SvelteKit 2", "Svelte 5 Runes", "TypeScript", "Tailwind CSS v4", "Laravel API", "Sanctum Auth", "Cartographie"],
     category: "web",
     featured: true,
@@ -1764,7 +1778,7 @@ const defaultProjects: Project[] = [
     title: "Axelle Sanogo – Application Mobile",
     description:
       "Application mobile e-commerce de la maison de maroquinerie ivoirienne Axelle Sanogo, déclinaison native du site axellesanogo.ci. Catalogue des collections Signature et Prestige, recherche par référence, précommandes avec remise, avis clients et paiement Mobile Money pour acheter sacs et accessoires en cuir directement depuis son téléphone.",
-    imageUrl: "./images/axelle-sanogo-app-preview.webp",
+    imageUrl: "/images/axelle-sanogo-app-preview.webp",
     technologies: ["Flutter", "E-commerce", "Mobile Money", "REST API", "Product Catalog", "Push Notifications"],
     category: "e-commerce",
     featured: false,
@@ -1782,7 +1796,7 @@ const defaultProjects: Project[] = [
     title: "WeCatho – Communauté Catholique Mondiale",
     description:
       "Application mobile connectant les catholiques du monde entier autour d'une carte interactive de membres géolocalisés, d'une messagerie chiffrée et de groupes de prière thématiques. Pensée pour les fidèles, pèlerins et paroisses, elle prépare également une boutique d'objets liturgiques de Lourdes et une billetterie d'événements chrétiens.",
-    imageUrl: "./images/wecatho-preview.webp",
+    imageUrl: "/images/wecatho-preview.webp",
     technologies: ["Flutter", "Mapbox", "Firebase", "End-to-End Encryption", "Geolocation", "Real-time Chat", "Multilingual"],
     category: "social",
     featured: false,
@@ -1800,7 +1814,7 @@ const defaultProjects: Project[] = [
     title: "SIGAPE-OH – Back-office DGRE",
     description:
       "Back-office administratif de SIGAPE-OH destiné aux agents de la DGRE. Il pilote l'instruction des demandes d'autorisation d'eau le long d'un workflow à 9 étapes — de la recevabilité à la signature électronique du Ministre — avec gestion fine des rôles, cartographie des ouvrages, statistiques et administration complète de la plateforme.",
-    imageUrl: "./images/sigape-oh-backoffice-preview.webp",
+    imageUrl: "/images/sigape-oh-backoffice-preview.webp",
     technologies: ["SvelteKit 2", "Svelte 5 Runes", "TypeScript", "Tailwind CSS v4", "Laravel 12", "PostgreSQL", "Role-Based Access", "Data Visualization"],
     category: "web",
     featured: true,
@@ -1818,7 +1832,7 @@ const defaultProjects: Project[] = [
     title: "DGRE – Portail des Autorisations d'Eau (V1)",
     description:
       "Première version du portail de la Direction Générale des Ressources en Eau (Ministère des Eaux et Forêts, Côte d'Ivoire), dans l'identité institutionnelle verte et orange « Eaux et Forêts ». Site vitrine et espace demandeur permettant de déposer, suivre et recevoir en ligne ses autorisations d'utilisation de l'eau — sans déplacement et sans papier. Cette V1 a ensuite évolué vers la charte bleue SIGAPE-OH.",
-    imageUrl: "./images/dgre-preview.webp",
+    imageUrl: "/images/dgre-preview.webp",
     technologies: ["SvelteKit 2", "Svelte 5 Runes", "TypeScript", "Tailwind CSS v4", "Oswald", "Laravel API", "Sanctum Auth"],
     category: "web",
     featured: true,
@@ -1836,7 +1850,7 @@ const defaultProjects: Project[] = [
     title: "MIABA Group – Mobilité Premium en Afrique",
     description:
       "Site vitrine et plateforme de réservation de MIABA Group, service de chauffeur privé et de location de véhicules haut de gamme basé à Abidjan. Transferts aéroport avec suivi de vol, mise à disposition de chauffeur, location avec ou sans conducteur et offre corporate, présentés dans une identité sombre et dorée, en français et en anglais.",
-    imageUrl: "./images/miaba-landing-preview.webp",
+    imageUrl: "/images/miaba-landing-preview.webp",
     technologies: ["SvelteKit 2", "Svelte 5 Runes", "TypeScript", "Tailwind CSS", "i18n EN/FR", "Booking Flow", "WhatsApp API", "SEO"],
     category: "web",
     featured: true,
@@ -1854,7 +1868,7 @@ const defaultProjects: Project[] = [
     title: "Axelle Sanogo – Back-office E-commerce",
     description:
       "Back-office de gestion de la maison de maroquinerie ivoirienne Axelle Sanogo, pendant administratif du site axellesanogo.ci et de l'application mobile. Il centralise le catalogue produits, les commandes et devis, la base clients et prospects, les avis, le programme de récompenses et la newsletter dans une interface aux codes luxe de la marque.",
-    imageUrl: "./images/axelle-sanogo-backoffice-preview.webp",
+    imageUrl: "/images/axelle-sanogo-backoffice-preview.webp",
     technologies: ["SvelteKit 2", "Svelte 5 Runes", "TypeScript", "Tailwind CSS", "REST API", "Role-Based Access", "Data Visualization", "Vercel"],
     category: "web",
     featured: true,
@@ -1872,7 +1886,7 @@ const defaultProjects: Project[] = [
     title: "Ma Cantine – Site Vitrine",
     description:
       "Site de présentation de Ma Cantine, le service qui livre au bureau le plat du jour des cantines de quartier d'Abidjan. Il présente les plats, le fonctionnement de la commande, l'application client, les abonnements et l'espace restaurateur, dans une identité chaleureuse orange et brun.",
-    imageUrl: "./images/ma-cantine-site-preview.webp",
+    imageUrl: "/images/ma-cantine-site-preview.webp",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "SEO", "Vercel"],
     category: "web",
     featured: true,
@@ -1890,7 +1904,7 @@ const defaultProjects: Project[] = [
     title: "Ma Cantine – Application Client",
     description:
       "Application mobile pour commander son déjeuner et se le faire livrer au bureau à Abidjan. Le client choisit le plat du jour d'une cantine pour aujourd'hui ou demain, indique son lieu de travail et règle à la livraison ou via une formule d'abonnement. Elle s'appuie sur l'API Ma Cantine développée en Fastify.",
-    imageUrl: "./images/ma-cantine-client-preview.webp",
+    imageUrl: "/images/ma-cantine-client-preview.webp",
     technologies: ["Flutter", "Riverpod", "go_router", "Dio", "Secure Storage", "Fastify API", "REST API"],
     category: "e-commerce",
     featured: false,
@@ -1908,7 +1922,7 @@ const defaultProjects: Project[] = [
     title: "Ma Cantine – Espace Restaurateur",
     description:
       "Application multiplateforme (web, desktop, mobile) qui permet aux restaurateurs de gérer leur cantine sur Ma Cantine : commandes, livraisons groupées, plats du jour, formules d'abonnement, abonnés et avis clients, depuis un tableau de bord connecté à l'API Fastify.",
-    imageUrl: "./images/ma-cantine-resto-preview.webp",
+    imageUrl: "/images/ma-cantine-resto-preview.webp",
     technologies: ["Flutter", "Flutter Web", "Provider", "get_it", "fl_chart", "PDF Generation", "Fastify API"],
     category: "e-commerce",
     featured: true,
@@ -1926,7 +1940,7 @@ const defaultProjects: Project[] = [
     title: "Ma Cantine – Back-office Admin",
     description:
       "Back-office réservé à l'équipe Ma Cantine pour superviser toute la plateforme : restaurateurs, commandes, utilisateurs, lieux de travail, avis et annonces. Application Flutter multiplateforme qui s'appuie sur les routes d'administration de l'API Fastify.",
-    imageUrl: "./images/ma-cantine-admin-preview.webp",
+    imageUrl: "/images/ma-cantine-admin-preview.webp",
     technologies: ["Flutter", "Flutter Web", "Provider", "fl_chart", "Fastify", "TypeScript", "MikroORM", "PostgreSQL", "JWT Auth"],
     category: "web",
     featured: true,
@@ -1944,7 +1958,7 @@ const defaultProjects: Project[] = [
     title: "TransfertCM – Landing Page",
     description:
       "Site de présentation de TransfertCM, la plateforme camerounaise qui permet d'acheter du crédit et des forfaits MTN ou Orange pour soi ou pour ses proches, à toute heure, depuis son téléphone. Il présente les services, le fonctionnement, le portefeuille, les tarifs et la FAQ, et oriente vers le téléchargement de l'application.",
-    imageUrl: "./images/transfertcm-landing-preview.webp",
+    imageUrl: "/images/transfertcm-landing-preview.webp",
     technologies: ["SvelteKit", "Svelte 5", "TypeScript", "Tailwind CSS v4", "Static Adapter", "Docker", "Nginx"],
     category: "fintech",
     featured: true,
@@ -1962,7 +1976,7 @@ const defaultProjects: Project[] = [
     title: "TransfertCM – Back-office & Espace Cabine",
     description:
       "Plateforme web de gestion de TransfertCM avec deux espaces : le back-office de l'équipe (commandes, cabines, finance, fraude, support, équipe) et l'espace des cabines, les agents qui exécutent les recharges. Elle s'appuie sur une API AdonisJS d'environ 260 routes avec temps réel Socket.io.",
-    imageUrl: "./images/transfertcm-backoffice-preview.webp",
+    imageUrl: "/images/transfertcm-backoffice-preview.webp",
     technologies: ["SvelteKit", "TypeScript", "Tailwind CSS v4", "AdonisJS", "PostgreSQL", "Redis", "Socket.io", "S3", "Docker"],
     category: "fintech",
     featured: true,
@@ -1980,7 +1994,7 @@ const defaultProjects: Project[] = [
     title: "TransfertCM – Application Mobile",
     description:
       "Application mobile TransfertCM pour recharger du crédit et des forfaits MTN ou Orange au Cameroun. Le client gère son portefeuille, envoie du crédit à ses contacts et programme des transferts. La même application intègre aussi un mode cabine pour les agents qui traitent les commandes en temps réel.",
-    imageUrl: "./images/transfertcm-mobile-preview.webp",
+    imageUrl: "/images/transfertcm-mobile-preview.webp",
     technologies: ["Flutter", "Riverpod", "go_router", "Dio", "Freezed", "Socket.io", "Biometric Auth", "AdonisJS API"],
     category: "fintech",
     featured: false,
@@ -1998,7 +2012,7 @@ const defaultProjects: Project[] = [
     title: "DIAB Consulting – Site Vitrine",
     description:
       "Site vitrine de DIAB Consulting, cabinet multiservice qui accompagne particuliers et entreprises entre la Côte d'Ivoire et le Maroc. Il présente une dizaine de pôles d'activité (marketing digital, électricité, automobile, écoute juridique, BTP, événementiel, import/export…) dans une identité bleu nuit et or, avec prise de contact directe sur WhatsApp.",
-    imageUrl: "./images/diab-consulting-preview.webp",
+    imageUrl: "/images/diab-consulting-preview.webp",
     technologies: ["SvelteKit", "Svelte 5 Runes", "TypeScript", "Tailwind CSS v4", "Playwright", "SEO", "Vercel"],
     category: "web",
     featured: true,
@@ -2016,7 +2030,7 @@ const defaultProjects: Project[] = [
     title: "APCI – Anciens Parlementaires de Côte d'Ivoire",
     description:
       "Site institutionnel bilingue de l'Assemblée des Anciens Parlementaires de Côte d'Ivoire, dans une palette « Hémicycle » bordeaux profond, or vieilli et ivoire. Il réunit l'histoire de l'association, l'annuaire des membres, un mémorial, les actualités et un espace membre, le tout alimenté par une API Laravel dédiée.",
-    imageUrl: "./images/apci-preview.webp",
+    imageUrl: "/images/apci-preview.webp",
     technologies: ["SvelteKit", "Svelte 5 Runes", "Tailwind CSS v4", "Paraglide i18n", "Laravel", "PostgreSQL", "Sanctum", "Full-text Search"],
     category: "web",
     featured: true,
@@ -2034,7 +2048,7 @@ const defaultProjects: Project[] = [
     title: "AFAC-CI – Anciens Combattants de Côte d'Ivoire",
     description:
       "Site institutionnel bilingue de l'Association Fraternelle des Anciens Combattants de Côte d'Ivoire, aux couleurs de l'association : vert profond, or et accents nationaux ivoiriens. Il est construit autour d'un mémorial numérique qui rend hommage aux anciens combattants et transmet leur histoire.",
-    imageUrl: "./images/afacci-preview.webp",
+    imageUrl: "/images/afacci-preview.webp",
     technologies: ["SvelteKit", "Svelte 5 Runes", "TypeScript", "Tailwind CSS v4", "Paraglide i18n"],
     category: "web",
     featured: true,

@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Volume2, VolumeX } from "lucide-react";
 import { beep, isSoundEnabled, setSoundEnabled } from "./sound";
+import { useLocale } from "@/i18n";
 
 const SoundToggle = () => {
   const [on, setOn] = useState(isSoundEnabled());
+  const { pick } = useLocale();
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
@@ -29,8 +31,8 @@ const SoundToggle = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 2.15 }}
-      aria-label={on ? "Mute UI sounds" : "Enable UI sounds"}
-      data-cursor={on ? "mute" : "sound"}
+      aria-label={on ? pick({ fr: "Couper les sons de l'interface", en: "Mute UI sounds" }) : pick({ fr: "Activer les sons de l'interface", en: "Enable UI sounds" })}
+      data-cursor={on ? pick({ fr: "muet", en: "mute" }) : pick({ fr: "son", en: "sound" })}
     >
       {on ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
     </motion.button>

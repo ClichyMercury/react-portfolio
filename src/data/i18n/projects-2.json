@@ -1,0 +1,422 @@
+{
+  "29": {
+    "fr": {
+      "title": "My Design Pro",
+      "description": "Version avancée de l’application My Design, offrant aux créatifs un espace pour créer, partager et s’inspirer. Propose un environnement communautaire favorisant l’échange et la visibilité des œuvres.",
+      "objectives": "Donner aux designers la possibilité de publier leurs créations, d’interagir avec d’autres créatifs et de construire une communauté autour du design.",
+      "results": "Création et partage de contenus graphiques par la communauté. Développement d’un réseau d’échanges et d’inspiration. Engagement et interaction accrus entre utilisateurs."
+    },
+    "en": {
+      "title": "My Design Pro",
+      "description": "Advanced version of the My Design app, giving creatives a space to create, share and find inspiration. It offers a community environment that encourages exchange and visibility for their work.",
+      "objectives": "Give designers the ability to publish their creations, interact with other creatives and build a community around design.",
+      "results": "Creation and sharing of graphic content by the community. Development of a network for exchange and inspiration. Increased engagement and interaction between users."
+    }
+  },
+  "30": {
+    "fr": {
+      "title": "My Design",
+      "description": "Application mobile permettant aux utilisateurs de découvrir des créations graphiques variées : affiches, logos et visuels créatifs. Favorise l'inspiration et le partage dans une communauté créative.",
+      "objectives": "Permettre aux utilisateurs de parcourir des designs créatifs, de filtrer par catégories (affiches, logos, etc.) et de s’inspirer pour leurs propres créations.",
+      "results": "Interface simple et fluide qui met en avant les designs. Navigation rapide entre catégories. Expérience utilisateur optimisée pour mobile et tablettes."
+    },
+    "en": {
+      "title": "My Design",
+      "description": "Mobile app that lets users discover a wide range of graphic creations: posters, logos and creative visuals. It fosters inspiration and sharing within a creative community.",
+      "objectives": "Allow users to browse creative designs, filter by category (posters, logos, etc.) and find inspiration for their own creations.",
+      "results": "Simple, smooth interface that showcases the designs. Fast navigation between categories. User experience optimized for mobile and tablets."
+    }
+  },
+  "31": {
+    "fr": {
+      "title": "SOSMONEY ADMIN",
+      "description": "Plateforme complète de gestion des prêts aux employés, avec circuits d'approbation automatisés, suivi des paiements en temps réel et évaluation intelligente des risques. Elle comprend un tableau de bord d'administration avancé pour le traitement des prêts, la gestion des emprunteurs et l'analyse financière.",
+      "objectives": "Simplifier le processus de prêt aux employés en fournissant aux institutions financières des outils performants pour l'approbation des prêts, l'évaluation des risques et le suivi des paiements, tout en garantissant la conformité et en réduisant les délais de traitement.",
+      "results": "Circuit d'approbation des prêts simplifié, avec suivi des emprunteurs, suivi des paiements en temps réel et tableau de bord analytique pour le suivi des risques."
+    },
+    "en": {
+      "title": "SOSMONEY ADMIN",
+      "description": "Comprehensive employee loan management platform with automated approval workflows, real-time payment tracking, and intelligent risk assessment. Features advanced admin dashboard for loan processing, borrower management, and financial analytics.",
+      "objectives": "Streamline employee loan processes by providing financial institutions with powerful tools for loan approval, risk evaluation, and payment monitoring while ensuring compliance and reducing processing time.",
+      "results": "Streamlined the loan approval workflow, with borrower tracking, real-time payment monitoring and an analytics dashboard for risk follow-up."
+    }
+  },
+  "32": {
+    "fr": {
+      "title": "SOSMONEY Mobile",
+      "description": "Application mobile de gestion des prêts aux employés permettant aux utilisateurs de suivre le solde de leur prêt, leur historique de paiements et leur plafond de crédit disponible. Elle propose un tableau de bord intuitif avec des graphiques d'évolution du prêt, le suivi des remboursements et des notifications instantanées de rappel de paiement.",
+      "objectives": "Offrir aux employés un accès facile aux informations sur leur prêt via une interface mobile conviviale, avec suivi du solde en temps réel, suivi des paiements et outils de planification financière.",
+      "results": "Expérience mobile fluide avec suivi des prêts en temps réel, graphiques visuels de l'évolution des paiements, rappels de paiement automatisés et accès sécurisé aux données financières personnelles."
+    },
+    "en": {
+      "title": "SOSMONEY Mobile",
+      "description": "Mobile application for employee loan management allowing users to track their loan balance, payment history, and available credit limit. Features intuitive dashboard with loan evolution charts, repayment tracking, and instant notifications for payment reminders.",
+      "objectives": "Provide employees with easy access to their loan information through a user-friendly mobile interface, enabling real-time balance tracking, payment monitoring, and financial planning tools.",
+      "results": "Seamless mobile experience with real-time loan tracking, visual payment evolution charts, automated payment reminders, and secure access to personal financial data."
+    }
+  },
+  "33": {
+    "fr": {
+      "title": "Simplex Visitor Tracker",
+      "description": "Système de gestion des visiteurs conforme au RGPD, permettant de suivre en temps réel les visiteurs dans les locaux de l'entreprise sans conserver leurs pièces d'identité. Il comprend un tableau de bord agent pour les visites accompagnées, la vérification des badges et des statistiques de visite complètes, avec une approche axée sur la protection de la vie privée.",
+      "objectives": "Moderniser la gestion des visiteurs en proposant des solutions de suivi sécurisées et conformes au RGPD, qui préservent la vie privée des visiteurs tout en garantissant un contrôle complet des déplacements des personnes dans les locaux de l'entreprise.",
+      "results": "Gestion des visiteurs respectueuse de la vie privée, avec suivi des visiteurs en temps réel, processus d'entrée et de sortie simplifié et statistiques de visite, sans conservation des pièces d'identité."
+    },
+    "en": {
+      "title": "Simplex Visitor Tracker",
+      "description": "GDPR-compliant visitor management system enabling real-time tracking of visitors within company premises without retaining identity cards. Features agent dashboard for assisted visits, badge verification, and comprehensive visit analytics with privacy-first approach.",
+      "objectives": "Modernize visitor management by providing secure, GDPR-compliant tracking solutions that maintain visitor privacy while ensuring comprehensive oversight of personnel movement within company facilities.",
+      "results": "Privacy-first visitor management with real-time visitor tracking, a streamlined check-in/check-out process and visit analytics, without keeping identity cards."
+    }
+  },
+  "34": {
+    "fr": {
+      "title": "WaveLink",
+      "description": "Application mobile de transfert et de souscription rapide en Côte d'Ivoire. Permet d’envoyer du crédit, des forfaits internet ou des minutes d’appel sur les réseaux Orange, MTN et Moov, avec un paiement instantané et sécurisé via Wave.",
+      "objectives": "Faciliter les transferts d’unités et de forfaits à travers les principaux réseaux mobiles ivoiriens, en proposant une solution fluide, rapide et accessible à tous via le paiement mobile Wave.",
+      "results": "Expérience utilisateur simplifiée avec paiement en 1 clic, intégration fluide avec les trois grands opérateurs, transactions instantanées et interface intuitive adaptée au mobile."
+    },
+    "en": {
+      "title": "WaveLink",
+      "description": "Mobile app for fast top-ups and bundle purchases in Côte d'Ivoire. It lets users send airtime, data bundles or call minutes on the Orange, MTN and Moov networks, with instant, secure payment via Wave.",
+      "objectives": "Make it easy to transfer airtime and bundles across the main Ivorian mobile networks, offering a smooth, fast solution accessible to everyone through Wave mobile payment.",
+      "results": "Simplified user experience with one-click payment, smooth integration with the three major operators, instant transactions and an intuitive mobile-friendly interface."
+    }
+  },
+  "35": {
+    "fr": {
+      "title": "Hooli Library",
+      "description": "Bibliothèque numérique moderne permettant aux utilisateurs de lire, découvrir et gérer leurs livres préférés en ligne. Propose des recommandations personnalisées, des évaluations, et une interface élégante inspirée des meilleures plateformes de lecture.",
+      "objectives": "Créer une plateforme intuitive et interactive pour la lecture numérique, offrant un accès simple à des milliers de livres et une expérience fluide sur mobile.",
+      "results": "Expérience de lecture fluide avec recommandations personnalisées et navigation intuitive. Interface responsive et mode lecture optimisé pour tous les écrans."
+    },
+    "en": {
+      "title": "Hooli Library",
+      "description": "Modern digital library that lets users read, discover and manage their favorite books online. It offers personalized recommendations, ratings and an elegant interface inspired by the best reading platforms.",
+      "objectives": "Build an intuitive, interactive platform for digital reading, offering easy access to thousands of books and a smooth mobile experience.",
+      "results": "Smooth reading experience with personalized recommendations and intuitive navigation. Responsive interface and reading mode optimized for all screens."
+    }
+  },
+  "36": {
+    "fr": {
+      "title": "GS Dot Bet",
+      "description": "Application de suivi et de pronostic sportif offrant une expérience complète pour les passionnés de football. Suivez les scores en direct, les classements, et placez vos paris en toute sécurité depuis une interface moderne et immersive.",
+      "objectives": "Fournir une plateforme performante pour suivre les matchs en temps réel, consulter les statistiques, et effectuer des paris rapides tout en profitant d’un design soigné et ergonomique.",
+      "results": "Mise à jour en temps réel des scores, interface fluide et foncée adaptée aux sessions prolongées, et intégration transparente des cotes pour une expérience de pari immersive."
+    },
+    "en": {
+      "title": "GS Dot Bet",
+      "description": "Sports tracking and prediction app offering a complete experience for football fans. Follow live scores and standings, and place your bets securely from a modern, immersive interface.",
+      "objectives": "Provide a high-performance platform to follow matches in real time, check statistics and place quick bets, all with a polished, ergonomic design.",
+      "results": "Real-time score updates, a smooth dark interface suited to long sessions, and seamless odds integration for an immersive betting experience."
+    }
+  },
+  "37": {
+    "fr": {
+      "title": "Kotlin Bank UI & API",
+      "description": "Suite bancaire complète alliant une application mobile Kotlin moderne (Jetpack Compose) et une API backend Ktor gamifiée, conçue pour démocratiser l’éducation financière en Afrique à travers la gamification et les fonctionnalités locales.",
+      "objectives": "Créer une solution fintech innovante combinant application mobile et API bancaire gamifiée. L’objectif est de promouvoir l’éducation financière en Afrique grâce à des fonctionnalités culturelles telles que les tontines numériques, un marketplace local et un système de récompenses interactif.",
+      "results": "Développement d’une architecture complète front–back : application Kotlin fluide avec Jetpack Compose et API Ktor performante. L’ensemble offre une expérience immersive avec gamification, modules éducatifs, et intégration des réalités africaines dans la gestion financière."
+    },
+    "en": {
+      "title": "Kotlin Bank UI & API",
+      "description": "Complete banking suite combining a modern Kotlin mobile app (Jetpack Compose) and a gamified Ktor backend API, designed to make financial education accessible across Africa through gamification and local features.",
+      "objectives": "Build an innovative fintech solution combining a mobile app and a gamified banking API. The goal is to promote financial education in Africa through culturally relevant features such as digital tontines, a local marketplace and an interactive rewards system.",
+      "results": "Development of a complete front-to-back architecture: a smooth Kotlin app built with Jetpack Compose and a high-performance Ktor API. Together they deliver an immersive experience with gamification, educational modules and the integration of African realities into money management."
+    }
+  },
+  "38": {
+    "fr": {
+      "title": "Alerte E25 – Application Citoyenne",
+      "description": "Application mobile permettant aux citoyens de signaler en temps réel des incidents ou situations urgentes aux autorités locales. Elle intègre la géolocalisation, l'envoi d’alertes, la sélection de priorité, ainsi qu'une interface simple et intuitive pour faciliter la participation citoyenne.",
+      "objectives": "Offrir aux populations un outil simple, rapide et fiable pour signaler les urgences : incendies, accidents, agressions, nuisances publiques ou anomalies urbaines. L’objectif principal est de digitaliser la collaboration entre citoyens et autorités pour réduire les temps d'intervention.",
+      "results": "Mise en place d’un parcours fluide de déclaration d’alerte, intégration de la carte interactive, récupération précise de la localisation, catégorisation des incidents et synchronisation en temps réel avec l’API. L’application permet une meilleure visibilité des urgences et améliore la communication citoyenne."
+    },
+    "en": {
+      "title": "Alerte E25 – Citizen App",
+      "description": "Mobile app that lets citizens report incidents or emergencies to local authorities in real time. It includes geolocation, alert sending, priority selection and a simple, intuitive interface to encourage citizen participation.",
+      "objectives": "Give people a simple, fast and reliable tool to report emergencies: fires, accidents, assaults, public nuisances or urban issues. The main goal is to digitize collaboration between citizens and authorities to reduce response times.",
+      "results": "Implementation of a smooth alert-reporting flow, an interactive map, accurate location capture, incident categorization and real-time synchronization with the API. The app gives better visibility of emergencies and improves communication with citizens."
+    }
+  },
+  "39": {
+    "fr": {
+      "title": "Alerte E25 – Application Admin",
+      "description": "Interface mobile dédiée aux autorités pour visualiser, filtrer et gérer les alertes envoyées par les citoyens. Elle affiche sur une carte toutes les alertes en temps réel avec un système de priorisation (Urgent, Élevée, Moyenne, Faible) et permet un suivi opérationnel efficace.",
+      "objectives": "Donner aux autorités une vision globale et précise de toutes les alertes en temps réel. Prioriser les urgences, faciliter la prise de décision, optimiser la répartition des équipes sur le terrain et digitaliser la chaîne de traitement des incidents.",
+      "results": "Développement d'une carte administrative complète avec clustering, filtres par priorité, rafraîchissement en direct, gestion avancée des états des alertes et intégration complète avec le backend. L’application améliore la rapidité et l'efficacité des interventions."
+    },
+    "en": {
+      "title": "Alerte E25 – Admin App",
+      "description": "Mobile interface for authorities to view, filter and manage alerts sent by citizens. It displays all alerts on a map in real time with a prioritization system (Urgent, High, Medium, Low) and enables effective operational follow-up.",
+      "objectives": "Give authorities a complete, accurate view of all alerts in real time. Prioritize emergencies, support decision-making, optimize the deployment of field teams and digitize the incident-handling chain.",
+      "results": "Development of a complete admin map with clustering, priority filters, live refresh, advanced alert status management and full backend integration. The app improves the speed and efficiency of interventions."
+    }
+  },
+  "40": {
+    "fr": {
+      "title": "Jeko Pay – Nouvelle Page de Checkout",
+      "description": "Interface de paiement moderne développée autour de l’API Jeko Pay, permettant aux utilisateurs de régler leurs commandes via différents moyens de paiement mobiles (Wave, Orange Money, Moov Money, MTN MoMo, Djamo, Jeko). Le checkout offre une expérience fluide, sécurisée et multi-méthodes, optimisée pour le taux de conversion.",
+      "objectives": "Créer un module universel de paiement permettant aux marchands et aux applications tierces de proposer un checkout unifié compatible avec les solutions de paiement mobile les plus utilisées en Afrique de l’Ouest. L’objectif est d’améliorer l’adoption, réduire la friction au paiement et offrir une interface harmonisée.",
+      "results": "Développement d’un checkout responsive avec sélection intelligente des méthodes de paiement, validation automatique des numéros, gestion sécurisée de la transaction et design professionnel. Le système améliore considérablement la fluidité du parcours de paiement et favorise la confiance des utilisateurs."
+    },
+    "en": {
+      "title": "Jeko Pay – New Checkout Page",
+      "description": "Modern payment interface built on the Jeko Pay API, allowing users to pay for their orders with various mobile payment methods (Wave, Orange Money, Moov Money, MTN MoMo, Djamo, Jeko). The checkout offers a smooth, secure, multi-method experience optimized for conversion rate.",
+      "objectives": "Build a universal payment module that lets merchants and third-party apps offer a unified checkout compatible with the most widely used mobile payment solutions in West Africa. The goal is to improve adoption, reduce payment friction and provide a consistent interface.",
+      "results": "Development of a responsive checkout with smart payment method selection, automatic phone number validation, secure transaction handling and a professional design. The system greatly improves the smoothness of the payment journey and builds user trust."
+    }
+  },
+  "41": {
+    "fr": {
+      "title": "Payix – Application Mobile de Paiement",
+      "description": "Application fintech permettant aux utilisateurs de gérer leur solde, effectuer des transferts, recharger leur portefeuille, effectuer des retraits, payer des services et accéder à des services de prêt. L’interface est moderne, fluide et pensée pour simplifier la gestion quotidienne des transactions.",
+      "objectives": "Créer une application simple et intuitive pour permettre aux utilisateurs de suivre leur solde en temps réel, consulter leurs transactions et accéder facilement aux fonctionnalités essentielles telles que les transferts, dépôts, paiements, retraits et services financiers annexes.",
+      "results": "Interface épurée avec affichage dynamique du solde, gestion des transactions récentes, boutons d’action rapide et navigation fluide. Les utilisateurs peuvent effectuer des opérations financières de manière rapide, sécurisée et agréable."
+    },
+    "en": {
+      "title": "Payix – Mobile Payment App",
+      "description": "Fintech app that lets users manage their balance, make transfers, top up their wallet, make withdrawals, pay for services and access loan services. The interface is modern, smooth and designed to simplify day-to-day transaction management.",
+      "objectives": "Build a simple, intuitive app that lets users track their balance in real time, view their transactions and easily access essential features such as transfers, deposits, payments, withdrawals and related financial services.",
+      "results": "Clean interface with a dynamic balance display, recent transaction management, quick action buttons and smooth navigation. Users can carry out financial operations quickly, securely and pleasantly."
+    }
+  },
+  "42": {
+    "fr": {
+      "title": "Jeko Landing Page",
+      "description": "Landing page moderne pour Jeko, solution de paiement mobile money unifiée permettant aux commerçants d'encaisser via un QR code unique (Wave, Orange Money, MTN, Moov, Visa, Mastercard).",
+      "objectives": "Créer une vitrine digitale impactante pour présenter la solution Jeko aux commerçants ivoiriens et faciliter l'acquisition de nouveaux utilisateurs.",
+      "results": "Interface épurée avec taux de conversion optimisé, intégration des stores (App Store, Google Play) et mise en avant des +500 commerçants partenaires."
+    },
+    "en": {
+      "title": "Jeko Landing Page",
+      "description": "Modern landing page for Jeko, a unified mobile money payment solution that lets merchants accept payments through a single QR code (Wave, Orange Money, MTN, Moov, Visa, Mastercard).",
+      "objectives": "Create an impactful digital showcase to present the Jeko solution to Ivorian merchants and support the acquisition of new users.",
+      "results": "Clean interface with an optimized conversion rate, app store integration (App Store, Google Play) and a highlight of the 500+ partner merchants."
+    }
+  },
+  "43": {
+    "fr": {
+      "title": "Jeko Download Page",
+      "description": "Page de téléchargement dédiée à l'application Jeko Business, permettant aux commerçants d'installer rapidement l'app pour finaliser leurs paiements.",
+      "objectives": "Rediriger les utilisateurs vers les stores appropriés selon leur appareil et simplifier le parcours d'installation de l'application Jeko Business.",
+      "results": "Expérience fluide avec détection automatique de plateforme et redirection intelligente vers iOS ou Android."
+    },
+    "en": {
+      "title": "Jeko Download Page",
+      "description": "Download page dedicated to the Jeko Business app, allowing merchants to quickly install the app to complete their payments.",
+      "objectives": "Redirect users to the right app store for their device and simplify the installation journey for the Jeko Business app.",
+      "results": "Smooth experience with automatic platform detection and smart redirection to iOS or Android."
+    }
+  },
+  "44": {
+    "fr": {
+      "title": "Jeko Demo – Paiement Redirect",
+      "description": "Interface de démonstration permettant aux développeurs de tester l'API Jeko Pay en créant des paiements redirect avec sélection de boutique, montant et méthode de paiement (Wave, Orange Money, MTN, Moov, Djamo).",
+      "objectives": "Fournir un environnement de test interactif pour les développeurs souhaitant intégrer l'API Jeko Pay dans leurs applications, avec simulation complète du flux de paiement redirect.",
+      "results": "Outil de test fonctionnel permettant de valider les intégrations avant mise en production, avec support de toutes les méthodes de paiement et gestion des callbacks."
+    },
+    "en": {
+      "title": "Jeko Demo – Redirect Payment",
+      "description": "Demo interface that lets developers test the Jeko Pay API by creating redirect payments with store, amount and payment method selection (Wave, Orange Money, MTN, Moov, Djamo).",
+      "objectives": "Provide an interactive test environment for developers who want to integrate the Jeko Pay API into their applications, with a full simulation of the redirect payment flow.",
+      "results": "Working test tool for validating integrations before going to production, with support for all payment methods and callback handling."
+    }
+  },
+  "45": {
+    "fr": {
+      "title": "Alph Sécurité (Landing Page) – Sécurisation de quartier à la demande",
+      "description": "landing page de preseentation de la solution Alph Sécurité, une Plateforme digitale permettant aux particuliers et communautés de sécuriser leur quartier en un clic, en réservant des agents de sécurité certifiés, en rejoignant des communautés de vigilance et en consultant le niveau de sécurité en temps réel.",
+      "objectives": "Démocratiser l’accès à la sécurité privée en Afrique en proposant une solution simple, rapide et communautaire pour réserver des agents de sécurité et surveiller les zones à risque en temps réel.",
+      "results": "Mise en place d’une plateforme complète combinant application mobile et interface web, avec réservation d’agents, score de sécurité par zone, notifications en temps réel et système communautaire de vigilance."
+    },
+    "en": {
+      "title": "Alph Sécurité (Landing Page) – On-Demand Neighborhood Security",
+      "description": "Landing page presenting Alph Sécurité, a digital platform that lets individuals and communities secure their neighborhood in one click by booking certified security guards, joining neighborhood watch communities and checking the security level in real time.",
+      "objectives": "Make private security accessible across Africa by offering a simple, fast, community-based solution to book security guards and monitor high-risk areas in real time.",
+      "results": "Implementation of a complete platform combining a mobile app and a web interface, with guard booking, a security score per area, real-time notifications and a community watch system."
+    }
+  },
+  "46": {
+    "fr": {
+      "title": "Alph Sécurité – Application Mobile Client",
+      "description": "Application mobile permettant aux particuliers de réserver des agents de sécurité certifiés pour différents types de missions : garde rapprochée, sécurité bâtiment, sécurité événementielle et escorte VIP. Interface intuitive avec géolocalisation et système de réservation simplifié.",
+      "objectives": "Offrir aux utilisateurs un accès rapide et sécurisé à des services de sécurité privée à la demande, avec une expérience de réservation fluide et un suivi en temps réel des agents assignés.",
+      "results": "Interface moderne avec sélection de mission par catégorie, géolocalisation automatique, système de réservation en quelques clics et offres promotionnelles pour les nouveaux utilisateurs (-15% sur la première mission)."
+    },
+    "en": {
+      "title": "Alph Sécurité – Client Mobile App",
+      "description": "Mobile app that lets individuals book certified security guards for different types of missions: close protection, building security, event security and VIP escort. Intuitive interface with geolocation and a simplified booking system.",
+      "objectives": "Give users fast, secure access to on-demand private security services, with a smooth booking experience and real-time tracking of assigned guards.",
+      "results": "Modern interface with mission selection by category, automatic geolocation, booking in just a few clicks and promotional offers for new users (15% off the first mission)."
+    }
+  },
+  "47": {
+    "fr": {
+      "title": "PLUSS Alert – Application Mobile Citoyenne",
+      "description": "Application mobile de la Plateforme Une Seule Santé (PLUSS) de Côte d'Ivoire permettant aux citoyens de signaler en temps réel des alertes sanitaires liées aux zoonoses, épidémies et menaces de santé publique à l'interface Homme-Animal-Environnement.",
+      "objectives": "Digitaliser la surveillance sanitaire en Côte d'Ivoire en permettant aux citoyens de signaler rapidement les menaces de santé publique (COVID-19, Choléra, Ebola, etc.) avec géolocalisation et connexion aux services de santé partenaires comme MSF.",
+      "results": "Système de signalement d'alertes par catégorie (Santé, Zoonoses, Environnement) avec niveaux de priorité, affichage des statistiques en temps réel et redirection vers les services de santé compétents pour une prise en charge rapide."
+    },
+    "en": {
+      "title": "PLUSS Alert – Citizen Mobile App",
+      "description": "Mobile app of Côte d'Ivoire's One Health Platform (Plateforme Une Seule Santé, PLUSS) that lets citizens report, in real time, health alerts related to zoonoses, epidemics and public health threats at the human-animal-environment interface.",
+      "objectives": "Digitize health surveillance in Côte d'Ivoire by allowing citizens to quickly report public health threats (COVID-19, cholera, Ebola, etc.) with geolocation and connection to partner health services such as MSF.",
+      "results": "Alert reporting system by category (Health, Zoonoses, Environment) with priority levels, real-time statistics and redirection to the relevant health services for rapid response."
+    }
+  },
+  "48": {
+    "fr": {
+      "title": "PLUSS CI – Backoffice Administration",
+      "description": "Interface d'administration web de la Plateforme Une Seule Santé permettant aux autorités sanitaires de visualiser, filtrer et gérer les alertes signalées par les citoyens. Tableau de bord complet avec statistiques en temps réel, gestion des agents et suivi des services de santé.",
+      "objectives": "Centraliser la gestion des alertes sanitaires pour les autorités de santé publique, avec une vision globale des menaces en cours, le suivi des agents actifs et la coordination avec les services de santé partenaires.",
+      "results": "Tableau de bord interactif affichant le total des alertes, les statuts (en attente, résolues), les agents actifs, et une liste détaillée des alertes récentes avec filtrage par priorité (Haute, Moyenne, Faible) et catégorie (COVID-19, Choléra, etc.)."
+    },
+    "en": {
+      "title": "PLUSS CI – Admin Back Office",
+      "description": "Web administration interface of the One Health Platform that lets health authorities view, filter and manage alerts reported by citizens. Complete dashboard with real-time statistics, agent management and health service tracking.",
+      "objectives": "Centralize health alert management for public health authorities, with an overall view of current threats, tracking of active agents and coordination with partner health services.",
+      "results": "Interactive dashboard showing total alerts, statuses (pending, resolved), active agents and a detailed list of recent alerts with filtering by priority (High, Medium, Low) and category (COVID-19, cholera, etc.)."
+    }
+  },
+  "49": {
+    "fr": {
+      "title": "Décor de Rêve – Site Vitrine",
+      "description": "Site web e-commerce élégant pour Décor de Rêve, entreprise spécialisée dans les décors éblouissants, bouquets exquis, ballons colorés et bien plus. Transformez vos moments en souvenirs magiques avec une boutique en ligne intuitive et un système de commande via WhatsApp.",
+      "objectives": "Créer une vitrine digitale attrayante pour présenter les créations de Décor de Rêve, faciliter la découverte des produits (bouquets d'argent, boxes, décorations) et simplifier le processus de commande via WhatsApp.",
+      "results": "Site web moderne avec navigation fluide entre les catégories de produits, intégration WhatsApp pour les commandes instantanées, et design élégant mettant en valeur les créations artisanales."
+    },
+    "en": {
+      "title": "Décor de Rêve – Showcase Website",
+      "description": "Elegant e-commerce website for Décor de Rêve, a company specializing in dazzling decorations, exquisite bouquets, colorful balloons and much more. Turn your moments into magical memories with an intuitive online store and WhatsApp ordering.",
+      "objectives": "Create an attractive digital showcase to present Décor de Rêve's creations, make product discovery easy (money bouquets, gift boxes, decorations) and simplify ordering via WhatsApp.",
+      "results": "Modern website with smooth navigation between product categories, WhatsApp integration for instant orders and an elegant design that highlights the handcrafted creations."
+    }
+  },
+  "50": {
+    "fr": {
+      "title": "Décor de Rêve – Back Office",
+      "description": "Application de gestion complète pour Décor de Rêve permettant la gestion des produits, catégories, commandes, inventaire et mouvements de stock. Tableau de bord avec indicateurs clés : valeur stock, revenus du mois, commandes en attente, stock bas et surstock.",
+      "objectives": "Fournir un outil de gestion centralisé pour l'administration de l'entreprise : suivi des stocks, gestion des produits et catégories, traitement des commandes clients, bons d'entrée et gestion des fournisseurs.",
+      "results": "Back-office complet avec tableau de bord affichant la valeur du stock (27 320 FCFA), revenus mensuels, commandes en attente, alertes stock bas et accès rapide aux fonctionnalités de gestion quotidienne."
+    },
+    "en": {
+      "title": "Décor de Rêve – Back Office",
+      "description": "Complete management application for Décor de Rêve covering products, categories, orders, inventory and stock movements. Dashboard with key indicators: stock value, monthly revenue, pending orders, low stock and overstock.",
+      "objectives": "Provide a centralized management tool for running the business: stock tracking, product and category management, customer order processing, goods received notes and supplier management.",
+      "results": "Complete back office with a dashboard showing stock value (27,320 FCFA), monthly revenue, pending orders, low-stock alerts and quick access to day-to-day management features."
+    }
+  },
+  "51": {
+    "fr": {
+      "title": "AgriPilote – Plateforme de Gestion Agricole",
+      "description": "Plateforme complète de gestion des missions de drones agricoles pour le traitement des plantations. Permet la coordination entre entreprises clientes, télépilotes et administrateurs avec suivi des missions, gestion des plantations, rapports de traitement et tableau de bord analytique.",
+      "objectives": "Digitaliser et automatiser la gestion des missions de drones agricoles en Côte d'Ivoire. Centraliser le workflow entre clients (responsables de plantations), télépilotes et administrateurs pour optimiser les traitements (maturateur, herbicide, traitement à huile/eau) sur différentes cultures (canne à sucre, banane, maïs, hévéa).",
+      "results": "Tableau de bord complet avec suivi de 8 missions, gestion de 6 entreprises et 8 plantations. Système de validation des rapports multi-équipes, assignation des drones/chauffeurs/véhicules, et génération automatisée des fichiers KML par drone."
+    },
+    "en": {
+      "title": "AgriPilote – Agricultural Management Platform",
+      "description": "Complete platform for managing agricultural drone missions for plantation treatment. It enables coordination between client companies, drone pilots and administrators, with mission tracking, plantation management, treatment reports and an analytics dashboard.",
+      "objectives": "Digitize and automate the management of agricultural drone missions in Côte d'Ivoire. Centralize the workflow between clients (plantation managers), drone pilots and administrators to optimize treatments (ripener, herbicide, oil/water-based treatment) on different crops (sugarcane, banana, maize, rubber).",
+      "results": "Complete dashboard tracking 8 missions and managing 6 companies and 8 plantations. Multi-team report validation system, assignment of drones/drivers/vehicles, and automated generation of KML files per drone."
+    }
+  },
+  "52": {
+    "fr": {
+      "title": "StediiHome – Employabilité Domestique",
+      "description": "Application mobile connectant les familles aux employés de maison via un système de contrats QR Code sécurisés, un historique professionnel vivant et des avis vérifiés. Deux parcours utilisateur : Employer (famille) et Worker (employé).",
+      "objectives": "Sécuriser l'employabilité domestique en Afrique en apportant transparence, traçabilité des expériences professionnelles et sécurité contractuelle via un système de QR Code unique pour démarrer et terminer les contrats.",
+      "results": "Application complète avec 17 écrans fonctionnels : onboarding, inscription multi-étapes pour workers, système de contrats QR Code, messagerie temps réel, système d'évaluation obligatoire post-contrat et badges de réputation."
+    },
+    "en": {
+      "title": "StediiHome – Domestic Employability",
+      "description": "Mobile app connecting families with domestic workers through secure QR code contracts, a living work history and verified reviews. Two user journeys: Employer (family) and Worker (domestic worker).",
+      "objectives": "Secure domestic employability in Africa by bringing transparency, traceability of work experience and contractual security through a unique QR code system to start and end contracts.",
+      "results": "Complete app with 17 working screens: onboarding, multi-step sign-up for workers, QR code contract system, real-time messaging, mandatory post-contract rating system and reputation badges."
+    }
+  },
+  "53": {
+    "fr": {
+      "title": "SmartSaver – Tontine & Épargne Digitale",
+      "description": "Application fintech de gestion de tontines et d'épargne digitale. Permet aux utilisateurs de participer à des tontines collectives avec choix de rang de ramassage et de lancer des plans d'épargne personnalisés avec suivi en temps réel.",
+      "objectives": "Digitaliser le système traditionnel de tontine africaine et proposer des plans d'épargne flexibles. Permettre aux utilisateurs de gérer leurs portefeuilles Tontine et Épargne avec validation des transactions par des admins dédiés.",
+      "results": "Plateforme complète avec gestion de tontines (10 participants, ramassages périodiques), plans d'épargne personnalisés, historique des transactions, notifications de ramassage et système d'audit pour le super admin."
+    },
+    "en": {
+      "title": "SmartSaver – Digital Tontine & Savings",
+      "description": "Fintech app for managing tontines and digital savings. It lets users join group tontines with a choice of payout rank and start personalized savings plans with real-time tracking.",
+      "objectives": "Digitize the traditional African tontine system and offer flexible savings plans. Let users manage their Tontine and Savings wallets, with transactions validated by dedicated admins.",
+      "results": "Complete platform with tontine management (10 participants, periodic payouts), personalized savings plans, transaction history, payout notifications and an audit system for the super admin."
+    }
+  },
+  "54": {
+    "fr": {
+      "title": "TransformMe – Application Fitness",
+      "description": "Application de suivi fitness avec système de streak motivationnel, objectifs personnalisés et récompenses. Suivez vos séances de sport, vos repas et visualisez vos statistiques de progression avec des défis à long terme.",
+      "objectives": "Motiver les utilisateurs à maintenir une routine fitness régulière grâce à un système de streak (jours consécutifs), des objectifs sur 86 jours avec récompenses (Apple Watch, inscription salle de sport) et un suivi quotidien des activités.",
+      "results": "Interface gamifiée avec compteur de streak, progression d'objectif (20% accompli, 17/86 jours), suivi des séances sport et repas, statistiques détaillées et messages de motivation personnalisés."
+    },
+    "en": {
+      "title": "TransformMe – Fitness App",
+      "description": "Fitness tracking app with a motivational streak system, personalized goals and rewards. Track your workouts and meals and view your progress statistics with long-term challenges.",
+      "objectives": "Motivate users to maintain a regular fitness routine through a streak system (consecutive days), 86-day goals with rewards (Apple Watch, gym membership) and daily activity tracking.",
+      "results": "Gamified interface with a streak counter, goal progress (20% complete, 17/86 days), workout and meal tracking, detailed statistics and personalized motivational messages."
+    }
+  },
+  "55": {
+    "fr": {
+      "title": "AVP PROD – Portfolio Monteur Vidéo",
+      "description": "Portfolio web professionnel pour Ivan, monteur vidéo, photographe et producteur basé à Paris. Interface inspirée des logiciels de montage avec Media Pool, Timeline, Inspector et prévisualisation vidéo intégrée.",
+      "objectives": "Créer un portfolio unique et immersif reproduisant l'interface d'un logiciel de montage vidéo professionnel (DaVinci Resolve style) pour mettre en valeur les compétences d'un monteur vidéo, photographe et producteur.",
+      "results": "Interface créative avec Media Pool pour les images/vidéos, Timeline interactive, Inspector affichant le profil et compétences (Montage 95%, Photographie 90%, Production 85%, Étalonnage 88%, Sound Design 75%), et lecteur vidéo intégré."
+    },
+    "en": {
+      "title": "AVP PROD – Video Editor Portfolio",
+      "description": "Professional web portfolio for Ivan, a video editor, photographer and producer based in Paris. Interface inspired by editing software, with a Media Pool, Timeline, Inspector and built-in video preview.",
+      "objectives": "Create a unique, immersive portfolio that reproduces the interface of professional video editing software (DaVinci Resolve style) to showcase the skills of a video editor, photographer and producer.",
+      "results": "Creative interface with a Media Pool for images/videos, an interactive Timeline, an Inspector showing the profile and skills (Editing 95%, Photography 90%, Production 85%, Color Grading 88%, Sound Design 75%), and a built-in video player."
+    }
+  },
+  "56": {
+    "fr": {
+      "title": "StediiHome – Landing Page",
+      "description": "Site vitrine moderne pour StediiHome, plateforme d'emploi domestique sécurisé en Afrique. Présente la solution permettant d'embaucher du personnel domestique fiable sans recruter à l'aveugle, avec profils vérifiés et historique de travail traçable.",
+      "objectives": "Créer une landing page impactante pour présenter StediiHome aux familles et travailleurs domestiques au Kenya. Mettre en avant les avantages clés : identité vérifiée, historique impossible à falsifier et mise en relation rapide.",
+      "results": "Site vitrine bilingue (FR/EN) avec deux parcours utilisateur (Employeur/Travailleur), présentation des services (ménage, cuisine, garde d'enfants, personnes âgées), statistiques en temps réel (156 workers, 4.8 rating, 89% vérifiés) et mockup mobile immersif."
+    },
+    "en": {
+      "title": "StediiHome – Landing Page",
+      "description": "Modern showcase website for StediiHome, a secure domestic employment platform in Africa. It presents the solution for hiring reliable domestic staff without recruiting blindly, with verified profiles and a traceable work history.",
+      "objectives": "Create an impactful landing page to present StediiHome to families and domestic workers in Kenya. Highlight the key benefits: verified identity, a work history that cannot be falsified and fast matching.",
+      "results": "Bilingual (FR/EN) showcase website with two user journeys (Employer/Worker), presentation of services (cleaning, cooking, childcare, elderly care), real-time statistics (156 workers, 4.8 rating, 89% verified) and an immersive mobile mockup."
+    }
+  },
+  "57": {
+    "fr": {
+      "title": "WHARPE – Landing Page",
+      "description": "Site vitrine élégant pour WHARPE, cabinet informatique moderne accompagnant la transformation digitale en Afrique. Présente les deux pôles d'activité : Pôle Entreprises (développement sur mesure, cloud, maintenance) et Studio d'Innovation (apps mobiles, SaaS, marketplaces).",
+      "objectives": "Créer une vitrine digitale professionnelle reflétant l'ADN de WHARPE (Whole, Holistic, Analysis, Reactiveness, Partnership, Expertise) et présentant les services de transformation numérique pour les entreprises africaines.",
+      "results": "Landing page moderne avec animations fluides, présentation des 6 valeurs fondatrices, deux sections services distinctes (B2B et B2C), formulaire de contact intégré et design tech inspiré des circuits électroniques."
+    },
+    "en": {
+      "title": "WHARPE – Landing Page",
+      "description": "Elegant showcase website for WHARPE, a modern IT firm supporting digital transformation in Africa. It presents its two business units: Enterprise Division (custom development, cloud, maintenance) and Innovation Studio (mobile apps, SaaS, marketplaces).",
+      "objectives": "Create a professional digital showcase reflecting WHARPE's DNA (Whole, Holistic, Analysis, Reactiveness, Partnership, Expertise) and presenting its digital transformation services for African businesses.",
+      "results": "Modern landing page with smooth animations, a presentation of the 6 core values, two distinct service sections (B2B and B2C), a built-in contact form and a tech design inspired by electronic circuits."
+    }
+  },
+  "58": {
+    "fr": {
+      "title": "Cropsky – Landing Page",
+      "description": "Site vitrine pour Cropsky, centre d'expertise drone combinant technologie de pointe et savoir-faire professionnel au Canada, en Afrique et dans le monde. Présente les divisions Industrielle (inspection, surveillance, cartographie) et Aviation & Transport (livraison, mobilité urbaine aérienne).",
+      "objectives": "Créer un site vitrine professionnel et immersif pour positionner Cropsky comme leader de l'expertise drone à l'international, avec une présentation claire des services industriels et de transport aérien.",
+      "results": "Site bilingue (FR/EN) avec design dark thème cinématique, présentation des deux divisions (Industrielle et Aviation), mise en avant des valeurs (Innovation, Expertise, Vision) et partenariat WHARPE affiché."
+    },
+    "en": {
+      "title": "Cropsky – Landing Page",
+      "description": "Showcase website for Cropsky, a drone expertise center combining cutting-edge technology and professional know-how in Canada, Africa and worldwide. It presents the Industrial division (inspection, surveillance, mapping) and the Aviation & Transport division (delivery, urban air mobility).",
+      "objectives": "Create a professional, immersive showcase website to position Cropsky as a leader in drone expertise internationally, with a clear presentation of its industrial and air transport services.",
+      "results": "Bilingual (FR/EN) website with a cinematic dark-theme design, a presentation of both divisions (Industrial and Aviation), a highlight of its values (Innovation, Expertise, Vision) and the WHARPE partnership on display."
+    }
+  }
+}

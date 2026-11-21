@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useLocale } from "@/i18n";
+import { categoryLabel } from "./ProjectModal";
 
 interface LabApp {
   id: string;
@@ -36,6 +38,7 @@ const Screen = ({ app, size }: { app: LabApp; size: "main" | "side" }) => (
 );
 
 const DeviceLab = ({ apps, onSelect }: { apps: LabApp[]; onSelect: (id: string) => void }) => {
+  const { locale, pick } = useLocale();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const count = apps.length;
@@ -57,15 +60,15 @@ const DeviceLab = ({ apps, onSelect }: { apps: LabApp[]; onSelect: (id: string) 
   return (
     <div className="relative mb-24" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
       <div className="flex items-center gap-3 mb-6 font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>
-        <span style={{ color: "var(--accent)" }}>▣</span> device_lab // mobile_builds
+        <span style={{ color: "var(--accent)" }}>▣</span> {pick({ fr: "labo_mobile // builds_mobiles", en: "device_lab // mobile_builds" })}
         <div className="flex-1 tentacle-line" />
-        <span style={{ color: "var(--accent)" }}>{count} apps on test bench</span>
+        <span style={{ color: "var(--accent)" }}>{count} {pick({ fr: "apps sur le banc de test", en: "apps on test bench" })}</span>
       </div>
 
       <div className="panel rounded-xl overflow-hidden hud-corners">
         <div className="grid lg:grid-cols-5">
           <div className="lg:col-span-3 relative flex items-center justify-center gap-4 sm:gap-8 py-10 px-4 overflow-hidden" style={{ background: "radial-gradient(ellipse at center, rgba(0,229,255,0.06), transparent 70%)" }}>
-            <button onClick={() => go(-1)} className="hidden sm:block opacity-40 hover:opacity-80 transition-opacity" style={{ transform: "perspective(900px) rotateY(18deg)" }} aria-label="Previous app">
+            <button onClick={() => go(-1)} className="hidden sm:block opacity-40 hover:opacity-80 transition-opacity" style={{ transform: "perspective(900px) rotateY(18deg)" }} aria-label={pick({ fr: "Application précédente", en: "Previous app" })}>
               <Screen app={prev} size="side" />
             </button>
 
@@ -94,7 +97,7 @@ const DeviceLab = ({ apps, onSelect }: { apps: LabApp[]; onSelect: (id: string) 
               </AnimatePresence>
             </motion.button>
 
-            <button onClick={() => go(1)} className="hidden sm:block opacity-40 hover:opacity-80 transition-opacity" style={{ transform: "perspective(900px) rotateY(-18deg)" }} aria-label="Next app">
+            <button onClick={() => go(1)} className="hidden sm:block opacity-40 hover:opacity-80 transition-opacity" style={{ transform: "perspective(900px) rotateY(-18deg)" }} aria-label={pick({ fr: "Application suivante", en: "Next app" })}>
               <Screen app={next} size="side" />
             </button>
           </div>
@@ -111,7 +114,7 @@ const DeviceLab = ({ apps, onSelect }: { apps: LabApp[]; onSelect: (id: string) 
                   {platformsFor(active.technologies).map((p) => (
                     <span key={p} className="px-2 py-1 rounded font-mono text-[9px] uppercase tracking-[0.15em]" style={{ border: "1px solid var(--accent)", color: "var(--accent)" }}>{p}</span>
                   ))}
-                  <span className="px-2 py-1 rounded font-mono text-[9px] uppercase tracking-[0.15em]" style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}>{active.category}</span>
+                  <span className="px-2 py-1 rounded font-mono text-[9px] uppercase tracking-[0.15em]" style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}>{categoryLabel(active.category, locale)}</span>
                 </div>
                 <div className="flex flex-wrap gap-1.5 mb-6">
                   {active.technologies.slice(0, 6).map((t) => (
@@ -136,13 +139,13 @@ const DeviceLab = ({ apps, onSelect }: { apps: LabApp[]; onSelect: (id: string) 
               </div>
               <div className="flex items-center justify-between gap-3">
                 <button onClick={() => onSelect(active.id)} className="font-mono text-[10px] uppercase tracking-[0.2em] transition-colors hover:text-[var(--accent)]" style={{ color: "var(--fg-muted)" }}>
-                  open case file →
+                  {pick({ fr: "ouvrir le dossier →", en: "open case file →" })}
                 </button>
                 <div className="flex items-center gap-2">
-                  <button onClick={() => go(-1)} className="p-2 rounded transition-colors hover:text-[var(--accent)]" style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }} aria-label="Previous app">
+                  <button onClick={() => go(-1)} className="p-2 rounded transition-colors hover:text-[var(--accent)]" style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }} aria-label={pick({ fr: "Application précédente", en: "Previous app" })}>
                     <ChevronLeft className="h-4 w-4" />
                   </button>
-                  <button onClick={() => go(1)} className="p-2 rounded transition-colors hover:text-[var(--accent)]" style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }} aria-label="Next app">
+                  <button onClick={() => go(1)} className="p-2 rounded transition-colors hover:text-[var(--accent)]" style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }} aria-label={pick({ fr: "Application suivante", en: "Next app" })}>
                     <ChevronRight className="h-4 w-4" />
                   </button>
                 </div>

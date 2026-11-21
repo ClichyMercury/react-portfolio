@@ -7,6 +7,7 @@ import Counter from "./fx/Counter";
 import SectionRail from "./fx/SectionRail";
 import { PROJECT_COUNT } from "./ProjectsGrid";
 import Telemetry from "./Telemetry";
+import { useLocale } from "@/i18n";
 
 interface Skill {
   name: string;
@@ -17,6 +18,7 @@ interface Skill {
 
 const SkillsSection = ({ skills = defaultSkills }: { skills?: Skill[] }) => {
   const [view, setView] = useState<"constellation" | "mosaic">("constellation");
+  const { pick } = useLocale();
 
   return (
     <section id="skills" className="min-h-screen py-32 lg:py-44 px-6 relative">
@@ -25,12 +27,18 @@ const SkillsSection = ({ skills = defaultSkills }: { skills?: Skill[] }) => {
         <SectionHeader
           index="02"
           label="arsenal"
-          title="Tech"
-          titleHighlight="Constellation"
+          title={pick({ fr: "Constellation", en: "Tech" })}
+          titleHighlight={pick({ fr: "Tech", en: "Constellation" })}
           description={
             view === "constellation"
-              ? "Every star is a technology I've shipped with. Hover to trace the connections — grab one and throw it."
-              : "Every tile is a technology I've shipped with. Click one to open its official site or documentation."
+              ? pick({
+                  fr: "Chaque étoile est une technologie avec laquelle j'ai livré en production. Survolez pour suivre les connexions — attrapez-en une et lancez-la.",
+                  en: "Every star is a technology I've shipped with. Hover to trace the connections — grab one and throw it.",
+                })
+              : pick({
+                  fr: "Chaque tuile est une technologie avec laquelle j'ai livré en production. Cliquez pour ouvrir son site officiel ou sa documentation.",
+                  en: "Every tile is a technology I've shipped with. Click one to open its official site or documentation.",
+                })
           }
         />
 
@@ -43,13 +51,13 @@ const SkillsSection = ({ skills = defaultSkills }: { skills?: Skill[] }) => {
         >
           <div className="flex items-center justify-between px-4 py-2.5" style={{ borderBottom: "1px solid var(--border-subtle)", background: "var(--bg-elevated)" }}>
             <span className="font-mono text-[10px] uppercase tracking-[0.25em] flex-shrink-0" style={{ color: "var(--accent)" }}>
-              {view === "constellation" ? "star_map.render( )" : `grid.render( ${skills.length} )`}
+              {view === "constellation" ? pick({ fr: "carte_stellaire.render( )", en: "star_map.render( )" }) : pick({ fr: `grille.render( ${skills.length} )`, en: `grid.render( ${skills.length} )` })}
             </span>
             <div className="flex items-center gap-3 sm:gap-4">
               <div className="hidden sm:flex items-center gap-4 font-mono text-[9px] uppercase tracking-[0.15em]" style={{ color: "var(--fg-faint)" }}>
-                <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full" style={{ background: "#00E5FF" }} />languages</span>
+                <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full" style={{ background: "#00E5FF" }} />{pick({ fr: "langages", en: "languages" })}</span>
                 <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full" style={{ background: "#7DF9FF" }} />frameworks</span>
-                <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full" style={{ background: "#4A90D9" }} />tools</span>
+                <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full" style={{ background: "#4A90D9" }} />{pick({ fr: "outils", en: "tools" })}</span>
               </div>
               <div className="flex items-center rounded-md overflow-hidden" style={{ border: "1px solid var(--border-medium)" }}>
                 {(["constellation", "mosaic"] as const).map((mode) => (
@@ -63,7 +71,7 @@ const SkillsSection = ({ skills = defaultSkills }: { skills?: Skill[] }) => {
                       color: view === mode ? "var(--bg)" : "var(--fg-faint)",
                     }}
                   >
-                    {mode === "constellation" ? "stars" : "grid"}
+                    {mode === "constellation" ? pick({ fr: "etoiles", en: "stars" }) : pick({ fr: "grille", en: "grid" })}
                   </button>
                 ))}
               </div>
@@ -74,10 +82,10 @@ const SkillsSection = ({ skills = defaultSkills }: { skills?: Skill[] }) => {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { value: 6, suffix: "+", label: "Years of Experience" },
-            { value: PROJECT_COUNT, suffix: "+", label: "Projects Completed" },
-            { value: skills.length, suffix: "+", label: "Technologies Used" },
-            { value: 100, suffix: "%", label: "Client Satisfaction" },
+            { value: 6, suffix: "+", label: pick({ fr: "Années d'expérience", en: "Years of Experience" }) },
+            { value: PROJECT_COUNT, suffix: "+", label: pick({ fr: "Projets réalisés", en: "Projects Completed" }) },
+            { value: skills.length, suffix: "+", label: pick({ fr: "Technologies utilisées", en: "Technologies Used" }) },
+            { value: 100, suffix: "%", label: pick({ fr: "Satisfaction client", en: "Client Satisfaction" }) },
           ].map((s) => (
             <motion.div
               key={s.label}

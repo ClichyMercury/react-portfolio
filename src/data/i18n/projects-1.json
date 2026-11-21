@@ -1,0 +1,422 @@
+{
+  "83": {
+    "fr": {
+      "title": "Les Entreprises G&N – Boutique en ligne",
+      "description": "Boutique en ligne en production sur lesentreprisesgn.com pour Les Entreprises G&N, producteur de Cocody Angré (Abidjan) : Mon Gari, Mon Tapioca et coffrets à offrir, 100 % naturels. Vitrine e-commerce avec panier, commande et suivi par lien sécurisé, commandes sur mesure, recettes, avis clients, et un back-office complet pour la gérance.",
+      "objectives": "Permettre à une marque locale de vendre ses produits en ligne sans compte client : commande depuis le site ou WhatsApp, livraison à Abidjan et paiement à la livraison, avec un outil simple pour gérer catalogue, commandes, demandes sur mesure et avis.",
+      "results": "Site public (boutique, catégories, fiches produits, panier, formules, prestations, recettes express, commandes personnalisées, avis, histoire de la marque) et back-office (tableau de bord, saisie et suivi des commandes, clients, produits, catégories, recettes, avis, paramètres). Sécurité gérée en base : RLS, suivi de commande par jeton secret et prix recalculés côté serveur."
+    },
+    "en": {
+      "title": "Les Entreprises G&N – Online Store",
+      "description": "Live online store at lesentreprisesgn.com for Les Entreprises G&N, a producer based in Cocody Angré (Abidjan): Mon Gari, Mon Tapioca and gift boxes, 100% natural. E-commerce storefront with cart, ordering and tracking via a secure link, custom orders, recipes, customer reviews, and a complete back-office for the management team.",
+      "objectives": "Enable a local brand to sell its products online without customer accounts: ordering from the website or WhatsApp, delivery in Abidjan and cash on delivery, with a simple tool to manage the catalog, orders, custom requests and reviews.",
+      "results": "Public website (store, categories, product pages, cart, packages, services, quick recipes, custom orders, reviews, brand story) and back-office (dashboard, order entry and tracking, customers, products, categories, recipes, reviews, settings). Security handled at the database level: RLS, order tracking via a secret token and prices recalculated server-side."
+    }
+  },
+  "84": {
+    "fr": {
+      "title": "Herycia – Styliste Mobile",
+      "description": "Application mobile qui aide à composer ses tenues : on choisit ses pièces et leurs couleurs, un mannequin virtuel les habille en direct selon la silhouette (droite, sablier, ample), puis l'app évalue l'harmonie de la tenue et propose des améliorations. Elle inclut un catalogue de looks, un guide des couleurs et des favoris.",
+      "objectives": "Donner à chacun des conseils de style simples et bienveillants : partir d'une pièce pour obtenir des tenues complètes, ou composer une tenue entière et comprendre pourquoi les couleurs fonctionnent ensemble, avec des explications sans jugement.",
+      "results": "Composition de tenue sur mannequin 2D, évaluation avec un score d'harmonie et des pistes d'amélioration, suggestions à partir d'une pièce, catalogue de looks par style et occasion, guide des couleurs, favoris et tenues sauvegardées, et suggestions calculées sur l'appareil hors ligne. L'app tourne sur un serveur simulé intégré dont le contrat d'API est documenté en OpenAPI pour le futur back-end Laravel."
+    },
+    "en": {
+      "title": "Herycia – Mobile Stylist",
+      "description": "Mobile app that helps you put together outfits: you choose your pieces and their colors, a virtual mannequin wears them live according to body shape (straight, hourglass, curvy), then the app rates the outfit's harmony and suggests improvements. It includes a lookbook catalog, a color guide and favorites.",
+      "objectives": "Give everyone simple, supportive style advice: start from a single piece to get complete outfits, or build a whole outfit and understand why the colors work together, with judgment-free explanations.",
+      "results": "Outfit composition on a 2D mannequin, evaluation with a harmony score and improvement tips, suggestions from a single piece, a catalog of looks by style and occasion, a color guide, favorites and saved outfits, and on-device offline suggestions. The app runs on a built-in mock server whose API contract is documented in OpenAPI for the future Laravel back-end."
+    }
+  },
+  "1": {
+    "fr": {
+      "title": "MetaChange",
+      "description": "Application innovante d'échange de cryptomonnaies conçue pour le marché africain, offrant des transactions crypto vers mobile money simples et sécurisées.",
+      "objectives": "Démocratiser l'accès aux services financiers numériques en Afrique grâce à un échange de cryptomonnaies sécurisé.",
+      "results": "Mise en place d'une plateforme d'échange multi-devises sécurisée prenant en charge BNB, TRON et USDT, avec intégration de MTN et Orange Money."
+    },
+    "en": {
+      "title": "MetaChange",
+      "description": "Innovative cryptocurrency exchange app designed for the African market, offering simple and secure crypto-to-mobile money transactions.",
+      "objectives": "Democratize access to digital financial services in Africa through secure cryptocurrency exchange.",
+      "results": "Built secure multi-currency exchange supporting BNB, TRON, USDT with MTN and Orange Money integration."
+    }
+  },
+  "2": {
+    "fr": {
+      "title": "Galaxy Stream",
+      "description": "Application de streaming vidéo performante qui propose les derniers films, séries et contenus tendance grâce à l'API TMDB.",
+      "objectives": "Créer une plateforme de streaming moderne, avec une interface intuitive et des performances optimales pour la découverte de films.",
+      "results": "Expérience de streaming fluide, avec découverte de films et de séries, contenus tendance et une interface claire et intuitive."
+    },
+    "en": {
+      "title": "Galaxy Stream",
+      "description": "Powerful video streaming app that brings the latest movies, TV shows, and trending content using the TMDB API.",
+      "objectives": "Create a modern streaming platform with intuitive UI and optimal performance for movie discovery.",
+      "results": "Delivered a smooth streaming experience with movie and series discovery, trending content and a clean, intuitive interface."
+    }
+  },
+  "3": {
+    "fr": {
+      "title": "Vidalossa – Boutique en ligne",
+      "description": "Application e-commerce moderne avec paiements sécurisés via Flutterwave et intégration Firebase en temps réel.",
+      "objectives": "Développer une solution e-commerce robuste avec paiements sécurisés et gestion des stocks en temps réel.",
+      "results": "Parcours d'achat complet, de la consultation du catalogue au paiement sécurisé, avec mise à jour des commandes en temps réel."
+    },
+    "en": {
+      "title": "Vidalossa Online Store",
+      "description": "Modern e-commerce app with secure payments powered by Flutterwave and real-time Firebase integration.",
+      "objectives": "Develop robust e-commerce solution with secure payments and real-time inventory management.",
+      "results": "Delivered a complete shopping flow, from catalog browsing to secure checkout, with real-time order updates."
+    }
+  },
+  "4": {
+    "fr": {
+      "title": "Site web Medical Volunteer",
+      "description": "Refonte complète du site web de l'organisation Medical Volunteer, qui célèbre 25 ans d'engagement pour la santé.",
+      "objectives": "Créer un site web moderne et responsive mettant en valeur 25 ans d'action médicale bénévole et promouvoir les événements de l'anniversaire.",
+      "results": "Visibilité accrue de l'organisation et plateforme moderne pour mobiliser les bénévoles."
+    },
+    "en": {
+      "title": "Medical Volunteer Website",
+      "description": "Complete website redesign for Medical Volunteer organization celebrating 25 years of healthcare advocacy.",
+      "objectives": "Create modern responsive website showcasing 25 years of medical volunteer work and promote anniversary events.",
+      "results": "Increased organization visibility and created modern platform for volunteer engagement."
+    }
+  },
+  "5": {
+    "fr": {
+      "title": "Site web artisanal MELOUKA",
+      "description": "Site vitrine moderne pour MELOUKA, entreprise ivoirienne d'artisanat en tricot, avec gestion dynamique des produits.",
+      "objectives": "Développer un site vitrine élégant avec gestion dynamique des produits et un processus de commande simplifié.",
+      "results": "Visibilité accrue de l'entreprise et processus de commande client simplifié grâce à l'intégration de WhatsApp."
+    },
+    "en": {
+      "title": "MELOUKA Artisan Website",
+      "description": "Modern showcase website for MELOUKA, an Ivorian handicraft knitting company with dynamic product management.",
+      "objectives": "Develop elegant showcase website with dynamic product management and simplified ordering process.",
+      "results": "Increased company visibility and streamlined customer ordering process through WhatsApp integration."
+    }
+  },
+  "6": {
+    "fr": {
+      "title": "RecipeMaster",
+      "description": "Application web pour gérer et organiser ses recettes préférées, avec prise en charge multilingue (FR, EN, ES).",
+      "objectives": "Créer une application frontend moderne avec une gestion d'état réactive et un support multilingue.",
+      "results": "Architecture propre avec stores réactifs et routage dynamique pour la gestion des recettes."
+    },
+    "en": {
+      "title": "RecipeMaster",
+      "description": "Web application for managing and organizing favorite recipes with internationalization support (FR, EN, ES).",
+      "objectives": "Create modern frontend application with reactive state management and multi-language support.",
+      "results": "Developed clean architecture with reactive stores and dynamic routing for recipe management."
+    }
+  },
+  "7": {
+    "fr": {
+      "title": "Application santé Moyivawa",
+      "description": "Application e-santé pour la gestion des médicaments et les consultations médicales, avec intégration du paiement mobile.",
+      "objectives": "Développer une solution complète de gestion de la santé avec suivi des médicaments et fonctionnalités de consultation.",
+      "results": "Plateforme de santé sécurisée avec systèmes de paiement intégrés pour les services médicaux."
+    },
+    "en": {
+      "title": "Moyivawa Health App",
+      "description": "E-health application for medication management and medical consultations with mobile payment integration.",
+      "objectives": "Develop comprehensive health management solution with medication tracking and consultation features.",
+      "results": "Created secure healthcare platform with integrated payment systems for medical services."
+    }
+  },
+  "8": {
+    "fr": {
+      "title": "Minimal Contacts",
+      "description": "Application légère de gestion de contacts utilisant l'API RandomUser.me pour générer et gérer des contacts dynamiquement.",
+      "objectives": "Concevoir une application de gestion de contacts minimaliste avec une architecture propre et une intégration d'API.",
+      "results": "Solution de gestion de contacts efficace, avec une expérience utilisateur fluide et le pattern BLoC."
+    },
+    "en": {
+      "title": "Minimal Contacts",
+      "description": "Lightweight contact manager app using RandomUser.me API for dynamic contact generation and management.",
+      "objectives": "Build minimalist contact management app with clean architecture and API integration.",
+      "results": "Developed efficient contact management solution with smooth user experience and BLoC pattern."
+    }
+  },
+  "9": {
+    "fr": {
+      "title": "RanTube",
+      "description": "Application de génération aléatoire de vidéos YouTube, avec fonctionnalités gratuites et premium et intégration d'outils d'analyse.",
+      "objectives": "Créer une plateforme attrayante de découverte YouTube avec fonctionnalités premium et suivi analytique.",
+      "results": "Application de découverte vidéo évolutive avec stratégie de monétisation et analyse des usages."
+    },
+    "en": {
+      "title": "RanTube",
+      "description": "Random YouTube video generator app with free and premium features, analytics integration.",
+      "objectives": "Create engaging YouTube discovery platform with premium features and analytics tracking.",
+      "results": "Built scalable video discovery app with monetization strategy and user analytics."
+    }
+  },
+  "10": {
+    "fr": {
+      "title": "Djassaman – Gestionnaire de budget",
+      "description": "Application intelligente de gestion de budget développée avec Flask et SQLAlchemy pour le suivi des finances.",
+      "objectives": "Développer une solution robuste de gestion budgétaire pour les particuliers et les entreprises, avec un suivi complet.",
+      "results": "Plateforme de gestion financière efficace reposant sur une architecture backend robuste."
+    },
+    "en": {
+      "title": "Djassaman Budget Manager",
+      "description": "Intelligent budget management application built with Flask and SQLAlchemy for tracking finances.",
+      "objectives": "Develop robust budget management solution for individuals and businesses with comprehensive tracking.",
+      "results": "Created efficient financial management platform with robust backend architecture."
+    }
+  },
+  "11": {
+    "fr": {
+      "title": "Application VTC Zem",
+      "description": "Application innovante de VTC offrant une expérience de transport fluide, sécurisée et accessible aux passagers comme aux chauffeurs.",
+      "objectives": "Créer une plateforme VTC complète avec suivi en temps réel et système de réservation intuitif.",
+      "results": "Solution VTC complète avec applications dédiées aux chauffeurs et aux passagers."
+    },
+    "en": {
+      "title": "Zem VTC App",
+      "description": "Innovative ride-hailing app offering smooth, secure and accessible transportation experience for passengers and drivers.",
+      "objectives": "Create comprehensive VTC platform with real-time tracking and intuitive booking system.",
+      "results": "Developed full-featured ride-hailing solution with driver and passenger applications."
+    }
+  },
+  "12": {
+    "fr": {
+      "title": "FOSOPIQ – Gestion d'événements",
+      "description": "Plateforme de gestion des événements d'une fondation humanitaire couvrant les secteurs Éducation, Social, Santé et Environnement.",
+      "objectives": "Centraliser et structurer les initiatives humanitaires pour une meilleure gestion et plus de transparence.",
+      "results": "Plateforme complète de suivi des événements et des contributions des membres, avec tableau de bord analytique."
+    },
+    "en": {
+      "title": "FOSOPIQ Event Management",
+      "description": "Event management platform for humanitarian foundation activities across Education, Social, Health, and Environment sectors.",
+      "objectives": "Centralize and structure humanitarian initiatives ensuring better management and transparency.",
+      "results": "Built comprehensive platform tracking events and member contributions with analytical dashboard."
+    }
+  },
+  "13": {
+    "fr": {
+      "title": "SOS AVC – Alerte médicale",
+      "description": "Application vitale conçue pour réagir rapidement aux urgences liées aux AVC, avec des fonctionnalités d'assistance immédiate.",
+      "objectives": "Développer une solution d'intervention d'urgence pour la détection des AVC, avec système d'alerte rapide et assistance en temps réel.",
+      "results": "Application de santé critique améliorant les délais d'intervention d'urgence et les chances de survie."
+    },
+    "en": {
+      "title": "SOS AVC Medical Alert",
+      "description": "Life-saving application designed to respond quickly to stroke emergencies with immediate assistance features.",
+      "objectives": "Develop emergency response solution for stroke detection with rapid alert system and real-time assistance.",
+      "results": "Created critical healthcare app improving emergency response times and survival chances."
+    }
+  },
+  "14": {
+    "fr": {
+      "title": "Maturus Scoring",
+      "description": "Application d'évaluation de la maturité organisationnelle qui aide les entreprises à mesurer, analyser et optimiser leur performance organisationnelle.",
+      "objectives": "Fournir un diagnostic organisationnel précis avec des recommandations personnalisées pour améliorer la performance.",
+      "results": "Plateforme d'évaluation complète avec scoring intelligent et benchmark sectoriel."
+    },
+    "en": {
+      "title": "Maturus Scoring",
+      "description": "Organizational maturity assessment app helping companies measure, analyze and optimize their organizational performance.",
+      "objectives": "Provide precise organizational diagnosis with personalized recommendations for performance improvement.",
+      "results": "Delivered comprehensive assessment platform with intelligent scoring and sectoral benchmarking."
+    }
+  },
+  "15": {
+    "fr": {
+      "title": "Meter Manager IoT",
+      "description": "Application intelligente de suivi de la consommation d'électricité, avec analyse en temps réel, prévisions et fonctionnalités d'optimisation.",
+      "objectives": "Développer une solution IoT de suivi énergétique avec alertes et optimisation de la consommation.",
+      "results": "Vision claire de la consommation d'électricité pour les utilisateurs, avec suivi en temps réel et prévisions de consommation pour les aider à adapter leurs habitudes."
+    },
+    "en": {
+      "title": "Meter Manager IoT",
+      "description": "Smart electricity consumption monitoring app with real-time analysis, forecasting and optimization features.",
+      "objectives": "Develop IoT solution for energy monitoring with alerts and consumption optimization.",
+      "results": "Gave users a clear view of their electricity usage with real-time tracking and consumption forecasts to help them adjust their habits."
+    }
+  },
+  "16": {
+    "fr": {
+      "title": "Sikka – Tontine digitale",
+      "description": "Application de tontine digitale sécurisée permettant de gérer facilement l'épargne collective et les cotisations, avec chiffrement.",
+      "objectives": "Simplifier la gestion financière de groupe grâce à un système de cotisation transparent, fiable et automatisé.",
+      "results": "Plateforme sécurisée permettant une gestion efficace de l'épargne collective grâce à des processus automatisés."
+    },
+    "en": {
+      "title": "Sikka Digital Tontine",
+      "description": "Secure digital tontine app enabling users to easily manage group savings and contributions with encryption.",
+      "objectives": "Simplify group financial management with transparent, reliable and automated contribution system.",
+      "results": "Built secure platform enabling efficient group savings management with automated workflows."
+    }
+  },
+  "17": {
+    "fr": {
+      "title": "IBH (Ivoire Beat Hub)",
+      "description": "Application d'espace créatif pour artistes : un clone de Google Keep conçu pour capturer et organiser ses inspirations musicales.",
+      "objectives": "Offrir aux artistes un espace dédié pour capturer, organiser et retrouver efficacement leurs inspirations musicales.",
+      "results": "Plateforme intuitive qui aide les artistes à structurer leur processus créatif sans perdre leurs idées."
+    },
+    "en": {
+      "title": "IBH (Ivoire Beat Hub)",
+      "description": "Creative workspace app for artists - a Google Keep clone designed for capturing and organizing musical inspirations.",
+      "objectives": "Provide artists with dedicated space to capture, organize and retrieve musical inspirations efficiently.",
+      "results": "Created intuitive platform helping artists structure their creative process without losing ideas."
+    }
+  },
+  "18": {
+    "fr": {
+      "title": "Baromètre Santé",
+      "description": "Plateforme de télémédecine avancée avec analyse de santé par IA, suivi des patients à distance et orchestration intelligente des rendez-vous, pour une santé numérique complète.",
+      "objectives": "Transformer l'accès aux soins en proposant des services médicaux à distance complets, avec suivi de santé intelligent et analyses prédictives du bien-être.",
+      "results": "Expérience complète de soins à distance : prise de rendez-vous, téléconsultations vidéo et suivi de santé des patients depuis une seule application."
+    },
+    "en": {
+      "title": "Baromètre Santé",
+      "description": "Advanced telemedicine platform with AI-powered health analytics, remote patient monitoring, and intelligent appointment orchestration for comprehensive digital healthcare.",
+      "objectives": "Transform healthcare accessibility by providing comprehensive remote medical services with intelligent health tracking and predictive wellness analytics.",
+      "results": "Built a complete remote care experience: appointment booking, video consultations and patient health follow-up from a single app."
+    }
+  },
+  "19": {
+    "fr": {
+      "title": "Collards Greens Bank",
+      "description": "Application de micro-banque révolutionnaire favorisant l'inclusion financière, avec scoring de crédit piloté par l'IA et transactions sécurisées par la blockchain pour les populations peu bancarisées.",
+      "objectives": "Réduire la fracture financière en proposant des services bancaires accessibles, avec une évaluation intelligente des risques et un suivi personnalisé de la santé financière.",
+      "results": "Expérience bancaire simple donnant accès aux micro-crédits, à l'épargne et au suivi de compte depuis son téléphone."
+    },
+    "en": {
+      "title": "Collards Greens Bank",
+      "description": "Revolutionary micro-banking app empowering financial inclusion with AI-driven credit scoring and blockchain-secured transactions for underbanked communities.",
+      "objectives": "Bridge the financial gap by providing accessible banking services with intelligent risk assessment and personalized financial wellness tracking.",
+      "results": "Delivered a simple banking experience giving users access to micro-loans, savings and account tracking from their phone."
+    }
+  },
+  "20": {
+    "fr": {
+      "title": "FindMacy",
+      "description": "Localisateur de pharmacies intelligent avec disponibilité des médicaments en temps réel, vérification des interactions médicamenteuses par IA et téléconsultations intégrées.",
+      "objectives": "Révolutionner l'accès aux médicaments en mettant les patients en relation avec les produits disponibles, tout en garantissant leur sécurité grâce à la prévention intelligente des interactions médicamenteuses.",
+      "results": "Recherche simplifiée des pharmacies à proximité et vérification de la disponibilité des médicaments, avec recherche sur carte et contrôle des interactions médicamenteuses."
+    },
+    "en": {
+      "title": "FindMacy",
+      "description": "Smart pharmacy locator with real-time medication availability, AI-powered drug interaction checker, and integrated telemedicine consultations.",
+      "objectives": "Revolutionize pharmaceutical access by connecting patients to available medications while ensuring safety through intelligent drug interaction prevention.",
+      "results": "Made it easier to find nearby pharmacies and check medication availability, with map-based search and drug interaction checks."
+    }
+  },
+  "21": {
+    "fr": {
+      "title": "BabiWarren",
+      "description": "Plateforme de covoiturage nouvelle génération avec algorithmes de tarification dynamique, suivi de l'empreinte carbone et planification d'itinéraires optimisée par l'IA, pour une mobilité urbaine durable.",
+      "objectives": "Transformer le transport urbain grâce à une mise en relation intelligente, une conscience environnementale et des analyses prédictives pour des trajets optimaux.",
+      "results": "Expérience de réservation de trajets avec suivi GPS en direct, tarification transparente et suggestions d'itinéraires pour les déplacements en ville."
+    },
+    "en": {
+      "title": "BabiWarren",
+      "description": "Next-generation ride-sharing platform with dynamic pricing algorithms, carbon footprint tracking, and AI-optimized route planning for sustainable urban mobility.",
+      "objectives": "Transform urban transportation through intelligent matching, environmental consciousness, and predictive analytics for optimal ride experiences.",
+      "results": "Delivered a ride-booking experience with live GPS tracking, transparent pricing and route suggestions for city trips."
+    }
+  },
+  "22": {
+    "fr": {
+      "title": "Le Livreur",
+      "description": "Écosystème de livraison multi-vendeurs intelligent avec logistique prédictive, orchestration des commandes en temps réel et prévision de la demande par IA pour les commerces locaux.",
+      "objectives": "Révolutionner le commerce local en créant un réseau de livraison intelligent qui anticipe la demande et optimise la logistique pour une efficacité maximale.",
+      "results": "Clients, commerces locaux et livreurs réunis dans un même écosystème, avec suivi des commandes en temps réel de l'achat à la livraison."
+    },
+    "en": {
+      "title": "Le Livreur",
+      "description": "Intelligent multi-vendor delivery ecosystem with predictive logistics, real-time order orchestration, and AI-powered demand forecasting for local businesses.",
+      "objectives": "Revolutionize local commerce by creating an intelligent delivery network that anticipates demand and optimizes logistics for maximum efficiency.",
+      "results": "Connected customers, local businesses and delivery agents in one ecosystem, with real-time order tracking from purchase to delivery."
+    }
+  },
+  "23": {
+    "fr": {
+      "title": "Le Livreur Agent",
+      "description": "Application mobile dédiée aux livreurs, avec suivi GPS en temps réel, optimisation intelligente des itinéraires et interface intuitive de gestion des commandes. Elle maximise l'efficacité des livraisons grâce à des outils de suivi avancés et des fonctionnalités de communication fluides.",
+      "objectives": "Fluidifier les opérations de livraison en fournissant aux livreurs une application puissante et simple d'utilisation, qui optimise les itinéraires, améliore la productivité et facilite la communication avec les clients et les restaurants.",
+      "results": "Outil mobile dédié permettant aux livreurs de recevoir les commandes, suivre leurs itinéraires et mettre à jour le statut des livraisons en temps réel."
+    },
+    "en": {
+      "title": "Le Livreur Agent",
+      "description": "Dedicated mobile application for delivery agents featuring real-time GPS tracking, intelligent route optimization, and intuitive order management interface. Maximizes delivery efficiency with advanced tracking tools and seamless communication features.",
+      "objectives": "Streamline delivery operations by providing agents with a powerful, user-friendly application that optimizes routes, enhances productivity, and facilitates communication with customers and restaurants.",
+      "results": "Gave delivery agents a focused mobile tool to receive orders, follow their routes and update delivery status in real time."
+    }
+  },
+  "24": {
+    "fr": {
+      "title": "Le Livreur Resto",
+      "description": "Plateforme complète de gestion pour restaurants, avec interface de commandes en temps réel, gestion dynamique des menus, analyses de performance et intégration fluide à l'écosystème de livraison. Elle optimise les opérations culinaires et la relation client.",
+      "objectives": "Digitaliser et optimiser les opérations des restaurants partenaires en leur fournissant des outils modernes de gestion des commandes, de contrôle des menus et d'analyse de performance, tout en préservant une expérience culinaire de qualité.",
+      "results": "Interface unique permettant aux restaurants de recevoir les commandes, gérer leur menu et suivre leur activité, entièrement connectée à la plateforme de livraison."
+    },
+    "en": {
+      "title": "Le Livreur Resto",
+      "description": "Comprehensive restaurant management platform with real-time order interface, dynamic menu management, performance analytics, and seamless integration with the delivery ecosystem. Optimizes culinary operations and customer relationships.",
+      "objectives": "Digitize and optimize partner restaurant operations by providing modern tools for order management, menu control, and performance analysis while maintaining high-quality culinary experiences.",
+      "results": "Gave restaurants a single interface to receive orders, manage their menu and follow their activity, fully connected to the delivery platform."
+    }
+  },
+  "25": {
+    "fr": {
+      "title": "AZPROD",
+      "description": "Agence créative spécialisée dans la production musicale, le booking d'artistes et l'influence digitale en Afrique de l'Ouest. Nous transformons l'industrie musicale en connectant talents émergents, marques et publics à travers des collaborations authentiques et des événements mémorables.",
+      "objectives": "Révolutionner l'écosystème africain de la musique et des médias en créant des passerelles durables entre artistes, influenceurs et marques, tout en développant de nouveaux talents et en produisant des événements culturels d'envergure.",
+      "results": "Plus de 6 ans d'expertise dans l'industrie musicale, production d'événements majeurs comme FESTIGOLA Kinshasa 2024, développement d'artistes reconnus tels que Barack La Voix d'Or, et création d'un réseau d'influence authentique en Afrique de l'Ouest."
+    },
+    "en": {
+      "title": "AZPROD",
+      "description": "Creative agency specializing in music production, artist booking, and digital influence across West Africa. We transform the music industry by connecting emerging talents, brands, and audiences through authentic collaborations and memorable events.",
+      "objectives": "Revolutionize the African music and media ecosystem by creating sustainable bridges between artists, influencers, and brands, while developing new talents and producing large-scale cultural events.",
+      "results": "Over 6 years of expertise in the music industry, production of major events like FESTIGOLA Kinshasa 2024, development of recognized artists such as Barack La Voix d'Or, and creation of an authentic influence network across West Africa."
+    }
+  },
+  "26": {
+    "fr": {
+      "title": "MôyCom",
+      "description": "Application de gestion commerciale pour les délégués commerciaux du secteur de la santé, avec suivi des clients, gestion du catalogue produits, traitement des commandes et analyses de performance. Elle simplifie les opérations de vente de produits pharmaceutiques et d'équipements médicaux.",
+      "objectives": "Optimiser les opérations commerciales dans la santé en fournissant aux équipes de vente des outils complets de gestion des clients, de promotion des produits et de suivi des ventes dans le secteur médical.",
+      "results": "Outil mobile unique permettant aux délégués commerciaux de suivre leurs clients, consulter le catalogue produits, passer des commandes et suivre leurs performances."
+    },
+    "en": {
+      "title": "MôyCom",
+      "description": "Commercial management application for healthcare sales representatives featuring client tracking, product catalog management, order processing, and performance analytics. Streamlines pharmaceutical and medical equipment sales operations.",
+      "objectives": "Optimize healthcare sales operations by providing commercial teams with comprehensive tools for client management, product promotion, and sales tracking in the medical sector.",
+      "results": "Gave sales representatives one mobile tool to follow their clients, browse the product catalog, place orders and track their performance."
+    }
+  },
+  "27": {
+    "fr": {
+      "title": "Gestopedia",
+      "description": "Système intelligent de gestion des stocks avec suivi des ventes en temps réel, surveillance automatisée des stocks et analyses prédictives. Il propose un tableau de bord complet sur les ventes, les niveaux de stock et la performance financière, avec des outils bancaires et budgétaires intégrés.",
+      "objectives": "Transformer la gestion traditionnelle des stocks en offrant aux entreprises des outils intelligents d'optimisation des stocks, de suivi des ventes et de planification financière, pour des décisions fondées sur les données et une meilleure efficacité opérationnelle.",
+      "results": "Ventes, niveaux de stock et finances réunis dans un seul tableau de bord, pour une gestion quotidienne de l'activité plus simple."
+    },
+    "en": {
+      "title": "Gestopedia",
+      "description": "Intelligent inventory management system with real-time sales tracking, automated stock monitoring, and predictive analytics. Features comprehensive dashboard for sales, stock levels, and financial performance with integrated banking and budgeting tools.",
+      "objectives": "Transform traditional inventory management by providing businesses with intelligent tools for stock optimization, sales tracking, and financial planning, enabling data-driven decisions and operational efficiency.",
+      "results": "Brought sales, stock levels and finances together in one dashboard, making day-to-day business management simpler."
+    }
+  },
+  "28": {
+    "fr": {
+      "title": "Jéko Cockpit",
+      "description": "Back-office moderne pour la supervision et la gestion des paiements, transactions, membres et équipements connectés. Offre une visualisation claire des données financières et comportementales à travers un tableau de bord interactif.",
+      "objectives": "Centraliser la gestion des activités financières et opérationnelles d’un commerçant via un cockpit intelligent. Fournir des insights en temps réel pour optimiser les décisions et fluidifier les opérations quotidiennes.",
+      "results": "Visualisation en temps réel de la répartition des paiements, suivi de la croissance des revenus, et gestion complète des points de vente et des utilisateurs depuis une seule interface."
+    },
+    "en": {
+      "title": "Jéko Cockpit",
+      "description": "Modern back-office for monitoring and managing payments, transactions, members and connected devices. Provides a clear view of financial and behavioral data through an interactive dashboard.",
+      "objectives": "Centralize the management of a merchant's financial and operational activities through a smart cockpit. Deliver real-time insights to improve decision-making and streamline day-to-day operations.",
+      "results": "Real-time view of payment distribution, revenue growth tracking, and complete management of points of sale and users from a single interface."
+    }
+  }
+}

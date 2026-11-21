@@ -4,6 +4,39 @@ import SectionHeader from "./SectionHeader";
 import Counter from "./fx/Counter";
 import SectionRail from "./fx/SectionRail";
 import { PROJECT_COUNT } from "./ProjectsGrid";
+import { useLocale, type Localized } from "@/i18n";
+
+export const PROFILE_I18N: Record<"title" | "role" | "base" | "bio", Localized> = {
+  title: { fr: "Développeur logiciel", en: "Software Developer" },
+  role: { fr: "Lead Front End @ Jèko", en: "Front End Lead @ Jèko" },
+  base: { fr: "Abidjan, Côte d'Ivoire", en: "Abidjan, Ivory Coast" },
+  bio: {
+    fr: "Passionné de développement logiciel depuis plus de 6 ans, je me spécialise dans la création d'applications mobiles innovantes et de solutions web performantes. Mon expertise couvre tout le cycle de développement, de la conception à la mise en production, avec une attention particulière portée à l'expérience utilisateur et aux technologies modernes.",
+    en: "Passionate about software development for over 6 years, I specialize in creating innovative mobile applications and high-performance web solutions. My expertise covers the entire development lifecycle, from design to production, with a particular focus on user experience and modern technologies.",
+  },
+};
+
+const HIGHLIGHTS: Localized<string>[] = [
+  { fr: "Plus de 6 ans d'expérience en développement mobile et web", en: "6+ years of experience in mobile and web development" },
+  { fr: "Expertise en Flutter, SvelteKit et technologies cloud", en: "Expertise in Flutter, SvelteKit, and cloud technologies" },
+  { fr: `${PROJECT_COUNT}+ projets livrés avec succès`, en: `${PROJECT_COUNT}+ successfully delivered projects` },
+  { fr: "Approche centrée utilisateur, axée sur la performance", en: "User-centered approach focused on performance" },
+];
+
+const VALUES: { title: Localized; desc: Localized }[] = [
+  {
+    title: { fr: "Excellence technique", en: "Technical Excellence" },
+    desc: { fr: "Code propre, architectures évolutives et bonnes pratiques.", en: "Clean code, scalable architectures and best practices." },
+  },
+  {
+    title: { fr: "Esprit collaboratif", en: "Collaborative Approach" },
+    desc: { fr: "Communication transparente et travail d'équipe pour des résultats optimaux.", en: "Transparent communication and teamwork for optimal results." },
+  },
+  {
+    title: { fr: "Passion & innovation", en: "Passion & Innovation" },
+    desc: { fr: "Veille technologique constante et solutions créatives.", en: "Constant technology watch and creative solutions." },
+  },
+];
 
 export const PROFILE = {
   name: "Gaël Sassan",
@@ -19,33 +52,29 @@ export const PROFILE = {
 };
 
 const ProfessionalBio = () => {
-  const bio = PROFILE.bio;
+  const { pick } = useLocale();
+  const bio = pick(PROFILE_I18N.bio);
 
   const dataSheet = [
-    { key: "name", value: PROFILE.name.toUpperCase() },
-    { key: "role", value: PROFILE.role },
-    { key: "base", value: PROFILE.base },
-    { key: "exp", value: `${PROFILE.years}+ years` },
+    { key: pick({ fr: "nom", en: "name" }), value: PROFILE.name.toUpperCase() },
+    { key: pick({ fr: "poste", en: "role" }), value: pick(PROFILE_I18N.role) },
+    { key: "base", value: pick(PROFILE_I18N.base) },
+    { key: "exp", value: `${PROFILE.years}+ ${pick({ fr: "ans", en: "years" })}` },
     { key: "focus", value: PROFILE.focus },
-    { key: "status", value: "● available", accent: true },
+    { key: pick({ fr: "statut", en: "status" }), value: pick({ fr: "● disponible", en: "● available" }), accent: true },
   ];
 
-  const highlights = [
-    "6+ years of experience in mobile and web development",
-    "Expertise in Flutter, SvelteKit, and cloud technologies",
-    `${PROJECT_COUNT}+ successfully delivered projects`,
-    "User-centered approach focused on performance",
-  ];
+  const highlights = HIGHLIGHTS.map((h) => pick(h));
 
   return (
     <section id="bio" className="min-h-screen py-32 lg:py-44 px-6 relative">
-      <SectionRail index="01" label="identity" motif="leds" />
+      <SectionRail index="01" label={pick({ fr: "identite", en: "identity" })} motif="leds" />
       <div className="relative z-10 max-w-6xl mx-auto w-full">
         <SectionHeader
           index="01"
-          label="identity"
-          title="Who"
-          titleHighlight="Am I?"
+          label={pick({ fr: "identite", en: "identity" })}
+          title={pick({ fr: "Qui", en: "Who" })}
+          titleHighlight={pick({ fr: "suis-je ?", en: "Am I?" })}
           aside={
             <motion.div
               className="relative pb-3"
@@ -58,7 +87,7 @@ const ProfessionalBio = () => {
                 // signature
               </span>
               <img
-                src="./images/gaelSASSAN-removebg-preview.png"
+                src="/images/gaelSASSAN-removebg-preview.png"
                 alt="Gaël Sassan"
                 className="h-12 xl:h-14 w-auto object-contain logo-themed opacity-80"
               />
@@ -83,8 +112,8 @@ const ProfessionalBio = () => {
             viewport={{ once: true }}
           >
             <div className="flex items-center justify-between mb-6">
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--accent)" }}>// id_card</span>
-              <img src="./images/GS-removebg-preview.png" alt="GS" className="h-8 w-8 object-contain logo-themed opacity-70" />
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--accent)" }}>{pick({ fr: "// carte_id", en: "// id_card" })}</span>
+              <img src="/images/GS-removebg-preview.png" alt="GS" className="h-8 w-8 object-contain logo-themed opacity-70" />
             </div>
             <div className="space-y-0">
               {dataSheet.map((row, i) => (
@@ -134,8 +163,8 @@ const ProfessionalBio = () => {
 
             <div className="grid grid-cols-3 gap-2 sm:gap-4">
               {[
-                { value: 6, suffix: "+", label: "Years" },
-                { value: PROJECT_COUNT, suffix: "+", label: "Projects" },
+                { value: 6, suffix: "+", label: pick({ fr: "Ans", en: "Years" }) },
+                { value: PROJECT_COUNT, suffix: "+", label: pick({ fr: "Projets", en: "Projects" }) },
                 { value: 100, suffix: "%", label: "Satisfaction" },
               ].map((s) => (
                 <div key={s.label} className="panel rounded-xl p-3 sm:p-5 text-center tentacle-glow min-w-0">
@@ -149,9 +178,9 @@ const ProfessionalBio = () => {
 
         <div className="grid lg:grid-cols-3 gap-4">
           {[
-            { icon: <Award className="h-4 w-4" />, title: "Technical Excellence", desc: "Clean code, scalable architectures and best practices." },
-            { icon: <User className="h-4 w-4" />, title: "Collaborative Approach", desc: "Transparent communication and teamwork for optimal results." },
-            { icon: <Heart className="h-4 w-4" />, title: "Passion & Innovation", desc: "Constant technology watch and creative solutions." },
+            { icon: <Award className="h-4 w-4" />, ...VALUES[0] },
+            { icon: <User className="h-4 w-4" />, ...VALUES[1] },
+            { icon: <Heart className="h-4 w-4" />, ...VALUES[2] },
           ].map((v, i) => (
             <motion.div
               key={i}
@@ -167,8 +196,8 @@ const ProfessionalBio = () => {
                 </div>
                 <span className="font-mono text-[9px] uppercase tracking-[0.2em]" style={{ color: "var(--fg-faint)" }}>module_{i + 1}</span>
               </div>
-              <h5 className="text-base font-medium mb-2">{v.title}</h5>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--fg-muted)" }}>{v.desc}</p>
+              <h5 className="text-base font-medium mb-2">{pick(v.title)}</h5>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--fg-muted)" }}>{pick(v.desc)}</p>
             </motion.div>
           ))}
         </div>

@@ -17,6 +17,27 @@ import Magnetic from "./fx/Magnetic";
 import DecodeText from "./fx/DecodeText";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Link } from "react-router-dom";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLocale, type Localized } from "@/i18n";
+import { SERVICE_KEYS, type RouteKey } from "@/i18n/routes";
+
+const NAV: { id: string; label: Localized; num: string }[] = [
+  { id: "hero", label: { fr: "accueil", en: "home" }, num: "00" },
+  { id: "bio", label: { fr: "a_propos", en: "about" }, num: "01" },
+  { id: "skills", label: { fr: "competences", en: "skills" }, num: "02" },
+  { id: "projects", label: { fr: "projets", en: "projects" }, num: "03" },
+  { id: "team-projects", label: { fr: "travail_equipe", en: "team_work" }, num: "04" },
+  { id: "server-room", label: { fr: "salle_serveurs", en: "server_room" }, num: "05" },
+  { id: "debriefs", label: { fr: "debriefings", en: "debriefs" }, num: "06" },
+  { id: "experience", label: { fr: "experience", en: "experience" }, num: "07" },
+  { id: "contact", label: { fr: "contact", en: "contact" }, num: "08" },
+];
+
+const SERVICE_LABELS: Partial<Record<RouteKey, Localized>> = {
+  web: { fr: "Création de site web à Abidjan", en: "Web development in Abidjan" },
+  mobile: { fr: "Application mobile en Côte d'Ivoire", en: "Mobile app development in Ivory Coast" },
+  freelance: { fr: "Développeur freelance en Afrique de l'Ouest", en: "Freelance developer in West Africa" },
+};
 
 const Home = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,6 +45,7 @@ const Home = () => {
   const [hidden, setHidden] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const lastY = useRef(0);
+  const { pick, route } = useLocale();
 
   useEffect(() => {
     const onScroll = () => {
@@ -66,17 +88,7 @@ const Home = () => {
     setMenuOpen(false);
   };
 
-  const nav = [
-    { id: "hero", label: "home", num: "00" },
-    { id: "bio", label: "about", num: "01" },
-    { id: "skills", label: "skills", num: "02" },
-    { id: "projects", label: "projects", num: "03" },
-    { id: "team-projects", label: "team_work", num: "04" },
-    { id: "server-room", label: "server_room", num: "05" },
-    { id: "debriefs", label: "debriefs", num: "06" },
-    { id: "experience", label: "experience", num: "07" },
-    { id: "contact", label: "contact", num: "08" },
-  ];
+  const nav = NAV.map((n) => ({ ...n, label: pick(n.label) }));
 
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)", color: "var(--fg)" }}>
@@ -102,7 +114,7 @@ const Home = () => {
           <div className="flex justify-between items-center">
             <Magnetic strength={0.25}>
               <button onClick={() => scrollTo("hero")} className="flex items-center gap-2.5">
-                <img src="./images/GS-removebg-preview.png" alt="GS" className="h-7 w-7 object-contain logo-themed" />
+                <img src="/images/GS-removebg-preview.png" alt="GS" className="h-7 w-7 object-contain logo-themed" />
                 <span className="font-mono text-[11px] tracking-[0.15em]" style={{ color: "var(--fg-muted)" }}>
                   gs<span style={{ color: "var(--accent)" }}>.</span>dev
                 </span>
@@ -125,8 +137,9 @@ const Home = () => {
                   )}
                 </button>
               ))}
+              <LanguageSwitcher />
               <Link
-                to="/cv"
+                to={route("cv")}
                 className="px-3 py-1.5 rounded font-mono text-[10px] uppercase tracking-[0.15em] transition-colors duration-300 hover:text-[var(--bg)] hover:bg-[var(--accent)]"
                 style={{ border: "1px solid var(--accent)", color: "var(--accent)" }}
               >
@@ -136,11 +149,12 @@ const Home = () => {
 
             <button
               onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? pick({ fr: "Fermer le menu", en: "Close menu" }) : pick({ fr: "Ouvrir le menu", en: "Open menu" })}
               className="relative z-[200] flex xl:hidden items-center gap-2 transition-colors"
               style={{ color: "var(--fg-muted)" }}
             >
               <span className="font-mono text-[10px] uppercase tracking-[0.2em] hidden sm:block">
-                {menuOpen ? "close" : "menu"}
+                {menuOpen ? pick({ fr: "fermer", en: "close" }) : "menu"}
               </span>
               {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -188,7 +202,10 @@ const Home = () => {
                   style={{ color: "var(--fg-faint)" }}
                 >{l.name}</a>
               ))}
-              <Link to="/cv" className="font-mono text-[11px] uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>cv</Link>
+              <Link to={route("cv")} className="font-mono text-[11px] uppercase tracking-[0.2em]" style={{ color: "var(--accent)" }}>cv</Link>
+              <span onClick={() => setMenuOpen(false)}>
+                <LanguageSwitcher className="text-[11px]" />
+              </span>
             </motion.div>
           </motion.div>
         )}
@@ -225,13 +242,27 @@ const Home = () => {
               ))}
             </div>
 
+            <nav aria-label="Services" className="flex flex-col items-center gap-3 mb-10">
+              <span className="font-mono text-[9px] uppercase tracking-[0.25em]" style={{ color: "var(--accent)" }}>
+                // services
+              </span>
+              <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+                {SERVICE_KEYS.map((key) => (
+                  <Link key={key} to={route(key)}
+                    className="font-mono text-[10px] tracking-[0.1em] transition-colors hover:text-[var(--accent)]"
+                    style={{ color: "var(--fg-faint)" }}
+                  >{SERVICE_LABELS[key] ? pick(SERVICE_LABELS[key]) : key}</Link>
+                ))}
+              </div>
+            </nav>
+
             <div className="flex justify-center gap-4 mb-10">
               {[
                 { name: "GitHub", href: "https://github.com/ClichyMercury", icon: "M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" },
                 { name: "LinkedIn", href: "https://www.linkedin.com/in/gael-yad-eugene-sassan-17a69b1b6/", icon: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" },
               ].map((s) => (
                 <Magnetic key={s.name}>
-                  <a href={s.href} target="_blank" rel="noopener noreferrer"
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.name}
                     className="flex p-3 rounded-lg transition-all duration-300 hover:text-[var(--accent)] hud-corners"
                     style={{ border: "1px solid var(--border-subtle)", color: "var(--fg-faint)" }}
                   >
@@ -245,12 +276,12 @@ const Home = () => {
 
             <div className="flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-[10px] tracking-wider" style={{ color: "var(--fg-faint)" }}>
               <div className="flex items-center gap-3">
-                <img src="./images/GS-removebg-preview.png" alt="GS" className="h-4 w-4 object-contain logo-themed opacity-40" />
-                <span>© {new Date().getFullYear()} gael_sassan — all rights reserved</span>
+                <img src="/images/GS-removebg-preview.png" alt="GS" className="h-4 w-4 object-contain logo-themed opacity-40" />
+                <span>© {new Date().getFullYear()} gael_sassan — {pick({ fr: "tous droits réservés", en: "all rights reserved" })}</span>
               </div>
               <span className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#28C840" }} />
-                system operational — built with react + caffeine
+                {pick({ fr: "système opérationnel — conçu avec react + caféine", en: "system operational — built with react + caffeine" })}
               </span>
             </div>
           </div>
@@ -268,6 +299,7 @@ const ContactSection = () => {
   const headingOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
   const formY = useTransform(scrollYProgress, [0.1, 0.5], [40, 0]);
   const formOpacity = useTransform(scrollYProgress, [0.1, 0.4], [0, 1]);
+  const { locale, pick, route } = useLocale();
 
   return (
     <section ref={ref} id="contact" className="min-h-screen py-32 lg:py-44 px-6 relative flex items-center">
@@ -281,13 +313,13 @@ const ContactSection = () => {
             <div className="flex-1 tentacle-line" />
           </div>
           <h2 className="text-4xl sm:text-5xl lg:text-7xl font-semibold leading-[0.95] tracking-tight uppercase">
-            <DecodeText text="Open" className="block" />
+            <DecodeText key={`open-${locale}`} text={pick({ fr: "Canal", en: "Open" })} className="block" />
             <span className="block" style={{ color: "transparent", WebkitTextStroke: "1px var(--accent)" }}>
-              <DecodeText text="Channel" delay={250} />
+              <DecodeText key={`channel-${locale}`} text={pick({ fr: "Ouvert", en: "Channel" })} delay={250} />
             </span>
           </h2>
           <p className="mt-6 text-sm md:text-base max-w-md leading-relaxed" style={{ color: "var(--fg-muted)" }}>
-            Ready to bring your ideas to life? Send a transmission — response time &lt; 24h.
+            {pick({ fr: "Prêt à donner vie à vos idées ? Envoyez une transmission — réponse en moins de 24 h.", en: "Ready to bring your ideas to life? Send a transmission — response time < 24h." })}
           </p>
         </motion.div>
 
@@ -295,11 +327,11 @@ const ContactSection = () => {
           <div className="panel rounded-2xl overflow-hidden hud-corners tentacle-glow">
             <div className="flex items-center justify-between px-5 py-3" style={{ borderBottom: "1px solid var(--border-subtle)", background: "var(--bg-elevated)" }}>
               <span className="font-mono text-[10px] uppercase tracking-[0.25em]" style={{ color: "var(--accent)" }}>
-                comm_channels — 3 active
+                {pick({ fr: "canaux_comm — 3 actifs", en: "comm_channels — 3 active" })}
               </span>
               <span className="flex items-center gap-2 font-mono text-[10px]" style={{ color: "var(--fg-faint)" }}>
                 <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#28C840" }} />
-                signal strong
+                {pick({ fr: "signal fort", en: "signal strong" })}
               </span>
             </div>
             <div className="p-4 sm:p-6 grid sm:grid-cols-3 gap-3">
@@ -307,21 +339,21 @@ const ContactSection = () => {
                 {
                   label: "email",
                   value: "gaelelscientifico@gmail.com",
-                  action: "compose( )",
-                  href: "mailto:gaelelscientifico@gmail.com?subject=Project%20discussion",
+                  action: pick({ fr: "ecrire( )", en: "compose( )" }),
+                  href: pick({ fr: "mailto:gaelelscientifico@gmail.com?subject=Discussion%20projet", en: "mailto:gaelelscientifico@gmail.com?subject=Project%20discussion" }),
                   icon: "M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zm18 2l-10 7L2 6",
                 },
                 {
                   label: "linkedin",
                   value: "gael-yad-eugene-sassan",
-                  action: "connect( )",
+                  action: pick({ fr: "connecter( )", en: "connect( )" }),
                   href: "https://www.linkedin.com/in/gael-yad-eugene-sassan-17a69b1b6/",
                   icon: "M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 110 4 2 2 0 010-4z",
                 },
                 {
                   label: "github",
                   value: "ClichyMercury",
-                  action: "inspect( )",
+                  action: pick({ fr: "inspecter( )", en: "inspect( )" }),
                   href: "https://github.com/ClichyMercury",
                   icon: "M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22",
                 },
@@ -338,7 +370,7 @@ const ContactSection = () => {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -4 }}
-                  data-cursor="open"
+                  data-cursor={pick({ fr: "ouvrir", en: "open" })}
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-[9px] uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>
@@ -356,9 +388,9 @@ const ContactSection = () => {
               ))}
             </div>
             <div className="flex flex-wrap items-center justify-between gap-2 px-5 py-3 font-mono text-[10px]" style={{ borderTop: "1px solid var(--border-subtle)", color: "var(--fg-faint)" }}>
-              <span><span style={{ color: "var(--accent)" }}>$</span> avg_response_time: &lt; 24h · timezone: GMT (Abidjan)</span>
-              <Link to="/cv" className="uppercase tracking-[0.2em] transition-colors hover:text-[var(--accent)]" style={{ color: "var(--fg-muted)" }}>
-                open resume.pdf →
+              <span><span style={{ color: "var(--accent)" }}>$</span> {pick({ fr: "temps_reponse_moyen: < 24h · fuseau: GMT (Abidjan)", en: "avg_response_time: < 24h · timezone: GMT (Abidjan)" })}</span>
+              <Link to={route("cv")} className="uppercase tracking-[0.2em] transition-colors hover:text-[var(--accent)]" style={{ color: "var(--fg-muted)" }}>
+                {pick({ fr: "ouvrir cv.pdf →", en: "open resume.pdf →" })}
               </Link>
             </div>
           </div>

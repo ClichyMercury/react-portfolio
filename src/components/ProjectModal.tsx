@@ -3,6 +3,37 @@ import { ExternalLink, Github, X } from "lucide-react";
 import { getTechIcon } from "@/lib/techIcons";
 import { getCountry } from "@/lib/countries";
 import Magnetic from "./fx/Magnetic";
+import { useLocale, type Locale, type Localized } from "@/i18n";
+
+const CATEGORY_LABELS: Record<string, Localized> = {
+  all: { fr: "tous", en: "all" },
+  creative: { fr: "créatif", en: "creative" },
+  "e-commerce": { fr: "e-commerce", en: "e-commerce" },
+  education: { fr: "éducation", en: "education" },
+  entertainment: { fr: "divertissement", en: "entertainment" },
+  fintech: { fr: "fintech", en: "fintech" },
+  iot: { fr: "iot", en: "iot" },
+  medical: { fr: "santé", en: "medical" },
+  security: { fr: "sécurité", en: "security" },
+  services: { fr: "services", en: "services" },
+  social: { fr: "social", en: "social" },
+  "sports-betting": { fr: "paris-sportifs", en: "sports-betting" },
+  transport: { fr: "transport", en: "transport" },
+  web: { fr: "web", en: "web" },
+};
+
+export const categoryLabel = (category: string, locale: Locale) => CATEGORY_LABELS[category]?.[locale] ?? category;
+
+export const countryLabel = (code: string, fallback: string, locale: Locale) => {
+  if (locale === "fr") return fallback;
+  if (code === "CD") return "DR Congo";
+  if (code === "CG") return "Congo";
+  try {
+    return new Intl.DisplayNames(["en"], { type: "region" }).of(code) ?? fallback;
+  } catch {
+    return fallback;
+  }
+};
 
 export interface ModalProject {
   title: string;
@@ -24,6 +55,7 @@ interface ProjectModalProps {
 }
 
 const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
+  const { locale, pick } = useLocale();
   return (
     <AnimatePresence>
       {project && (
@@ -45,9 +77,9 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
           >
             <div className="flex items-center justify-between gap-3 px-4 sm:px-5 py-3 flex-shrink-0" style={{ borderBottom: "1px solid var(--border-subtle)", background: "var(--bg-elevated)" }}>
               <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.2em] sm:tracking-[0.25em] truncate" style={{ color: "var(--accent)" }}>
-                [ case_file // {project.category || "project"} ]
+                [ {pick({ fr: "dossier", en: "case_file" })} // {project.category ? categoryLabel(project.category, locale) : pick({ fr: "projet", en: "project" })} ]
               </span>
-              <button onClick={onClose} className="p-1.5 -m-1.5 flex-shrink-0 transition-colors hover:text-[var(--accent)]" style={{ color: "var(--fg-faint)" }} data-cursor="close" aria-label="Close">
+              <button onClick={onClose} className="p-1.5 -m-1.5 flex-shrink-0 transition-colors hover:text-[var(--accent)]" style={{ color: "var(--fg-faint)" }} data-cursor="close" aria-label={pick({ fr: "Fermer", en: "Close" })}>
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -71,7 +103,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
 
                   {project.countries && project.countries.length > 0 && (
                     <div>
-                      <h4 className="font-mono text-[9px] mb-2 uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>// markets</h4>
+                      <h4 className="font-mono text-[9px] mb-2 uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>{pick({ fr: "// marchés", en: "// markets" })}</h4>
                       <div className="flex flex-wrap gap-2">
                         {project.countries
                           .map((code) => getCountry(code))
@@ -79,7 +111,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                           .map((c) => (
                             <span key={c.code} className="inline-flex items-center gap-1.5 font-mono text-[9px] px-2 py-1 rounded" style={{ background: "var(--bg-elevated)", color: "var(--fg-muted)", border: "1px solid var(--border-subtle)" }}>
                               <span className="text-sm leading-none">{c.flag}</span>
-                              {c.name}
+                              {countryLabel(c.code, c.name, locale)}
                             </span>
                           ))}
                       </div>
@@ -103,14 +135,14 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
 
                   {project.objectives && (
                     <div>
-                      <h4 className="font-mono text-[9px] mb-2 uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>// mission</h4>
+                      <h4 className="font-mono text-[9px] mb-2 uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>{pick({ fr: "// objectifs", en: "// mission" })}</h4>
                       <p className="text-xs leading-relaxed" style={{ color: "var(--fg-muted)" }}>{project.objectives}</p>
                     </div>
                   )}
 
                   {project.results && (
                     <div>
-                      <h4 className="font-mono text-[9px] mb-2 uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>// outcome</h4>
+                      <h4 className="font-mono text-[9px] mb-2 uppercase tracking-[0.25em]" style={{ color: "var(--fg-faint)" }}>{pick({ fr: "// résultats", en: "// outcome" })}</h4>
                       <p className="text-xs leading-relaxed" style={{ color: "var(--fg-muted)" }}>{project.results}</p>
                     </div>
                   )}
@@ -122,7 +154,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                           className="inline-flex items-center gap-2 px-4 py-2 rounded font-mono text-[11px] uppercase tracking-wider"
                           style={{ background: "var(--accent)", color: "var(--bg)" }}
                         >
-                          <ExternalLink className="h-3.5 w-3.5" />Launch
+                          <ExternalLink className="h-3.5 w-3.5" />{pick({ fr: "Lancer", en: "Launch" })}
                         </a>
                       </Magnetic>
                     )}
@@ -132,7 +164,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                           className="inline-flex items-center gap-2 px-4 py-2 rounded font-mono text-[11px] uppercase tracking-wider transition-colors hover:text-[var(--accent)]"
                           style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}
                         >
-                          <Github className="h-3.5 w-3.5" />Source
+                          <Github className="h-3.5 w-3.5" />{pick({ fr: "Code source", en: "Source" })}
                         </a>
                       </Magnetic>
                     )}

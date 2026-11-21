@@ -1,0 +1,422 @@
+{
+  "59": {
+    "fr": {
+      "title": "AEDCI – Landing Page",
+      "description": "Site vitrine de l'Association des Exploitants de Drones Civils en Côte d'Ivoire, organisation professionnelle structurant et professionnalisant la filière drone au niveau national. Présente les missions, domaines d'application (audiovisuel, cartographie, agriculture, inspection) et le processus d'adhésion.",
+      "objectives": "Créer une vitrine institutionnelle pour l'AEDCI afin de fédérer les exploitants de drones civils en Côte d'Ivoire, promouvoir l'adhésion et positionner le pays comme pôle de référence drone en Afrique de l'Ouest.",
+      "results": "Site avec design épuré aux couleurs nature/tech, présentation des 6 domaines d'application drone, bureau exécutif de 7 membres, 8+ entreprises affiliées et formulaire d'adhésion intégré. Basé à Grand-Bassam (VITIB)."
+    },
+    "en": {
+      "title": "AEDCI – Landing Page",
+      "description": "Showcase website for the Association of Civil Drone Operators in Côte d'Ivoire (AEDCI), a professional organization that structures and professionalizes the drone industry nationwide. It presents the association's missions, fields of application (audiovisual, mapping, agriculture, inspection) and the membership process.",
+      "objectives": "Create an institutional showcase for AEDCI to bring together civil drone operators in Côte d'Ivoire, promote membership and position the country as a leading drone hub in West Africa.",
+      "results": "Website with a clean design in nature/tech colors, presentation of the 6 drone application fields, a 7-member executive board, 8+ affiliated companies and an integrated membership form. Based in Grand-Bassam (VITIB)."
+    }
+  },
+  "60": {
+    "fr": {
+      "title": "Mon Médecin",
+      "description": "Application mobile de mise en relation patient-médecin, un véritable Uber de la médecine. Permet de rechercher un médecin par spécialité (généraliste, dentiste, ophtalmologue, dermatologue, pédiatre, cardiologue, ORL, gynécologue), de consulter les médecins populaires, de prendre rendez-vous et de gérer son parcours de soins complet.",
+      "objectives": "Simplifier l'accès aux soins médicaux en Côte d'Ivoire en permettant aux patients de trouver rapidement un médecin selon leur spécialité, leur localisation et leur disponibilité, le tout depuis une interface mobile intuitive.",
+      "results": "Application fonctionnelle avec recherche par spécialité, profils médecins détaillés, système de prise de rendez-vous en temps réel, gestion des tickets de consultation et interface patient ergonomique."
+    },
+    "en": {
+      "title": "Mon Médecin",
+      "description": "Mobile app connecting patients with doctors, a true Uber for healthcare. Users can search for a doctor by specialty (general practitioner, dentist, ophthalmologist, dermatologist, pediatrician, cardiologist, ENT, gynecologist), browse popular doctors, book appointments and manage their entire care journey.",
+      "objectives": "Simplify access to medical care in Côte d'Ivoire by letting patients quickly find a doctor based on specialty, location and availability, all from an intuitive mobile interface.",
+      "results": "Working app with search by specialty, detailed doctor profiles, real-time appointment booking, consultation ticket management and an ergonomic patient interface."
+    }
+  },
+  "61": {
+    "fr": {
+      "title": "Mamadou Koné – Site Officiel",
+      "description": "Site officiel d'une personnalité politique ivoirienne. Vitrine digitale complète avec biographie, actualités, galerie photo, espace jeunesse et formulaire de contact. Design premium aux tons dorés avec navigation élégante et mise en valeur du parcours public.",
+      "objectives": "Créer une présence digitale professionnelle et prestigieuse pour une personnalité politique, avec un site moderne mettant en avant son engagement pour le développement de la Côte d'Ivoire et la jeunesse ivoirienne.",
+      "results": "Site vitrine élégant avec design premium, navigation fluide entre les sections (Biographie, Actualités, Galerie, Jeunesse), formulaire de contact intégré et optimisation SEO pour la visibilité publique."
+    },
+    "en": {
+      "title": "Mamadou Koné – Official Website",
+      "description": "Official website of an Ivorian political figure. A complete digital showcase with biography, news, photo gallery, youth section and contact form. Premium design in golden tones with elegant navigation that highlights his public career.",
+      "objectives": "Create a professional and prestigious digital presence for a political figure, with a modern website highlighting his commitment to the development of Côte d'Ivoire and to Ivorian youth.",
+      "results": "Elegant showcase website with premium design, smooth navigation between sections (Biography, News, Gallery, Youth), an integrated contact form and SEO optimization for public visibility."
+    }
+  },
+  "62": {
+    "fr": {
+      "title": "StediiHome – Landing Page V2",
+      "description": "Refonte complète de la landing page StediiHome avec une nouvelle identité visuelle violet/purple plus moderne et épurée. Met l'accent sur le slogan fort \"Embauchez du personnel domestique fiable, sans recruter à l'aveugle\" et propose un parcours bilingue clair pour Employeurs et Travailleurs avec une section de bénéfices clés visuellement plus impactante.",
+      "objectives": "Repenser entièrement la landing page de StediiHome avec une nouvelle direction artistique violet/purple, des typographies plus affirmées et un message principal renforcé pour augmenter la conversion lors du lancement progressif au Kenya.",
+      "results": "Nouvelle V2 avec hero impactant, badge de lancement progressif au Kenya, double CTA Employeur/Travailleur, mise en avant des trois bénéfices clés (profils vérifiés par pièce d'identité, historique impossible à falsifier, mise en relation rapide) et identité visuelle violette cohérente."
+    },
+    "en": {
+      "title": "StediiHome – Landing Page V2",
+      "description": "Complete redesign of the StediiHome landing page with a new, more modern and cleaner violet/purple visual identity. It emphasizes the strong tagline \"Hire reliable domestic staff without recruiting blindly\" and offers a clear two-track journey for Employers and Workers, with a more visually striking key benefits section.",
+      "objectives": "Fully rethink the StediiHome landing page with a new violet/purple art direction, bolder typography and a stronger core message to increase conversion during the phased launch in Kenya.",
+      "results": "New V2 with a striking hero, a phased-launch-in-Kenya badge, dual Employer/Worker CTAs, a showcase of the three key benefits (ID-verified profiles, tamper-proof history, fast matching) and a consistent violet visual identity."
+    }
+  },
+  "63": {
+    "fr": {
+      "title": "Jeko – Landing Page V2",
+      "description": "Refonte de la landing page Jeko avec une nouvelle direction visuelle plus moderne et orientée conversion. Met en avant la solution de paiement mobile money unifiée pour les commerçants africains avec un design plus impactant, une hiérarchie typographique renforcée et une démonstration produit plus claire.",
+      "objectives": "Repenser la landing page de Jeko pour mieux convertir les commerçants ivoiriens et africains, en clarifiant le positionnement (QR code unique multi-opérateurs) et en modernisant l'identité visuelle de la marque.",
+      "results": "Nouvelle V2 avec hero plus affirmé, mise en avant des opérateurs supportés (Wave, Orange Money, MTN, Moov, Visa, Mastercard), CTA optimisés vers les stores et présentation produit plus immersive."
+    },
+    "en": {
+      "title": "Jeko – Landing Page V2",
+      "description": "Redesign of the Jeko landing page with a new, more modern and conversion-focused visual direction. It showcases the unified mobile money payment solution for African merchants with a more impactful design, stronger typographic hierarchy and a clearer product demo.",
+      "objectives": "Rethink the Jeko landing page to better convert Ivorian and African merchants by clarifying the positioning (a single multi-operator QR code) and modernizing the brand's visual identity.",
+      "results": "New V2 with a bolder hero, a showcase of supported operators (Wave, Orange Money, MTN, Moov, Visa, Mastercard), optimized CTAs to the app stores and a more immersive product presentation."
+    }
+  },
+  "64": {
+    "fr": {
+      "title": "Forage – Plateforme Mise en Relation",
+      "description": "Plateforme numérique \"Le forage, simplifié\" mettant en relation clients (particuliers/entreprises) et entreprises de forage qualifiées dans les domaines eau, géotechnique et pétrolier. Le client soumet son projet, reçoit des offres confidentielles de prestataires cloisonnés et signe en toute confiance — budget protégé, workflow contrôlé en 8 étapes et messagerie centralisée.",
+      "objectives": "Simplifier la mise en relation entre demandeurs de forage et prestataires qualifiés via un parcours en 3 étapes (soumission → propositions → acceptation), tout en garantissant la confidentialité du budget client et le cloisonnement entre les 3 acteurs (client, prestataires, plateforme).",
+      "results": "Plateforme avec front SvelteKit (soumission de projet, espace client, suivi temps réel, acceptation d'offre en un clic) et back AdonisJS (workflow d'appel d'offres en 8 étapes, gestion documentaire, offres masquées entre prestataires). Statistiques mises en avant : 100% budget protégé, 3 acteurs cloisonnés, 8 étapes contrôlées."
+    },
+    "en": {
+      "title": "Forage – Matchmaking Platform",
+      "description": "Digital platform \"Drilling, simplified\" connecting clients (individuals/companies) with qualified drilling companies in the water, geotechnical and oil sectors. The client submits a project, receives confidential offers from isolated providers and signs with confidence — protected budget, a controlled 8-step workflow and centralized messaging.",
+      "objectives": "Simplify matchmaking between drilling clients and qualified providers through a 3-step journey (submission → proposals → acceptance), while guaranteeing the confidentiality of the client's budget and isolation between the 3 parties (client, providers, platform).",
+      "results": "Platform with a SvelteKit front end (project submission, client area, real-time tracking, one-click offer acceptance) and an AdonisJS back end (8-step tender workflow, document management, offers hidden between providers). Highlighted figures: 100% protected budget, 3 isolated parties, 8 controlled steps."
+    }
+  },
+  "65": {
+    "fr": {
+      "title": "StediiHome – Back Office Admin",
+      "description": "Back office administrateur pour la plateforme StediiHome permettant de piloter l'activité opérationnelle : tableau de bord avec KPIs en temps réel (utilisateurs, workers, employeurs), modération des avis, vérification des documents d'identité, gestion des catégories/compétences/langues et système de notifications. Interface admin pour garantir la qualité et la conformité de la plateforme d'employabilité domestique.",
+      "objectives": "Outiller les administrateurs StediiHome pour modérer la plateforme à grande échelle : valider les documents d'identité des travailleurs, modérer les avis post-contrat, gérer le référentiel (catégories, compétences, langues) et superviser l'activité globale via un tableau de bord centralisé.",
+      "results": "Dashboard admin complet avec sidebar à 4 sections (Pilotage, Utilisateurs, Activité, Configuration, Communication), 5 KPI cards (utilisateurs, workers, employeurs, avis à modérer, documents à vérifier), panneau Actions requises priorisées et aperçu plateforme en temps réel. Interface épurée aux couleurs StediiHome (violet/purple)."
+    },
+    "en": {
+      "title": "StediiHome – Admin Back Office",
+      "description": "Admin back office for the StediiHome platform to manage day-to-day operations: dashboard with real-time KPIs (users, workers, employers), review moderation, ID document verification, management of categories/skills/languages and a notification system. An admin interface to ensure the quality and compliance of the domestic employment platform.",
+      "objectives": "Equip StediiHome administrators to moderate the platform at scale: validate workers' ID documents, moderate post-contract reviews, manage reference data (categories, skills, languages) and oversee overall activity through a centralized dashboard.",
+      "results": "Complete admin dashboard with a 4-section sidebar (Overview, Users, Activity, Configuration, Communication), 5 KPI cards (users, workers, employers, reviews to moderate, documents to verify), a prioritized Required Actions panel and a real-time platform overview. Clean interface in StediiHome colors (violet/purple)."
+    }
+  },
+  "66": {
+    "fr": {
+      "title": "Banana House – E-commerce Bananes",
+      "description": "Site e-commerce de Banana House, grossiste spécialisé dans la vente de bananes fraîches en gros et détail en Côte d'Ivoire. Propose 3 variétés (Plantain à 500 FCFA/kg, Douce Cavendish à 400 FCFA/kg, Plantain Corne à 550 FCFA/kg) avec précommande en ligne, livraison nationale et retrait possible, pour particuliers, semi-grossistes et professionnels.",
+      "objectives": "Digitaliser l'activité de Banana House en offrant une vitrine e-commerce moderne pour faciliter les commandes B2B et B2C de bananes fraîches, avec présentation claire des variétés, prix au kilo et options de livraison/retrait sur toute la Côte d'Ivoire.",
+      "results": "Site e-commerce avec catalogue de 3 variétés de bananes, fiches produits détaillées (cuisson, dessert, densité), système de précommande en ligne, mise en avant des arguments qualité (sélection rigoureuse, producteurs partenaires) et couverture nationale pour la livraison."
+    },
+    "en": {
+      "title": "Banana House – Banana E-commerce",
+      "description": "E-commerce website for Banana House, a wholesaler specializing in fresh bananas sold wholesale and retail in Côte d'Ivoire. It offers 3 varieties (Plantain at 500 FCFA/kg, Sweet Cavendish at 400 FCFA/kg, Horn Plantain at 550 FCFA/kg) with online pre-ordering, nationwide delivery and pickup, for individuals, semi-wholesalers and professionals.",
+      "objectives": "Digitize Banana House's business with a modern e-commerce showcase that makes B2B and B2C fresh banana orders easier, with a clear presentation of varieties, price per kilo and delivery/pickup options across Côte d'Ivoire.",
+      "results": "E-commerce website with a catalog of 3 banana varieties, detailed product sheets (cooking, dessert, density), an online pre-order system, highlighted quality arguments (rigorous selection, partner growers) and nationwide delivery coverage."
+    }
+  },
+  "67": {
+    "fr": {
+      "title": "FinSim – Simulateur de Marché Financier",
+      "description": "Simulateur de marché financier gamifié pour Android et iOS, construit en Kotlin Multiplatform (KMP) avec une base de code partagée. Logique métier centralisée dans un module shared, UI native via Jetpack Compose (Android) et SwiftUI (iOS). Trade en temps réel sur des données de marché réelles : Forex, Crypto et bientôt BRVM, avec flux de prix WebSocket et cache Redis pour la performance.",
+      "objectives": "Explorer Kotlin Multiplatform sur un cas d'usage exigeant — un simulateur de trading temps réel — pour mutualiser la logique métier entre Android et iOS tout en conservant une UI 100% native sur chaque plateforme. Démocratiser l'apprentissage des marchés financiers (Forex, Crypto, BRVM) via une expérience gamifiée et sans risque.",
+      "results": "Application multiplateforme avec un seul langage (Kotlin) pour deux plateformes, backend Ktor en architecture hexagonale, PostgreSQL pour la persistance, Redis pour le cache temps réel et WebSocket pour les flux de prix. API locale containerisée Docker, UI native Jetpack Compose / SwiftUI, intégration de données de marché réelles Forex et Crypto (BRVM à venir)."
+    },
+    "en": {
+      "title": "FinSim – Financial Market Simulator",
+      "description": "Gamified financial market simulator for Android and iOS, built with Kotlin Multiplatform (KMP) on a shared codebase. Business logic is centralized in a shared module, with native UI via Jetpack Compose (Android) and SwiftUI (iOS). Real-time trading on real market data: Forex, Crypto and soon BRVM, with WebSocket price feeds and Redis caching for performance.",
+      "objectives": "Explore Kotlin Multiplatform on a demanding use case — a real-time trading simulator — to share business logic between Android and iOS while keeping a 100% native UI on each platform. Make learning about financial markets (Forex, Crypto, BRVM) accessible through a gamified, risk-free experience.",
+      "results": "Cross-platform app with a single language (Kotlin) for two platforms, a Ktor backend with hexagonal architecture, PostgreSQL for persistence, Redis for real-time caching and WebSocket for price feeds. Dockerized local API, native Jetpack Compose / SwiftUI UI, and integration of real Forex and Crypto market data (BRVM coming soon)."
+    }
+  },
+  "68": {
+    "fr": {
+      "title": "Alph Backoffice – Administration de Missions & Agents",
+      "description": "Back office d'administration de la plateforme Alph permettant de superviser l'ensemble de l'activité : tableau de bord avec KPIs en temps réel (utilisateurs, agents, missions, revenus, communautés, incidents), gestion des utilisateurs et des agents avec vérifications en attente, suivi des missions, paiements, modération des communautés et traitement des incidents signalés. Interface centralisée pour piloter l'opérationnel au quotidien.",
+      "objectives": "Doter les administrateurs Alph d'un outil unique pour piloter la plateforme : valider les inscriptions d'utilisateurs et d'agents, suivre les missions et les revenus, animer les communautés et traiter les incidents signalés, le tout depuis un tableau de bord centralisé et lisible.",
+      "results": "Dashboard admin complet avec sidebar à 9 sections (Dashboard, Utilisateurs, Agents, Missions, Paiements, Communautés, Incidents, Notifications, Références, Système), 6 KPI cards avec indicateurs d'attente, graphique « Missions par mois » (missions vs revenus) et panneau d'activité récente en temps réel."
+    },
+    "en": {
+      "title": "Alph Backoffice – Mission & Agent Administration",
+      "description": "Admin back office for the Alph platform to oversee all activity: dashboard with real-time KPIs (users, agents, missions, revenue, communities, incidents), management of users and agents with pending verifications, mission tracking, payments, community moderation and handling of reported incidents. A centralized interface to run day-to-day operations.",
+      "objectives": "Give Alph administrators a single tool to run the platform: validate user and agent sign-ups, track missions and revenue, manage communities and handle reported incidents, all from a centralized, easy-to-read dashboard.",
+      "results": "Complete admin dashboard with a 9-section sidebar (Dashboard, Users, Agents, Missions, Payments, Communities, Incidents, Notifications, References, System), 6 KPI cards with pending indicators, a \"Missions per month\" chart (missions vs revenue) and a real-time recent activity panel."
+    }
+  },
+  "69": {
+    "fr": {
+      "title": "Mon Médecin – Back Office Santé",
+      "description": "Back office d'administration de la plateforme Mon Médecin permettant de gérer les centres médicaux, les spécialités et les praticiens depuis une interface simple et moderne. Espace d'administration sécurisé pour structurer l'offre de soins et piloter le référentiel médical.",
+      "objectives": "Offrir aux administrateurs de Mon Médecin une interface centralisée pour gérer les centres de santé, les spécialités et les praticiens, et garantir la fiabilité du référentiel médical présenté aux patients.",
+      "results": "Back-office avec authentification sécurisée, écran de connexion aux couleurs de la marque (vert santé) et modules de gestion des centres, spécialités et praticiens. Interface épurée et responsive pensée pour un usage quotidien par les administrateurs."
+    },
+    "en": {
+      "title": "Mon Médecin – Healthcare Back Office",
+      "description": "Admin back office for the Mon Médecin platform to manage medical centers, specialties and practitioners from a simple, modern interface. A secure administration area to structure the healthcare offering and manage the medical reference data.",
+      "objectives": "Give Mon Médecin administrators a centralized interface to manage health centers, specialties and practitioners, and ensure the reliability of the medical reference data shown to patients.",
+      "results": "Back office with secure authentication, a branded login screen (health green) and management modules for centers, specialties and practitioners. Clean, responsive interface designed for daily use by administrators."
+    }
+  },
+  "70": {
+    "fr": {
+      "title": "NexStream – Espace IPTV Personnel",
+      "description": "Plateforme web NexStream permettant aux utilisateurs de créer leurs accès IPTV, de recharger leur compte et de suivre leurs abonnements en toute simplicité. Landing page moderne et espace client pour gérer ses chaînes sans complication, avec essai gratuit et suivi des serveurs en ligne.",
+      "objectives": "Simplifier la gestion d'un abonnement IPTV pour l'utilisateur final : création de compte, rechargement et suivi des abonnements depuis un espace personnel clair, avec une landing page convaincante et un essai gratuit de 48h.",
+      "results": "Landing page sombre et moderne avec parcours d'inscription / connexion, mise en avant des chiffres clés (serveurs, nombre de chaînes, essai gratuit 48h), statut des serveurs en ligne (Dream 4K) et espace personnel pour gérer ses accès et recharges."
+    },
+    "en": {
+      "title": "NexStream – Personal IPTV Space",
+      "description": "NexStream web platform that lets users create their IPTV access, top up their account and track their subscriptions with ease. A modern landing page and customer area to manage channels hassle-free, with a free trial and online server status.",
+      "objectives": "Simplify IPTV subscription management for end users: account creation, top-ups and subscription tracking from a clear personal space, with a compelling landing page and a 48-hour free trial.",
+      "results": "Dark, modern landing page with sign-up / login flow, highlighted key figures (servers, number of channels, 48-hour free trial), online server status (Dream 4K) and a personal space to manage access and top-ups."
+    }
+  },
+  "71": {
+    "fr": {
+      "title": "SOSMoney – Microcrédit Instantané",
+      "description": "Plateforme fintech SOSMoney proposant du microcrédit instantané accessible à tous : obtenez un prêt de 5 000 à 50 000 FCFA en quelques minutes, 100% en ligne depuis votre mobile. Landing page et application permettant d'emprunter, d'acheter et de rembourser simplement, avec une boutique intégrée et un réseau de partenaires.",
+      "objectives": "Démocratiser l'accès au crédit en Côte d'Ivoire en proposant un microcrédit instantané, 100% en ligne et accessible à tous, avec une validation en quelques minutes et un parcours mobile-first simple et rassurant.",
+      "results": "Landing page fintech au design soigné (univers violet, illustration 3D) mettant en avant le prêt instantané de 5 000 à 50 000 FCFA, la validation en quelques minutes, un taux à partir de 5%, des transactions chiffrées et une navigation Fonctionnalités / Prêt / Boutique / Partenaires."
+    },
+    "en": {
+      "title": "SOSMoney – Instant Microcredit",
+      "description": "SOSMoney fintech platform offering instant microcredit accessible to everyone: get a loan of 5,000 to 50,000 FCFA in minutes, 100% online from your phone. Landing page and app to borrow, shop and repay easily, with an integrated store and a partner network.",
+      "objectives": "Make credit accessible in Côte d'Ivoire by offering instant microcredit, 100% online and open to everyone, with approval in minutes and a simple, reassuring mobile-first journey.",
+      "results": "Polished fintech landing page (violet theme, 3D illustration) highlighting instant loans from 5,000 to 50,000 FCFA, approval in minutes, rates from 5%, transaction figures and Features / Loan / Store / Partners navigation."
+    }
+  },
+  "72": {
+    "fr": {
+      "title": "SIGAPE-OH – Portail National de l'Eau",
+      "description": "Front client de SIGAPE-OH, le service public numérique de l'eau porté par la DGRE (Ministère des Eaux et Forêts, Côte d'Ivoire). Site vitrine institutionnel et espace demandeur permettant de déposer une demande d'autorisation de prélèvement d'eau via un assistant en 7 étapes, de suivre son instruction en temps réel et de télécharger l'autorisation signée — 100% dématérialisé.",
+      "objectives": "Dématérialiser intégralement la procédure d'autorisation de prélèvement d'eau brute prévue par le Code de l'eau ivoirien : offrir au demandeur un parcours guidé en 7 étapes avec sauvegarde de brouillon, dépôt de pièces justificatives, suivi temps réel de l'instruction et récupération de l'autorisation, le tout dans une identité institutionnelle bleue moderne.",
+      "results": "Site vitrine public (Accueil, Autorisations, Cartographie, Réseau, Statistiques, Actualités) couplé à un espace demandeur protégé : assistant de demande 7 étapes, timeline de workflow en temps réel, messagerie de complément de dossier et téléchargement du PDF signé. 12 types d'autorisations, 31 régions couvertes, service disponible 24/7."
+    },
+    "en": {
+      "title": "SIGAPE-OH – National Water Portal",
+      "description": "Client front end of SIGAPE-OH, the digital public water service run by the DGRE (Ministry of Water and Forests, Côte d'Ivoire). An institutional showcase website and applicant area to submit a water abstraction permit application through a 7-step wizard, track its review in real time and download the signed permit — 100% paperless.",
+      "objectives": "Fully digitize the raw water abstraction permit procedure set out in the Ivorian Water Code: give applicants a guided 7-step journey with draft saving, supporting document upload, real-time review tracking and permit retrieval, all within a modern blue institutional identity.",
+      "results": "Public showcase website (Home, Permits, Mapping, Network, Statistics, News) paired with a protected applicant area: 7-step application wizard, real-time workflow timeline, messaging for additional file requests and signed PDF download. 12 permit types, 31 regions covered, service available 24/7."
+    }
+  },
+  "73": {
+    "fr": {
+      "title": "Axelle Sanogo – Application Mobile",
+      "description": "Application mobile e-commerce de la maison de maroquinerie ivoirienne Axelle Sanogo, déclinaison native du site axellesanogo.ci. Catalogue des collections Signature et Prestige, recherche par référence, précommandes avec remise, avis clients et paiement Mobile Money pour acheter sacs et accessoires en cuir directement depuis son téléphone.",
+      "objectives": "Prolonger l'expérience de la marque Axelle Sanogo sur mobile en offrant une boutique native fluide : navigation par univers (Sacs femme, Accessoires, Cartes cadeau), recherche instantanée, précommandes et paiement adapté au marché ivoirien.",
+      "results": "Application au design éditorial fidèle à l'identité de la marque : collection Signature filtrable, badges de précommande -10%, notation et avis par produit, affichage des prix en FCFA avec prix barrés, et navigation par onglets (Collection, Recherche, Panier, Boutique)."
+    },
+    "en": {
+      "title": "Axelle Sanogo – Mobile App",
+      "description": "E-commerce mobile app for the Ivorian leather goods house Axelle Sanogo, a native version of the axellesanogo.ci website. Catalog of the Signature and Prestige collections, search by reference, discounted pre-orders, customer reviews and Mobile Money payment to buy leather bags and accessories directly from your phone.",
+      "objectives": "Extend the Axelle Sanogo brand experience to mobile with a smooth native store: browsing by category (Women's bags, Accessories, Gift cards), instant search, pre-orders and payment suited to the Ivorian market.",
+      "results": "App with an editorial design true to the brand identity: filterable Signature collection, -10% pre-order badges, ratings and reviews per product, prices in FCFA with strikethrough prices, and tab navigation (Collection, Search, Cart, Store)."
+    }
+  },
+  "74": {
+    "fr": {
+      "title": "WeCatho – Communauté Catholique Mondiale",
+      "description": "Application mobile connectant les catholiques du monde entier autour d'une carte interactive de membres géolocalisés, d'une messagerie chiffrée et de groupes de prière thématiques. Pensée pour les fidèles, pèlerins et paroisses, elle prépare également une boutique d'objets liturgiques de Lourdes et une billetterie d'événements chrétiens.",
+      "objectives": "Favoriser les échanges spirituels et les rencontres entre catholiques de tous pays via une carte mondiale de membres, une messagerie sécurisée de bout en bout et des groupes par paroisse, pays ou thème de prière, le tout dans une interface multilingue et modérée.",
+      "results": "Carte interactive avec clustering des membres par zone (Europe et Afrique de l'Ouest), recherche filtrée de frères et sœurs, panneau des membres à proximité, et navigation dédiée Carte / Pile / Messages / Paramètres dans un thème sombre et doré à l'esthétique liturgique."
+    },
+    "en": {
+      "title": "WeCatho – Global Catholic Community",
+      "description": "Mobile app connecting Catholics around the world through an interactive map of geolocated members, encrypted messaging and themed prayer groups. Designed for the faithful, pilgrims and parishes, it is also preparing a store for liturgical items from Lourdes and ticketing for Christian events.",
+      "objectives": "Foster spiritual exchanges and encounters between Catholics from all countries through a global member map, end-to-end encrypted messaging and groups by parish, country or prayer theme, all within a multilingual, moderated interface.",
+      "results": "Interactive map with member clustering by area (Europe and West Africa), filtered search for brothers and sisters, a nearby members panel, and dedicated Map / Stack / Messages / Settings navigation in a dark and gold theme with a liturgical aesthetic."
+    }
+  },
+  "75": {
+    "fr": {
+      "title": "SIGAPE-OH – Back-office DGRE",
+      "description": "Back-office administratif de SIGAPE-OH destiné aux agents de la DGRE. Il pilote l'instruction des demandes d'autorisation d'eau le long d'un workflow à 9 étapes — de la recevabilité à la signature électronique du Ministre — avec gestion fine des rôles, cartographie des ouvrages, statistiques et administration complète de la plateforme.",
+      "objectives": "Doter l'administration d'un outil d'instruction centralisé où chaque agent n'agit que sur les dossiers relevant de son étape : agent de réception, service technique, service juridique, directeur, directeur général, cabinet du ministre et ministre signataire, avec journalisation de chaque transition du workflow.",
+      "results": "Tableau de bord temps réel (dossiers à traiter, en cours, délivrés, délai moyen, rejets), graphiques d'évolution mensuelle, répartition par type d'autorisation et par région, file d'instruction, cartographie, plus un module d'administration complet : utilisateurs, rôles et permissions, types d'autorisations, modèles de documents et actualités."
+    },
+    "en": {
+      "title": "SIGAPE-OH – DGRE Back Office",
+      "description": "Administrative back office of SIGAPE-OH for DGRE staff. It drives the review of water permit applications through a 9-step workflow — from admissibility to the Minister's electronic signature — with fine-grained role management, mapping of water facilities, statistics and full platform administration.",
+      "objectives": "Give the administration a centralized review tool where each officer only acts on files at their own step: reception officer, technical department, legal department, director, director general, minister's office and signing minister, with every workflow transition logged.",
+      "results": "Real-time dashboard (files to process, in progress, issued, average processing time, rejections), monthly trend charts, breakdown by permit type and by region, review queue, mapping, plus a full administration module: users, roles and permissions, permit types, document templates and news."
+    }
+  },
+  "76": {
+    "fr": {
+      "title": "DGRE – Portail des Autorisations d'Eau (V1)",
+      "description": "Première version du portail de la Direction Générale des Ressources en Eau (Ministère des Eaux et Forêts, Côte d'Ivoire), dans l'identité institutionnelle verte et orange « Eaux et Forêts ». Site vitrine et espace demandeur permettant de déposer, suivre et recevoir en ligne ses autorisations d'utilisation de l'eau — sans déplacement et sans papier. Cette V1 a ensuite évolué vers la charte bleue SIGAPE-OH.",
+      "objectives": "Poser les fondations du service public numérique de l'eau : dématérialiser la procédure d'autorisation de prélèvement prévue par le Code de l'eau ivoirien, avec une identité visuelle alignée sur celle du Ministère des Eaux et Forêts (vert institutionnel, orange d'accent, typographie Oswald).",
+      "results": "Portail public complet avec espace demandeur sécurisé, dépôt et suivi de dossier en ligne, documentation et FAQ réglementaires, et bandeau d'indicateurs clés : 12 480 demandes traitées, 9 760 autorisations délivrées, 15 jours de délai moyen de traitement et 31 régions couvertes."
+    },
+    "en": {
+      "title": "DGRE – Water Permits Portal (V1)",
+      "description": "First version of the portal of the Directorate General of Water Resources (Ministry of Water and Forests, Côte d'Ivoire), in the green and orange \"Eaux et Forêts\" institutional identity. A showcase website and applicant area to submit, track and receive water use permits online — no travel and no paperwork. This V1 later evolved into the blue SIGAPE-OH brand guidelines.",
+      "objectives": "Lay the foundations of the digital public water service: digitize the abstraction permit procedure set out in the Ivorian Water Code, with a visual identity aligned with that of the Ministry of Water and Forests (institutional green, orange accent, Oswald typeface).",
+      "results": "Complete public portal with a secure applicant area, online file submission and tracking, regulatory documentation and FAQ, and a key figures banner: 12,480 applications processed, 9,760 permits issued, 15-day average processing time and 31 regions covered."
+    }
+  },
+  "77": {
+    "fr": {
+      "title": "MIABA Group – Mobilité Premium en Afrique",
+      "description": "Site vitrine et plateforme de réservation de MIABA Group, service de chauffeur privé et de location de véhicules haut de gamme basé à Abidjan. Transferts aéroport avec suivi de vol, mise à disposition de chauffeur, location avec ou sans conducteur et offre corporate, présentés dans une identité sombre et dorée, en français et en anglais.",
+      "objectives": "Positionner MIABA Group comme la référence de la mobilité premium en Afrique de l'Ouest : rassurer une clientèle d'affaires et internationale grâce à des tarifs fixes affichés, un suivi de vol, une disponibilité 24/7 et des chauffeurs vérifiés, tout en rendant la réservation possible en quelques clics ou via WhatsApp.",
+      "results": "Landing page premium bilingue articulée autour de 6 services (accueil aéroport, dépose aéroport, transfert point à point, chauffeur privé, location avec chauffeur, location sans chauffeur), d'une flotte Mercedes-Benz détaillée (S 300 VIP dès 150 000 FCFA, CLS 450 AMG dès 130 000 FCFA, Classe E dès 110 000 FCFA), d'un espace Corporate, d'un programme partenaires et de parcours de réservation directe ou WhatsApp."
+    },
+    "en": {
+      "title": "MIABA Group – Premium Mobility in Africa",
+      "description": "Showcase website and booking platform for MIABA Group, a private chauffeur and high-end vehicle rental service based in Abidjan. Airport transfers with flight tracking, chauffeur on demand, rental with or without driver and a corporate offering, presented in a dark and gold identity, in French and English.",
+      "objectives": "Position MIABA Group as the benchmark for premium mobility in West Africa: reassure business and international clients with displayed fixed rates, flight tracking, 24/7 availability and vetted chauffeurs, while making booking possible in a few clicks or via WhatsApp.",
+      "results": "Bilingual premium landing page built around 6 services (airport pickup, airport drop-off, point-to-point transfer, private chauffeur, rental with driver, rental without driver), a detailed Mercedes-Benz fleet (S 300 VIP from 150,000 FCFA, CLS 450 AMG from 130,000 FCFA, E-Class from 110,000 FCFA), a Corporate section, a partner program and direct or WhatsApp booking flows."
+    }
+  },
+  "78": {
+    "fr": {
+      "title": "Axelle Sanogo – Back-office E-commerce",
+      "description": "Back-office de gestion de la maison de maroquinerie ivoirienne Axelle Sanogo, pendant administratif du site axellesanogo.ci et de l'application mobile. Il centralise le catalogue produits, les commandes et devis, la base clients et prospects, les avis, le programme de récompenses et la newsletter dans une interface aux codes luxe de la marque.",
+      "objectives": "Donner à la marque un outil unique pour piloter sa boutique en ligne et son application mobile : administrer les produits par univers et catégories, suivre commandes et devis, gérer la relation client (prospects, avis, récompenses, newsletter) et publier les remises de précommande sans intervention technique.",
+      "results": "Interface d'administration complète — tableau de bord, catalogue de 24 produits en vue grille ou liste avec filtres par univers, catégorie et état du stock, badges de remise et de niveau, prix en FCFA avec prix barrés, notes et nombre d'avis par produit — ainsi que les modules Commandes, Devis, Clients, Prospects, Avis, Récompenses et Newsletter."
+    },
+    "en": {
+      "title": "Axelle Sanogo – E-commerce Back Office",
+      "description": "Management back office for the Ivorian leather goods house Axelle Sanogo, the administrative counterpart of the axellesanogo.ci website and the mobile app. It centralizes the product catalog, orders and quotes, the customer and prospect base, reviews, the rewards program and the newsletter in an interface that follows the brand's luxury codes.",
+      "objectives": "Give the brand a single tool to run its online store and mobile app: manage products by collection and category, track orders and quotes, manage customer relations (prospects, reviews, rewards, newsletter) and publish pre-order discounts without technical help.",
+      "results": "Complete admin interface — dashboard, catalog of 24 products in grid or list view with filters by collection, category and stock status, discount and tier badges, prices in FCFA with strikethrough prices, ratings and review counts per product — along with Orders, Quotes, Customers, Prospects, Reviews, Rewards and Newsletter modules."
+    }
+  },
+  "79": {
+    "fr": {
+      "title": "Ma Cantine – Site Vitrine",
+      "description": "Site de présentation de Ma Cantine, le service qui livre au bureau le plat du jour des cantines de quartier d'Abidjan. Il présente les plats, le fonctionnement de la commande, l'application client, les abonnements et l'espace restaurateur, dans une identité chaleureuse orange et brun.",
+      "objectives": "Faire découvrir le service aux employés de bureau et aux restaurateurs : expliquer simplement la commande du déjeuner livré au bureau, mettre en avant la cuisine locale et orienter chaque visiteur vers l'application client ou l'espace restaurateur.",
+      "results": "Landing page complète avec hero illustré par l'application, sections Les plats, Comment ça marche, L'app client, Abonnements et Restaurateurs, créneaux de livraison de 11h30 à 14h, commande pour le jour même ou le lendemain, et page de crédits pour les photos de plats."
+    },
+    "en": {
+      "title": "Ma Cantine – Showcase Website",
+      "description": "Presentation website for Ma Cantine, the service that delivers the dish of the day from Abidjan's neighborhood canteens to the office. It presents the dishes, how ordering works, the customer app, subscriptions and the restaurant owner area, in a warm orange and brown identity.",
+      "objectives": "Introduce the service to office workers and restaurant owners: simply explain how to order lunch delivered to the office, showcase local cuisine and direct each visitor to the customer app or the restaurant owner area.",
+      "results": "Complete landing page with a hero illustrated by the app, sections for Dishes, How it works, Customer app, Subscriptions and Restaurant owners, delivery slots from 11:30 am to 2 pm, same-day or next-day ordering, and a credits page for the dish photos."
+    }
+  },
+  "80": {
+    "fr": {
+      "title": "Ma Cantine – Application Client",
+      "description": "Application mobile pour commander son déjeuner et se le faire livrer au bureau à Abidjan. Le client choisit le plat du jour d'une cantine pour aujourd'hui ou demain, indique son lieu de travail et règle à la livraison ou via une formule d'abonnement. Elle s'appuie sur l'API Ma Cantine développée en Fastify.",
+      "objectives": "Rendre la commande du déjeuner aussi simple que possible pour les employés de bureau : menu du jour clair, panier par restaurateur, choix du lieu de livraison et formules semaine ou mois pour ceux qui commandent régulièrement.",
+      "results": "Parcours complet de l'inscription à la livraison : menu Nos Plats (aujourd'hui / demain), panier, choix du lieu de travail, paiement à la livraison ou mobile money, historique et détail des commandes, abonnements avec solde de repas, et session sécurisée avec rafraîchissement automatique du token."
+    },
+    "en": {
+      "title": "Ma Cantine – Customer App",
+      "description": "Mobile app to order lunch and have it delivered to the office in Abidjan. Customers choose a canteen's dish of the day for today or tomorrow, enter their workplace and pay on delivery or through a subscription plan. It runs on the Ma Cantine API built with Fastify.",
+      "objectives": "Make ordering lunch as simple as possible for office workers: a clear daily menu, a cart per restaurant, choice of delivery location and weekly or monthly plans for regular customers.",
+      "results": "Complete journey from sign-up to delivery: Our Dishes menu (today / tomorrow), cart, workplace selection, payment on delivery or via mobile money, order history and details, subscriptions with a meal balance, and a secure session with automatic token refresh."
+    }
+  },
+  "81": {
+    "fr": {
+      "title": "Ma Cantine – Espace Restaurateur",
+      "description": "Application multiplateforme (web, desktop, mobile) qui permet aux restaurateurs de gérer leur cantine sur Ma Cantine : commandes, livraisons groupées, plats du jour, formules d'abonnement, abonnés et avis clients, depuis un tableau de bord connecté à l'API Fastify.",
+      "objectives": "Donner aux petits restaurateurs un outil simple pour recevoir et préparer leurs commandes, organiser les livraisons par lieu de travail, publier leurs plats du jour et fidéliser leurs clients, quel que soit l'écran utilisé.",
+      "results": "Tableau de bord (chiffre d'affaires, commandes, panier moyen, évolution des ventes, plats les plus vendus), gestion des commandes de l'acceptation à la livraison, regroupement des livraisons avec impression d'étiquettes en PDF, plats du jour avec stock, formules et offres, abonnés, réponses aux avis, horaires et ouverture de la cantine, le tout dans une interface responsive."
+    },
+    "en": {
+      "title": "Ma Cantine – Restaurant Owner Space",
+      "description": "Cross-platform app (web, desktop, mobile) that lets restaurant owners manage their canteen on Ma Cantine: orders, grouped deliveries, dishes of the day, subscription plans, subscribers and customer reviews, from a dashboard connected to the Fastify API.",
+      "objectives": "Give small restaurant owners a simple tool to receive and prepare orders, organize deliveries by workplace, publish their dishes of the day and build customer loyalty, whatever screen they use.",
+      "results": "Dashboard (revenue, orders, average basket, sales trends, best-selling dishes), order management from acceptance to delivery, grouped deliveries with PDF label printing, dishes of the day with stock, plans and offers, subscribers, review replies, canteen hours and opening status, all in a responsive interface."
+    }
+  },
+  "82": {
+    "fr": {
+      "title": "Ma Cantine – Back-office Admin",
+      "description": "Back-office réservé à l'équipe Ma Cantine pour superviser toute la plateforme : restaurateurs, commandes, utilisateurs, lieux de travail, avis et annonces. Application Flutter multiplateforme qui s'appuie sur les routes d'administration de l'API Fastify.",
+      "objectives": "Permettre à l'équipe de piloter la plateforme au quotidien : valider les restaurateurs avant leur mise en ligne, suivre les ventes et commissions, modérer les avis, communiquer avec les clients et les restaurateurs, et garder une trace de chaque action d'administration.",
+      "results": "Tableau de bord des ventes et commissions sur 7, 30 ou 90 jours avec top restaurateurs et ventes par zone, validation et suspension des restaurateurs avec commission personnalisée, gestion des commandes, utilisateurs et lieux de travail (fusion des doublons), modération des avis, annonces ciblées, paramètres et journal des actions admin."
+    },
+    "en": {
+      "title": "Ma Cantine – Admin Back Office",
+      "description": "Back office reserved for the Ma Cantine team to oversee the entire platform: restaurant owners, orders, users, workplaces, reviews and announcements. A cross-platform Flutter app built on the admin routes of the Fastify API.",
+      "objectives": "Enable the team to run the platform day to day: approve restaurant owners before they go live, track sales and commissions, moderate reviews, communicate with customers and restaurant owners, and keep a record of every admin action.",
+      "results": "Sales and commissions dashboard over 7, 30 or 90 days with top restaurant owners and sales by area, approval and suspension of restaurant owners with custom commission rates, management of orders, users and workplaces (duplicate merging), review moderation, targeted announcements, settings and an admin action log."
+    }
+  },
+  "85": {
+    "fr": {
+      "title": "TransfertCM – Landing Page",
+      "description": "Site de présentation de TransfertCM, la plateforme camerounaise qui permet d'acheter du crédit et des forfaits MTN ou Orange pour soi ou pour ses proches, à toute heure, depuis son téléphone. Il présente les services, le fonctionnement, le portefeuille, les tarifs et la FAQ, et oriente vers le téléchargement de l'application.",
+      "objectives": "Présenter clairement le service aux utilisateurs camerounais : recharge de crédit et de forfaits sur les réseaux MTN et Orange, portefeuille rechargeable et frais transparents, avec un parcours direct vers l'application mobile.",
+      "results": "Landing page avec mise en avant de l'application, sections Services, Comment ça marche, Portefeuille, Tarifs et Questions fréquentes, liens vers Google Play et l'App Store, et rappel des conditions clés (frais fixes par commande, crédit à partir de 150 XAF)."
+    },
+    "en": {
+      "title": "TransfertCM – Landing Page",
+      "description": "Presentation website for TransfertCM, the Cameroonian platform for buying MTN or Orange airtime and bundles for yourself or your loved ones, at any time, from your phone. It presents the services, how it works, the wallet, pricing and FAQ, and directs visitors to download the app.",
+      "objectives": "Clearly present the service to Cameroonian users: airtime and bundle top-ups on the MTN and Orange networks, a rechargeable wallet and transparent fees, with a direct path to the mobile app.",
+      "results": "Landing page showcasing the app, with Services, How it works, Wallet, Pricing and FAQ sections, links to Google Play and the App Store, and a reminder of key terms (fixed fee per order, airtime from 150 XAF)."
+    }
+  },
+  "86": {
+    "fr": {
+      "title": "TransfertCM – Back-office & Espace Cabine",
+      "description": "Plateforme web de gestion de TransfertCM avec deux espaces : le back-office de l'équipe (commandes, cabines, finance, fraude, support, équipe) et l'espace des cabines, les agents qui exécutent les recharges. Elle s'appuie sur une API AdonisJS d'environ 260 routes avec temps réel Socket.io.",
+      "objectives": "Donner à l'équipe un poste de pilotage complet de la plateforme et aux cabines un espace de travail dédié pour recevoir, exécuter et suivre les commandes de recharge, avec des rôles et permissions distincts pour chaque profil.",
+      "results": "Back-office avec tableau de bord, commandes et attribution aux cabines, gestion des cabines et de leur solde UV, finance, rapports, anti-fraude, réclamations, call center, messagerie, notifications, abonnements, rémunérations et gestion de l'équipe. Espace cabine avec tableau de bord, commandes en temps réel, messagerie, documents, performance et abonnement. Côté API : paiements avec circuit breaker, portefeuille, moteur d'attribution automatique des commandes et protections de charge."
+    },
+    "en": {
+      "title": "TransfertCM – Back Office & Booth Space",
+      "description": "TransfertCM web management platform with two areas: the team back office (orders, booths, finance, fraud, support, team) and the booth space for the agents who carry out the top-ups. It runs on an AdonisJS API of around 260 routes with Socket.io real-time features.",
+      "objectives": "Give the team a complete control center for the platform and give booths a dedicated workspace to receive, process and track top-up orders, with distinct roles and permissions for each profile.",
+      "results": "Back office with dashboard, orders and assignment to booths, management of booths and their UV balance, finance, reports, anti-fraud, complaints, call center, messaging, notifications, subscriptions, compensation and team management. Booth space with dashboard, real-time orders, messaging, documents, performance and subscription. On the API side: payments with a circuit breaker, wallet, automatic order assignment engine and load protection."
+    }
+  },
+  "87": {
+    "fr": {
+      "title": "TransfertCM – Application Mobile",
+      "description": "Application mobile TransfertCM pour recharger du crédit et des forfaits MTN ou Orange au Cameroun. Le client gère son portefeuille, envoie du crédit à ses contacts et programme des transferts. La même application intègre aussi un mode cabine pour les agents qui traitent les commandes en temps réel.",
+      "objectives": "Rendre la recharge de crédit aussi rapide que possible : un portefeuille, quelques gestes pour envoyer, recharger, transférer ou programmer, et un suivi clair de chaque commande, avec un accès sécurisé par code PIN et biométrie.",
+      "results": "Côté client : inscription par téléphone et code PIN, portefeuille avec envoi, recharge, transfert et programmation, forfaits, contacts, historique des commandes, réclamations, support et parrainage. Côté cabine : connexion agent, réception et traitement des commandes en temps réel, messagerie et profil."
+    },
+    "en": {
+      "title": "TransfertCM – Mobile App",
+      "description": "TransfertCM mobile app for topping up MTN or Orange airtime and bundles in Cameroon. Customers manage their wallet, send airtime to their contacts and schedule transfers. The same app also includes a booth mode for agents who process orders in real time.",
+      "objectives": "Make airtime top-ups as fast as possible: one wallet, a few taps to send, top up, transfer or schedule, and clear tracking of every order, with secure access via PIN code and biometrics.",
+      "results": "Customer side: sign-up by phone number and PIN code, wallet with send, top-up, transfer and scheduling, bundles, contacts, order history, complaints, support and referrals. Booth side: agent login, real-time order receipt and processing, messaging and profile."
+    }
+  },
+  "88": {
+    "fr": {
+      "title": "DIAB Consulting – Site Vitrine",
+      "description": "Site vitrine de DIAB Consulting, cabinet multiservice qui accompagne particuliers et entreprises entre la Côte d'Ivoire et le Maroc. Il présente une dizaine de pôles d'activité (marketing digital, électricité, automobile, écoute juridique, BTP, événementiel, import/export…) dans une identité bleu nuit et or, avec prise de contact directe sur WhatsApp.",
+      "objectives": "Donner au cabinet une présence en ligne professionnelle qui rassure et rende lisible une offre très large, en guidant chaque visiteur vers le bon pôle d'activité puis vers une demande de devis.",
+      "results": "Site complet avec accueil, page Nos activités et fiche détaillée par pôle, page À propos, contact et mentions légales, bouton de devis WhatsApp toujours accessible, animations d'apparition au défilement et balises SEO sur chaque page."
+    },
+    "en": {
+      "title": "DIAB Consulting – Showcase Website",
+      "description": "Showcase website for DIAB Consulting, a multi-service firm supporting individuals and businesses between Côte d'Ivoire and Morocco. It presents around ten business units (digital marketing, electrical work, automotive, legal counseling, construction, events, import/export…) in a midnight blue and gold identity, with direct contact via WhatsApp.",
+      "objectives": "Give the firm a professional online presence that builds trust and makes a very broad offering easy to understand, guiding each visitor to the right business unit and then to a quote request.",
+      "results": "Complete website with home page, Our Activities page and a detailed page per business unit, About page, contact and legal notice, an always-accessible WhatsApp quote button, scroll-reveal animations and SEO tags on every page."
+    }
+  },
+  "89": {
+    "fr": {
+      "title": "APCI – Anciens Parlementaires de Côte d'Ivoire",
+      "description": "Site institutionnel bilingue de l'Assemblée des Anciens Parlementaires de Côte d'Ivoire, dans une palette « Hémicycle » bordeaux profond, or vieilli et ivoire. Il réunit l'histoire de l'association, l'annuaire des membres, un mémorial, les actualités et un espace membre, le tout alimenté par une API Laravel dédiée.",
+      "objectives": "Préserver et transmettre la mémoire parlementaire ivoirienne tout en offrant aux anciens élus un outil de vie associative : adhésion en ligne, espace privé, événements et communication avec le public, en français et en anglais.",
+      "results": "Plus de trente pages : histoire, vision, missions, mot du président, annuaire et fiches des membres, mémorial avec archives et galerie des présidents, actualités, galeries photo et vidéo, documentation, actions sociales, partenariats, recherche avec autocomplétion, adhésion, inscription aux événements et espace membre. Toutes les requêtes passent par le serveur SvelteKit : le navigateur ne parle jamais directement à l'API et le jeton reste dans un cookie httpOnly."
+    },
+    "en": {
+      "title": "APCI – Former Members of Parliament of Côte d'Ivoire",
+      "description": "Bilingual institutional website of the Assembly of Former Members of Parliament of Côte d'Ivoire, in a \"Hemicycle\" palette of deep burgundy, antique gold and ivory. It brings together the association's history, the member directory, a memorial, news and a member area, all powered by a dedicated Laravel API.",
+      "objectives": "Preserve and pass on Ivorian parliamentary memory while giving former MPs a tool for association life: online membership, a private area, events and communication with the public, in French and English.",
+      "results": "More than thirty pages: history, vision, missions, president's message, member directory and profiles, memorial with archives and a gallery of presidents, news, photo and video galleries, documentation, social initiatives, partnerships, search with autocomplete, membership, event registration and member area. All requests go through the SvelteKit server: the browser never talks directly to the API and the token stays in an httpOnly cookie."
+    }
+  },
+  "90": {
+    "fr": {
+      "title": "AFAC-CI – Anciens Combattants de Côte d'Ivoire",
+      "description": "Site institutionnel bilingue de l'Association Fraternelle des Anciens Combattants de Côte d'Ivoire, aux couleurs de l'association : vert profond, or et accents nationaux ivoiriens. Il est construit autour d'un mémorial numérique qui rend hommage aux anciens combattants et transmet leur histoire.",
+      "objectives": "Préserver la mémoire des anciens combattants ivoiriens, valoriser leur histoire auprès du public et des jeunes générations, et donner à l'association un outil de vie associative : adhésion, dons, événements et espace membre.",
+      "results": "Front-end complet d'une vingtaine de pages : histoire et chronologie, présentation de l'association et de son bureau, mot du président, nos héros, mémorial numérique (livre d'honneur, recherche des disparus par nom, grade ou région, galerie des héros, témoignages, archives, mur du souvenir interactif, grandes missions), actualités, événements, galerie, actions sociales, documentation, partenaires, adhésion, contact, dons et espace membre."
+    },
+    "en": {
+      "title": "AFAC-CI – Veterans of Côte d'Ivoire",
+      "description": "Bilingual institutional website of the Fraternal Association of Veterans of Côte d'Ivoire, in the association's colors: deep green, gold and Ivorian national accents. It is built around a digital memorial that pays tribute to veterans and passes on their history.",
+      "objectives": "Preserve the memory of Ivorian veterans, share their history with the public and younger generations, and give the association a tool for association life: membership, donations, events and a member area.",
+      "results": "Complete front end of around twenty pages: history and timeline, presentation of the association and its board, president's message, our heroes, digital memorial (book of honor, search for the missing by name, rank or region, heroes gallery, testimonies, archives, interactive wall of remembrance, major missions), news, events, gallery, social initiatives, documentation, partners, membership, contact, donations and member area."
+    }
+  }
+}

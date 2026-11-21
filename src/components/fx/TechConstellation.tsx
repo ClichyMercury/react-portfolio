@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useLocale } from "@/i18n";
 
 interface StarSkill {
   name: string;
@@ -28,6 +29,7 @@ const CATEGORY_TINT: Record<string, string> = {
 
 const TechConstellation = ({ skills }: { skills: StarSkill[] }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { pick } = useLocale();
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -239,10 +241,10 @@ const TechConstellation = ({ skills }: { skills: StarSkill[] }) => {
   }, [skills]);
 
   return (
-    <div ref={containerRef} className="relative w-full h-[65vh] min-h-[420px]" data-cursor="drag">
+    <div ref={containerRef} className="relative w-full h-[65vh] min-h-[420px]" data-cursor={pick({ fr: "glisser", en: "drag" })}>
       <canvas ref={canvasRef} className="absolute inset-0 touch-none" />
       <div className="absolute bottom-3 right-4 font-mono text-[10px] uppercase tracking-[0.2em] pointer-events-none" style={{ color: "var(--fg-faint)" }}>
-        [ drag the stars ]
+        {pick({ fr: "[ faites glisser les étoiles ]", en: "[ drag the stars ]" })}
       </div>
     </div>
   );

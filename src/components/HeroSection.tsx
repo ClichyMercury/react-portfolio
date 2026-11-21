@@ -3,8 +3,12 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import DecodeText from "./fx/DecodeText";
 import Magnetic from "./fx/Magnetic";
 import { PROJECT_COUNT } from "./ProjectsGrid";
+import { useLocale, type Localized } from "@/i18n";
 
-const ROLES = ["PRODUCT BUILDER", "SVELTEKIT DEVELOPER", "FLUTTER ENGINEER", "API ENGINEER"];
+const ROLES: Localized<string[]> = {
+  fr: ["CONCEPTEUR PRODUIT", "DÉVELOPPEUR SVELTEKIT", "INGÉNIEUR FLUTTER", "INGÉNIEUR API"],
+  en: ["PRODUCT BUILDER", "SVELTEKIT DEVELOPER", "FLUTTER ENGINEER", "API ENGINEER"],
+};
 
 interface HeroSectionProps {
   onCtaClick?: () => void;
@@ -16,11 +20,13 @@ const HeroSection = ({ onCtaClick = () => {} }: HeroSectionProps) => {
   const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.6], [0, 100]);
 
+  const { pick } = useLocale();
+  const roles = pick(ROLES);
   const [roleIndex, setRoleIndex] = useState(0);
   const [clock, setClock] = useState("");
 
   useEffect(() => {
-    const roleTimer = setInterval(() => setRoleIndex((i) => (i + 1) % ROLES.length), 2600);
+    const roleTimer = setInterval(() => setRoleIndex((i) => (i + 1) % ROLES.en.length), 2600);
     const clockTimer = setInterval(() => {
       setClock(new Date().toLocaleTimeString("fr-FR", { hour12: false }));
     }, 1000);
@@ -61,7 +67,7 @@ const HeroSection = ({ onCtaClick = () => {} }: HeroSectionProps) => {
           <span>sys.gs_dev // v6.0</span>
           <span className="hidden sm:flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#28C840" }} />
-            <span style={{ color: "var(--fg-muted)" }}>available for work</span>
+            <span style={{ color: "var(--fg-muted)" }}>{pick({ fr: "disponible pour missions", en: "available for work" })}</span>
           </span>
           <span>abidjan_ci · {clock || "--:--:--"}</span>
         </motion.div>
@@ -75,7 +81,7 @@ const HeroSection = ({ onCtaClick = () => {} }: HeroSectionProps) => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            [ software developer — 6+ yrs in orbit ]
+            {pick({ fr: "[ développeur logiciel — 6+ ans en orbite ]", en: "[ software developer — 6+ yrs in orbit ]" })}
           </motion.div>
 
           <h1 className="font-semibold uppercase leading-[0.9] tracking-tight text-[15vw] sm:text-[13vw] lg:text-[10vw]">
@@ -95,7 +101,7 @@ const HeroSection = ({ onCtaClick = () => {} }: HeroSectionProps) => {
                 exit={{ opacity: 0, y: -12 }}
                 transition={{ duration: 0.35 }}
               >
-                {ROLES[roleIndex]}
+                {roles[roleIndex % roles.length]}
               </motion.span>
             </AnimatePresence>
             <span className="animate-blink inline-block w-[8px] h-[14px]" style={{ background: "var(--accent)" }} />
@@ -112,9 +118,9 @@ const HeroSection = ({ onCtaClick = () => {} }: HeroSectionProps) => {
                 onClick={onCtaClick}
                 className="px-8 py-3.5 font-mono text-xs uppercase tracking-[0.2em] rounded transition-shadow duration-500 hover:shadow-[0_0_30px_rgba(0,229,255,0.35)]"
                 style={{ background: "var(--accent)", color: "var(--bg)" }}
-                data-cursor="go"
+                data-cursor={pick({ fr: "voir", en: "go" })}
               >
-                explore_work( )
+                {pick({ fr: "voir_projets( )", en: "explore_work( )" })}
               </button>
             </Magnetic>
             <Magnetic>
@@ -122,9 +128,9 @@ const HeroSection = ({ onCtaClick = () => {} }: HeroSectionProps) => {
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                 className="px-8 py-3.5 font-mono text-xs uppercase tracking-[0.2em] rounded transition-colors hover:text-[var(--accent)] hud-corners"
                 style={{ border: "1px solid var(--border-medium)", color: "var(--fg-muted)" }}
-                data-cursor="go"
+                data-cursor={pick({ fr: "voir", en: "go" })}
               >
-                init_contact( )
+                {pick({ fr: "contacter( )", en: "init_contact( )" })}
               </button>
             </Magnetic>
           </motion.div>
@@ -144,9 +150,9 @@ const HeroSection = ({ onCtaClick = () => {} }: HeroSectionProps) => {
             animate={{ y: [0, 4, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            scroll ↓
+            {pick({ fr: "défiler ↓", en: "scroll ↓" })}
           </motion.span>
-          <span className="hidden sm:inline">{PROJECT_COUNT}+ deployments</span>
+          <span className="hidden sm:inline">{PROJECT_COUNT}+ {pick({ fr: "déploiements", en: "deployments" })}</span>
         </motion.div>
       </div>
     </section>

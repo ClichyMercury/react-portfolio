@@ -28,9 +28,9 @@ const SectionHeader = ({ label, title, titleHighlight, description, index = "00"
       </div>
       <div className="flex items-end justify-between gap-8">
         <h2 className="text-4xl sm:text-5xl lg:text-7xl font-semibold leading-[0.95] tracking-tight uppercase">
-          <DecodeText text={title} className="block" />
+          <DecodeText key={title} text={title} className="block" />
           <span className="block" style={{ color: "transparent", WebkitTextStroke: "1px var(--accent)" }}>
-            <DecodeText text={titleHighlight} delay={250} />
+            <DecodeText key={titleHighlight} text={titleHighlight} delay={250} />
           </span>
         </h2>
         {aside && <div className="hidden lg:block flex-shrink-0">{aside}</div>}

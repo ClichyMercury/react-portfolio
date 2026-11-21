@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { useLocale } from "@/i18n";
 
 const GLYPHS = "アイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789ABCDEF<>/*+=$#@";
 
 const MatrixRain = ({ onClose }: { onClose: () => void }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { pick } = useLocale();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -65,11 +67,11 @@ const MatrixRain = ({ onClose }: { onClose: () => void }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={onClose}
-      data-cursor="exit"
+      data-cursor={pick({ fr: "sortir", en: "exit" })}
     >
       <canvas ref={canvasRef} className="absolute inset-0" />
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-[0.3em] animate-pulse" style={{ color: "var(--fg-muted)" }}>
-        [ click or esc to exit the matrix ]
+        {pick({ fr: "[ cliquez ou échap pour quitter la matrice ]", en: "[ click or esc to exit the matrix ]" })}
       </div>
     </motion.div>
   );

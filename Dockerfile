@@ -6,7 +6,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
-RUN npx vite build
+RUN npm run build:static
 
 
 FROM nginx:1.27-alpine AS runner

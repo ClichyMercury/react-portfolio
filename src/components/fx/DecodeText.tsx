@@ -52,8 +52,9 @@ const DecodeText = ({ text, className = "", delay = 0, speed = 40, once = true }
   }, [inView, text, delay, speed, once]);
 
   return (
-    <span ref={ref} className={className} aria-label={text}>
-      {display}
+    <span ref={ref} className={className}>
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true">{display}</span>
     </span>
   );
 };

@@ -7,7 +7,7 @@ import { SKILLS } from "./SkillsSection";
 import { PROJECTS, PROJECT_COUNT } from "./ProjectsGrid";
 import { BACKEND_NODES, FRAMEWORKS } from "./ServerRoom";
 
-const SITE_URL = typeof window !== "undefined" ? window.location.origin : "";
+const SITE_URL = "https://gsdot.dev";
 
 const host = (url: string) => url.replace(/^https?:\/\//, "").replace(/\/$/, "");
 

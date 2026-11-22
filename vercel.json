@@ -7,12 +7,28 @@
   "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/:v(v1|v2|v3)",
-      "destination": "/:v/index.html"
+      "source": "/v1",
+      "destination": "/v1/index.html"
     },
     {
-      "source": "/:v(v1|v2|v3)/:path*",
-      "destination": "/:v/index.html"
+      "source": "/v1/:path*",
+      "destination": "/v1/index.html"
+    },
+    {
+      "source": "/v2",
+      "destination": "/v2/index.html"
+    },
+    {
+      "source": "/v2/:path*",
+      "destination": "/v2/index.html"
+    },
+    {
+      "source": "/v3",
+      "destination": "/v3/index.html"
+    },
+    {
+      "source": "/v3/:path*",
+      "destination": "/v3/index.html"
     },
     {
       "source": "/(.*)",

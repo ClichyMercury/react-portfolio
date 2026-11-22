@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image" href="/v3/images/GS-removebg-preview.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Gaël Sassan — Software Developer. 6+ years crafting mobile apps (Flutter) and web platforms (React, SvelteKit) for banks, health services and startups across Africa. 90+ projects deployed." />
+    <meta name="theme-color" content="#05060A" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Gaël Sassan — Software Developer" />
+    <meta property="og:description" content="6+ years building mobile & web products. Flutter · React · Cloud. 90+ projects deployed from Abidjan to the world." />
+    <meta property="og:image" content="/v3/images/GS-removebg-preview.png" />
+    <meta property="og:site_name" content="gs.dev" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Gaël Sassan — Software Developer" />
+    <meta name="twitter:description" content="6+ years building mobile & web products. Flutter · React · Cloud." />
+    <meta name="twitter:image" content="/v3/images/GS-removebg-preview.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Gaël Sassan — Software Developer</title>
+    <style>
+      #loading-screen {
+        position: fixed; inset: 0; z-index: 99999;
+        background: #05060A;
+        display: flex; align-items: center; justify-content: center;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+      }
+      #loading-screen.hidden { opacity: 0; visibility: hidden; }
+      #boot {
+        font-family: 'JetBrains Mono', monospace; font-size: 12px;
+        color: #5A6572; line-height: 2;
+      }
+      #boot .ln { opacity: 0; animation: bl 0.1s forwards; }
+      #boot .ln:nth-child(1) { animation-delay: 0.2s; }
+      #boot .ln:nth-child(2) { animation-delay: 0.7s; }
+      #boot .ln:nth-child(3) { animation-delay: 1.2s; }
+      #boot .ok { color: #00E5FF; }
+      #boot .cursor { display: inline-block; width: 7px; height: 13px; background: #00E5FF; vertical-align: middle; animation: bk 1s steps(2) infinite; }
+      @keyframes bl { to { opacity: 1; } }
+      @keyframes bk { 50% { opacity: 0; } }
+    </style>
+    <meta name="robots" content="noindex, follow" />
+    <script src="/version-switcher.js" data-current="v3" defer></script>
+    <script type="module" crossorigin src="/v3/assets/index-Cy09jZI_.js"></script>
+    <link rel="stylesheet" crossorigin href="/v3/assets/index-D6WcDt1c.css">
+  </head>
+  <body>
+    <div id="loading-screen">
+      <div id="boot">
+        <div class="ln">&gt; boot gs.dev --env=production <span class="ok">[OK]</span></div>
+        <div class="ln">&gt; mounting modules: flutter react cloud <span class="ok">[OK]</span></div>
+        <div class="ln">&gt; initializing interface... <span class="cursor"></span></div>
+      </div>
+    </div>
+    <div id="root"></div>
+  </body>
+</html>

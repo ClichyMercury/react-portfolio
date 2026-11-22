@@ -8,6 +8,7 @@ import ExperienceSection from "./ExperienceSection";
 import TeamProjects from "./TeamProjects";
 import ServerRoom from "./ServerRoom";
 import MissionDebriefs from "./MissionDebriefs";
+import ImperviousSection from "./ImperviousSection";
 import CustomCursor from "./CustomCursor";
 import ScrollProgress from "./ScrollProgress";
 import Terminal from "./fx/Terminal";
@@ -218,6 +219,7 @@ const Home = () => {
         <ProjectsGrid />
         <TeamProjects />
         <ServerRoom />
+        <ImperviousSection />
         <MissionDebriefs />
         <ExperienceSection />
         <ContactSection />

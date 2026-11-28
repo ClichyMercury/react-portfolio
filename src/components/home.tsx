@@ -9,6 +9,7 @@ import TeamProjects from "./TeamProjects";
 import ServerRoom from "./ServerRoom";
 import MissionDebriefs from "./MissionDebriefs";
 import ImperviousSection from "./ImperviousSection";
+import KawaidaSection from "./KawaidaSection";
 import CustomCursor from "./CustomCursor";
 import ScrollProgress from "./ScrollProgress";
 import Terminal from "./fx/Terminal";
@@ -217,6 +218,7 @@ const Home = () => {
         <ProfessionalBio />
         <SkillsSection />
         <ProjectsGrid />
+        <KawaidaSection />
         <TeamProjects />
         <ServerRoom />
         <ImperviousSection />
